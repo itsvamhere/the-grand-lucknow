@@ -61,6 +61,42 @@
     {
       "source": "/venues/venue-n5",
       "destination": "/venues/venue-n5.html"
+    },
+    {
+      "source": "/venues/grand-ballroom",
+      "destination": "/venues/grand-ballroom.html"
+    },
+    {
+      "source": "/venues/the-courtyard",
+      "destination": "/venues/the-courtyard.html"
+    },
+    {
+      "source": "/venues/garden-pavilion",
+      "destination": "/venues/garden-pavilion.html"
+    },
+    {
+      "source": "/venues/north-mandap",
+      "destination": "/venues/north-mandap.html"
+    },
+    {
+      "source": "/venues/dining-expanse",
+      "destination": "/venues/dining-expanse.html"
+    },
+    {
+      "source": "/venues/vip-atrium",
+      "destination": "/venues/vip-atrium.html"
+    },
+    {
+      "source": "/venues/bridal-suite",
+      "destination": "/venues/bridal-suite.html"
+    },
+    {
+      "source": "/venues/loft-n1",
+      "destination": "/venues/loft-n1.html"
+    },
+    {
+      "source": "/venues/open-earth",
+      "destination": "/venues/open-earth-lawn.html"
     }
   ],
   "redirects": [
