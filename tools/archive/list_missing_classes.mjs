@@ -1,0 +1,15 @@
+import fs from 'fs';
+
+const homeHtml = fs.readFileSync('index.html', 'utf8');
+const subHtml = fs.readFileSync('venues/open-earth-lawn.html', 'utf8');
+
+const homeFooter = homeHtml.match(/<footer[\s\S]*?<\/footer>/i)[0];
+const subFooter = subHtml.match(/<footer[\s\S]*?<\/footer>/i)[0];
+
+const homeClasses = new Set([...homeFooter.matchAll(/class="([^"]+)"/g)].flatMap(m => m[1].split(/\s+/)));
+
+for (const cls of homeClasses) {
+  if (!subHtml.includes('.' + cls)) {
+    console.log('Missing class in subpage:', cls);
+  }
+}

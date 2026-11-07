@@ -1,0 +1,98 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    {
+      "source": "/images/:file([^&]+)&:rest*",
+      "destination": "/images/:file"
+    },
+    {
+      "source": "/venues/open-earth-lawn",
+      "destination": "/venues/open-earth-lawn.html"
+    },
+    {
+      "source": "/venues/grassland-gala",
+      "destination": "/venues/venue-n2"
+    },
+    {
+      "source": "/venues/garden-galaxy",
+      "destination": "/venues/venue-n3"
+    },
+    {
+      "source": "/apartments/boutique-n1",
+      "destination": "/apartments/boutique-n1.html"
+    },
+    {
+      "source": "/apartments/boutique-n2",
+      "destination": "/apartments/boutique-n2.html"
+    },
+    {
+      "source": "/apartments/boutique-n3",
+      "destination": "/apartments/boutique-n3.html"
+    },
+    {
+      "source": "/apartments/boutique-n4",
+      "destination": "/apartments/boutique-n4.html"
+    },
+    {
+      "source": "/apartments/boutique-n5",
+      "destination": "/apartments/boutique-n5.html"
+    },
+    {
+      "source": "/apartments/loft-n1",
+      "destination": "/apartments/loft-n1.html"
+    },
+    {
+      "source": "/venues/venue-n1",
+      "destination": "/venues/venue-n1.html"
+    },
+    {
+      "source": "/venues/venue-n2",
+      "destination": "/venues/venue-n2.html"
+    },
+    {
+      "source": "/venues/venue-n3",
+      "destination": "/venues/venue-n3.html"
+    },
+    {
+      "source": "/venues/venue-n4",
+      "destination": "/venues/venue-n4.html"
+    },
+    {
+      "source": "/venues/venue-n5",
+      "destination": "/venues/venue-n5.html"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/venues/boutique-n1",
+      "destination": "/venues/venue-n1",
+      "permanent": true
+    },
+    {
+      "source": "/venues/boutique-n1.html",
+      "destination": "/venues/venue-n1",
+      "permanent": true
+    },
+    {
+      "source": "/apartments/boutique-n1",
+      "destination": "/venues/venue-n1",
+      "permanent": true
+    },
+    {
+      "source": "/apartments/boutique-n1.html",
+      "destination": "/venues/venue-n1",
+      "permanent": true
+    },
+    {
+      "source": "/venues/grassland-gala",
+      "destination": "/venues/venue-n2",
+      "permanent": true
+    },
+    {
+      "source": "/venues/garden-galaxy",
+      "destination": "/venues/venue-n3",
+      "permanent": true
+    }
+  ]
+}

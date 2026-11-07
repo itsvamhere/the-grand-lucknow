@@ -1,0 +1,122 @@
+{
+  "r1_marquee": {
+    "Desktop": {
+      "computedGap": "0px",
+      "trackGap": 0,
+      "intraTrackGap": 81,
+      "interTrackGap": 81,
+      "gapDelta": 0,
+      "seamDelta": 0.1025390625,
+      "trackWidthA": 2568,
+      "trackWidthB": 2568,
+      "tracksEqual": true,
+      "itemCountA": 2,
+      "itemCountB": 2
+    },
+    "Mobile": {
+      "computedGap": "0px",
+      "trackGap": 0,
+      "intraTrackGap": 40,
+      "interTrackGap": 40,
+      "gapDelta": 0,
+      "seamDelta": 0.04193115234375,
+      "trackWidthA": 755,
+      "trackWidthB": 755,
+      "tracksEqual": true,
+      "itemCountA": 2,
+      "itemCountB": 2
+    }
+  },
+  "r2_map": {
+    "Desktop": {
+      "pinLeftComputed": "1008px",
+      "pinTopComputed": "414px",
+      "mapWidthComputed": "2016px",
+      "mapLeftComputed": "-547.188px",
+      "mapRectWidth": 2016,
+      "mapRectHeight": 828,
+      "pinCenterX": 460.8125,
+      "pinCenterY": 9716.84375,
+      "mapCenterX": 460.8125,
+      "mapCenterY": 9716.84375,
+      "diffX": 0,
+      "diffY": 0
+    },
+    "Mobile": {
+      "pinLeftComputed": "318.75px",
+      "pinTopComputed": "304.5px",
+      "mapWidthComputed": "637.5px",
+      "mapLeftComputed": "-258.75px",
+      "mapRectWidth": 637.5,
+      "mapRectHeight": 609,
+      "pinCenterX": 60,
+      "pinCenterY": 4992.859375,
+      "mapCenterX": 60,
+      "mapCenterY": 4992.859375,
+      "diffX": 0,
+      "diffY": 0
+    }
+  },
+  "r3_numbers": {
+    "suprCount": 2,
+    "suprDisplays": [
+      "none",
+      "none"
+    ],
+    "cards": [
+      {
+        "title": "Grassland Gala",
+        "textElements": [
+          "55,000",
+          "Sqft",
+          "1,500",
+          "1,500"
+        ],
+        "innerText": "Grassland Gala 55,000 Sqft 1,500"
+      },
+      {
+        "title": "Garden Galaxy",
+        "textElements": [
+          "45,000",
+          "Sqft",
+          "1,500",
+          "1,000"
+        ],
+        "innerText": "Garden Galaxy 45,000 Sqft 1,000"
+      }
+    ]
+  },
+  "r4_index_untouched": {
+    "sizeBytes": 871500,
+    "mtime": "2026-11-04T09:24:58.565Z",
+    "isNonEmpty": true,
+    "hasCasaMomoOrTheGrand": true
+  },
+  "adversarial_checks": {
+    "vp_1920": {
+      "hadOverlap": false,
+      "minHorizontalDist": 251.859375,
+      "minDirectDist": 251.859375
+    },
+    "vp_1440": {
+      "hadOverlap": false,
+      "minHorizontalDist": 165.453125,
+      "minDirectDist": 165.453125
+    },
+    "vp_1024": {
+      "hadOverlap": false,
+      "minHorizontalDist": 90.578125,
+      "minDirectDist": 90.578125
+    },
+    "vp_768": {
+      "hadOverlap": false,
+      "minHorizontalDist": 174.875,
+      "minDirectDist": 174.875
+    },
+    "vp_375": {
+      "hadOverlap": false,
+      "minHorizontalDist": 41.265625,
+      "minDirectDist": 41.265625
+    }
+  }
+}

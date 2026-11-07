@@ -1,0 +1,271 @@
+{
+  "totalRequests": 23,
+  "responsesByStatus": {
+    "200": 23
+  },
+  "failedRequests": [],
+  "httpErrors": [],
+  "consoleErrors": [],
+  "consoleWarnings": [],
+  "pageExceptions": [],
+  "resourcesHarvested": {
+    "images": [
+      {
+        "url": "https://the-grand-lucknow.vercel.app/images/the_grand_lucknow_master_map_1920.png?v=reverted_clean",
+        "status": 200,
+        "contentType": "image/png",
+        "contentLength": "145304"
+      },
+      {
+        "url": "https://the-grand-lucknow.vercel.app/images/venues/the_grand_open_earth_lawn_hero.jpg",
+        "status": 200,
+        "contentType": "image/jpeg",
+        "contentLength": "76737"
+      },
+      {
+        "url": "https://the-grand-lucknow.vercel.app/images/card_2_grassland_gala.webp",
+        "status": 200,
+        "contentType": "image/webp",
+        "contentLength": "283228"
+      },
+      {
+        "url": "https://the-grand-lucknow.vercel.app/images/card_3_ballroom.webp",
+        "status": 200,
+        "contentType": "image/webp",
+        "contentLength": "205234"
+      }
+    ],
+    "stylesheets": [
+      {
+        "url": "https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Playfair+Display:wght@700;900&display=swap",
+        "status": 200,
+        "contentType": "text/css; charset=utf-8",
+        "contentLength": ""
+      }
+    ],
+    "scripts": [
+      {
+        "url": "https://framerusercontent.com/sites/1bk9uGIcxVnDnwzQnwlcko/rolldown-runtime.Dh6celcD.mjs",
+        "status": 200,
+        "contentType": "text/javascript",
+        "contentLength": "629"
+      },
+      {
+        "url": "https://framerusercontent.com/sites/1bk9uGIcxVnDnwzQnwlcko/ParallaxImage.B0avVUfL.mjs",
+        "status": 200,
+        "contentType": "text/javascript",
+        "contentLength": ""
+      },
+      {
+        "url": "https://framerusercontent.com/sites/1bk9uGIcxVnDnwzQnwlcko/react.B9w3jIah.mjs",
+        "status": 200,
+        "contentType": "text/javascript",
+        "contentLength": ""
+      },
+      {
+        "url": "https://framerusercontent.com/sites/1bk9uGIcxVnDnwzQnwlcko/motion.BrA9hX4t.mjs",
+        "status": 200,
+        "contentType": "text/javascript",
+        "contentLength": ""
+      },
+      {
+        "url": "https://framerusercontent.com/sites/1bk9uGIcxVnDnwzQnwlcko/T5PVEAy5F.D5-RUb5a.mjs",
+        "status": 200,
+        "contentType": "text/javascript",
+        "contentLength": ""
+      },
+      {
+        "url": "https://framerusercontent.com/sites/1bk9uGIcxVnDnwzQnwlcko/ScrollRadius.DdPK9K17.mjs",
+        "status": 200,
+        "contentType": "text/javascript",
+        "contentLength": ""
+      },
+      {
+        "url": "https://framerusercontent.com/sites/1bk9uGIcxVnDnwzQnwlcko/Qfj1byi71tPdQnoYA4y--irm47mWrbgiSgyLgjHFTIo.CD9Cffnd.mjs",
+        "status": 200,
+        "contentType": "text/javascript",
+        "contentLength": ""
+      },
+      {
+        "url": "https://framerusercontent.com/sites/1bk9uGIcxVnDnwzQnwlcko/jbOk_xVr2.BBsl6pQP.mjs",
+        "status": 200,
+        "contentType": "text/javascript",
+        "contentLength": ""
+      },
+      {
+        "url": "https://framerusercontent.com/sites/1bk9uGIcxVnDnwzQnwlcko/dbsvx804WNdcoyICHiKnAT0LKTh0MjYeCDXHPRahIqA.w9X-iUdY.mjs",
+        "status": 200,
+        "contentType": "text/javascript",
+        "contentLength": ""
+      },
+      {
+        "url": "https://framerusercontent.com/sites/1bk9uGIcxVnDnwzQnwlcko/jtbCAvK2c.BhSg5Qxb.mjs",
+        "status": 200,
+        "contentType": "text/javascript",
+        "contentLength": ""
+      },
+      {
+        "url": "https://framerusercontent.com/sites/1bk9uGIcxVnDnwzQnwlcko/AOQA9ZjYa.CwSXFmg7.mjs",
+        "status": 200,
+        "contentType": "text/javascript",
+        "contentLength": ""
+      },
+      {
+        "url": "https://framerusercontent.com/sites/1bk9uGIcxVnDnwzQnwlcko/Booking.DRu38j-Y.mjs",
+        "status": 200,
+        "contentType": "text/javascript",
+        "contentLength": ""
+      },
+      {
+        "url": "https://framerusercontent.com/sites/1bk9uGIcxVnDnwzQnwlcko/shared-lib.DganPNQZ.mjs",
+        "status": 200,
+        "contentType": "text/javascript",
+        "contentLength": ""
+      },
+      {
+        "url": "https://framerusercontent.com/sites/1bk9uGIcxVnDnwzQnwlcko/framer.CBvaWI-C.mjs",
+        "status": 200,
+        "contentType": "text/javascript",
+        "contentLength": ""
+      },
+      {
+        "url": "https://events.framer.com/script?v=2",
+        "status": 200,
+        "contentType": "text/javascript",
+        "contentLength": "10939"
+      }
+    ],
+    "fonts": [
+      {
+        "url": "https://framerusercontent.com/assets/borEE9veyD0zs6Cs5ThKJI0LcKU.woff2",
+        "status": 200,
+        "contentType": "font/woff2",
+        "contentLength": "23112"
+      },
+      {
+        "url": "https://framerusercontent.com/assets/eegZ1ZoVjnHyJtxDMTEhJ2Bhf4.woff2",
+        "status": 200,
+        "contentType": "application/octet-stream",
+        "contentLength": "54808"
+      }
+    ],
+    "documents": [
+      {
+        "url": "https://the-grand-lucknow.vercel.app/venues/open-earth-lawn",
+        "status": 200,
+        "contentType": "text/html; charset=utf-8",
+        "contentLength": ""
+      }
+    ],
+    "other": []
+  },
+  "specificVerifications": {
+    "domChecks": {
+      "heroImgFound": true,
+      "heroNaturalWidth": 704,
+      "heroNaturalHeight": 698,
+      "card2Found": true,
+      "card2Loaded": true,
+      "card3Found": true,
+      "card3Loaded": true,
+      "venueLinkGrasslandFound": true,
+      "venueLinkGardenFound": true
+    },
+    "heroAsset": {
+      "url": "https://the-grand-lucknow.vercel.app/images/venues/the_grand_open_earth_lawn_hero.jpg",
+      "status": 200,
+      "byteSize": 76737,
+      "expectedByteSize": 76737,
+      "matchesExpected": true,
+      "contentType": "image/jpeg"
+    },
+    "card2Asset": {
+      "url": "https://the-grand-lucknow.vercel.app/images/card_2_grassland_gala.webp",
+      "status": 200,
+      "byteSize": 283228,
+      "contentType": "image/webp"
+    },
+    "card3Asset": {
+      "url": "https://the-grand-lucknow.vercel.app/images/card_3_ballroom.webp",
+      "status": 200,
+      "byteSize": 205234,
+      "contentType": "image/webp"
+    },
+    "venueGrassland": {
+      "url": "https://the-grand-lucknow.vercel.app/venues/grassland-gala",
+      "initialStatus": 308,
+      "initialLocation": "/venues/venue-n2",
+      "finalStatus": 200,
+      "finalUrl": "https://the-grand-lucknow.vercel.app/venues/venue-n2"
+    },
+    "venueGarden": {
+      "url": "https://the-grand-lucknow.vercel.app/venues/garden-galaxy",
+      "initialStatus": 308,
+      "initialLocation": "/venues/venue-n3",
+      "finalStatus": 200,
+      "finalUrl": "https://the-grand-lucknow.vercel.app/venues/venue-n3"
+    },
+    "concurrencyBurst": [
+      {
+        "idx": 0,
+        "status": 200,
+        "size": 76737,
+        "durationMs": 51
+      },
+      {
+        "idx": 1,
+        "status": 200,
+        "size": 76737,
+        "durationMs": 48
+      },
+      {
+        "idx": 2,
+        "status": 200,
+        "size": 76737,
+        "durationMs": 134
+      },
+      {
+        "idx": 3,
+        "status": 200,
+        "size": 76737,
+        "durationMs": 42
+      },
+      {
+        "idx": 4,
+        "status": 200,
+        "size": 76737,
+        "durationMs": 60
+      },
+      {
+        "idx": 5,
+        "status": 200,
+        "size": 76737,
+        "durationMs": 79
+      },
+      {
+        "idx": 6,
+        "status": 200,
+        "size": 76737,
+        "durationMs": 89
+      },
+      {
+        "idx": 7,
+        "status": 200,
+        "size": 76737,
+        "durationMs": 130
+      },
+      {
+        "idx": 8,
+        "status": 200,
+        "size": 76737,
+        "durationMs": 128
+      },
+      {
+        "idx": 9,
+        "status": 200,
+        "size": 76737,
+        "durationMs": 134
+      }
+    ]
+  }
+}

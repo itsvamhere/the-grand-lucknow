@@ -1,0 +1,473 @@
+{
+  "targetUrl": "https://the-grand-lucknow.vercel.app/venues/open-earth-lawn",
+  "timestamp": "2026-11-07T08:09:14.272Z",
+  "task1_subresources": {
+    "passed": true,
+    "totalRequests": 23,
+    "responsesByStatus": {
+      "200": 23
+    },
+    "failedRequests": [],
+    "httpErrors": [],
+    "breakdown": {
+      "document": 1,
+      "image": 4,
+      "font": 2,
+      "stylesheet": 1,
+      "script": 15
+    },
+    "sampleResources": [
+      {
+        "url": "https://the-grand-lucknow.vercel.app/venues/open-earth-lawn",
+        "status": 200,
+        "resourceType": "document",
+        "contentType": "text/html; charset=utf-8",
+        "contentLength": ""
+      },
+      {
+        "url": "https://the-grand-lucknow.vercel.app/images/the_grand_lucknow_master_map_1920.png?v=reverted_clean",
+        "status": 200,
+        "resourceType": "image",
+        "contentType": "image/png",
+        "contentLength": "145304"
+      },
+      {
+        "url": "https://framerusercontent.com/assets/borEE9veyD0zs6Cs5ThKJI0LcKU.woff2",
+        "status": 200,
+        "resourceType": "font",
+        "contentType": "font/woff2",
+        "contentLength": "23112"
+      },
+      {
+        "url": "https://framerusercontent.com/assets/eegZ1ZoVjnHyJtxDMTEhJ2Bhf4.woff2",
+        "status": 200,
+        "resourceType": "font",
+        "contentType": "application/octet-stream",
+        "contentLength": "54808"
+      },
+      {
+        "url": "https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Playfair+Display:wght@700;900&display=swap",
+        "status": 200,
+        "resourceType": "stylesheet",
+        "contentType": "text/css; charset=utf-8",
+        "contentLength": ""
+      },
+      {
+        "url": "https://framerusercontent.com/sites/1bk9uGIcxVnDnwzQnwlcko/rolldown-runtime.Dh6celcD.mjs",
+        "status": 200,
+        "resourceType": "script",
+        "contentType": "text/javascript",
+        "contentLength": "629"
+      },
+      {
+        "url": "https://framerusercontent.com/sites/1bk9uGIcxVnDnwzQnwlcko/react.B9w3jIah.mjs",
+        "status": 200,
+        "resourceType": "script",
+        "contentType": "text/javascript",
+        "contentLength": ""
+      },
+      {
+        "url": "https://framerusercontent.com/sites/1bk9uGIcxVnDnwzQnwlcko/motion.BrA9hX4t.mjs",
+        "status": 200,
+        "resourceType": "script",
+        "contentType": "text/javascript",
+        "contentLength": ""
+      },
+      {
+        "url": "https://framerusercontent.com/sites/1bk9uGIcxVnDnwzQnwlcko/Qfj1byi71tPdQnoYA4y--irm47mWrbgiSgyLgjHFTIo.CD9Cffnd.mjs",
+        "status": 200,
+        "resourceType": "script",
+        "contentType": "text/javascript",
+        "contentLength": ""
+      },
+      {
+        "url": "https://framerusercontent.com/sites/1bk9uGIcxVnDnwzQnwlcko/ParallaxImage.B0avVUfL.mjs",
+        "status": 200,
+        "resourceType": "script",
+        "contentType": "text/javascript",
+        "contentLength": ""
+      },
+      {
+        "url": "https://framerusercontent.com/sites/1bk9uGIcxVnDnwzQnwlcko/ScrollRadius.DdPK9K17.mjs",
+        "status": 200,
+        "resourceType": "script",
+        "contentType": "text/javascript",
+        "contentLength": ""
+      },
+      {
+        "url": "https://framerusercontent.com/sites/1bk9uGIcxVnDnwzQnwlcko/T5PVEAy5F.D5-RUb5a.mjs",
+        "status": 200,
+        "resourceType": "script",
+        "contentType": "text/javascript",
+        "contentLength": ""
+      },
+      {
+        "url": "https://framerusercontent.com/sites/1bk9uGIcxVnDnwzQnwlcko/jbOk_xVr2.BBsl6pQP.mjs",
+        "status": 200,
+        "resourceType": "script",
+        "contentType": "text/javascript",
+        "contentLength": ""
+      },
+      {
+        "url": "https://framerusercontent.com/sites/1bk9uGIcxVnDnwzQnwlcko/shared-lib.DganPNQZ.mjs",
+        "status": 200,
+        "resourceType": "script",
+        "contentType": "text/javascript",
+        "contentLength": ""
+      },
+      {
+        "url": "https://framerusercontent.com/sites/1bk9uGIcxVnDnwzQnwlcko/jtbCAvK2c.BhSg5Qxb.mjs",
+        "status": 200,
+        "resourceType": "script",
+        "contentType": "text/javascript",
+        "contentLength": ""
+      }
+    ]
+  },
+  "task2_specific_assets": {
+    "passed": true,
+    "checks": {
+      "the_grand_open_earth_lawn_hero.jpg": {
+        "url": "https://the-grand-lucknow.vercel.app/images/venues/the_grand_open_earth_lawn_hero.jpg",
+        "status": 200,
+        "contentType": "image/jpeg",
+        "byteLength": 76737,
+        "isStatus200": true,
+        "isContentTypeValid": true,
+        "isSizeValid": true,
+        "passed": true
+      },
+      "the_grand_lucknow_master_map_1920.png": {
+        "url": "https://the-grand-lucknow.vercel.app/images/the_grand_lucknow_master_map_1920.png",
+        "status": 200,
+        "contentType": "image/png",
+        "byteLength": 145304,
+        "isStatus200": true,
+        "isContentTypeValid": true,
+        "isSizeValid": true,
+        "passed": true
+      },
+      "the_grand_lucknow_master_map_1920.png (with query ?v=reverted_clean)": {
+        "url": "https://the-grand-lucknow.vercel.app/images/the_grand_lucknow_master_map_1920.png?v=reverted_clean",
+        "status": 200,
+        "contentType": "image/png",
+        "byteLength": 145304,
+        "isStatus200": true,
+        "isContentTypeValid": true,
+        "isSizeValid": true,
+        "passed": true
+      },
+      "card_2_grassland_gala.webp": {
+        "url": "https://the-grand-lucknow.vercel.app/images/card_2_grassland_gala.webp",
+        "status": 200,
+        "contentType": "image/webp",
+        "byteLength": 283228,
+        "isStatus200": true,
+        "isContentTypeValid": true,
+        "isSizeValid": true,
+        "passed": true
+      },
+      "card_3_ballroom.webp": {
+        "url": "https://the-grand-lucknow.vercel.app/images/card_3_ballroom.webp",
+        "status": 200,
+        "contentType": "image/webp",
+        "byteLength": 205234,
+        "isStatus200": true,
+        "isContentTypeValid": true,
+        "isSizeValid": true,
+        "passed": true
+      }
+    }
+  },
+  "task3_js_exceptions": {
+    "passed": true,
+    "pageExceptions": [],
+    "consoleErrors": [],
+    "consoleWarningsCount": 0,
+    "interactionsTested": [
+      "Full scroll down (0 to 12139px)",
+      "Hero headline letter fade scroll oscillation (3 cycles)",
+      "Photo gallery scroll into view (6 gallery images found)",
+      "Marquee ticker continuous runtime monitoring (5000ms)",
+      "Footer links hover simulation (44 links detected)",
+      "Venue card hover (2 cards)",
+      "Scroll back to top"
+    ]
+  },
+  "task4_responsive_layout": {
+    "passed": true,
+    "viewports": {
+      "desktop_1440": {
+        "passed": true,
+        "layoutMetrics": {
+          "docWidth": 1440,
+          "bodyWidth": 1440,
+          "winWidth": 1440,
+          "hasHorizontalScroll": false,
+          "tickerGap": "0px",
+          "superscriptsCount": 2,
+          "superscriptsHidden": true,
+          "has45000": true,
+          "has1000": true,
+          "hasLegacy120Apartment": false,
+          "hasLegacy6Guests": false,
+          "pinStyle": {
+            "left": "50%",
+            "top": "50%",
+            "computedTransform": "none"
+          }
+        },
+        "collisionCheck": {
+          "tested": true,
+          "hadOverlap": false,
+          "minDistance": 259.1875,
+          "worstStep": {
+            "y": 8866.25,
+            "pinRect": {
+              "x": 460.8125,
+              "y": 889.25,
+              "width": 0,
+              "height": 0,
+              "top": 889.25,
+              "right": 460.8125,
+              "bottom": 889.25,
+              "left": 460.8125
+            },
+            "btnRect": {
+              "x": 626.265625,
+              "y": 800,
+              "width": 187.46875,
+              "height": 52,
+              "top": 800,
+              "right": 813.734375,
+              "bottom": 852,
+              "left": 626.265625
+            },
+            "dist": 259.1875,
+            "overlapX": 0,
+            "overlapY": 0
+          }
+        },
+        "exceptionsCount": 0,
+        "consoleErrorsCount": 0
+      },
+      "tablet_1024": {
+        "passed": true,
+        "layoutMetrics": {
+          "docWidth": 1024,
+          "bodyWidth": 1024,
+          "winWidth": 1024,
+          "hasHorizontalScroll": false,
+          "tickerGap": "0px",
+          "superscriptsCount": 2,
+          "superscriptsHidden": true,
+          "has45000": true,
+          "has1000": true,
+          "hasLegacy120Apartment": false,
+          "hasLegacy6Guests": false,
+          "pinStyle": {
+            "left": "50%",
+            "top": "50%",
+            "computedTransform": "none"
+          }
+        },
+        "collisionCheck": {
+          "tested": true,
+          "hadOverlap": false,
+          "minDistance": 184.3125,
+          "worstStep": {
+            "y": 7566.09375,
+            "pinRect": {
+              "x": 327.6875,
+              "y": 760.09375,
+              "width": 0,
+              "height": 0,
+              "top": 760.09375,
+              "right": 327.6875,
+              "bottom": 760.09375,
+              "left": 327.6875
+            },
+            "btnRect": {
+              "x": 418.265625,
+              "y": 668,
+              "width": 187.46875,
+              "height": 52,
+              "top": 668,
+              "right": 605.734375,
+              "bottom": 720,
+              "left": 418.265625
+            },
+            "dist": 184.3125,
+            "overlapX": 0,
+            "overlapY": 0
+          }
+        },
+        "exceptionsCount": 0,
+        "consoleErrorsCount": 0
+      },
+      "tablet_768": {
+        "passed": true,
+        "layoutMetrics": {
+          "docWidth": 768,
+          "bodyWidth": 768,
+          "winWidth": 768,
+          "hasHorizontalScroll": false,
+          "tickerGap": "0px",
+          "superscriptsCount": 2,
+          "superscriptsHidden": true,
+          "has45000": true,
+          "has1000": true,
+          "hasLegacy120Apartment": false,
+          "hasLegacy6Guests": false,
+          "pinStyle": {
+            "left": "50%",
+            "top": "50%",
+            "computedTransform": "none"
+          }
+        },
+        "collisionCheck": {
+          "tested": true,
+          "hadOverlap": false,
+          "minDistance": 261.109375,
+          "worstStep": {
+            "y": 4943.78125,
+            "pinRect": {
+              "x": 122.890625,
+              "y": 983.78125,
+              "width": 0,
+              "height": 0,
+              "top": 983.78125,
+              "right": 122.890625,
+              "bottom": 983.78125,
+              "left": 122.890625
+            },
+            "btnRect": {
+              "x": 297.765625,
+              "y": 960,
+              "width": 172.46875,
+              "height": 52,
+              "top": 960,
+              "right": 470.234375,
+              "bottom": 1012,
+              "left": 297.765625
+            },
+            "dist": 261.109375,
+            "overlapX": 0,
+            "overlapY": 0
+          }
+        },
+        "exceptionsCount": 0,
+        "consoleErrorsCount": 0
+      },
+      "mobile_375": {
+        "passed": true,
+        "layoutMetrics": {
+          "docWidth": 375,
+          "bodyWidth": 375,
+          "winWidth": 375,
+          "hasHorizontalScroll": false,
+          "tickerGap": "0px",
+          "superscriptsCount": 2,
+          "superscriptsHidden": true,
+          "has45000": true,
+          "has1000": true,
+          "hasLegacy120Apartment": false,
+          "hasLegacy6Guests": false,
+          "pinStyle": {
+            "left": "50%",
+            "top": "50%",
+            "computedTransform": "none"
+          }
+        },
+        "collisionCheck": {
+          "tested": true,
+          "hadOverlap": false,
+          "minDistance": 127.5,
+          "worstStep": {
+            "y": 4217.15625,
+            "pinRect": {
+              "x": 60,
+              "y": 804.65625,
+              "width": 0,
+              "height": 0,
+              "top": 804.65625,
+              "right": 60,
+              "bottom": 804.65625,
+              "left": 60
+            },
+            "btnRect": {
+              "x": 101.265625,
+              "y": 748,
+              "width": 172.46875,
+              "height": 52,
+              "top": 748,
+              "right": 273.734375,
+              "bottom": 800,
+              "left": 101.265625
+            },
+            "dist": 127.5,
+            "overlapX": 0,
+            "overlapY": 0
+          }
+        },
+        "exceptionsCount": 0,
+        "consoleErrorsCount": 0
+      },
+      "mobile_320": {
+        "passed": true,
+        "layoutMetrics": {
+          "docWidth": 320,
+          "bodyWidth": 320,
+          "winWidth": 320,
+          "hasHorizontalScroll": false,
+          "tickerGap": "0px",
+          "superscriptsCount": 2,
+          "superscriptsHidden": true,
+          "has45000": true,
+          "has1000": true,
+          "hasLegacy120Apartment": false,
+          "hasLegacy6Guests": false,
+          "pinStyle": {
+            "left": "50%",
+            "top": "50%",
+            "computedTransform": "none"
+          }
+        },
+        "collisionCheck": {
+          "tested": true,
+          "hadOverlap": false,
+          "minDistance": 108.796875,
+          "worstStep": {
+            "y": 4255.75,
+            "pinRect": {
+              "x": 51.203125,
+              "y": 544.75,
+              "width": 0,
+              "height": 0,
+              "top": 544.75,
+              "right": 51.203125,
+              "bottom": 544.75,
+              "left": 51.203125
+            },
+            "btnRect": {
+              "x": 73.765625,
+              "y": 504,
+              "width": 172.46875,
+              "height": 52,
+              "top": 504,
+              "right": 246.234375,
+              "bottom": 556,
+              "left": 73.765625
+            },
+            "dist": 108.796875,
+            "overlapX": 0,
+            "overlapY": 0
+          }
+        },
+        "exceptionsCount": 0,
+        "consoleErrorsCount": 0
+      }
+    }
+  },
+  "overallVerdict": "CONFIRMED"
+}

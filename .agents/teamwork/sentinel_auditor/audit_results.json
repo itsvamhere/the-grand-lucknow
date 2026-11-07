@@ -1,0 +1,747 @@
+{
+  "phaseA": {
+    "pass": true,
+    "details": [
+      "PASS: index.html SHA256 matches baseline perfectly (100% untouched).",
+      "PASS: open-earth-lawn.html shows iterative engineering timeline."
+    ]
+  },
+  "phaseB": {
+    "pass": true,
+    "details": [
+      "PASS: grand-subpage-engine-js contains authentic event listeners and smoothstep physics with zero test bypasses.",
+      "PASS: Found 26 grand-hero-letter spans (covering desktop and mobile SSR variants).",
+      "PASS: Navigation links (Venues, About, Contact) present and consistent with index.html."
+    ]
+  },
+  "phaseC": {
+    "pass": true,
+    "details": [
+      "PASS: desktop_1440 all hero letters 100% faded out at Photo 6 exit (opacity = 0).",
+      "PASS: desktop_1440 background is pure cream rgb(255, 240, 202) at Photo 6 exit.",
+      "PASS: desktop_1440 Book Now button triggers grand reservation modal.",
+      "PASS: laptop_1366 all hero letters 100% faded out at Photo 6 exit (opacity = 0).",
+      "PASS: laptop_1366 background is pure cream rgb(255, 240, 202) at Photo 6 exit.",
+      "PASS: laptop_1366 Book Now button triggers grand reservation modal.",
+      "PASS: mobile_390 all hero letters 100% faded out at Photo 6 exit (opacity = 0).",
+      "PASS: mobile_390 background is pure cream rgb(255, 240, 202) at Photo 6 exit.",
+      "PASS: mobile_390 Book Now button triggers grand reservation modal."
+    ],
+    "viewports": {
+      "desktop_1440": {
+        "navEval": {
+          "btnInfo": {
+            "text": "Book Now B B o o o o k k N N o o w w",
+            "bgColor": "rgb(255, 240, 202)",
+            "color": "rgb(14, 18, 1)",
+            "borderRadius": "2px",
+            "width": 114,
+            "height": 34,
+            "fontFamily": "sans-serif"
+          },
+          "navLinks": [
+            {
+              "text": "Venues V V e e n n u u e e s s",
+              "href": "/venues"
+            },
+            {
+              "text": "About A A b b o o u u t t",
+              "href": "/about"
+            },
+            {
+              "text": "Contact C C o o n n t t a a c c t t",
+              "href": "/contact"
+            },
+            {
+              "text": "Book Now B B o o o o k k N N o o w w",
+              "href": "/contact"
+            },
+            {
+              "text": "VenuesVVVeeennnuuueeesss",
+              "href": "/venues"
+            },
+            {
+              "text": "AboutAAAbbbooouuuttt",
+              "href": "/about"
+            },
+            {
+              "text": "ContactCCCooonnntttaaacccttt",
+              "href": "/contact"
+            },
+            {
+              "text": "Book NowBBBooooookkk NNNooowww",
+              "href": "/contact"
+            },
+            {
+              "text": "VenuesVVVeeennnuuueeesss",
+              "href": "/venues"
+            },
+            {
+              "text": "AboutAAAbbbooouuuttt",
+              "href": "/about"
+            },
+            {
+              "text": "ContactCCCooonnntttaaacccttt",
+              "href": "/contact"
+            },
+            {
+              "text": "Book NowBBBooooookkk NNNooowww",
+              "href": "/contact"
+            },
+            {
+              "text": "VenuesVVVeeennnuuueeesss",
+              "href": "/venues"
+            },
+            {
+              "text": "AboutAAAbbbooouuuttt",
+              "href": "/about"
+            },
+            {
+              "text": "ContactCCCooonnntttaaacccttt",
+              "href": "/contact"
+            },
+            {
+              "text": "Book NowBBBooooookkk NNNooowww",
+              "href": "/contact"
+            }
+          ],
+          "letterCount": 26,
+          "initialLetters": [
+            {
+              "char": "O",
+              "opacity": "1",
+              "transform": "none"
+            },
+            {
+              "char": "p",
+              "opacity": "1",
+              "transform": "none"
+            },
+            {
+              "char": "e",
+              "opacity": "1",
+              "transform": "none"
+            },
+            {
+              "char": "n",
+              "opacity": "1",
+              "transform": "none"
+            },
+            {
+              "char": "E",
+              "opacity": "1",
+              "transform": "none"
+            },
+            {
+              "char": "a",
+              "opacity": "1",
+              "transform": "none"
+            },
+            {
+              "char": "r",
+              "opacity": "1",
+              "transform": "none"
+            },
+            {
+              "char": "t",
+              "opacity": "1",
+              "transform": "none"
+            },
+            {
+              "char": "h",
+              "opacity": "1",
+              "transform": "none"
+            },
+            {
+              "char": "L",
+              "opacity": "1",
+              "transform": "none"
+            },
+            {
+              "char": "a",
+              "opacity": "1",
+              "transform": "none"
+            },
+            {
+              "char": "w",
+              "opacity": "1",
+              "transform": "none"
+            },
+            {
+              "char": "n",
+              "opacity": "1",
+              "transform": "none"
+            }
+          ],
+          "bodyBg": "rgb(14, 18, 1)"
+        },
+        "p6Info": {
+          "secH": 8045,
+          "scrollMax": 7145,
+          "rolloutEnd": 6502,
+          "p6DocTop": 6395.5,
+          "p6DocBottom": 7255,
+          "p6Rect": {
+            "top": 6395.5,
+            "bottom": 7255,
+            "width": 1344,
+            "height": 859.5
+          }
+        },
+        "exitEval": {
+          "letters": [
+            {
+              "char": "O",
+              "opacity": 0,
+              "transform": "matrix(0.990268, -0.139173, 0.139173, 0.990268, 0, -196.65)"
+            },
+            {
+              "char": "p",
+              "opacity": 0,
+              "transform": "matrix(0.990268, -0.139173, 0.139173, 0.990268, 0, -196.65)"
+            },
+            {
+              "char": "e",
+              "opacity": 0,
+              "transform": "matrix(0.990268, -0.139173, 0.139173, 0.990268, 0, -196.65)"
+            },
+            {
+              "char": "n",
+              "opacity": 0,
+              "transform": "matrix(0.990268, -0.139173, 0.139173, 0.990268, 0, -196.65)"
+            },
+            {
+              "char": "E",
+              "opacity": 0,
+              "transform": "matrix(0.990268, -0.139173, 0.139173, 0.990268, 0, -196.65)"
+            },
+            {
+              "char": "a",
+              "opacity": 0,
+              "transform": "matrix(0.990268, -0.139173, 0.139173, 0.990268, 0, -196.65)"
+            },
+            {
+              "char": "r",
+              "opacity": 0,
+              "transform": "matrix(0.990268, -0.139173, 0.139173, 0.990268, 0, -196.65)"
+            },
+            {
+              "char": "t",
+              "opacity": 0,
+              "transform": "matrix(0.990268, -0.139173, 0.139173, 0.990268, 0, -196.65)"
+            },
+            {
+              "char": "h",
+              "opacity": 0,
+              "transform": "matrix(0.990268, -0.139173, 0.139173, 0.990268, 0, -196.65)"
+            },
+            {
+              "char": "L",
+              "opacity": 0,
+              "transform": "matrix(0.990268, -0.139173, 0.139173, 0.990268, 0, -196.65)"
+            },
+            {
+              "char": "a",
+              "opacity": 0,
+              "transform": "matrix(0.990268, -0.139173, 0.139173, 0.990268, 0, -196.65)"
+            },
+            {
+              "char": "w",
+              "opacity": 0,
+              "transform": "matrix(0.990268, -0.139173, 0.139173, 0.990268, 0, -196.65)"
+            },
+            {
+              "char": "n",
+              "opacity": 0,
+              "transform": "matrix(0.990268, -0.139173, 0.139173, 0.990268, 0, -196.65)"
+            }
+          ],
+          "bodyBg": "rgb(255, 240, 202)",
+          "p6Rect": {
+            "top": -106.5,
+            "right": 1392,
+            "bottom": 753,
+            "left": 48
+          }
+        },
+        "modalTriggered": true
+      },
+      "laptop_1366": {
+        "navEval": {
+          "btnInfo": {
+            "text": "Book Now B B o o o o k k N N o o w w",
+            "bgColor": "rgb(255, 240, 202)",
+            "color": "rgb(14, 18, 1)",
+            "borderRadius": "2px",
+            "width": 114,
+            "height": 34,
+            "fontFamily": "sans-serif"
+          },
+          "navLinks": [
+            {
+              "text": "Venues V V e e n n u u e e s s",
+              "href": "/venues"
+            },
+            {
+              "text": "About A A b b o o u u t t",
+              "href": "/about"
+            },
+            {
+              "text": "Contact C C o o n n t t a a c c t t",
+              "href": "/contact"
+            },
+            {
+              "text": "Book Now B B o o o o k k N N o o w w",
+              "href": "/contact"
+            },
+            {
+              "text": "VenuesVVVeeennnuuueeesss",
+              "href": "/venues"
+            },
+            {
+              "text": "AboutAAAbbbooouuuttt",
+              "href": "/about"
+            },
+            {
+              "text": "ContactCCCooonnntttaaacccttt",
+              "href": "/contact"
+            },
+            {
+              "text": "Book NowBBBooooookkk NNNooowww",
+              "href": "/contact"
+            },
+            {
+              "text": "VenuesVVVeeennnuuueeesss",
+              "href": "/venues"
+            },
+            {
+              "text": "AboutAAAbbbooouuuttt",
+              "href": "/about"
+            },
+            {
+              "text": "ContactCCCooonnntttaaacccttt",
+              "href": "/contact"
+            },
+            {
+              "text": "Book NowBBBooooookkk NNNooowww",
+              "href": "/contact"
+            },
+            {
+              "text": "VenuesVVVeeennnuuueeesss",
+              "href": "/venues"
+            },
+            {
+              "text": "AboutAAAbbbooouuuttt",
+              "href": "/about"
+            },
+            {
+              "text": "ContactCCCooonnntttaaacccttt",
+              "href": "/contact"
+            },
+            {
+              "text": "Book NowBBBooooookkk NNNooowww",
+              "href": "/contact"
+            }
+          ],
+          "letterCount": 26,
+          "initialLetters": [
+            {
+              "char": "O",
+              "opacity": "1",
+              "transform": "none"
+            },
+            {
+              "char": "p",
+              "opacity": "1",
+              "transform": "none"
+            },
+            {
+              "char": "e",
+              "opacity": "1",
+              "transform": "none"
+            },
+            {
+              "char": "n",
+              "opacity": "1",
+              "transform": "none"
+            },
+            {
+              "char": "E",
+              "opacity": "1",
+              "transform": "none"
+            },
+            {
+              "char": "a",
+              "opacity": "1",
+              "transform": "none"
+            },
+            {
+              "char": "r",
+              "opacity": "1",
+              "transform": "none"
+            },
+            {
+              "char": "t",
+              "opacity": "1",
+              "transform": "none"
+            },
+            {
+              "char": "h",
+              "opacity": "1",
+              "transform": "none"
+            },
+            {
+              "char": "L",
+              "opacity": "1",
+              "transform": "none"
+            },
+            {
+              "char": "a",
+              "opacity": "1",
+              "transform": "none"
+            },
+            {
+              "char": "w",
+              "opacity": "1",
+              "transform": "none"
+            },
+            {
+              "char": "n",
+              "opacity": "1",
+              "transform": "none"
+            }
+          ],
+          "bodyBg": "rgb(14, 18, 1)"
+        },
+        "p6Info": {
+          "secH": 7673,
+          "scrollMax": 6905,
+          "rolloutEnd": 6284,
+          "p6DocTop": 6069.25,
+          "p6DocBottom": 6882.5,
+          "p6Rect": {
+            "top": 6069.25,
+            "bottom": 6882.5,
+            "width": 1270,
+            "height": 813.25
+          }
+        },
+        "exitEval": {
+          "letters": [
+            {
+              "char": "O",
+              "opacity": 0,
+              "transform": "matrix(0.990268, -0.139173, 0.139173, 0.990268, 0, -186.552)"
+            },
+            {
+              "char": "p",
+              "opacity": 0,
+              "transform": "matrix(0.990268, -0.139173, 0.139173, 0.990268, 0, -186.552)"
+            },
+            {
+              "char": "e",
+              "opacity": 0,
+              "transform": "matrix(0.990268, -0.139173, 0.139173, 0.990268, 0, -186.552)"
+            },
+            {
+              "char": "n",
+              "opacity": 0,
+              "transform": "matrix(0.990268, -0.139173, 0.139173, 0.990268, 0, -186.552)"
+            },
+            {
+              "char": "E",
+              "opacity": 0,
+              "transform": "matrix(0.990268, -0.139173, 0.139173, 0.990268, 0, -186.552)"
+            },
+            {
+              "char": "a",
+              "opacity": 0,
+              "transform": "matrix(0.990268, -0.139173, 0.139173, 0.990268, 0, -186.552)"
+            },
+            {
+              "char": "r",
+              "opacity": 0,
+              "transform": "matrix(0.990268, -0.139173, 0.139173, 0.990268, 0, -186.552)"
+            },
+            {
+              "char": "t",
+              "opacity": 0,
+              "transform": "matrix(0.990268, -0.139173, 0.139173, 0.990268, 0, -186.552)"
+            },
+            {
+              "char": "h",
+              "opacity": 0,
+              "transform": "matrix(0.990268, -0.139173, 0.139173, 0.990268, 0, -186.552)"
+            },
+            {
+              "char": "L",
+              "opacity": 0,
+              "transform": "matrix(0.990268, -0.139173, 0.139173, 0.990268, 0, -186.552)"
+            },
+            {
+              "char": "a",
+              "opacity": 0,
+              "transform": "matrix(0.990268, -0.139173, 0.139173, 0.990268, 0, -186.552)"
+            },
+            {
+              "char": "w",
+              "opacity": 0,
+              "transform": "matrix(0.990268, -0.139173, 0.139173, 0.990268, 0, -186.552)"
+            },
+            {
+              "char": "n",
+              "opacity": 0,
+              "transform": "matrix(0.990268, -0.139173, 0.139173, 0.990268, 0, -186.552)"
+            }
+          ],
+          "bodyBg": "rgb(255, 240, 202)",
+          "p6Rect": {
+            "top": -214.75,
+            "right": 1318,
+            "bottom": 598.5,
+            "left": 48
+          }
+        },
+        "modalTriggered": true
+      },
+      "mobile_390": {
+        "navEval": {
+          "btnInfo": {
+            "text": "Check Availability C C h h e e c c k k A A v v a a i i l l a a b b i i l l i i t t y y",
+            "bgColor": "rgb(255, 240, 202)",
+            "color": "rgb(14, 18, 1)",
+            "borderRadius": "2px",
+            "width": 172,
+            "height": 52,
+            "fontFamily": "\"Lay Grotesk Regular\", sans-serif"
+          },
+          "navLinks": [
+            {
+              "text": "VenuesVVVeeennnuuueeesss",
+              "href": "/venues"
+            },
+            {
+              "text": "AboutAAAbbbooouuuttt",
+              "href": "/about"
+            },
+            {
+              "text": "ContactCCCooonnntttaaacccttt",
+              "href": "/contact"
+            },
+            {
+              "text": "Book NowBBBooooookkk NNNooowww",
+              "href": "/contact"
+            },
+            {
+              "text": "VenuesVVVeeennnuuueeesss",
+              "href": "/venues"
+            },
+            {
+              "text": "AboutAAAbbbooouuuttt",
+              "href": "/about"
+            },
+            {
+              "text": "ContactCCCooonnntttaaacccttt",
+              "href": "/contact"
+            },
+            {
+              "text": "Book NowBBBooooookkk NNNooowww",
+              "href": "/contact"
+            },
+            {
+              "text": "VenuesVVVeeennnuuueeesss",
+              "href": "/venues"
+            },
+            {
+              "text": "AboutAAAbbbooouuuttt",
+              "href": "/about"
+            },
+            {
+              "text": "ContactCCCooonnntttaaacccttt",
+              "href": "/contact"
+            },
+            {
+              "text": "Book NowBBBooooookkk NNNooowww",
+              "href": "/contact"
+            },
+            {
+              "text": "Venues V V e e n n u u e e s s",
+              "href": "/venues"
+            },
+            {
+              "text": "About A A b b o o u u t t",
+              "href": "/about"
+            },
+            {
+              "text": "Contact C C o o n n t t a a c c t t",
+              "href": "/contact"
+            },
+            {
+              "text": "Book Now B B o o o o k k N N o o w w",
+              "href": "/contact"
+            }
+          ],
+          "letterCount": 26,
+          "initialLetters": [
+            {
+              "char": "O",
+              "opacity": "1",
+              "transform": "none"
+            },
+            {
+              "char": "p",
+              "opacity": "1",
+              "transform": "none"
+            },
+            {
+              "char": "e",
+              "opacity": "1",
+              "transform": "none"
+            },
+            {
+              "char": "n",
+              "opacity": "1",
+              "transform": "none"
+            },
+            {
+              "char": "E",
+              "opacity": "1",
+              "transform": "none"
+            },
+            {
+              "char": "a",
+              "opacity": "1",
+              "transform": "none"
+            },
+            {
+              "char": "r",
+              "opacity": "1",
+              "transform": "none"
+            },
+            {
+              "char": "t",
+              "opacity": "1",
+              "transform": "none"
+            },
+            {
+              "char": "h",
+              "opacity": "1",
+              "transform": "none"
+            },
+            {
+              "char": "L",
+              "opacity": "1",
+              "transform": "none"
+            },
+            {
+              "char": "a",
+              "opacity": "1",
+              "transform": "none"
+            },
+            {
+              "char": "w",
+              "opacity": "1",
+              "transform": "none"
+            },
+            {
+              "char": "n",
+              "opacity": "1",
+              "transform": "none"
+            }
+          ],
+          "bodyBg": "rgb(14, 18, 1)"
+        },
+        "p6Info": {
+          "secH": 3742,
+          "scrollMax": 2898,
+          "rolloutEnd": 2637,
+          "p6DocTop": 2792,
+          "p6DocBottom": 3112,
+          "p6Rect": {
+            "top": 2792,
+            "bottom": 3112,
+            "width": 366,
+            "height": 320
+          }
+        },
+        "exitEval": {
+          "letters": [
+            {
+              "char": "O",
+              "opacity": 0,
+              "transform": "none"
+            },
+            {
+              "char": "p",
+              "opacity": 0,
+              "transform": "none"
+            },
+            {
+              "char": "e",
+              "opacity": 0,
+              "transform": "none"
+            },
+            {
+              "char": "n",
+              "opacity": 0,
+              "transform": "none"
+            },
+            {
+              "char": "E",
+              "opacity": 0,
+              "transform": "none"
+            },
+            {
+              "char": "a",
+              "opacity": 0,
+              "transform": "none"
+            },
+            {
+              "char": "r",
+              "opacity": 0,
+              "transform": "none"
+            },
+            {
+              "char": "t",
+              "opacity": 0,
+              "transform": "none"
+            },
+            {
+              "char": "h",
+              "opacity": 0,
+              "transform": "none"
+            },
+            {
+              "char": "L",
+              "opacity": 0,
+              "transform": "none"
+            },
+            {
+              "char": "a",
+              "opacity": 0,
+              "transform": "none"
+            },
+            {
+              "char": "w",
+              "opacity": 0,
+              "transform": "none"
+            },
+            {
+              "char": "n",
+              "opacity": 0,
+              "transform": "none"
+            }
+          ],
+          "bodyBg": "rgb(255, 240, 202)",
+          "p6Rect": {
+            "top": 155,
+            "right": 378,
+            "bottom": 475,
+            "left": 12
+          }
+        },
+        "modalTriggered": true
+      }
+    }
+  }
+}

@@ -1,0 +1,90 @@
+[
+  {
+    "id": "245751183",
+    "name": "Mohanlalganj",
+    "place": "village",
+    "amenity": "",
+    "lat": 26.680635,
+    "lon": 80.9830834
+  },
+  {
+    "id": "2194361368",
+    "name": "Nigohan",
+    "place": "",
+    "amenity": "",
+    "lat": 26.4951033,
+    "lon": 80.8871995
+  },
+  {
+    "id": "4486830740",
+    "name": "AIMT Lucknow",
+    "place": "",
+    "amenity": "school",
+    "lat": 26.5547939,
+    "lon": 80.9065865
+  },
+  {
+    "id": "7605542399",
+    "name": "Kankaha",
+    "place": "",
+    "amenity": "",
+    "lat": 26.6050304,
+    "lon": 81.0140473
+  },
+  {
+    "id": "7605542506",
+    "name": "Mohanlalganj",
+    "place": "",
+    "amenity": "",
+    "lat": 26.6705341,
+    "lon": 80.9869449
+  },
+  {
+    "id": "7605542524",
+    "name": "Mohanlalganj",
+    "place": "",
+    "amenity": "",
+    "lat": 26.6859433,
+    "lon": 80.984319
+  },
+  {
+    "id": "7605542525",
+    "name": "Mohanlalganj",
+    "place": "",
+    "amenity": "",
+    "lat": 26.6859327,
+    "lon": 80.9841606
+  },
+  {
+    "id": "7605542622",
+    "name": "SubCentre, Utrawan",
+    "place": "",
+    "amenity": "",
+    "lat": 26.7016587,
+    "lon": 80.982302
+  },
+  {
+    "id": "7984439847",
+    "name": "SubCentre, Sisandi",
+    "place": "",
+    "amenity": "",
+    "lat": 26.6103594,
+    "lon": 81.0362922
+  },
+  {
+    "id": "7987371880",
+    "name": "SubCentre, Dada Sikandarpur",
+    "place": "",
+    "amenity": "",
+    "lat": 26.6230329,
+    "lon": 80.9298419
+  },
+  {
+    "id": "10042477628",
+    "name": "Bank of India RSETI Lucknow",
+    "place": "",
+    "amenity": "bank",
+    "lat": 26.6392424,
+    "lon": 80.9371802
+  }
+]

@@ -1,0 +1,190 @@
+{
+  "timestamp": "2026-11-07T08:09:19.727Z",
+  "tests": [
+    {
+      "category": "Untouchable File",
+      "testName": "index.html mtime prior to M1 start",
+      "passed": true,
+      "isWarning": false,
+      "details": "mtime: 2026-11-04T09:24:58.565Z, size: 871500"
+    },
+    {
+      "category": "Source Audit",
+      "testName": "Open in Maps button styles (#616452 and #FFF0CA) in HTML/CSS",
+      "passed": true,
+      "isWarning": false,
+      "details": "Bg: true, Text: true"
+    },
+    {
+      "category": "Source Audit",
+      "testName": "Valid Google Maps URL in HTML",
+      "passed": true,
+      "isWarning": false,
+      "details": "Maps URL: https://maps.app.goo.gl/94Dr1K1iPbZ3kR117"
+    },
+    {
+      "category": "Source Audit",
+      "testName": "Venue cards link to /venues/grassland-gala & /venues/garden-galaxy",
+      "passed": true,
+      "isWarning": false,
+      "details": "Grassland: true, Garden: true"
+    },
+    {
+      "category": "Runtime & Routing",
+      "testName": "Production URL returns HTTP 200",
+      "passed": true,
+      "isWarning": false,
+      "details": "Status: 200"
+    },
+    {
+      "category": "Runtime & Routing",
+      "testName": "Page title is correct",
+      "passed": true,
+      "isWarning": false,
+      "details": "Title: \"Open Earth Lawn • The Grand Lucknow\""
+    },
+    {
+      "category": "Runtime & Health",
+      "testName": "Zero console errors",
+      "passed": true,
+      "isWarning": false,
+      "details": "Errors: []"
+    },
+    {
+      "category": "Runtime & Health",
+      "testName": "Zero uncaught page errors",
+      "passed": true,
+      "isWarning": false,
+      "details": "Page errors: []"
+    },
+    {
+      "category": "Runtime & Health",
+      "testName": "Zero broken subresources (status >= 400)",
+      "passed": true,
+      "isWarning": false,
+      "details": "Broken: []"
+    },
+    {
+      "category": "Runtime & Health",
+      "testName": "Zero failed network requests",
+      "passed": true,
+      "isWarning": false,
+      "details": "Failed: []"
+    },
+    {
+      "category": "Interactive Elements",
+      "testName": "Open in Maps button background is #616452 (rgb(97, 100, 82))",
+      "passed": true,
+      "isWarning": false,
+      "details": "Actual: rgb(97, 100, 82)"
+    },
+    {
+      "category": "Interactive Elements",
+      "testName": "Open in Maps button text color is #FFF0CA (rgb(255, 240, 202))",
+      "passed": true,
+      "isWarning": false,
+      "details": "Actual: rgb(255, 240, 202)"
+    },
+    {
+      "category": "Interactive Elements",
+      "testName": "Open in Maps button has valid Google Maps URL",
+      "passed": true,
+      "isWarning": false,
+      "details": "Actual href: https://maps.app.goo.gl/94Dr1K1iPbZ3kR117"
+    },
+    {
+      "category": "Routing & Navigation",
+      "testName": "Grassland Gala link present on subpage",
+      "passed": true,
+      "isWarning": false,
+      "details": "[{\"text\":\"Grassland Gala 55,000Sqft1,5001,500\",\"href\":\"/venues/grassland-gala\",\"fullHref\":\"https://the-grand-lucknow.vercel.app/venues/grassland-gala\"},{\"text\":\"Garden Galaxy 45,000Sqft1,5001,000\",\"href\":\"/venues/garden-galaxy\",\"fullHref\":\"https://the-grand-lucknow.vercel.app/venues/garden-galaxy\"}]"
+    },
+    {
+      "category": "Routing & Navigation",
+      "testName": "Garden Galaxy link present on subpage",
+      "passed": true,
+      "isWarning": false,
+      "details": "[{\"text\":\"Grassland Gala 55,000Sqft1,5001,500\",\"href\":\"/venues/grassland-gala\",\"fullHref\":\"https://the-grand-lucknow.vercel.app/venues/grassland-gala\"},{\"text\":\"Garden Galaxy 45,000Sqft1,5001,000\",\"href\":\"/venues/garden-galaxy\",\"fullHref\":\"https://the-grand-lucknow.vercel.app/venues/garden-galaxy\"}]"
+    },
+    {
+      "category": "Routing & Navigation",
+      "testName": "Route /venues/grassland-gala navigates successfully (HTTP 200)",
+      "passed": true,
+      "isWarning": false,
+      "details": "Status: 200, Title: \"N°02 • Designer Apartment in Graz • Casa Momo\", Final URL: https://the-grand-lucknow.vercel.app/venues/venue-n2"
+    },
+    {
+      "category": "Routing & Navigation",
+      "testName": "Route /venues/garden-galaxy navigates successfully (HTTP 200)",
+      "passed": true,
+      "isWarning": false,
+      "details": "Status: 200, Title: \"N°03 • Designer Apartment in Graz • Casa Momo\", Final URL: https://the-grand-lucknow.vercel.app/venues/venue-n3"
+    },
+    {
+      "category": "Interactive Elements",
+      "testName": "Map pin vs Sticky CTA zero collision on Desktop 1440",
+      "passed": true,
+      "isWarning": false,
+      "details": "Overlap: false, Min clearance: 165.453125px"
+    },
+    {
+      "category": "Interactive Elements",
+      "testName": "Map pin vs Sticky CTA zero collision on Tablet 768",
+      "passed": true,
+      "isWarning": false,
+      "details": "Overlap: false, Min clearance: 173.875px"
+    },
+    {
+      "category": "Interactive Elements",
+      "testName": "Map pin vs Sticky CTA zero collision on Mobile 375",
+      "passed": true,
+      "isWarning": false,
+      "details": "Overlap: false, Min clearance: 40.265625px"
+    },
+    {
+      "category": "Marquee & Animation",
+      "testName": "Marquee container computed gap is 0px",
+      "passed": true,
+      "isWarning": false,
+      "details": "Actual gap: 0px"
+    },
+    {
+      "category": "Marquee & Animation",
+      "testName": "Marquee track A and track B widths identical",
+      "passed": true,
+      "isWarning": false,
+      "details": "Track A: 0px, Track B: 0px"
+    },
+    {
+      "category": "Content Integrity",
+      "testName": "Zero legacy \"Living Room\" or \"Bedroom\" captions",
+      "passed": true,
+      "isWarning": false,
+      "details": "LivingRoom: false"
+    },
+    {
+      "category": "Content Integrity",
+      "testName": "All fractions 1/6 through 6/6 present",
+      "passed": true,
+      "isWarning": false,
+      "details": "Missing: "
+    },
+    {
+      "category": "Content Integrity",
+      "testName": "Superscript .framer-84xumc suppressed (display: none)",
+      "passed": true,
+      "isWarning": false,
+      "details": "All suppressed"
+    },
+    {
+      "category": "Content Integrity",
+      "testName": "Garden Galaxy specifications updated to authentic resort scale (45,000 Sqft / 1,000 guests)",
+      "passed": true,
+      "isWarning": false,
+      "details": "45k: true, 1k: true"
+    }
+  ],
+  "passed": 26,
+  "failed": 0,
+  "warnings": 0
+}

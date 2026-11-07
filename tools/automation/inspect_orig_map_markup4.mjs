@@ -1,0 +1,5 @@
+import fs from 'node:fs';
+
+const html = fs.readFileSync('venues/casamomo_boutique_n1_original.html', 'utf8');
+const start = html.indexOf('name="Location Map"');
+console.log(html.slice(start + 8500, start + 12000));

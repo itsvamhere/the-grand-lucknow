@@ -1,0 +1,117 @@
+{
+  "target": "https://www.thegrandlucknow.in/",
+  "replica": "http://localhost:3003",
+  "status": "SWAP_VERIFIED_EXACT",
+  "desktopScreenshot": "C:\\Users\\Sambhav\\.gemini\\antigravity\\scratch\\replications\\casamomo\\swapped_1440.png",
+  "mobileScreenshot": "C:\\Users\\Sambhav\\.gemini\\antigravity\\scratch\\replications\\casamomo\\swapped_375.png",
+  "metrics": {
+    "title": "The Grand • Premium Event Venues",
+    "bodyBg": "rgb(16, 35, 29)",
+    "headingsCount": 25,
+    "headings": [
+      {
+        "tag": "H1",
+        "text": "The Grand – Premier Event Estate",
+        "font": "Inter, \"Inter Placeholder\", sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "tag": "H2",
+        "text": "Venues",
+        "font": "\"Lay Grotesk Regular\", \"Lay Grotesk Regular Placeholder\", sans-serif",
+        "fontSize": "72px",
+        "color": "rgb(243, 236, 221)"
+      },
+      {
+        "tag": "H2",
+        "text": "Open\nEarth",
+        "font": "\"Lay Grotesk Regular\", \"Lay Grotesk Regular Placeholder\", sans-serif",
+        "fontSize": "21.6px",
+        "color": "rgb(243, 236, 221)"
+      },
+      {
+        "tag": "H2",
+        "text": "Grassland\nGala",
+        "font": "\"Lay Grotesk Regular\", \"Lay Grotesk Regular Placeholder\", sans-serif",
+        "fontSize": "21.6px",
+        "color": "rgb(243, 236, 221)"
+      },
+      {
+        "tag": "H2",
+        "text": "Grand\nBallroom",
+        "font": "\"Lay Grotesk Regular\", \"Lay Grotesk Regular Placeholder\", sans-serif",
+        "fontSize": "21.6px",
+        "color": "rgb(243, 236, 221)"
+      },
+      {
+        "tag": "H2",
+        "text": "The\nCourtyard",
+        "font": "\"Lay Grotesk Regular\", \"Lay Grotesk Regular Placeholder\", sans-serif",
+        "fontSize": "21.6px",
+        "color": "rgb(243, 236, 221)"
+      },
+      {
+        "tag": "H2",
+        "text": "Garden\nPavilion",
+        "font": "\"Lay Grotesk Regular\", \"Lay Grotesk Regular Placeholder\", sans-serif",
+        "fontSize": "21.6px",
+        "color": "rgb(243, 236, 221)"
+      },
+      {
+        "tag": "H2",
+        "text": "North\nMandap",
+        "font": "\"Lay Grotesk Regular\", \"Lay Grotesk Regular Placeholder\", sans-serif",
+        "fontSize": "21.6px",
+        "color": "rgb(243, 236, 221)"
+      }
+    ],
+    "imagesCount": 27,
+    "sampleImages": [
+      {
+        "src": "https://framerusercontent.com/images/jHPR40TEGNdp27MUIjYyaJnHRGU.jpg?width=1920&height=1080&scale-down-to=1920",
+        "naturalWidth": 1920,
+        "naturalHeight": 1080,
+        "renderedWidth": 1444,
+        "renderedHeight": 904
+      },
+      {
+        "src": "http://localhost:3003/images/hero_bg.webp",
+        "naturalWidth": 2000,
+        "naturalHeight": 1500,
+        "renderedWidth": 1440,
+        "renderedHeight": 1170
+      },
+      {
+        "src": "http://localhost:3003/images/card_1_open_earth.webp",
+        "naturalWidth": 0,
+        "naturalHeight": 0,
+        "renderedWidth": 666,
+        "renderedHeight": 773
+      },
+      {
+        "src": "http://localhost:3003/images/card_2_grassland_gala.webp",
+        "naturalWidth": 0,
+        "naturalHeight": 0,
+        "renderedWidth": 666,
+        "renderedHeight": 515
+      },
+      {
+        "src": "http://localhost:3003/images/card_3_ballroom.webp",
+        "naturalWidth": 0,
+        "naturalHeight": 0,
+        "renderedWidth": 666,
+        "renderedHeight": 515
+      },
+      {
+        "src": "http://localhost:3003/images/card_4_courtyard.webp",
+        "naturalWidth": 0,
+        "naturalHeight": 0,
+        "renderedWidth": 666,
+        "renderedHeight": 773
+      }
+    ]
+  },
+  "consoleErrorsCount": 0,
+  "timestamp": "2026-11-02T08:22:38.749Z"
+}

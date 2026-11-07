@@ -1,0 +1,17 @@
+{
+  "name": "the-grand-lucknow-replica",
+  "version": "1.0.0",
+  "description": "1:1 Empirical Asset and Content Swap for The Grand (Gomti Nagar, Lucknow)",
+  "main": "server.mjs",
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs"
+  },
+  "dependencies": {
+    "d3-contour": "^4.0.3",
+    "d3-geo": "^3.1.2",
+    "opentype.js": "^2.0.0",
+    "sharp": "^0.35.5",
+    "wawoff2": "^2.0.1"
+  }
+}

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Test Vector Map - The Grand Lucknow</title>
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #0e1201; display: flex; justify-content: center; align-items: center; min-height: 100vh; font-family: 'Lay Grotesk Regular', -apple-system, sans-serif; }
+    #map-wrapper {
+      width: 800px;
+      height: 600px;
+      position: relative;
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1px solid rgba(184, 108, 70, 0.2);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    }
+    #map {
+      width: 100%;
+      height: 100%;
+      background: #FFF1C9;
+    }
+
+    /* Terracotta pin and floating label */
+    .grand-pin-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      transform: translate(-50%, -100%);
+    }
+    .grand-pill {
+      background: #B86C46;
+      color: #FFF0CA;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      padding: 5px 12px;
+      border-radius: 2px;
+      white-space: nowrap;
+      box-shadow: 0 4px 14px rgba(184, 108, 70, 0.35);
+      margin-bottom: 4px;
+      text-transform: uppercase;
+    }
+    .grand-marker-pin {
+      width: 16px;
+      height: 16px;
+      background: #B86C46;
+      border: 2.5px solid #FFF1C9;
+      border-radius: 50%;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+
+    /* Landmark Pills */
+    .landmark-pill {
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+      padding: 4px 10px;
+      border-radius: 2px;
+      pointer-events: none;
+      background: rgba(189, 131, 70, 0.12);
+      color: #1A241E;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(184, 108, 70, 0.25);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+  </style>
+</head>
+<body>
+  <div id="map-wrapper">
+    <div id="map"></div>
+  </div>
+
+  <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+  <script>
+    const resortCoords = [80.9914, 26.6438];
+
+    const mapStyle = {
+      version: 8,
+      sources: {
+        openmaptiles: {
+          type: 'vector',
+          url: 'https://tiles.openfreemap.org/planet'
+        }
+      },
+      layers: [
+        {
+          id: 'background',
+          type: 'background',
+          paint: { 'background-color': '#FFF1C9' }
+        },
+        {
+          id: 'landcover',
+          type: 'fill',
+          source: 'openmaptiles',
+          'source-layer': 'landcover',
+          paint: { 'fill-color': '#F8EBC9' }
+        },
+        {
+          id: 'landuse-residential',
+          type: 'fill',
+          source: 'openmaptiles',
+          'source-layer': 'landuse',
+          paint: { 'fill-color': '#F8EBC9' }
+        },
+        {
+          id: 'park',
+          type: 'fill',
+          source: 'openmaptiles',
+          'source-layer': 'park',
+          paint: { 'fill-color': '#F0E6C6' }
+        },
+        {
+          id: 'landuse-park',
+          type: 'fill',
+          source: 'openmaptiles',
+          'source-layer': 'landuse',
+          filter: ['in', 'class', 'park', 'cemetery', 'pitch', 'grass', 'forest'],
+          paint: { 'fill-color': '#F0E6C6' }
+        },
+        {
+          id: 'water',
+          type: 'fill',
+          source: 'openmaptiles',
+          'source-layer': 'water',
+          paint: { 'fill-color': '#F0E6C6' }
+        },
+        {
+          id: 'road-minor',
+          type: 'line',
+          source: 'openmaptiles',
+          'source-layer': 'transportation',
+          filter: ['in', 'class', 'minor', 'service', 'track', 'path'],
+          paint: {
+            'line-color': '#FFFCF2',
+            'line-width': ['interpolate', ['linear'], ['zoom'], 11, 1, 15, 3]
+          }
+        },
+        {
+          id: 'road-major',
+          type: 'line',
+          source: 'openmaptiles',
+          'source-layer': 'transportation',
+          filter: ['in', 'class', 'primary', 'secondary', 'tertiary', 'trunk', 'motorway'],
+          paint: {
+            'line-color': '#E4D6AF',
+            'line-width': ['interpolate', ['linear'], ['zoom'], 10, 2, 14, 4.5, 16, 7]
+          }
+        }
+      ]
+    };
+
+    const map = new maplibregl.Map({
+      container: 'map',
+      style: mapStyle,
+      center: resortCoords,
+      zoom: 12.8,
+      attributionControl: false
+    });
+    window.map = map;
+
+    // 1. Terracotta Marker & Floating Pill Label: The Grand
+    const elGrand = document.createElement('div');
+    elGrand.className = 'grand-pin-container';
+    elGrand.innerHTML = '<div class="grand-pill">The Grand</div><div class="grand-marker-pin"></div>';
+    new maplibregl.Marker({ element: elGrand, anchor: 'bottom' })
+      .setLngLat(resortCoords)
+      .addTo(map);
+
+    // 2. Surrounding Landmark Pills: Raibareli Rd, SGPGI, Mohanlalganj
+    const landmarks = [
+      { name: 'Raibareli Rd', coords: [80.9880, 26.6560] },
+      { name: 'SGPGI', coords: [80.9840, 26.6780] },
+      { name: 'Mohanlalganj', coords: [80.9820, 26.6210] }
+    ];
+
+    landmarks.forEach(lm => {
+      const el = document.createElement('div');
+      el.className = 'landmark-pill';
+      el.textContent = lm.name;
+      new maplibregl.Marker({ element: el, anchor: 'center' })
+        .setLngLat(lm.coords)
+        .addTo(map);
+    });
+
+    window.__mapLoaded = false;
+    map.on('load', () => {
+      console.log('Map load event fired!');
+      window.__mapLoaded = true;
+    });
+    map.on('error', (e) => {
+      console.error('Map error:', e);
+    });
+  </script>
+</body>
+</html>

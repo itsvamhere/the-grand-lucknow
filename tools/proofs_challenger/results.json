@@ -1,0 +1,895 @@
+{
+  "local": {
+    "label": "local",
+    "url": "http://localhost:3003",
+    "task1_marquee": {
+      "passed": true,
+      "animDuration": 25,
+      "seamDiffA0vsB0": 0.1025390625,
+      "seamDiffA1vsB1": 0.1025390625,
+      "samples": [
+        {
+          "timeSec": 0,
+          "trackALeft": 48,
+          "trackARight": 2616,
+          "trackBLeft": 2616,
+          "trackBRight": 5184,
+          "trackWidthA": 2568,
+          "trackWidthB": 2568,
+          "trackGap": 0,
+          "itemABGap": 81,
+          "intraTrackGap": 81,
+          "itemA0Left": 48,
+          "itemA1Left": 1332,
+          "itemB0Left": 2616,
+          "itemB1Left": 3900
+        },
+        {
+          "timeSec": 5,
+          "trackALeft": -465.5999755859375,
+          "trackARight": 2102.4000244140625,
+          "trackBLeft": 2102.39990234375,
+          "trackBRight": 4670.39990234375,
+          "trackWidthA": 2568,
+          "trackWidthB": 2568,
+          "trackGap": -0.0001220703125,
+          "itemABGap": 80.9998779296875,
+          "intraTrackGap": 81,
+          "itemA0Left": -465.5999755859375,
+          "itemA1Left": 818.4000244140625,
+          "itemB0Left": 2102.39990234375,
+          "itemB1Left": 3386.39990234375
+        },
+        {
+          "timeSec": 12.5,
+          "trackALeft": -1236,
+          "trackARight": 1332,
+          "trackBLeft": 1332,
+          "trackBRight": 3900,
+          "trackWidthA": 2568,
+          "trackWidthB": 2568,
+          "trackGap": 0,
+          "itemABGap": 81,
+          "intraTrackGap": 81,
+          "itemA0Left": -1236,
+          "itemA1Left": 48,
+          "itemB0Left": 1332,
+          "itemB1Left": 2616
+        },
+        {
+          "timeSec": 24.5,
+          "trackALeft": -2468.639892578125,
+          "trackARight": 99.360107421875,
+          "trackBLeft": 99.360107421875,
+          "trackBRight": 2667.360107421875,
+          "trackWidthA": 2568,
+          "trackWidthB": 2568,
+          "trackGap": 0,
+          "itemABGap": 81,
+          "intraTrackGap": 81,
+          "itemA0Left": -2468.639892578125,
+          "itemA1Left": -1184.639892578125,
+          "itemB0Left": 99.360107421875,
+          "itemB1Left": 1383.360107421875
+        },
+        {
+          "timeSec": 24.8,
+          "trackALeft": -2499.4560546875,
+          "trackARight": 68.5439453125,
+          "trackBLeft": 68.5439453125,
+          "trackBRight": 2636.5439453125,
+          "trackWidthA": 2568,
+          "trackWidthB": 2568,
+          "trackGap": 0,
+          "itemABGap": 81,
+          "intraTrackGap": 81,
+          "itemA0Left": -2499.4560546875,
+          "itemA1Left": -1215.4560546875,
+          "itemB0Left": 68.5439453125,
+          "itemB1Left": 1352.5439453125
+        },
+        {
+          "timeSec": 24.9,
+          "trackALeft": -2509.72802734375,
+          "trackARight": 58.27197265625,
+          "trackBLeft": 58.27197265625,
+          "trackBRight": 2626.27197265625,
+          "trackWidthA": 2568,
+          "trackWidthB": 2568,
+          "trackGap": 0,
+          "itemABGap": 81,
+          "intraTrackGap": 81,
+          "itemA0Left": -2509.72802734375,
+          "itemA1Left": -1225.72802734375,
+          "itemB0Left": 58.27197265625,
+          "itemB1Left": 1342.27197265625
+        },
+        {
+          "timeSec": 24.95,
+          "trackALeft": -2514.864013671875,
+          "trackARight": 53.135986328125,
+          "trackBLeft": 53.135986328125,
+          "trackBRight": 2621.135986328125,
+          "trackWidthA": 2568,
+          "trackWidthB": 2568,
+          "trackGap": 0,
+          "itemABGap": 81,
+          "intraTrackGap": 81,
+          "itemA0Left": -2514.864013671875,
+          "itemA1Left": -1230.864013671875,
+          "itemB0Left": 53.135986328125,
+          "itemB1Left": 1337.135986328125
+        },
+        {
+          "timeSec": 25,
+          "trackALeft": -2519.8974609375,
+          "trackARight": 48.1025390625,
+          "trackBLeft": 48.1025390625,
+          "trackBRight": 2616.1025390625,
+          "trackWidthA": 2568,
+          "trackWidthB": 2568,
+          "trackGap": 0,
+          "itemABGap": 81,
+          "intraTrackGap": 81,
+          "itemA0Left": -2519.8974609375,
+          "itemA1Left": -1235.8974609375,
+          "itemB0Left": 48.1025390625,
+          "itemB1Left": 1332.1025390625
+        },
+        {
+          "timeSec": 25.05,
+          "trackALeft": 42.86399841308594,
+          "trackARight": 2610.863998413086,
+          "trackBLeft": 2610.864013671875,
+          "trackBRight": 5178.8642578125,
+          "trackWidthA": 2568,
+          "trackWidthB": 2568.000244140625,
+          "trackGap": 0.0000152587890625,
+          "itemABGap": 81,
+          "intraTrackGap": 81.00001525878906,
+          "itemA0Left": 42.86399841308594,
+          "itemA1Left": 1326.864013671875,
+          "itemB0Left": 2610.864013671875,
+          "itemB1Left": 3894.864013671875
+        },
+        {
+          "timeSec": 25.1,
+          "trackALeft": 37.72800064086914,
+          "trackARight": 2605.728000640869,
+          "trackBLeft": 2605.72802734375,
+          "trackBRight": 5173.72802734375,
+          "trackWidthA": 2568,
+          "trackWidthB": 2568,
+          "trackGap": 0.000026702880859375,
+          "itemABGap": 81,
+          "intraTrackGap": 81.00002670288086,
+          "itemA0Left": 37.72800064086914,
+          "itemA1Left": 1321.72802734375,
+          "itemB0Left": 2605.72802734375,
+          "itemB1Left": 3889.72802734375
+        },
+        {
+          "timeSec": 26,
+          "trackALeft": -54.720001220703125,
+          "trackARight": 2513.279998779297,
+          "trackBLeft": 2513.280029296875,
+          "trackBRight": 5081.2802734375,
+          "trackWidthA": 2568,
+          "trackWidthB": 2568.000244140625,
+          "trackGap": 0.000030517578125,
+          "itemABGap": 81,
+          "intraTrackGap": 81.00003051757812,
+          "itemA0Left": -54.720001220703125,
+          "itemA1Left": 1229.280029296875,
+          "itemB0Left": 2513.280029296875,
+          "itemB1Left": 3797.280029296875
+        }
+      ]
+    },
+    "task2_hover": {
+      "passed": true,
+      "linkResults": [
+        {
+          "text": "Venues",
+          "spanCount": 1,
+          "hasRolling": false,
+          "noSplitting": true,
+          "textIntact": true,
+          "hoverOpacity": "0.687773",
+          "pass": true
+        },
+        {
+          "text": "About",
+          "spanCount": 1,
+          "hasRolling": false,
+          "noSplitting": true,
+          "textIntact": true,
+          "hoverOpacity": "0.664293",
+          "pass": true
+        },
+        {
+          "text": "Contact",
+          "spanCount": 1,
+          "hasRolling": false,
+          "noSplitting": true,
+          "textIntact": true,
+          "hoverOpacity": "0.667901",
+          "pass": true
+        },
+        {
+          "text": "Instagram",
+          "spanCount": 1,
+          "hasRolling": false,
+          "noSplitting": true,
+          "textIntact": true,
+          "hoverOpacity": "0.650751",
+          "pass": true
+        },
+        {
+          "text": "Facebook",
+          "spanCount": 1,
+          "hasRolling": false,
+          "noSplitting": true,
+          "textIntact": true,
+          "hoverOpacity": "0.692529",
+          "pass": true
+        },
+        {
+          "text": "Thegrandbanquet07@gmail.com",
+          "spanCount": 1,
+          "hasRolling": false,
+          "noSplitting": true,
+          "textIntact": true,
+          "hoverOpacity": "0.683494",
+          "pass": true
+        },
+        {
+          "text": "+91 91291 27091",
+          "spanCount": 1,
+          "hasRolling": false,
+          "noSplitting": true,
+          "textIntact": true,
+          "hoverOpacity": "0.70194",
+          "pass": true
+        },
+        {
+          "text": "Imprint",
+          "spanCount": 1,
+          "hasRolling": false,
+          "noSplitting": true,
+          "textIntact": true,
+          "hoverOpacity": "0.699687",
+          "pass": true
+        },
+        {
+          "text": "Terms",
+          "spanCount": 1,
+          "hasRolling": false,
+          "noSplitting": true,
+          "textIntact": true,
+          "hoverOpacity": "0.651015",
+          "pass": true
+        },
+        {
+          "text": "Privacy",
+          "spanCount": 1,
+          "hasRolling": false,
+          "noSplitting": true,
+          "textIntact": true,
+          "hoverOpacity": "0.651507",
+          "pass": true
+        },
+        {
+          "text": "Edifice",
+          "spanCount": 1,
+          "hasRolling": false,
+          "noSplitting": true,
+          "textIntact": true,
+          "hoverOpacity": "0.671149",
+          "pass": true
+        },
+        {
+          "text": "Venues",
+          "spanCount": 1,
+          "hasRolling": false,
+          "noSplitting": true,
+          "textIntact": true,
+          "hoverOpacity": "1",
+          "pass": true
+        },
+        {
+          "text": "About",
+          "spanCount": 1,
+          "hasRolling": false,
+          "noSplitting": true,
+          "textIntact": true,
+          "hoverOpacity": "1",
+          "pass": true
+        },
+        {
+          "text": "Contact",
+          "spanCount": 1,
+          "hasRolling": false,
+          "noSplitting": true,
+          "textIntact": true,
+          "hoverOpacity": "1",
+          "pass": true
+        },
+        {
+          "text": "Instagram",
+          "spanCount": 1,
+          "hasRolling": false,
+          "noSplitting": true,
+          "textIntact": true,
+          "hoverOpacity": "1",
+          "pass": true
+        },
+        {
+          "text": "Facebook",
+          "spanCount": 1,
+          "hasRolling": false,
+          "noSplitting": true,
+          "textIntact": true,
+          "hoverOpacity": "1",
+          "pass": true
+        },
+        {
+          "text": "Thegrandbanquet07@gmail.com",
+          "spanCount": 1,
+          "hasRolling": false,
+          "noSplitting": true,
+          "textIntact": true,
+          "hoverOpacity": "1",
+          "pass": true
+        },
+        {
+          "text": "+91 91291 27091",
+          "spanCount": 1,
+          "hasRolling": false,
+          "noSplitting": true,
+          "textIntact": true,
+          "hoverOpacity": "1",
+          "pass": true
+        },
+        {
+          "text": "Imprint",
+          "spanCount": 1,
+          "hasRolling": false,
+          "noSplitting": true,
+          "textIntact": true,
+          "hoverOpacity": "1",
+          "pass": true
+        },
+        {
+          "text": "Terms",
+          "spanCount": 1,
+          "hasRolling": false,
+          "noSplitting": true,
+          "textIntact": true,
+          "hoverOpacity": "1",
+          "pass": true
+        },
+        {
+          "text": "Privacy",
+          "spanCount": 1,
+          "hasRolling": false,
+          "noSplitting": true,
+          "textIntact": true,
+          "hoverOpacity": "1",
+          "pass": true
+        },
+        {
+          "text": "Edifice",
+          "spanCount": 1,
+          "hasRolling": false,
+          "noSplitting": true,
+          "textIntact": true,
+          "hoverOpacity": "1",
+          "pass": true
+        }
+      ]
+    },
+    "task3_collision": {
+      "passed": true,
+      "vpResults": [
+        {
+          "viewport": "1920px (Large Desktop)",
+          "width": 1920,
+          "hadOverlap": false,
+          "minDistance": 251.38010177101577,
+          "passed": true
+        },
+        {
+          "viewport": "1440px (Desktop)",
+          "width": 1440,
+          "hadOverlap": false,
+          "minDistance": 164.50563739984148,
+          "passed": true
+        },
+        {
+          "viewport": "1024px (Tablet Landscape)",
+          "width": 1024,
+          "hadOverlap": false,
+          "minDistance": 89.578125,
+          "passed": true
+        },
+        {
+          "viewport": "768px (Tablet Portrait)",
+          "width": 768,
+          "hadOverlap": false,
+          "minDistance": 173.87513760328847,
+          "passed": true
+        },
+        {
+          "viewport": "375px (Mobile)",
+          "width": 375,
+          "hadOverlap": false,
+          "minDistance": 40.265625,
+          "passed": true
+        }
+      ]
+    },
+    "task4_gallery": {
+      "passed": true,
+      "fractionElements": [
+        "1/6",
+        "2/6",
+        "3/6",
+        "4/6",
+        "5/6",
+        "6/6"
+      ],
+      "allExpectedPresent": true,
+      "allMatchRegex": true,
+      "zeroForbidden": true
+    },
+    "overallPassed": true
+  },
+  "prod": {
+    "label": "prod",
+    "url": "https://the-grand-lucknow.vercel.app",
+    "task1_marquee": {
+      "passed": true,
+      "animDuration": 25,
+      "seamDiffA0vsB0": 0.1025390625,
+      "seamDiffA1vsB1": 0.1025390625,
+      "samples": [
+        {
+          "timeSec": 0,
+          "trackALeft": 48,
+          "trackARight": 2616,
+          "trackBLeft": 2616,
+          "trackBRight": 5184,
+          "trackWidthA": 2568,
+          "trackWidthB": 2568,
+          "trackGap": 0,
+          "itemABGap": 81,
+          "intraTrackGap": 81,
+          "itemA0Left": 48,
+          "itemA1Left": 1332,
+          "itemB0Left": 2616,
+          "itemB1Left": 3900
+        },
+        {
+          "timeSec": 5,
+          "trackALeft": -465.5999755859375,
+          "trackARight": 2102.4000244140625,
+          "trackBLeft": 2102.39990234375,
+          "trackBRight": 4670.39990234375,
+          "trackWidthA": 2568,
+          "trackWidthB": 2568,
+          "trackGap": -0.0001220703125,
+          "itemABGap": 80.9998779296875,
+          "intraTrackGap": 81,
+          "itemA0Left": -465.5999755859375,
+          "itemA1Left": 818.4000244140625,
+          "itemB0Left": 2102.39990234375,
+          "itemB1Left": 3386.39990234375
+        },
+        {
+          "timeSec": 12.5,
+          "trackALeft": -1236,
+          "trackARight": 1332,
+          "trackBLeft": 1332,
+          "trackBRight": 3900,
+          "trackWidthA": 2568,
+          "trackWidthB": 2568,
+          "trackGap": 0,
+          "itemABGap": 81,
+          "intraTrackGap": 81,
+          "itemA0Left": -1236,
+          "itemA1Left": 48,
+          "itemB0Left": 1332,
+          "itemB1Left": 2616
+        },
+        {
+          "timeSec": 24.5,
+          "trackALeft": -2468.639892578125,
+          "trackARight": 99.360107421875,
+          "trackBLeft": 99.360107421875,
+          "trackBRight": 2667.360107421875,
+          "trackWidthA": 2568,
+          "trackWidthB": 2568,
+          "trackGap": 0,
+          "itemABGap": 81,
+          "intraTrackGap": 81,
+          "itemA0Left": -2468.639892578125,
+          "itemA1Left": -1184.639892578125,
+          "itemB0Left": 99.360107421875,
+          "itemB1Left": 1383.360107421875
+        },
+        {
+          "timeSec": 24.8,
+          "trackALeft": -2499.4560546875,
+          "trackARight": 68.5439453125,
+          "trackBLeft": 68.5439453125,
+          "trackBRight": 2636.5439453125,
+          "trackWidthA": 2568,
+          "trackWidthB": 2568,
+          "trackGap": 0,
+          "itemABGap": 81,
+          "intraTrackGap": 81,
+          "itemA0Left": -2499.4560546875,
+          "itemA1Left": -1215.4560546875,
+          "itemB0Left": 68.5439453125,
+          "itemB1Left": 1352.5439453125
+        },
+        {
+          "timeSec": 24.9,
+          "trackALeft": -2509.72802734375,
+          "trackARight": 58.27197265625,
+          "trackBLeft": 58.27197265625,
+          "trackBRight": 2626.27197265625,
+          "trackWidthA": 2568,
+          "trackWidthB": 2568,
+          "trackGap": 0,
+          "itemABGap": 81,
+          "intraTrackGap": 81,
+          "itemA0Left": -2509.72802734375,
+          "itemA1Left": -1225.72802734375,
+          "itemB0Left": 58.27197265625,
+          "itemB1Left": 1342.27197265625
+        },
+        {
+          "timeSec": 24.95,
+          "trackALeft": -2514.864013671875,
+          "trackARight": 53.135986328125,
+          "trackBLeft": 53.135986328125,
+          "trackBRight": 2621.135986328125,
+          "trackWidthA": 2568,
+          "trackWidthB": 2568,
+          "trackGap": 0,
+          "itemABGap": 81,
+          "intraTrackGap": 81,
+          "itemA0Left": -2514.864013671875,
+          "itemA1Left": -1230.864013671875,
+          "itemB0Left": 53.135986328125,
+          "itemB1Left": 1337.135986328125
+        },
+        {
+          "timeSec": 25,
+          "trackALeft": -2519.8974609375,
+          "trackARight": 48.1025390625,
+          "trackBLeft": 48.1025390625,
+          "trackBRight": 2616.1025390625,
+          "trackWidthA": 2568,
+          "trackWidthB": 2568,
+          "trackGap": 0,
+          "itemABGap": 81,
+          "intraTrackGap": 81,
+          "itemA0Left": -2519.8974609375,
+          "itemA1Left": -1235.8974609375,
+          "itemB0Left": 48.1025390625,
+          "itemB1Left": 1332.1025390625
+        },
+        {
+          "timeSec": 25.05,
+          "trackALeft": 42.86399841308594,
+          "trackARight": 2610.863998413086,
+          "trackBLeft": 2610.864013671875,
+          "trackBRight": 5178.8642578125,
+          "trackWidthA": 2568,
+          "trackWidthB": 2568.000244140625,
+          "trackGap": 0.0000152587890625,
+          "itemABGap": 81,
+          "intraTrackGap": 81.00001525878906,
+          "itemA0Left": 42.86399841308594,
+          "itemA1Left": 1326.864013671875,
+          "itemB0Left": 2610.864013671875,
+          "itemB1Left": 3894.864013671875
+        },
+        {
+          "timeSec": 25.1,
+          "trackALeft": 37.72800064086914,
+          "trackARight": 2605.728000640869,
+          "trackBLeft": 2605.72802734375,
+          "trackBRight": 5173.72802734375,
+          "trackWidthA": 2568,
+          "trackWidthB": 2568,
+          "trackGap": 0.000026702880859375,
+          "itemABGap": 81,
+          "intraTrackGap": 81.00002670288086,
+          "itemA0Left": 37.72800064086914,
+          "itemA1Left": 1321.72802734375,
+          "itemB0Left": 2605.72802734375,
+          "itemB1Left": 3889.72802734375
+        },
+        {
+          "timeSec": 26,
+          "trackALeft": -54.720001220703125,
+          "trackARight": 2513.279998779297,
+          "trackBLeft": 2513.280029296875,
+          "trackBRight": 5081.2802734375,
+          "trackWidthA": 2568,
+          "trackWidthB": 2568.000244140625,
+          "trackGap": 0.000030517578125,
+          "itemABGap": 81,
+          "intraTrackGap": 81.00003051757812,
+          "itemA0Left": -54.720001220703125,
+          "itemA1Left": 1229.280029296875,
+          "itemB0Left": 2513.280029296875,
+          "itemB1Left": 3797.280029296875
+        }
+      ]
+    },
+    "task2_hover": {
+      "passed": true,
+      "linkResults": [
+        {
+          "text": "Venues",
+          "spanCount": 1,
+          "hasRolling": false,
+          "noSplitting": true,
+          "textIntact": true,
+          "hoverOpacity": "0.691659",
+          "pass": true
+        },
+        {
+          "text": "About",
+          "spanCount": 1,
+          "hasRolling": false,
+          "noSplitting": true,
+          "textIntact": true,
+          "hoverOpacity": "0.690919",
+          "pass": true
+        },
+        {
+          "text": "Contact",
+          "spanCount": 1,
+          "hasRolling": false,
+          "noSplitting": true,
+          "textIntact": true,
+          "hoverOpacity": "0.68708",
+          "pass": true
+        },
+        {
+          "text": "Instagram",
+          "spanCount": 1,
+          "hasRolling": false,
+          "noSplitting": true,
+          "textIntact": true,
+          "hoverOpacity": "0.66513",
+          "pass": true
+        },
+        {
+          "text": "Facebook",
+          "spanCount": 1,
+          "hasRolling": false,
+          "noSplitting": true,
+          "textIntact": true,
+          "hoverOpacity": "0.666426",
+          "pass": true
+        },
+        {
+          "text": "Thegrandbanquet07@gmail.com",
+          "spanCount": 1,
+          "hasRolling": false,
+          "noSplitting": true,
+          "textIntact": true,
+          "hoverOpacity": "0.673928",
+          "pass": true
+        },
+        {
+          "text": "+91 91291 27091",
+          "spanCount": 1,
+          "hasRolling": false,
+          "noSplitting": true,
+          "textIntact": true,
+          "hoverOpacity": "0.693646",
+          "pass": true
+        },
+        {
+          "text": "Imprint",
+          "spanCount": 1,
+          "hasRolling": false,
+          "noSplitting": true,
+          "textIntact": true,
+          "hoverOpacity": "0.659282",
+          "pass": true
+        },
+        {
+          "text": "Terms",
+          "spanCount": 1,
+          "hasRolling": false,
+          "noSplitting": true,
+          "textIntact": true,
+          "hoverOpacity": "0.680839",
+          "pass": true
+        },
+        {
+          "text": "Privacy",
+          "spanCount": 1,
+          "hasRolling": false,
+          "noSplitting": true,
+          "textIntact": true,
+          "hoverOpacity": "0.680561",
+          "pass": true
+        },
+        {
+          "text": "Edifice",
+          "spanCount": 1,
+          "hasRolling": false,
+          "noSplitting": true,
+          "textIntact": true,
+          "hoverOpacity": "0.659535",
+          "pass": true
+        },
+        {
+          "text": "Venues",
+          "spanCount": 1,
+          "hasRolling": false,
+          "noSplitting": true,
+          "textIntact": true,
+          "hoverOpacity": "1",
+          "pass": true
+        },
+        {
+          "text": "About",
+          "spanCount": 1,
+          "hasRolling": false,
+          "noSplitting": true,
+          "textIntact": true,
+          "hoverOpacity": "1",
+          "pass": true
+        },
+        {
+          "text": "Contact",
+          "spanCount": 1,
+          "hasRolling": false,
+          "noSplitting": true,
+          "textIntact": true,
+          "hoverOpacity": "1",
+          "pass": true
+        },
+        {
+          "text": "Instagram",
+          "spanCount": 1,
+          "hasRolling": false,
+          "noSplitting": true,
+          "textIntact": true,
+          "hoverOpacity": "1",
+          "pass": true
+        },
+        {
+          "text": "Facebook",
+          "spanCount": 1,
+          "hasRolling": false,
+          "noSplitting": true,
+          "textIntact": true,
+          "hoverOpacity": "1",
+          "pass": true
+        },
+        {
+          "text": "Thegrandbanquet07@gmail.com",
+          "spanCount": 1,
+          "hasRolling": false,
+          "noSplitting": true,
+          "textIntact": true,
+          "hoverOpacity": "1",
+          "pass": true
+        },
+        {
+          "text": "+91 91291 27091",
+          "spanCount": 1,
+          "hasRolling": false,
+          "noSplitting": true,
+          "textIntact": true,
+          "hoverOpacity": "1",
+          "pass": true
+        },
+        {
+          "text": "Imprint",
+          "spanCount": 1,
+          "hasRolling": false,
+          "noSplitting": true,
+          "textIntact": true,
+          "hoverOpacity": "1",
+          "pass": true
+        },
+        {
+          "text": "Terms",
+          "spanCount": 1,
+          "hasRolling": false,
+          "noSplitting": true,
+          "textIntact": true,
+          "hoverOpacity": "1",
+          "pass": true
+        },
+        {
+          "text": "Privacy",
+          "spanCount": 1,
+          "hasRolling": false,
+          "noSplitting": true,
+          "textIntact": true,
+          "hoverOpacity": "1",
+          "pass": true
+        },
+        {
+          "text": "Edifice",
+          "spanCount": 1,
+          "hasRolling": false,
+          "noSplitting": true,
+          "textIntact": true,
+          "hoverOpacity": "1",
+          "pass": true
+        }
+      ]
+    },
+    "task3_collision": {
+      "passed": true,
+      "vpResults": [
+        {
+          "viewport": "1920px (Large Desktop)",
+          "width": 1920,
+          "hadOverlap": false,
+          "minDistance": 251.38010177101577,
+          "passed": true
+        },
+        {
+          "viewport": "1440px (Desktop)",
+          "width": 1440,
+          "hadOverlap": false,
+          "minDistance": 164.52170927347439,
+          "passed": true
+        },
+        {
+          "viewport": "1024px (Tablet Landscape)",
+          "width": 1024,
+          "hadOverlap": false,
+          "minDistance": 89.578125,
+          "passed": true
+        },
+        {
+          "viewport": "768px (Tablet Portrait)",
+          "width": 768,
+          "hadOverlap": false,
+          "minDistance": 173.87513760328847,
+          "passed": true
+        },
+        {
+          "viewport": "375px (Mobile)",
+          "width": 375,
+          "hadOverlap": false,
+          "minDistance": 40.265625,
+          "passed": true
+        }
+      ]
+    },
+    "task4_gallery": {
+      "passed": true,
+      "fractionElements": [
+        "1/6",
+        "2/6",
+        "3/6",
+        "4/6",
+        "5/6",
+        "6/6"
+      ],
+      "allExpectedPresent": true,
+      "allMatchRegex": true,
+      "zeroForbidden": true
+    },
+    "overallPassed": true
+  },
+  "verdict": "CONFIRMED"
+}
