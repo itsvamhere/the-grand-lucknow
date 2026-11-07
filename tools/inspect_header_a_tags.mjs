@@ -1,8 +1,13 @@
 import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-const header = fs.readFileSync('tools/extracted_home_header.html', 'utf8');
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-// Let's inspect all 'a' tags in header
+const headerPath = path.join(__dirname, 'extracted_home_header.html');
+const header = fs.readFileSync(headerPath, 'utf8');
+
 const aTags = header.match(/<a\b[^>]*>[\s\S]*?<\/a>/gi) || [];
 console.log('Total <a> tags in header:', aTags.length);
 aTags.forEach((a, i) => {

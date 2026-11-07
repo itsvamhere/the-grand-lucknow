@@ -1,14 +1,26 @@
 import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-const html = fs.readFileSync('index.html', 'utf8');
-const headerMatch = html.match(/<header[\s\S]*?<\/header>/i);
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const ROOT = path.resolve(__dirname, '..');
+
+console.log('ROOT:', ROOT);
+const indexPath = path.join(ROOT, 'index.html');
+const indexHtml = fs.readFileSync(indexPath, 'utf8');
+
+const headerMatch = indexHtml.match(/<header[\s\S]*?<\/header>/i);
+const footerMatch = indexHtml.match(/<footer[\s\S]*?<\/footer>/i);
+
+console.log('Header length:', headerMatch ? headerMatch[0].length : 0);
+console.log('Footer length:', footerMatch ? footerMatch[0].length : 0);
+
 if (headerMatch) {
-  fs.writeFileSync('tools/extracted_home_header.html', headerMatch[0]);
-  console.log('Saved extracted header. Length:', headerMatch[0].length);
+  fs.writeFileSync(path.join(__dirname, 'extracted_home_header.html'), headerMatch[0]);
+}
+if (footerMatch) {
+  fs.writeFileSync(path.join(__dirname, 'extracted_home_footer.html'), footerMatch[0]);
 }
 
-const footerMatch = html.match(/<footer[\s\S]*?<\/footer>/i);
-if (footerMatch) {
-  fs.writeFileSync('tools/extracted_home_footer.html', footerMatch[0]);
-  console.log('Saved extracted footer. Length:', footerMatch[0].length);
-}
+console.log('Successfully saved extracted blocks into tools/');
