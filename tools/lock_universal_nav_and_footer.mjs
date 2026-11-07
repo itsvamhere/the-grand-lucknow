@@ -3,59 +3,127 @@ import path from 'path';
 
 const ROOT = 'C:\\Users\\Sambhav\\.gemini\\antigravity\\scratch\\replications\\casamomo';
 
-// 1. Read index.html as the single source of truth
-const indexHtml = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
+// 1. Text swapping function matching server.mjs
+function swapText(content) {
+  if (typeof content !== 'string') return content;
+  return content
+    // Attribution
+    .replaceAll('https://nexene.at/', 'https://elvar.in/edifice')
+    .replaceAll('https://nexene.at', 'https://elvar.in/edifice')
+    .replaceAll('Made with love by', 'Built by')
+    .replaceAll('eYOd1t1bt:`Nexene`', 'eYOd1t1bt:`Edifice`')
+    .replaceAll('children:`Nexene`', 'children:`Edifice`')
+    .replaceAll('children:`Made with love by`', 'children:`Built by`')
+    .replaceAll('children:`Design & development`', 'children:`Built by`')
 
-// 2. Extract Navbar
-const headerMatch = indexHtml.match(/<header\b[^>]*data-framer-name="Navbar Wrapper"[\s\S]*?<\/header>/i) || indexHtml.match(/<header[\s\S]*?<\/header>/i);
-if (!headerMatch) throw new Error('Navbar Wrapper not found in index.html');
-let canonicalHeader = headerMatch[0];
+    // Contact & collective voice
+    .replaceAll('or your stay?', 'or your celebration?')
+    .replaceAll('or your stay', 'or your celebration')
+    .replaceAll('send me an email', 'send us an email')
+    .replaceAll('give me a call', 'give us a call')
+    .replaceAll('send me', 'send us')
+    .replaceAll('give me', 'give us')
+    .replaceAll("I'd be happy to help you personally", 'We would be delighted to assist you with your celebration')
+    .replaceAll('I’d be happy to help you personally', 'We would be delighted to assist you with your celebration')
 
-// Normalize header links to root-relative
-canonicalHeader = canonicalHeader
-  .replace(/href="\.\/venues"/g, 'href="/venues"')
-  .replace(/href="\.\/about"/g, 'href="/about"')
-  .replace(/href="\.\/contact"/g, 'href="/contact"')
-  .replace(/href="\.\/book"/g, 'href="/contact"')
-  .replace(/href="\.\/"/g, 'href="/"');
+    // Socials: Facebook only, NO LinkedIn
+    .replaceAll('https://www.linkedin.com/in/thegrand-steinlechner-045a4417b/', 'https://www.facebook.com/thegrandlucknow/')
+    .replaceAll('https://www.linkedin.com/in/thegrand-steinlechner-045a4417b', 'https://www.facebook.com/thegrandlucknow/')
+    .replaceAll('https://www.linkedin.com/in/moritz-steinlechner-045a4417b/', 'https://www.facebook.com/thegrandlucknow/')
+    .replaceAll('https://www.linkedin.com/in/moritz-steinlechner-045a4417b', 'https://www.facebook.com/thegrandlucknow/')
+    .replaceAll('eYOd1t1bt:`LinkedIn`', 'eYOd1t1bt:`Facebook`')
+    .replaceAll('>LinkedIn<', '>Facebook<')
 
-// 3. Read the authentic serif vector SVG
+    // Venue Names
+    .replaceAll('Boutique N°1', 'Open Earth Lawn')
+    .replaceAll('Venue N°1', 'Open Earth Lawn')
+    .replaceAll('Boutique N°2', 'Grassland Gala')
+    .replaceAll('Venue N°2', 'Grassland Gala')
+    .replaceAll('Boutique N°3', 'Garden Galaxy')
+    .replaceAll('Venue N°3', 'Garden Galaxy')
+    .replaceAll('Boutique N°4', 'The Royal Legacy Banquet')
+    .replaceAll('Venue N°4', 'The Royal Legacy Banquet')
+    .replaceAll('Loft N°1', 'Garden Pavilion')
+    .replaceAll('Venue N°5', 'Garden Pavilion')
+    .replaceAll('Loft N°2', 'The Royal Mandap')
+    .replaceAll('Venue N°6', 'The Royal Mandap')
+    .replaceAll('Loft N°3', 'The Dining Expanse')
+    .replaceAll('Venue N°7', 'The Dining Expanse')
+    .replaceAll('Garden N°1', 'VIP Atrium')
+    .replaceAll('Venue N°8', 'VIP Atrium')
+    .replaceAll('Urban N°1', 'Presidential Suite')
+    .replaceAll('Venue N°9', 'Presidential Suite')
+
+    // Cursor
+    .replaceAll('label:`Venue Details`', 'label:`Details`')
+    .replaceAll('label:`Apartment Details`', 'label:`Details`')
+    .replaceAll('text:`Venue Details`', 'text:`Details`')
+    .replaceAll('text:`Apartment Details`', 'text:`Details`')
+    .replaceAll('Apartment Details ↗', 'Details ↗')
+    .replaceAll('Venue Details ↗', 'Details ↗')
+    .replaceAll('Apartment Details', 'Details')
+    .replaceAll('Venue Details', 'Details')
+    .replaceAll('Apartment Size', 'Venue Scale')
+    .replaceAll('Apartment size', 'Venue scale')
+    .replaceAll('45 m²', '20,000 sq ft')
+    .replaceAll('45&nbsp;m²', '20,000 sq ft')
+    .replaceAll('20,000 sq ft sq ft', '20,000 sq ft')
+    .replaceAll('>m²<', '>sq ft<')
+    .replaceAll('>m²</span>', '>sq ft</span>')
+    .replaceAll('m²', 'sq ft')
+
+    // Philosophy & About
+    .replaceAll('My Philosophy', 'Our Vision')
+    .replaceAll('a temporary home deserves just as much care as your own home.', 'every celebration deserves a setting as grand as your vision.')
+    .replaceAll('a temporary home deserves as much care as your own.', 'every celebration deserves a setting as grand as your vision.')
+    .replaceAll("Hi, I'm Moritz", "Architectural Poise & Estate Hospitality")
+    .replaceAll('I believe', 'We believe')
+
+    // Address & Contact
+    .replaceAll('Schönaugasse 76, 8010 Lucknow, India', '22, Raibareli Rd, Bindaua, Lucknow, Uttar Pradesh 226301, India')
+    .replaceAll('Schönaugasse 76, 8010 Graz', '22, Raibareli Rd, Bindaua, Lucknow, Uttar Pradesh 226301, India')
+    .replaceAll('Moritz Steinlechner, The Grand', 'The Grand (Banquet & Event Estate)')
+    .replaceAll('Moritz Steinlechner', 'The Grand')
+    .replaceAll('office@casamomo.at', 'office@thegrandlucknow.in')
+    .replaceAll('Thegrandbanquet07@gmail.com', 'office@thegrandlucknow.in')
+    .replaceAll('+43 664 1999605', '+91 91291 27091')
+    .replaceAll('+43 664 1555605', '+91 91291 27091')
+    .replaceAll('+436641999605', '+919129127091')
+    .replaceAll('+436641555605', '+919129127091')
+
+    // Map Landmarks
+    .replaceAll('Main Square', 'Shaheed Path')
+    .replaceAll('Schlossberg', 'Gomti Riverfront')
+    .replaceAll('Schloßberg', 'Gomti Riverfront')
+    .replaceAll('Mur Island', 'Raibareli Road')
+    .replaceAll('Stadtpark', 'Bindaua Estate')
+    .replaceAll('Lendplatz', 'SGPGI Hub')
+    .replaceAll('Opera', 'Mohanlalganj')
+    .replaceAll('Jakominiplatz', 'Hazratganj')
+    .replaceAll('Kunsthaus', 'Charbagh')
+    .replaceAll('Main Station', 'Amar Shaheed Path')
+    .replaceAll('Volksgarten', 'Kisan Path')
+    .replaceAll('Augarten', 'Alambagh')
+
+    // Brand and Paths
+    .replaceAll('https://framerusercontent.com/sites/1bk9uGIcxVnDnwzQnwlcko/', '/scripts/')
+    .replaceAll('https://www.casamomo.at', 'https://www.thegrandlucknow.in')
+    .replaceAll('casamomo.at', 'thegrandlucknow.in')
+    .replaceAll('Casa Momo', 'The Grand')
+    .replaceAll('THE GRAND LUCKNOW', 'THE GRAND')
+    .replaceAll('The Grand Lucknow', 'The Grand');
+}
+
+// 2. Read Canonical Header & Footer from tools/
+const canonicalHeader = fs.readFileSync(path.join(ROOT, 'tools', 'canonical_header.html'), 'utf8');
+const canonicalFooter = fs.readFileSync(path.join(ROOT, 'tools', 'canonical_footer.html'), 'utf8');
+
+// 3. Read Authentic Serif Vector SVG Data URI
 const desktopSvg = fs.readFileSync(path.join(ROOT, 'tools', 'archive', 'the_grand_footer_desktop.svg'), 'utf8');
 const desktopSvgDataUri = 'data:image/svg+xml,' + encodeURIComponent(desktopSvg);
 
-// 4. Extract Footer from index.html
-const footerMatch = indexHtml.match(/<footer\b[^>]*data-framer-name="Footer"[\s\S]*?<\/footer>/i) || indexHtml.match(/<footer[\s\S]*?<\/footer>/i);
-if (!footerMatch) throw new Error('Footer not found in index.html');
-let canonicalFooter = footerMatch[0];
-
-// Normalize footer links and contact info
-canonicalFooter = canonicalFooter
-  .replace(/href="\.\/venues"/g, 'href="/venues"')
-  .replace(/href="\.\/about"/g, 'href="/about"')
-  .replace(/href="\.\/contact"/g, 'href="/contact"')
-  .replace(/href="\.\/imprint"/g, 'href="/imprint"')
-  .replace(/href="\.\/terms"/g, 'href="/terms"')
-  .replace(/href="\.\/privacy"/g, 'href="/privacy"')
-  .replace(/href="mailto:Thegrandbanquet07@gmail.com"/g, 'href="mailto:office@thegrandlucknow.in"')
-  .replace(/Thegrandbanquet07@gmail.com/g, 'office@thegrandlucknow.in')
-  .replace(/href="tel:\+436641999605"/g, 'href="tel:+919129127091"')
-  .replace(/\+43\s*664\s*1999605/g, '+91 91291 27091')
-  .replace(/\+436641999605/g, '+919129127091')
-  .replace(/Made with love by/g, 'Built by')
-  .replace(/Nexene/g, 'Edifice')
-  .replace(/https:\/\/nexene\.at\/?/g, 'https://elvar.in/edifice');
-
-// Replace any data:image/svg+xml in canonicalFooter that contains text or fallback with the authentic serif vector
-canonicalFooter = canonicalFooter.replace(
-  /url\(["']?data:image\/svg\+xml,[^"'\)]*Lay(?:%20|\s*)Grotesk[^"'\)]*["']?\)/gi,
-  `url("${desktopSvgDataUri}")`
-);
-canonicalFooter = canonicalFooter.replace(
-  /url\(["']?data:image\/svg\+xml,[^"'\)]*(?:THE%20GRAND|THE GRAND)[^"'\)]*["']?\)/gi,
-  `url("${desktopSvgDataUri}")`
-);
-
-// 5. Extract the 3 required SVGs from bottom of index.html
+// 4. Extract the 3 SVGs from index.html
+const indexHtml = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
 const svgIds = ['svg-1334768056_3843', 'svg-1267704399_390', 'svg870196829_4253'];
 const canonicalSvgs = [];
 for (const id of svgIds) {
@@ -65,9 +133,8 @@ for (const id of svgIds) {
     canonicalSvgs.push(m[0]);
   }
 }
-const canonicalSvgsBlock = `\n<!-- Canonical The Grand SVGs -->\n` + canonicalSvgs.join('\n') + `\n`;
 
-// 6. Build universal CSS & JS injection blocks
+// 5. Universal Style and Marquee Engine
 const universalStyle = `
 <style id="universal-grand-nav-footer-lock">
 /* UNIVERSAL LOCK: The Grand Lucknow Navbar & Authentic Serif Footer */
@@ -166,7 +233,6 @@ const universalTickerScript = `
 </script>
 `;
 
-// 7. Define function to apply lock to any HTML file
 export function lockPage(relativeFilePath) {
   const fullPath = path.join(ROOT, relativeFilePath);
   if (!fs.existsSync(fullPath)) {
@@ -176,7 +242,10 @@ export function lockPage(relativeFilePath) {
   
   let html = fs.readFileSync(fullPath, 'utf8');
   
-  // 1. Remove old custom footer styles and scripts that break parity
+  // 1. Swap all text content
+  html = swapText(html);
+  
+  // 2. Remove old custom footer styles and scripts
   html = html.replace(/<style id="universal-grand-footer-styles">[\s\S]*?<\/style>/gi, '');
   html = html.replace(/<style id="universal-grand-nav-footer-lock">[\s\S]*?<\/style>/gi, '');
   html = html.replace(/<style id="grand-marquee-full-parity">[\s\S]*?<\/style>/gi, '');
@@ -184,23 +253,19 @@ export function lockPage(relativeFilePath) {
   html = html.replace(/<script id="grand-footer-ticker-engine">[\s\S]*?<\/script>/gi, '');
   html = html.replace(/<script id="universal-grand-ticker-engine">[\s\S]*?<\/script>/gi, '');
   
-  // 2. Replace Header
+  // 3. Replace Header
   const curHeaderMatch = html.match(/<header\b[^>]*data-framer-name="Navbar Wrapper"[\s\S]*?<\/header>/i) || html.match(/<header[\s\S]*?<\/header>/i);
   if (curHeaderMatch) {
     html = html.replace(curHeaderMatch[0], canonicalHeader);
-  } else {
-    console.warn(`No <header> found in ${relativeFilePath}`);
   }
   
-  // 3. Replace Footer
+  // 4. Replace Footer
   const curFooterMatch = html.match(/<footer\b[^>]*data-framer-name="Footer"[\s\S]*?<\/footer>/i) || html.match(/<footer[\s\S]*?<\/footer>/i);
   if (curFooterMatch) {
     html = html.replace(curFooterMatch[0], canonicalFooter);
-  } else {
-    console.warn(`No <footer> found in ${relativeFilePath}`);
   }
   
-  // 4. Ensure Canonical SVGs are present before </body>
+  // 5. Ensure Canonical SVGs exist
   for (const svgId of svgIds) {
     if (!html.includes(`id="${svgId}"`)) {
       const svgTag = canonicalSvgs.find(s => s.includes(`id="${svgId}"`));
@@ -210,7 +275,7 @@ export function lockPage(relativeFilePath) {
     }
   }
   
-  // 5. Inject Universal Style in <head> and Universal Script before </body>
+  // 6. Inject Universal Style in <head> and Universal Script before </body>
   if (html.includes('</head>')) {
     html = html.replace('</head>', `${universalStyle}\n</head>`);
   } else {
@@ -228,7 +293,6 @@ export function lockPage(relativeFilePath) {
   return true;
 }
 
-// 8. Target files list
 const TARGET_PAGES = [
   'index.html',
   'venues/open-earth-lawn.html',
@@ -262,4 +326,4 @@ for (const page of TARGET_PAGES) {
   if (lockPage(page)) lockedCount++;
 }
 
-console.log(`\nAll done! Successfully locked universal nav and footer across ${lockedCount} pages.`);
+console.log(`\nSuccessfully locked universal navbar and footer across ${lockedCount} pages.`);
