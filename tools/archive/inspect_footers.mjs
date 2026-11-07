@@ -1,40 +1,28 @@
 import fs from 'fs';
 
-const home = fs.readFileSync('index.html', 'utf8');
-const sub = fs.readFileSync('venues/open-earth-lawn.html', 'utf8');
+const indexHtml = fs.readFileSync('index.html', 'utf8');
+const subHtml = fs.readFileSync('venues/open-earth-lawn.html', 'utf8');
 
-// Find <footer> in index.html
-const homeFooterMatch = home.match(/<footer[\s\S]*?<\/footer>/);
-if (homeFooterMatch) {
-  console.log('Home footer length:', homeFooterMatch[0].length);
-  console.log('Home footer start:', homeFooterMatch[0].slice(0, 300));
-  console.log('Home footer end:', homeFooterMatch[0].slice(-300));
-}
+const iStart = indexHtml.indexOf('<footer');
+const iEnd = indexHtml.indexOf('</footer>', iStart) + 9;
+const iFooter = indexHtml.slice(iStart, iEnd);
 
-// Find footer in open-earth-lawn.html
-const subFooterMatch = sub.match(/<footer[\s\S]*?<\/footer>/);
-if (subFooterMatch) {
-  console.log('Subpage footer length:', subFooterMatch[0].length);
-  console.log('Subpage footer start:', subFooterMatch[0].slice(0, 300));
-  console.log('Subpage footer end:', subFooterMatch[0].slice(-300));
-}
+const sStart = subHtml.indexOf('<footer');
+const sEnd = subHtml.indexOf('</footer>', sStart) + 9;
+const sFooter = subHtml.slice(sStart, sEnd);
 
-// Check breakpoint styles in index.html vs subpage
-const homeBp = home.match(/<style data-framer-breakpoint-css>[\s\S]*?<\/style>/);
-if (homeBp) {
-  console.log('Home breakpoint CSS length:', homeBp[0].length);
-  // look for hidden-o5o8qi, hidden-72rtr7, hidden-p8zd8m
-  const classes = ['hidden-o5o8qi', 'hidden-72rtr7', 'hidden-p8zd8m'];
-  classes.forEach(cls => {
-    console.log(`Home contains ${cls}:`, homeBp[0].includes(cls));
-  });
-}
+console.log('Index footer length:', iFooter.length);
+console.log('Subpage footer length:', sFooter.length);
+console.log('Are footers identical?', iFooter === sFooter);
 
-const subBp = sub.match(/<style data-framer-breakpoint-css>[\s\S]*?<\/style>/);
-if (subBp) {
-  console.log('Subpage breakpoint CSS length:', subBp[0].length);
-  const classes = ['hidden-o5o8qi', 'hidden-72rtr7', 'hidden-p8zd8m'];
-  classes.forEach(cls => {
-    console.log(`Subpage contains ${cls}:`, subBp[0].includes(cls));
-  });
-}
+// Check ticker in both
+const iTicker = iFooter.indexOf('GRAND');
+const sTicker = sFooter.indexOf('GRAND');
+console.log('Index ticker index:', iTicker);
+console.log('Subpage ticker index:', sTicker);
+
+// Check email in both
+const iEmails = iFooter.match(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g);
+const sEmails = sFooter.match(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g);
+console.log('Index emails:', iEmails);
+console.log('Subpage emails:', sEmails);
