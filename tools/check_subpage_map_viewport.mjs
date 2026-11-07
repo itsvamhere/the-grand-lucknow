@@ -1,4 +1,5 @@
-import { chromium } from 'file:///C:/Users/Sambhav/.gemini/antigravity/scratch/sotd-engine/node_modules/playwright-core/index.mjs';
+import { chromium } from 'playwright-core';
+import fs from 'fs';
 
 async function checkMap() {
   const browser = await chromium.launch({ channel: 'chrome', headless: true });
@@ -38,8 +39,10 @@ async function checkMap() {
   
   console.log('Map Data:', JSON.stringify(mapData, null, 2));
   
-  await page.screenshot({ path: 'C:/Users/Sambhav/.gemini/antigravity/brain/24686084-37ef-41cd-b8d3-ed0023ab71ec/current_subpage_map_test.png' });
-  console.log('Screenshot saved to current_subpage_map_test.png');
+  const proofDir = 'tools/proofs';
+  if (!fs.existsSync(proofDir)) fs.mkdirSync(proofDir, { recursive: true });
+  await page.screenshot({ path: `${proofDir}/current_subpage_map_test.png` });
+  console.log(`Saved screenshot to ${proofDir}/current_subpage_map_test.png`);
   
   await browser.close();
 }

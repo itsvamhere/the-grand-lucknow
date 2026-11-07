@@ -1,4 +1,4 @@
-import { chromium } from 'file:///C:/Users/Sambhav/.gemini/antigravity/scratch/sotd-engine/node_modules/playwright-core/index.mjs';
+import { chromium } from 'playwright-core';
 import fs from 'fs';
 
 async function inspectHomeFooter() {
@@ -32,8 +32,10 @@ async function inspectHomeFooter() {
   
   const footerEl = await page.$('footer');
   if (footerEl) {
-    await footerEl.screenshot({ path: 'C:/Users/Sambhav/.gemini/antigravity/brain/24686084-37ef-41cd-b8d3-ed0023ab71ec/home_footer_eval.png' });
-    console.log('Saved home_footer_eval.png to artifacts');
+    const proofDir = 'tools/proofs';
+    if (!fs.existsSync(proofDir)) fs.mkdirSync(proofDir, { recursive: true });
+    await footerEl.screenshot({ path: `${proofDir}/home_footer_eval.png` });
+    console.log(`Saved screenshot to ${proofDir}/home_footer_eval.png`);
   }
   
   await browser.close();

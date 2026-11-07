@@ -1,4 +1,4 @@
-import { chromium } from 'file:///C:/Users/Sambhav/.gemini/antigravity/scratch/sotd-engine/node_modules/playwright-core/index.mjs';
+import { chromium } from 'playwright-core';
 
 (async () => {
   const browser = await chromium.launch({ channel: 'chrome', headless: true });
