@@ -12,7 +12,7 @@
     },
     {
       "source": "/venues/grassland-gala",
-      "destination": "/venues/venue-n2"
+      "destination": "/venues/grassland-gala.html"
     },
     {
       "source": "/venues/garden-galaxy",
@@ -82,11 +82,6 @@
     {
       "source": "/apartments/boutique-n1.html",
       "destination": "/venues/venue-n1",
-      "permanent": true
-    },
-    {
-      "source": "/venues/grassland-gala",
-      "destination": "/venues/venue-n2",
       "permanent": true
     },
     {
