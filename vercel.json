@@ -3,6 +3,14 @@
   "trailingSlash": false,
   "rewrites": [
     {
+      "source": "/book/venue",
+      "destination": "/book/venue.html"
+    },
+    {
+      "source": "/book/apartment",
+      "destination": "/book/venue.html"
+    },
+    {
       "source": "/images/:file([^&]+)&:rest*",
       "destination": "/images/:file"
     },

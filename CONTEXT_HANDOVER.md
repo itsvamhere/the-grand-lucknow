@@ -1,90 +1,116 @@
-# Context Handover: The Grand Lucknow Subpage & Parity Alignment
+# Context Handover: The Grand Lucknow (Canonical Repository Handover)
 
-**Generated:** 2026-11-07 14:17 IST  
-**Workspace:** `C:\Users\Sambhav\.gemini\antigravity\scratch\replications\casamomo`  
+**Version:** 3.0 (Multi-Device Institutional Memory Edition)  
+**Date:** 08-Nov-2026  
+**Repository:** `https://github.com/itsvamhere/the-grand-lucknow` (`main` branch)  
 **Live Production URL:** `https://the-grand-lucknow.vercel.app`  
-**Target File:** `venues/open-earth-lawn.html` (and shared assets)
+**Base Reference Architecture:** 1:1 Strict Clone of Casa Momo (`https://www.casamomo.at`)
 
 ---
 
-## 1. Executive Summary & Core Requirements
+## 1. Non-Negotiable Directives & Anti-Improvisation Laws
 
-This handover captures the full operational state and exact user requirements across all feedback points:
+1. **Strict 1:1 Casa Momo Parity (Zero Improvisation):**
+   - The user has explicitly mandated: **"replicate the home page and subpages as it is without improvising repeatedly, 1:1 copying Casa Momo"**.
+   - Do NOT redesign, do NOT change the palette, typography, layout rhythm, or animations.
+   - We are strictly adapting Casa Momo's authentic high-craft Austrian architectural framework to **The Grand Lucknow** by swapping:
+     - Branding (`THE GRAND` serif SVG logo, uppercase and lowercase replacements).
+     - Color Palette: Dark Olive `#0E1201`, Deep Forest `#161A13`, Warm Beige `#FFF0CA`, Terracotta `#BC6F45` / `#964317`.
+     - Contact & Socials: `office@thegrandlucknow.in`, `+91 91291 27091`, Facebook (`https://www.facebook.com/thegrandlucknow/`), NO LinkedIn.
+     - Attribution: "Built by Edifice" (`https://elvar.in/edifice`).
 
-1. **Footer Replica Law**:  
-   - Replace the entire `<footer>...</footer>` in `venues/open-earth-lawn.html` with the authentic 108,688-byte footer block from `index.html`.  
-   - **Zero custom SVG hacks or washed-out gradient masks**: Preserve Framer's full-bleed animated marquee ticker (`AND   THE GR`), 1 Menu, 2 Socials, 3 Contact (`Thegrandbanquet07@gmail.com`, `+91 91291 27091`), and bottom legal row.
+2. **The 5 Verified Venues (Strict Authority):**
+   The Grand Lucknow has exactly **5 verified venues**. Do NOT invent or keep any other venue:
+   - **1. Open Earth Lawn (`open-earth-lawn` / `venue-n1`):**
+     - Size: `25,000 Sqft` · Capacity: `2,500` (Display: `1,000 - 2,500 Guests`)
+     - Image: `/images/venues/open_earth_lawn_official.webp`
+     - URL: `/venues/open-earth-lawn`
+     - Context: Signature outdoor event canvas spanning lush open-sky manicured greens with towering palm canopies.
+   - **2. Grassland Gala (`grassland-gala` / `venue-n2`):**
+     - Size: `20,000 Sqft` · Capacity: `800` (Display: `500 - 800 Guests`)
+     - Image: `/images/venues/grassland_gala_official.webp`
+     - URL: `/venues/grassland-gala`
+     - Context: Idyllic celebration lawn for large-scale wedding receptions and vibrant evening cocktail banquets.
+   - **3. Garden Galaxy (`garden-galaxy` / `venue-n3`):**
+     - Size: `15,000 Sqft` · Capacity: `300` (Display: `250 - 300 Guests`)
+     - Image: `/images/venues/garden_galaxy_official.webp`
+     - URL: `/venues/garden-galaxy`
+     - Context: Intimate open-air garden expanse designed for curated milestone gatherings and pre-wedding celebrations.
+   - **4. The Grand Courtyard (`the-grand-courtyard` / `venue-n4`):**
+     - Size: `15,000 Sqft` · Capacity: `250` (Display: `200 - 250 Guests`)
+     - Image: `/images/venues/the_grand_courtyard_official.webp`
+     - URL: `/venues/the-grand-courtyard`
+     - Context: Architecturally framed central courtyard blending Awadhi architectural charm for Haldi, Mehndi, and private rituals.
+   - **5. The Royal Legacy Banquet (`the-royal-legacy-banquet` / `venue-n5` / `grand-ballroom`):**
+     - Size: `10,000 Sqft` · Capacity: `600` (Display: `400 - 600 Guests`)
+     - Image: `/images/venues/royal_legacy_banquet_official.webp`
+     - URL: `/venues/the-royal-legacy-banquet`
+     - Context: Regal pillarless indoor banquet hall with soaring ceilings, crystal chandeliers, and advanced acoustics.
 
-2. **Location Heading Fade**:  
-   - The "Location" heading (`#4E5240`) must remain **100% opaque (`opacity: 1`)** by default on the cream background.  
-   - It must **dim to `0.45` ONLY during physical overlap** with the sticky navbar (`header[data-framer-name="Navbar Wrapper"]`), and return to `1` as soon as it clears.
+3. **Subpage UI/UX Rules:**
+   - **Location Heading Fade:** The "Location" heading on cream background is `#0E1201` (opacity `1`) and dims to `0.45` **ONLY** during physical intersection/overlap with the floating sticky navbar logo.
+   - **Sticky Button Stacking:** The sticky "Check Availability" button floats with `z-index: 40 !important` and sits cleanly above the map pin marker (`z-index: 2`).
+   - **Sticky Button Link:** On every subpage, the sticky button links to `/book/venue?venue=<slug>`:
+     - `open-earth-lawn.html` -> `/book/venue?venue=open-earth-lawn`
+     - `grassland-gala.html` -> `/book/venue?venue=grassland-gala`
+     - `garden-galaxy.html` -> `/book/venue?venue=garden-galaxy`
+     - `the-grand-courtyard.html` -> `/book/venue?venue=the-grand-courtyard`
+     - `the-royal-legacy-banquet.html` -> `/book/venue?venue=the-royal-legacy-banquet`
+   - **Footer:** 108 KB Casa Momo terracotta footer with `#964317` background and 270px rolling serif ticker (`THE GRAND`).
 
-3. **Map Marker Centering & Clearance**:  
-   - The map pin ("The Grand" brown pill tag + pulsing dot) must be anchored at **`left: 50%`** (horizontally centered) and **`top: 40%`** on the map container.  
-   - In `#grand-subpage-map-styles`, ensure `#subpage-vector-map` is centered (`width: 100% !important; left: 0 !important;`) so the pin is dead center in the viewport (`x: 50%`) with **>350px clearance** above the sticky "Check Availability" button, guaranteeing zero collision.
-
-4. **Authentic Venue Specifications (Strict User Reference Cards)**:  
-   Do not guess or use placeholder numbers. Metrics must match the user's authentic cards:
-   - **Open Earth Lawn**: `55,000 Sqft` · `1,000 - 1,500 Guests` (Display `1,500`)
-   - **Grassland Gala**: `20,000 Sqft` · `500 - 800 Guests` (Display `800`)
-   - **Garden Galaxy**: `15,000 Sqft` · `250 - 300 Guests` (Display `300`)
-   - **The Grand Courtyard**: `15,000 Sqft` · `200 - 250 Guests`
-   - **The Royal Legacy Banquet**: `10,000 Sqft` · `500 - 600 Guests`
-   - Eradicate all stray exponents/superscripts (`.framer-84xumc { display: none !important; }`).
-
-5. **Gallery & Hero Stock Photos**:  
-   - Do not use screenshots of the hotel building.  
-   - Use the 6 curated high-res (1920x1080) WebP wedding lawn stock photos in `images/venues/`:
-     - `images/venues/open_earth_lawn_1.webp` (76 KB – Sunlit expansive lawn & wedding stage)
-     - `images/venues/open_earth_lawn_2.webp` (134 KB – Luxury floral arch on manicured grass)
-     - `images/venues/open_earth_lawn_3.webp` (106 KB – Open-air marquee lawn landscape)
-     - `images/venues/open_earth_lawn_4.webp` (195 KB – Banquet dining setup under tree canopy)
-     - `images/venues/open_earth_lawn_5.webp` (354 KB – Evening garden estate banquet)
-     - `images/venues/open_earth_lawn_6.webp` (64 KB – Twilight lawn with glowing fairy lights)
-   - Bind `open_earth_lawn_1.webp` to Hero background and slides 1–6 in the Gallery.
-
-6. **Subpage Venue Cards ("Other Venues")**:  
-   - The cards inside `data-framer-name="Venue Lists"` must display the home page images (`/images/card_2_grassland_gala.webp` and `/images/card_3_ballroom.webp`) without black placeholder frames, with clean links to `/venues/grassland-gala` and `/venues/garden-galaxy`.
+4. **Check Availability Dedicated Page (`/book/venue`):**
+   - Base template: Casa Momo's authentic booking experience (`tools/casamomo_book_page.html`).
+   - H1: `Check Availability` in Lay Grotesk Regular.
+   - Search Bar: `ARRIVAL` (Add date), `DEPARTURE` (Add date), `GUESTS` (Capacity/Guests), `Search ↗` button.
+   - Interactive 2-month Calendar Dropdown (`November 2026` & `December 2026`):
+     - Anchored directly under `Arrival` / `Departure` with `z-index: 10000 !important`.
+     - Struck-through past dates, active future dates.
+     - Terracotta range highlight `#BC6F45`.
+     - Toggles on `Arrival` or `Departure` click.
+   - Selected Venue Card:
+     - Preloads based on `?venue=<slug>` (e.g. `/book/venue?venue=grassland-gala`).
+     - Shows verified photo, title, size badge, capacity badge, and authentic description.
+     - Status: "Choose your dates to see the price" -> "Available for [Dates]".
+     - CTA: `Check dates ↗` / `Inquire for Dates ↗` (opens WhatsApp `+91 91291 27091` or direct call).
+   - Other Venues List: Allows visitors to browse and switch between the other 4 venues directly on the page.
 
 ---
 
-## 2. Inventory of Prepared Tools & Assets
+## 2. File & Directory Inventory
 
-| File Path | Description / Role |
+| File / Path | Purpose |
 | :--- | :--- |
-| `tools/apply_perfect_parity.mjs` | Applies the exact `index.html` footer, updates gallery with the 6 stock photos, configures overlap-only Location fade, and anchors map pin. |
-| `images/venues/open_earth_lawn_1.webp` ... `6.webp` | 6 high-res stock photos ready and verified on disk. |
-| `images/the_grand_lucknow_master_map_1920.png` | 1920px master cartographic map centered on the estate. |
-| `tools/eval_home_footer.mjs` | Playwright script verifying home page footer structure and ticker animation. |
-| `tools/check_subpage_map_viewport.mjs` | Playwright script measuring exact pin coordinates and button clearance. |
-| `tools/verify_production_live.mjs` | Live smoke test script verifying Vercel deployment status, 0 console errors, and asset load. |
+| `index.html` | Canonical home page with verified 5-venue cards, estate map, and 108 KB terracotta footer. |
+| `venues.html` | Venues gallery and overview page. |
+| `venues/<slug>.html` | Dedicated subpages for all 5 verified venues. |
+| `book/venue.html` | Authentic Casa Momo check availability booking page. |
+| `book/apartment.html` | Parity alias for `/book/venue.html`. |
+| `vercel.json` | Clean URLs, trailing slashes, and rewrites for all venues and booking paths. |
+| `server.mjs` | Local development server on port 3003 with dynamic text swaps. |
+| `tools/generate_5_venue_subpages.mjs` | Master script to generate all 5 verified subpages and their aliases. |
+| `tools/build_booking_page.mjs` | Master script to assemble `book/venue.html` from `casamomo_book_page.html`. |
 
 ---
 
-## 3. Immediate Resume Checklist
+## 3. Operational CLI Commands (For Any New Device)
 
-To apply all changes, verify, and promote to production in one clean sequence:
-
-```powershell
-# 1. Navigate to workspace
-cd "C:\Users\Sambhav\.gemini\antigravity\scratch\replications\casamomo"
-
-# 2. Apply all parity changes to venues/open-earth-lawn.html
-node tools/apply_perfect_parity.mjs
-
-# 3. Verify locally via Playwright
-node tools/eval_home_footer.mjs
-node tools/check_subpage_map_viewport.mjs
-
-# 4. Deploy to Vercel Production
-npx vercel --prod --yes
-
-# 5. Live Production Verification
-node tools/verify_production_live.mjs
+### Start Dev Server:
+```bash
+node server.mjs
+# Serves at http://localhost:3003
 ```
 
----
+### Regenerate Subpages:
+```bash
+node tools/generate_5_venue_subpages.mjs
+```
 
-## 4. Active Environment & Dev Server
-- **Dev Server Startup**: Run `node server.mjs` in `C:\Users\Sambhav\.gemini\antigravity\scratch\replications\casamomo` to serve locally on `http://localhost:3003`.
-- **Playwright Core**: Installed and verified at `file:///C:/Users/Sambhav/.gemini/antigravity/scratch/sotd-engine/node_modules/playwright-core/index.mjs` with Chrome channel.
+### Rebuild Booking Page:
+```bash
+node tools/build_booking_page.mjs
+```
+
+### Deploy to Production:
+```bash
+npx vercel --prod --yes
+```

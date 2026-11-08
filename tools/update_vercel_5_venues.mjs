@@ -1,0 +1,39 @@
+import fs from 'fs';
+
+const vjson = {
+  cleanUrls: true,
+  trailingSlash: false,
+  rewrites: [
+    {
+      source: "/images/:file([^&]+)&:rest*",
+      destination: "/images/:file"
+    },
+    // The 5 Verified Venues
+    { source: "/venues/open-earth-lawn", destination: "/venues/open-earth-lawn.html" },
+    { source: "/venues/grassland-gala", destination: "/venues/grassland-gala.html" },
+    { source: "/venues/garden-galaxy", destination: "/venues/garden-galaxy.html" },
+    { source: "/venues/the-grand-courtyard", destination: "/venues/the-grand-courtyard.html" },
+    { source: "/venues/the-royal-legacy-banquet", destination: "/venues/the-royal-legacy-banquet.html" },
+    
+    // Canonical Aliases for Backward Compatibility
+    { source: "/venues/the-courtyard", destination: "/venues/the-grand-courtyard.html" },
+    { source: "/venues/royal-legacy-banquet", destination: "/venues/the-royal-legacy-banquet.html" },
+    { source: "/venues/grand-ballroom", destination: "/venues/the-royal-legacy-banquet.html" },
+    { source: "/venues/venue-n1", destination: "/venues/open-earth-lawn.html" },
+    { source: "/venues/venue-n2", destination: "/venues/grassland-gala.html" },
+    { source: "/venues/venue-n3", destination: "/venues/garden-galaxy.html" },
+    { source: "/venues/venue-n4", destination: "/venues/the-grand-courtyard.html" },
+    { source: "/venues/venue-n5", destination: "/venues/the-royal-legacy-banquet.html" },
+    { source: "/venues/loft-n1", destination: "/venues/the-royal-legacy-banquet.html" }
+  ],
+  redirects: [
+    { source: "/venues/boutique-n1", destination: "/venues/open-earth-lawn", permanent: true },
+    { source: "/venues/boutique-n2", destination: "/venues/grassland-gala", permanent: true },
+    { source: "/venues/boutique-n3", destination: "/venues/garden-galaxy", permanent: true },
+    { source: "/venues/boutique-n4", destination: "/venues/the-grand-courtyard", permanent: true },
+    { source: "/venues/boutique-n5", destination: "/venues/the-royal-legacy-banquet", permanent: true }
+  ]
+};
+
+fs.writeFileSync('vercel.json', JSON.stringify(vjson, null, 2), 'utf8');
+console.log('vercel.json cleanly configured for 5 verified venues!');

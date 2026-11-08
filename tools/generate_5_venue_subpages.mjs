@@ -182,6 +182,12 @@ function buildSubpage(venueIndex) {
     `$1${v.capacityNum}$2`
   );
 
+  // Sticky Button Link -> Navigate to dedicated Casa Momo check availability booking page
+  before = before.replace(
+    /(<div class="framer-8m2qta" data-framer-name="Button Overlay"[\s\S]*?<a class="framer-vO7O2[^"]*" data-framer-name="Large" href=")[^"]*(")/,
+    `$1/book/venue?venue=${v.slug}$2`
+  );
+
   // --- 2. Process 'vlist' (Strictly Card 1 and Card 2 in isolated halves) ---
   let [c1Div, c2Div] = vlist.split('<div class="framer-1acjp8y" data-framer-name="Venue List">');
 
