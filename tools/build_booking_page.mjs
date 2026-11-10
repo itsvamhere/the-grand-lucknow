@@ -52,8 +52,7 @@ const stackingFix = `<style id="grand-calendar-stacking-fix">
     backdrop-filter: blur(8px) !important;
     -webkit-backdrop-filter: blur(8px) !important;
     cursor: pointer !important;
-    z-index: 100 !important;
-  }
+    }
   .framer-1s5ig4a .framer-1clpaht-container,
   [data-framer-name="Menu Button"] .framer-1clpaht-container,
   [data-framer-name="Menu Roll"] {
