@@ -25,6 +25,77 @@ const stackingFix = `<style id="grand-calendar-stacking-fix">
     position: relative !important;
     z-index: 1 !important;
   }
+</style>
+<style id="casamomo-menu-button-fix">
+  /* CASAMOMO 1:1 MOBILE MENU BUTTON (FIXED 61.4px x 30px CONTAINER - ZERO EXPANSION) */
+  .framer-1s5ig4a,
+  [data-framer-name="Menu Button"],
+  header [data-framer-name="Mobile Menu"] [data-highlight="true"],
+  header [data-framer-name="Mobile Navbar"] [data-highlight="true"] {
+    width: 61.4px !important;
+    min-width: 61.4px !important;
+    max-width: 61.4px !important;
+    height: 30px !important;
+    min-height: 30px !important;
+    max-height: 30px !important;
+    padding: 7px 12px 8px !important;
+    position: absolute !important;
+    top: 12px !important;
+    right: 12px !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: clip !important;
+    border-radius: 2px !important;
+    background: rgba(255, 240, 202, 0.07) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    cursor: pointer !important;
+    z-index: 100 !important;
+  }
+  .framer-1s5ig4a .framer-1clpaht-container,
+  [data-framer-name="Menu Button"] .framer-1clpaht-container,
+  [data-framer-name="Menu Roll"] {
+    width: 38px !important;
+    min-width: 38px !important;
+    max-width: 38px !important;
+    height: 15px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  .framer-1s5ig4a [data-rolling-label],
+  [data-framer-name="Menu Button"] [data-rolling-label],
+  [data-framer-name="Menu Roll"] [data-rolling-label],
+  .framer-1clpaht-container [data-rolling-label] {
+    display: inline-grid !important;
+    grid-template-columns: 1fr !important;
+    grid-template-rows: 1fr !important;
+    width: 38px !important;
+    min-width: 38px !important;
+    max-width: 38px !important;
+    height: 15px !important;
+    line-height: 15px !important;
+    font-size: 15px !important;
+    justify-items: center !important;
+    align-items: center !important;
+    text-align: center !important;
+    overflow: hidden !important;
+    position: relative !important;
+    margin: 0 !important;
+  }
+  .framer-1s5ig4a [data-rolling-label] > span[aria-hidden="true"],
+  [data-framer-name="Menu Button"] [data-rolling-label] > span[aria-hidden="true"],
+  [data-framer-name="Menu Roll"] [data-rolling-label] > span[aria-hidden="true"],
+  .framer-1clpaht-container [data-rolling-label] > span[aria-hidden="true"] {
+    grid-area: 1 / 1 !important;
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    display: inline-block !important;
+    text-align: center !important;
+    white-space: pre !important;
+  }
 </style>`;
 baseHtml = baseHtml.replace('</head>', `${stackingFix}\n</head>`);
 
