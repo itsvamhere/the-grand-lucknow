@@ -331,10 +331,16 @@ a[data-framer-name="Logo"]::after{content:"";position:absolute;inset:-12px -8px}
     z-index: 5;
   }
   @media (max-width: 809.98px) {
-    header, [data-framer-name="Mobile Navbar"], .framer-p57yy4-container, .framer-1kcv8in, .framer-1t6aeyj {
-      opacity: 1 !important;
+    header {
+      left: 0 !important;
+      right: 0 !important;
+      width: 100% !important;
       transform: none !important;
-      transition: opacity 0.2s ease, transform 0.2s ease !important;
+      opacity: 1 !important;
+    }
+    [data-framer-name="Mobile Navbar"], .framer-p57yy4-container, .framer-1kcv8in, .framer-1t6aeyj {
+      opacity: 1 !important;
+      transition: opacity 0.2s ease !important;
     }
   }
   .landmark-road {
@@ -511,7 +517,45 @@ a[data-framer-name="Logo"]::after{content:"";position:absolute;inset:-12px -8px}
   }
 </style>
 
-</head>
+<style id="casamomo-menu-button-fix">
+  /* CASAMOMO 1:1 MOBILE MENU BUTTON (FIXED 61.4px x 30px CONTAINER - ZERO EXPANSION) */
+  .framer-1s5ig4a,
+  [data-framer-name="Menu Button"] {
+    width: 61.4px !important;
+    height: 30px !important;
+    padding: 7px 12px 8px !important;
+    position: absolute !important;
+    top: 12px !important;
+    right: 12px !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: clip !important;
+    border-radius: 2px !important;
+    background: rgba(255, 240, 202, 0.07) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    cursor: pointer !important;
+  }
+  [data-framer-name="Menu Roll"] [data-rolling-label] {
+    display: inline-grid !important;
+    grid-template-columns: 1fr !important;
+    grid-template-rows: 1fr !important;
+    width: 38px !important;
+    height: 15px !important;
+    line-height: 15px !important;
+    font-size: 15px !important;
+    justify-items: center !important;
+    align-items: center !important;
+    overflow: hidden !important;
+  }
+  [data-framer-name="Menu Roll"] [data-rolling-label] > span[aria-hidden="true"] {
+    grid-area: 1 / 1 !important;
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+  }
+</style></head>
 <body>
 	<script async src="https://events.framer.com/script?v=2" data-fid="aacc1bcd51c21d4e5f0f9eea55ea52c774ac22da802921e664781a6fafe691ab" data-no-nt></script>
 	<!-- Start of bodyStart -->
