@@ -106,17 +106,40 @@ locked_css = f'''<style id="grand-locked-header-and-gallery-css">
 /* --- 1. Extracted Base Header CSS from index.html --- */
 {extracted_header_css}
 
-/* --- 2. Navbar Visibility on Subpages (Immediate on load, matching Casa Momo Boutique/Loft) --- */
+/* --- 2. Gradual Navbar Reveal on Subpages (1.8s Delay, 0.8s Float-Up matching Casa Momo Loft Trace) --- */
 .framer-1kcv8in,
 [data-framer-name="Navbar Menu"] .framer-1kcv8in,
 .framer-1t6aeyj-container,
 [data-framer-name="Navbar Menu"] .framer-1t6aeyj-container,
 .framer-p57yy4-container,
-header [data-framer-name="Mobile Menu"] {{
-  opacity: 1 !important;
-  transform: none !important;
-  animation: none !important;
+header [data-framer-name="Mobile Menu"],
+.framer-1s5ig4a,
+header [data-framer-name="Menu Button"] {{
+  opacity: 0.001 !important;
+  transform: translateY(10px) !important;
+  transition: opacity 0.8s cubic-bezier(0.12, 0.23, 0.5, 1), transform 0.8s cubic-bezier(0.12, 0.23, 0.5, 1) !important;
+  will-change: transform, opacity !important;
   pointer-events: auto !important;
+}}
+
+body.grand-nav-revealed .framer-1kcv8in,
+body.grand-nav-revealed [data-framer-name="Navbar Menu"] .framer-1kcv8in,
+body.grand-nav-revealed .framer-1t6aeyj-container,
+body.grand-nav-revealed [data-framer-name="Navbar Menu"] .framer-1t6aeyj-container,
+body.grand-nav-revealed .framer-p57yy4-container,
+body.grand-nav-revealed header [data-framer-name="Mobile Menu"],
+body.grand-nav-revealed .framer-1s5ig4a,
+body.grand-nav-revealed header [data-framer-name="Menu Button"],
+body.grand-user-scrolled .framer-1kcv8in,
+body.grand-user-scrolled [data-framer-name="Navbar Menu"] .framer-1kcv8in,
+body.grand-user-scrolled .framer-1t6aeyj-container,
+body.grand-user-scrolled [data-framer-name="Navbar Menu"] .framer-1t6aeyj-container,
+body.grand-user-scrolled .framer-p57yy4-container,
+body.grand-user-scrolled header [data-framer-name="Mobile Menu"],
+body.grand-user-scrolled .framer-1s5ig4a,
+body.grand-user-scrolled header [data-framer-name="Menu Button"] {{
+  opacity: 1 !important;
+  transform: translateY(0) !important;
 }}
 
 /* --- 3. Mobile Navbar & Menu Button Parity (Fixed 12px bounds, 61.4x30 button) --- */
@@ -279,7 +302,9 @@ header [data-framer-name="Mobile Menu"] {{
   }}
 
   body.casa-menu-open .framer-p57yy4-container,
-  body.casa-menu-open header [data-framer-name="Mobile Menu"] {{
+  body.casa-menu-open header [data-framer-name="Mobile Menu"],
+  body.casa-menu-open .framer-1s5ig4a,
+  body.casa-menu-open header [data-framer-name="Menu Button"] {{
     opacity: 1 !important;
     transform: none !important;
     animation: none !important;
@@ -360,7 +385,22 @@ locked_scripts = '''<script id="grand-nav-and-gallery-controller">
 (function() {
   'use strict';
 
-  // 1. Mobile Menu Controller
+  // 1. Reveal navbar after 1.8s, or immediately on first user scroll
+  var navTimer = setTimeout(function() {
+    document.body.classList.add('grand-nav-revealed');
+  }, 1800);
+
+  var scrolledOnce = false;
+  function handleFirstScroll() {
+    if (!scrolledOnce && window.scrollY > 15) {
+      scrolledOnce = true;
+      clearTimeout(navTimer);
+      document.body.classList.add('grand-user-scrolled');
+    }
+  }
+  window.addEventListener('scroll', handleFirstScroll, { passive: true });
+
+  // 2. Mobile Menu Controller
   function initMobileMenu() {
     var menuBtns = document.querySelectorAll('.framer-1s5ig4a, [data-framer-name="Menu Button"]');
     var overlays = document.querySelectorAll('.framer-1763xqs, [data-framer-name="Menu Overlay"]');
@@ -439,7 +479,7 @@ locked_scripts = '''<script id="grand-nav-and-gallery-controller">
     });
   }
 
-  // 2. Smooth Gallery Parallax Curtain & Interactive Corner Morphing (translateY +8% to -8%, 44px -> 0px)
+  // 3. Smooth Gallery Parallax Curtain & Interactive Corner Morphing (translateY +8% to -8%, 44px -> 0px)
   function initGalleryParallax() {
     var items = document.querySelectorAll(
       '[data-framer-name="Gallery"] [data-framer-name="Item"], [data-framer-name="Item"], .framer-18k7fzy'
@@ -463,20 +503,15 @@ locked_scripts = '''<script id="grand-nav-and-gallery-controller">
             wrap.style.setProperty('transform', 'translateY(' + translateY.toFixed(2) + '%)', 'important');
           }
 
-          // B. Interactive Corner Morphing (Rounded on entry -> Pointy when visible on screen -> Rounded on exit)
+          // B. Interactive Corner Morphing (Rounded ONLY on entry -> Pointy when visible on screen -> Stays pointy on exit)
           var rad = 0;
-          if (rect.top > vh * 0.45) {
+          if (rect.top > vh * 0.40) {
             // Entering from bottom towards center
-            var enterRatio = (rect.top - vh * 0.45) / (vh * 0.45);
+            var enterRatio = (rect.top - vh * 0.40) / (vh * 0.50);
             enterRatio = Math.max(0, Math.min(1, enterRatio));
             rad = Math.round(enterRatio * maxRadius);
-          } else if (rect.bottom < vh * 0.45) {
-            // Exiting past top
-            var exitRatio = (vh * 0.45 - rect.bottom) / (vh * 0.45);
-            exitRatio = Math.max(0, Math.min(1, exitRatio));
-            rad = Math.round(exitRatio * maxRadius);
           } else {
-            // Fully visible in center: pointy 90-degree corners!
+            // Once reached screen view and as it exits off the top: NEVER round off!
             rad = 0;
           }
 

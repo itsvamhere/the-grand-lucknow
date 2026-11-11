@@ -1152,6 +1152,12 @@ a[data-framer-name="Logo"]::after{content:"";position:absolute;inset:-12px -8px}
 
 
 
+
+
+
+
+
+
 <style id="grand-locked-header-and-gallery-css">
 /* --- 1. Extracted Base Header CSS from index.html --- */
 .framer-zrroz .framer-bg7hsc{height:110px;overflow:var(--overflow-clip-fallback,clip);z-index:10;flex-flow:row;flex:none;place-content:center;align-items:center;gap:12px;width:100%;padding:0;display:flex;position:fixed;top:0;left:0%}
@@ -1209,17 +1215,40 @@ a[data-framer-name="Logo"]::after{content:"";position:absolute;inset:-12px -8px}
 .framer-RDRJk .framer-1taqf0l-container,.framer-RDRJk .framer-6ffj8-container,.framer-RDRJk .framer-1ge2xbm-container,.framer-RDRJk .framer-188zsml-container,.framer-RDRJk .framer-1clpaht-container{flex:none;width:auto;height:auto;position:relative}
 .framer-RDRJk .framer-1s5ig4a{-webkit-tap-highlight-color:#0000;cursor:pointer;height:min-content;overflow:var(--overflow-clip-fallback,clip);will-change:var(--framer-will-change-override,transform);flex-flow:row;flex:none;place-content:center;align-items:center;gap:0;width:min-content;padding:7px 12px 8px;display:flex;position:absolute;top:12px;right:12px}
 
-/* --- 2. Navbar Visibility on Subpages (Immediate on load, matching Casa Momo Boutique/Loft) --- */
+/* --- 2. Gradual Navbar Reveal on Subpages (1.8s Delay, 0.8s Float-Up matching Casa Momo Loft Trace) --- */
 .framer-1kcv8in,
 [data-framer-name="Navbar Menu"] .framer-1kcv8in,
 .framer-1t6aeyj-container,
 [data-framer-name="Navbar Menu"] .framer-1t6aeyj-container,
 .framer-p57yy4-container,
-header [data-framer-name="Mobile Menu"] {
-  opacity: 1 !important;
-  transform: none !important;
-  animation: none !important;
+header [data-framer-name="Mobile Menu"],
+.framer-1s5ig4a,
+header [data-framer-name="Menu Button"] {
+  opacity: 0.001 !important;
+  transform: translateY(10px) !important;
+  transition: opacity 0.8s cubic-bezier(0.12, 0.23, 0.5, 1), transform 0.8s cubic-bezier(0.12, 0.23, 0.5, 1) !important;
+  will-change: transform, opacity !important;
   pointer-events: auto !important;
+}
+
+body.grand-nav-revealed .framer-1kcv8in,
+body.grand-nav-revealed [data-framer-name="Navbar Menu"] .framer-1kcv8in,
+body.grand-nav-revealed .framer-1t6aeyj-container,
+body.grand-nav-revealed [data-framer-name="Navbar Menu"] .framer-1t6aeyj-container,
+body.grand-nav-revealed .framer-p57yy4-container,
+body.grand-nav-revealed header [data-framer-name="Mobile Menu"],
+body.grand-nav-revealed .framer-1s5ig4a,
+body.grand-nav-revealed header [data-framer-name="Menu Button"],
+body.grand-user-scrolled .framer-1kcv8in,
+body.grand-user-scrolled [data-framer-name="Navbar Menu"] .framer-1kcv8in,
+body.grand-user-scrolled .framer-1t6aeyj-container,
+body.grand-user-scrolled [data-framer-name="Navbar Menu"] .framer-1t6aeyj-container,
+body.grand-user-scrolled .framer-p57yy4-container,
+body.grand-user-scrolled header [data-framer-name="Mobile Menu"],
+body.grand-user-scrolled .framer-1s5ig4a,
+body.grand-user-scrolled header [data-framer-name="Menu Button"] {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
 }
 
 /* --- 3. Mobile Navbar & Menu Button Parity (Fixed 12px bounds, 61.4x30 button) --- */
@@ -1382,7 +1411,9 @@ header [data-framer-name="Mobile Menu"] {
   }
 
   body.casa-menu-open .framer-p57yy4-container,
-  body.casa-menu-open header [data-framer-name="Mobile Menu"] {
+  body.casa-menu-open header [data-framer-name="Mobile Menu"],
+  body.casa-menu-open .framer-1s5ig4a,
+  body.casa-menu-open header [data-framer-name="Menu Button"] {
     opacity: 1 !important;
     transform: none !important;
     animation: none !important;
@@ -1461,7 +1492,22 @@ header [data-framer-name="Mobile Menu"] {
 (function() {
   'use strict';
 
-  // 1. Mobile Menu Controller
+  // 1. Reveal navbar after 1.8s, or immediately on first user scroll
+  var navTimer = setTimeout(function() {
+    document.body.classList.add('grand-nav-revealed');
+  }, 1800);
+
+  var scrolledOnce = false;
+  function handleFirstScroll() {
+    if (!scrolledOnce && window.scrollY > 15) {
+      scrolledOnce = true;
+      clearTimeout(navTimer);
+      document.body.classList.add('grand-user-scrolled');
+    }
+  }
+  window.addEventListener('scroll', handleFirstScroll, { passive: true });
+
+  // 2. Mobile Menu Controller
   function initMobileMenu() {
     var menuBtns = document.querySelectorAll('.framer-1s5ig4a, [data-framer-name="Menu Button"]');
     var overlays = document.querySelectorAll('.framer-1763xqs, [data-framer-name="Menu Overlay"]');
@@ -1540,7 +1586,7 @@ header [data-framer-name="Mobile Menu"] {
     });
   }
 
-  // 2. Smooth Gallery Parallax Curtain & Interactive Corner Morphing (translateY +8% to -8%, 44px -> 0px)
+  // 3. Smooth Gallery Parallax Curtain & Interactive Corner Morphing (translateY +8% to -8%, 44px -> 0px)
   function initGalleryParallax() {
     var items = document.querySelectorAll(
       '[data-framer-name="Gallery"] [data-framer-name="Item"], [data-framer-name="Item"], .framer-18k7fzy'
@@ -1564,20 +1610,15 @@ header [data-framer-name="Mobile Menu"] {
             wrap.style.setProperty('transform', 'translateY(' + translateY.toFixed(2) + '%)', 'important');
           }
 
-          // B. Interactive Corner Morphing (Rounded on entry -> Pointy when visible on screen -> Rounded on exit)
+          // B. Interactive Corner Morphing (Rounded ONLY on entry -> Pointy when visible on screen -> Stays pointy on exit)
           var rad = 0;
-          if (rect.top > vh * 0.45) {
+          if (rect.top > vh * 0.40) {
             // Entering from bottom towards center
-            var enterRatio = (rect.top - vh * 0.45) / (vh * 0.45);
+            var enterRatio = (rect.top - vh * 0.40) / (vh * 0.50);
             enterRatio = Math.max(0, Math.min(1, enterRatio));
             rad = Math.round(enterRatio * maxRadius);
-          } else if (rect.bottom < vh * 0.45) {
-            // Exiting past top
-            var exitRatio = (vh * 0.45 - rect.bottom) / (vh * 0.45);
-            exitRatio = Math.max(0, Math.min(1, exitRatio));
-            rad = Math.round(exitRatio * maxRadius);
           } else {
-            // Fully visible in center: pointy 90-degree corners!
+            // Once reached screen view and as it exits off the top: NEVER round off!
             rad = 0;
           }
 
