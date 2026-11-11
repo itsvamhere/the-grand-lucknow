@@ -106,62 +106,17 @@ locked_css = f'''<style id="grand-locked-header-and-gallery-css">
 /* --- 1. Extracted Base Header CSS from index.html --- */
 {extracted_header_css}
 
-/* --- 2. Gradual Navbar Reveal on Page Load (4s Delay, 1s Float-Up matching Casa Momo & Home) --- */
+/* --- 2. Navbar Visibility on Subpages (Immediate on load, matching Casa Momo Boutique/Loft) --- */
 .framer-1kcv8in,
-[data-framer-name="Navbar Menu"] .framer-1kcv8in {{
-  opacity: 0.001 !important;
-  transform: translateY(10px) !important;
-  will-change: transform, opacity !important;
-  animation: grandNavReveal 1s cubic-bezier(0.12, 0.23, 0.5, 1) 4s forwards !important;
-}}
-
+[data-framer-name="Navbar Menu"] .framer-1kcv8in,
 .framer-1t6aeyj-container,
-[data-framer-name="Navbar Menu"] .framer-1t6aeyj-container {{
-  opacity: 0.001 !important;
-  transform: translateY(10px) !important;
-  will-change: transform, opacity !important;
-  animation: grandNavReveal 1s cubic-bezier(0.12, 0.23, 0.5, 1) 4.1s forwards !important;
-}}
-
+[data-framer-name="Navbar Menu"] .framer-1t6aeyj-container,
 .framer-p57yy4-container,
 header [data-framer-name="Mobile Menu"] {{
-  opacity: 0.001 !important;
-  transform: translateY(10px) !important;
-  will-change: transform, opacity !important;
-  animation: grandMobileMenuReveal 1s cubic-bezier(0.12, 0.23, 0.5, 1) 4s forwards !important;
-}}
-
-@keyframes grandNavReveal {{
-  0% {{
-    opacity: 0.001;
-    transform: translateY(10px);
-  }}
-  100% {{
-    opacity: 1;
-    transform: translateY(0);
-  }}
-}}
-
-@keyframes grandMobileMenuReveal {{
-  0% {{
-    opacity: 0.001;
-    transform: translateY(10px);
-  }}
-  100% {{
-    opacity: 1;
-    transform: translateY(0);
-  }}
-}}
-
-/* Immediately reveal navbar on user scroll if before 4s */
-body.grand-user-scrolled .framer-1kcv8in,
-body.grand-user-scrolled .framer-1t6aeyj-container,
-body.grand-user-scrolled .framer-p57yy4-container,
-body.grand-user-scrolled header [data-framer-name="Mobile Menu"] {{
-  animation: none !important;
   opacity: 1 !important;
-  transform: translateY(0) !important;
-  transition: opacity 0.5s ease-out, transform 0.5s ease-out !important;
+  transform: none !important;
+  animation: none !important;
+  pointer-events: auto !important;
 }}
 
 /* --- 3. Mobile Navbar & Menu Button Parity (Fixed 12px bounds, 61.4x30 button) --- */
@@ -273,11 +228,14 @@ body.grand-user-scrolled header [data-framer-name="Mobile Menu"] {{
     transform: translateY(100%) !important;
   }}
 
-  body.casa-menu-open .framer-1s5ig4a [data-rolling-label] > span[aria-hidden="true"]:nth-of-type(2) {{
+  body.casa-menu-open .framer-1s5ig4a [data-rolling-label] > span[aria-hidden="true"]:nth-of-type(2),
+  body.casa-menu-open .framer-1s5ig4a [data-rolling-label] > span[aria-hidden="true"]:nth-of-type(2) span {{
     transform: translateY(-100%) !important;
   }}
-  body.casa-menu-open .framer-1s5ig4a [data-rolling-label] > span[aria-hidden="true"]:nth-of-type(3) {{
+  body.casa-menu-open .framer-1s5ig4a [data-rolling-label] > span[aria-hidden="true"]:nth-of-type(3),
+  body.casa-menu-open .framer-1s5ig4a [data-rolling-label] > span[aria-hidden="true"]:nth-of-type(3) span {{
     transform: translateY(0%) !important;
+    color: #FFF0CA !important;
   }}
 
   /* --- 4. Mobile Menu Overlay & Staggered Link Reveal --- */
@@ -384,44 +342,25 @@ body.grand-user-scrolled header [data-framer-name="Mobile Menu"] {{
   }}
 }}
 
-/* --- 5. Gallery Image Containers Rounded Edges (Casa Momo Parity: 20px Mobile, 28px Desktop) --- */
+/* --- 5. Gallery Image Containers Interactive Corner Morphing (Rounded entering -> Pointy on screen) --- */
 .framer-jhveby-container > div,
 [data-framer-name="Image"] > div,
 [data-framer-name="Gallery"] .framer-18k7fzy,
 [data-framer-name="Gallery"] [data-framer-name="Item"],
 [data-framer-name="Gallery"] div[style*="overflow:hidden"] {{
-  border-radius: 20px !important;
   overflow: hidden !important;
   -webkit-mask-image: -webkit-radial-gradient(white, black) !important;
-}}
-
-@media (min-width: 810px) {{
-  .framer-jhveby-container > div,
-  [data-framer-name="Image"] > div,
-  [data-framer-name="Gallery"] .framer-18k7fzy,
-  [data-framer-name="Gallery"] [data-framer-name="Item"],
-  [data-framer-name="Gallery"] div[style*="overflow:hidden"] {{
-    border-radius: 28px !important;
-  }}
+  will-change: border-radius, transform !important;
+  transition: border-radius 0.12s ease-out !important;
 }}
 </style>'''
 
-# 5. Controller Scripts (Menu Toggle + Parallax Scroll Engine)
+# 5. Controller Scripts (Menu Toggle + Parallax & Corner Morphing Engine)
 locked_scripts = '''<script id="grand-nav-and-gallery-controller">
 (function() {
   'use strict';
 
-  // 1. Reveal navbar on first scroll if before 4s
-  var scrolledOnce = false;
-  function handleFirstScroll() {
-    if (!scrolledOnce && window.scrollY > 15) {
-      scrolledOnce = true;
-      document.body.classList.add('grand-user-scrolled');
-    }
-  }
-  window.addEventListener('scroll', handleFirstScroll, { passive: true });
-
-  // 2. Mobile Menu Controller
+  // 1. Mobile Menu Controller
   function initMobileMenu() {
     var menuBtns = document.querySelectorAll('.framer-1s5ig4a, [data-framer-name="Menu Button"]');
     var overlays = document.querySelectorAll('.framer-1763xqs, [data-framer-name="Menu Overlay"]');
@@ -439,6 +378,15 @@ locked_scripts = '''<script id="grand-nav-and-gallery-controller">
       menuBtns.forEach(function(btn) {
         btn.setAttribute('aria-expanded', 'true');
         btn.setAttribute('aria-label', 'Close Menu');
+        var closeSpans = btn.querySelectorAll('[data-rolling-label] > span[aria-hidden="true"]:nth-of-type(3), [data-rolling-label] > span[aria-hidden="true"]:nth-of-type(3) span');
+        closeSpans.forEach(function(s) {
+          s.style.setProperty('transform', 'translateY(0%)', 'important');
+          s.style.setProperty('color', '#FFF0CA', 'important');
+        });
+        var menuSpans = btn.querySelectorAll('[data-rolling-label] > span[aria-hidden="true"]:nth-of-type(2), [data-rolling-label] > span[aria-hidden="true"]:nth-of-type(2) span');
+        menuSpans.forEach(function(s) {
+          s.style.setProperty('transform', 'translateY(-100%)', 'important');
+        });
       });
     }
 
@@ -453,6 +401,14 @@ locked_scripts = '''<script id="grand-nav-and-gallery-controller">
       menuBtns.forEach(function(btn) {
         btn.setAttribute('aria-expanded', 'false');
         btn.setAttribute('aria-label', 'Open Menu');
+        var closeSpans = btn.querySelectorAll('[data-rolling-label] > span[aria-hidden="true"]:nth-of-type(3), [data-rolling-label] > span[aria-hidden="true"]:nth-of-type(3) span');
+        closeSpans.forEach(function(s) {
+          s.style.setProperty('transform', 'translateY(100%)', 'important');
+        });
+        var menuSpans = btn.querySelectorAll('[data-rolling-label] > span[aria-hidden="true"]:nth-of-type(2), [data-rolling-label] > span[aria-hidden="true"]:nth-of-type(2) span');
+        menuSpans.forEach(function(s) {
+          s.style.setProperty('transform', 'translateY(0%)', 'important');
+        });
       });
     }
 
@@ -483,7 +439,7 @@ locked_scripts = '''<script id="grand-nav-and-gallery-controller">
     });
   }
 
-  // 3. Smooth Gallery Parallax Curtain Scroll Engine (translateY +8% to -8%)
+  // 2. Smooth Gallery Parallax Curtain & Interactive Corner Morphing (translateY +8% to -8%, 44px -> 0px)
   function initGalleryParallax() {
     var items = document.querySelectorAll(
       '[data-framer-name="Gallery"] [data-framer-name="Item"], [data-framer-name="Item"], .framer-18k7fzy'
@@ -492,17 +448,43 @@ locked_scripts = '''<script id="grand-nav-and-gallery-controller">
 
     function onScroll() {
       var vh = window.innerHeight;
+      var isMobile = window.innerWidth < 810;
+      var maxRadius = isMobile ? 44 : 52;
+
       items.forEach(function(item) {
         var rect = item.getBoundingClientRect();
         if (rect.bottom >= -150 && rect.top <= vh + 150) {
+          // A. Curtain Parallax (+8% entry to -8% exit)
           var progress = (vh - rect.top) / (vh + rect.height);
           progress = Math.max(0, Math.min(1, progress));
-          // translateY: +8% (bottom entry) to -8% (top exit)
           var translateY = (8 - progress * 16);
           var wrap = item.querySelector('div[style*="will-change:transform"]') || item.querySelector('.framer-jhveby-container div[style*="translateY"]');
           if (wrap) {
             wrap.style.setProperty('transform', 'translateY(' + translateY.toFixed(2) + '%)', 'important');
           }
+
+          // B. Interactive Corner Morphing (Rounded on entry -> Pointy when visible on screen -> Rounded on exit)
+          var rad = 0;
+          if (rect.top > vh * 0.45) {
+            // Entering from bottom towards center
+            var enterRatio = (rect.top - vh * 0.45) / (vh * 0.45);
+            enterRatio = Math.max(0, Math.min(1, enterRatio));
+            rad = Math.round(enterRatio * maxRadius);
+          } else if (rect.bottom < vh * 0.45) {
+            // Exiting past top
+            var exitRatio = (vh * 0.45 - rect.bottom) / (vh * 0.45);
+            exitRatio = Math.max(0, Math.min(1, exitRatio));
+            rad = Math.round(exitRatio * maxRadius);
+          } else {
+            // Fully visible in center: pointy 90-degree corners!
+            rad = 0;
+          }
+
+          var targets = item.querySelectorAll('.framer-jhveby-container > div, [data-framer-name="Image"] > div, div[style*="overflow:hidden"]');
+          targets.forEach(function(el) {
+            el.style.setProperty('border-radius', rad + 'px', 'important');
+          });
+          item.style.setProperty('border-radius', rad + 'px', 'important');
         }
       });
     }
