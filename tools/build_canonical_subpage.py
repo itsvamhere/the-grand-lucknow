@@ -828,12 +828,82 @@ locked_scripts = '''<script id="grand-nav-and-gallery-controller">
     });
   }
 
+  // 6. Universal Letter-by-Letter Rolling Label & Dual-Arrow Slide Controller
+  function initRollingLabels() {
+    var labels = document.querySelectorAll('[data-rolling-label]');
+    labels.forEach(function(label) {
+      if (label.__rollingInitialized) return;
+      label.__rollingInitialized = true;
+
+      var charSpans = Array.from(label.querySelectorAll('span[aria-hidden="true"]'));
+      // Filter out nested duplicates
+      var directCharSpans = charSpans.filter(function(cs) {
+        return cs.parentElement === label || (cs.parentElement && cs.parentElement.parentElement === label);
+      });
+
+      directCharSpans.forEach(function(cs, idx) {
+        var subSpans = cs.querySelectorAll(':scope > span');
+        if (subSpans.length >= 3) {
+          var s2 = subSpans[1];
+          var s3 = subSpans[2];
+          var delay = (idx * 0.015).toFixed(3) + 's';
+          s2.style.transition = 'transform 0.38s cubic-bezier(0.16, 1, 0.3, 1) ' + delay;
+          s3.style.transition = 'transform 0.38s cubic-bezier(0.16, 1, 0.3, 1) ' + delay;
+          s2.style.willChange = 'transform';
+          s3.style.willChange = 'transform';
+        }
+      });
+
+      var trigger = label.closest('a, button, [role="button"], [data-framer-name="Sticky Button"], .framer-1n8t7q3') || label;
+
+      function onEnter() {
+        directCharSpans.forEach(function(cs) {
+          var subSpans = cs.querySelectorAll(':scope > span');
+          if (subSpans.length >= 3) {
+            subSpans[1].style.transform = 'translateY(-100%)';
+            subSpans[2].style.transform = 'translateY(0%)';
+          }
+        });
+        var a1 = trigger.querySelector('.framer-14b9qd0');
+        var a2 = trigger.querySelector('.framer-m12jrg');
+        if (a1 && a2) {
+          a1.style.top = '1px';
+          a1.style.left = '1px';
+          a2.style.top = '-10px';
+          a2.style.left = '12px';
+        }
+      }
+
+      function onLeave() {
+        directCharSpans.forEach(function(cs) {
+          var subSpans = cs.querySelectorAll(':scope > span');
+          if (subSpans.length >= 3) {
+            subSpans[1].style.transform = 'none';
+            subSpans[2].style.transform = 'translateY(100%)';
+          }
+        });
+        var a1 = trigger.querySelector('.framer-14b9qd0');
+        var a2 = trigger.querySelector('.framer-m12jrg');
+        if (a1 && a2) {
+          a1.style.top = '12px';
+          a1.style.left = '-10px';
+          a2.style.top = '1px';
+          a2.style.left = '1px';
+        }
+      }
+
+      trigger.addEventListener('pointerenter', onEnter);
+      trigger.addEventListener('pointerleave', onLeave);
+    });
+  }
+
   function initAll() {
     initMobileMenu();
     initGalleryParallax();
     initFooterObserver();
     initLocationOverlap();
     initMapCursor();
+    initRollingLabels();
   }
 
   if (document.readyState === 'loading') {
@@ -924,6 +994,29 @@ html.logo-dark-text .framer-1s5ig4a [data-rolling-label],
 html[data-logo-theme="dark"] .framer-1s5ig4a [data-rolling-label],
 body.is-light-theme .framer-1s5ig4a [data-rolling-label] {
   color: #1A241E !important;
+}
+
+/* Sticky Button Contrast Adaptation (Dark bg + Pearl Beige text & arrow on Light theme) */
+html.logo-dark-text [data-framer-name="Sticky Button"] a,
+html[data-logo-theme="dark"] [data-framer-name="Sticky Button"] a,
+body.is-light-theme [data-framer-name="Sticky Button"] a,
+html.logo-dark-text .framer-1n8t7q3 a,
+html[data-logo-theme="dark"] .framer-1n8t7q3 a,
+body.is-light-theme .framer-1n8t7q3 a {
+  background-color: #161A13 !important;
+  color: #FFF0CA !important;
+  border-color: #161A13 !important;
+  transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out !important;
+}
+
+html.logo-dark-text [data-framer-name="Sticky Button"] a *,
+html[data-logo-theme="dark"] [data-framer-name="Sticky Button"] a *,
+body.is-light-theme [data-framer-name="Sticky Button"] a *,
+html.logo-dark-text .framer-1n8t7q3 a *,
+html[data-logo-theme="dark"] .framer-1n8t7q3 a *,
+body.is-light-theme .framer-1n8t7q3 a * {
+  color: #FFF0CA !important;
+  fill: #FFF0CA !important;
 }
 </style>'''
 
@@ -1148,6 +1241,24 @@ locked_map_css = '''<style id="grand-map-cursor-style">
   }
 }
 
+/* --- Elimination of unwanted grey cursor bubble / pulse artifact --- */
+[data-morph-cursor],
+.casa-cursor-inner {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+@media (pointer: fine) and (min-width: 810px) {
+  html, body {
+    cursor: auto !important;
+  }
+  a, button, [role="button"], .framer-vO7O2, .dark-btn, [data-highlight="true"] {
+    cursor: pointer !important;
+  }
+}
+
 /* --- Sticky Button & Floating Layers Pointer-Events Fix --- */
 .framer-1s87mre {
   pointer-events: none !important;
@@ -1167,7 +1278,51 @@ locked_map_css = '''<style id="grand-map-cursor-style">
   pointer-events: auto !important;
 }
 
-/* --- Casa Momo Letter-by-Letter Rolling Label Animation --- */
+/* Arrow styling and dual-slide geometry for both Check Availability and Open in Maps */
+.framer-vO7O2 .framer-1ko9uiy {
+  width: 12px !important;
+  height: 12px !important;
+  position: relative !important;
+  overflow: hidden !important;
+  flex: none !important;
+}
+.framer-vO7O2 .framer-14b9qd0,
+.framer-vO7O2 .framer-m12jrg {
+  width: 10px !important;
+  height: 10px !important;
+  position: absolute !important;
+  transition: top 0.35s cubic-bezier(0.52, 0, 0, 1), left 0.35s cubic-bezier(0.52, 0, 0, 1) !important;
+}
+.framer-vO7O2 .framer-14b9qd0 {
+  top: 12px !important;
+  left: -10px !important;
+}
+.framer-vO7O2 .framer-m12jrg {
+  top: 1px !important;
+  left: 1px !important;
+}
+a:hover .framer-1ko9uiy .framer-14b9qd0,
+button:hover .framer-1ko9uiy .framer-14b9qd0,
+.framer-vO7O2:hover .framer-1ko9uiy .framer-14b9qd0,
+[data-framer-name="Sticky Button"]:hover .framer-1ko9uiy .framer-14b9qd0 {
+  top: 1px !important;
+  left: 1px !important;
+}
+a:hover .framer-1ko9uiy .framer-m12jrg,
+button:hover .framer-1ko9uiy .framer-m12jrg,
+.framer-vO7O2:hover .framer-1ko9uiy .framer-m12jrg,
+[data-framer-name="Sticky Button"]:hover .framer-1ko9uiy .framer-m12jrg {
+  top: -10px !important;
+  left: 12px !important;
+}
+
+/* Ensure arrow SVG always inherits label color */
+.framer-1ko9uiy svg,
+.framer-1ko9uiy svg path {
+  fill: currentColor !important;
+}
+
+/* --- Universal Letter-by-Letter Rolling Label Animation --- */
 [data-rolling-label] {
   display: inline-block !important;
   position: relative !important;
@@ -1185,44 +1340,28 @@ locked_map_css = '''<style id="grand-map-cursor-style">
 
 [data-rolling-label] span[aria-hidden="true"] > span:nth-child(2),
 [data-rolling-label] span[aria-hidden="true"] > span:nth-child(3) {
+  display: inline-block !important;
   transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1) !important;
   will-change: transform !important;
 }
 
 a:hover [data-rolling-label] span[aria-hidden="true"] > span:nth-child(2),
 button:hover [data-rolling-label] span[aria-hidden="true"] > span:nth-child(2),
+.framer-vO7O2:hover [data-rolling-label] span[aria-hidden="true"] > span:nth-child(2),
 [data-framer-name="Sticky Button"]:hover [data-rolling-label] span[aria-hidden="true"] > span:nth-child(2),
-.framer-1n8t7q3:hover [data-rolling-label] span[aria-hidden="true"] > span:nth-child(2) {
+.framer-1n8t7q3:hover [data-rolling-label] span[aria-hidden="true"] > span:nth-child(2),
+.dark-btn:hover [data-rolling-label] span[aria-hidden="true"] > span:nth-child(2) {
   transform: translateY(-100%) !important;
 }
 
 a:hover [data-rolling-label] span[aria-hidden="true"] > span:nth-child(3),
 button:hover [data-rolling-label] span[aria-hidden="true"] > span:nth-child(3),
+.framer-vO7O2:hover [data-rolling-label] span[aria-hidden="true"] > span:nth-child(3),
 [data-framer-name="Sticky Button"]:hover [data-rolling-label] span[aria-hidden="true"] > span:nth-child(3),
-.framer-1n8t7q3:hover [data-rolling-label] span[aria-hidden="true"] > span:nth-child(3) {
+.framer-1n8t7q3:hover [data-rolling-label] span[aria-hidden="true"] > span:nth-child(3),
+.dark-btn:hover [data-rolling-label] span[aria-hidden="true"] > span:nth-child(3) {
   transform: translateY(0%) !important;
 }
-
-[data-rolling-label] > span[aria-hidden="true"]:nth-of-type(1) > span { transition-delay: 0.000s !important; }
-[data-rolling-label] > span[aria-hidden="true"]:nth-of-type(2) > span { transition-delay: 0.015s !important; }
-[data-rolling-label] > span[aria-hidden="true"]:nth-of-type(3) > span { transition-delay: 0.030s !important; }
-[data-rolling-label] > span[aria-hidden="true"]:nth-of-type(4) > span { transition-delay: 0.045s !important; }
-[data-rolling-label] > span[aria-hidden="true"]:nth-of-type(5) > span { transition-delay: 0.060s !important; }
-[data-rolling-label] > span[aria-hidden="true"]:nth-of-type(6) > span { transition-delay: 0.075s !important; }
-[data-rolling-label] > span[aria-hidden="true"]:nth-of-type(7) > span { transition-delay: 0.090s !important; }
-[data-rolling-label] > span[aria-hidden="true"]:nth-of-type(8) > span { transition-delay: 0.105s !important; }
-[data-rolling-label] > span[aria-hidden="true"]:nth-of-type(9) > span { transition-delay: 0.120s !important; }
-[data-rolling-label] > span[aria-hidden="true"]:nth-of-type(10) > span { transition-delay: 0.135s !important; }
-[data-rolling-label] > span[aria-hidden="true"]:nth-of-type(11) > span { transition-delay: 0.150s !important; }
-[data-rolling-label] > span[aria-hidden="true"]:nth-of-type(12) > span { transition-delay: 0.165s !important; }
-[data-rolling-label] > span[aria-hidden="true"]:nth-of-type(13) > span { transition-delay: 0.180s !important; }
-[data-rolling-label] > span[aria-hidden="true"]:nth-of-type(14) > span { transition-delay: 0.195s !important; }
-[data-rolling-label] > span[aria-hidden="true"]:nth-of-type(15) > span { transition-delay: 0.210s !important; }
-[data-rolling-label] > span[aria-hidden="true"]:nth-of-type(16) > span { transition-delay: 0.225s !important; }
-[data-rolling-label] > span[aria-hidden="true"]:nth-of-type(17) > span { transition-delay: 0.240s !important; }
-[data-rolling-label] > span[aria-hidden="true"]:nth-of-type(18) > span { transition-delay: 0.255s !important; }
-[data-rolling-label] > span[aria-hidden="true"]:nth-of-type(19) > span { transition-delay: 0.270s !important; }
-[data-rolling-label] > span[aria-hidden="true"]:nth-of-type(20) > span { transition-delay: 0.285s !important; }
 </style>'''
 
 # 6. Apply Canonical Header & Footer System across all site pages
@@ -1268,6 +1407,36 @@ def apply_canonical_system(filepath):
     html = re.sub(
         r'(<svg[^>]*id="svg-1334768056_3843"[^>]*><path[^>]*fill=")[^"]*(")',
         r'\g<1>var(--grand-logo-color, var(--token-8ecd7124-9686-4bd8-bf72-4f81314652d2, rgb(255, 240, 202)))\g<2>',
+        html
+    )
+
+    # Ensure diagonal arrows use currentColor for dynamic theme inheritance
+    html = re.sub(
+        r'(<svg[^>]*id="svg-1267704399_390"[^>]*><path[^>]*fill=")[^"]*(")',
+        r'\g<1>currentColor\g<2>',
+        html
+    )
+    html = re.sub(
+        r'(<svg[^>]*id="svg-219476891_400"[^>]*><path[^>]*fill=")[^"]*(")',
+        r'\g<1>currentColor\g<2>',
+        html
+    )
+
+    # Remove artificial morph cursor bubble DOM & scripts to eliminate grey pulse artifact
+    html = re.sub(r'<div aria-hidden="true" data-morph-cursor[\s\S]*?<\/div>\s*<\/div>', '', html)
+    html = re.sub(r'<style id="casa-morph-cursor-styles">[\s\S]*?<\/style>', '', html)
+    html = re.sub(r'<script id="casa-cursor-and-hover-physics-js">[\s\S]*?<\/script>', '', html)
+
+    # Replace Sticky Button and Open in Maps arrow icons with crisp currentColor SVGs
+    arrow_svg_markup = '<svg viewBox="0 0 10 10" style="width:100%;height:100%;display:block;" fill="none"><path d="M 3 0 L 3 1 L 5.98 1 C 6.83 1 7.26 2.03 6.66 2.63 L 0 9.29 L 0.71 10 L 7.37 3.34 C 7.97 2.74 9 3.16 9 4.02 L 9 7 L 10 7 L 10 0 Z" fill="currentColor"/></svg>'
+    html = re.sub(
+        r'(<div[^>]*class="[^"]*framer-14b9qd0"[^>]*>)(?:<div class="svgContainer"[^>]*>)?<svg[^>]*>[\s\S]*?<\/svg>(?:<\/div>)?(<\/div>)',
+        r'\g<1>' + arrow_svg_markup + r'\g<2>',
+        html
+    )
+    html = re.sub(
+        r'(<div[^>]*class="[^"]*framer-m12jrg"[^>]*>)(?:<div class="svgContainer"[^>]*>)?<svg[^>]*>[\s\S]*?<\/svg>(?:<\/div>)?(<\/div>)',
+        r'\g<1>' + arrow_svg_markup + r'\g<2>',
         html
     )
 
