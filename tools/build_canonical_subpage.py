@@ -53,6 +53,18 @@ canonical_footer = re.sub(r'href="\./about"', 'href="/about"', canonical_footer)
 canonical_footer = re.sub(r'href="\./contact"', 'href="/contact"', canonical_footer)
 canonical_footer = re.sub(r'href="\./"', 'href="/"', canonical_footer)
 
+# Clean Facebook rolling spans: keep only the first 8 spans (F, a, c, e, b, o, o, k), remove LinkedIn spans
+pattern_fb = r"(<span[^>]*data-rolling-label[^>]*><span[^>]*>Facebook</span>)([\s\S]*?)(</span><!--/\$-->)"
+def clean_fb_spans(m):
+    prefix = m.group(1)
+    body = m.group(2)
+    suffix = m.group(3)
+    spans = re.findall(r"<span aria-hidden=\"true\"[\s\S]*?</span></span>", body)
+    clean_body = "".join(spans[:8])
+    return prefix + clean_body + suffix
+
+canonical_footer = re.sub(pattern_fb, clean_fb_spans, canonical_footer)
+
 # 3. Extract CSS rules from index.html for header
 css_m = re.search(r'<style data-framer-css-ssr-minified[^>]*>([\s\S]*?)<\/style>', h_home)
 css = css_m.group(1)
@@ -111,6 +123,10 @@ locked_css = f'''<style id="grand-locked-header-and-gallery-css">
 [data-framer-name="Navbar Menu"] .framer-1kcv8in,
 .framer-1t6aeyj-container,
 [data-framer-name="Navbar Menu"] .framer-1t6aeyj-container,
+.framer-gaygr9,
+[data-framer-name="Navbar Menu"] .framer-gaygr9,
+.framer-10dp641,
+[data-framer-name="Navbar Menu"] .framer-10dp641,
 .framer-p57yy4-container,
 header [data-framer-name="Mobile Menu"],
 .framer-1s5ig4a,
@@ -126,6 +142,10 @@ body.grand-nav-revealed .framer-1kcv8in,
 body.grand-nav-revealed [data-framer-name="Navbar Menu"] .framer-1kcv8in,
 body.grand-nav-revealed .framer-1t6aeyj-container,
 body.grand-nav-revealed [data-framer-name="Navbar Menu"] .framer-1t6aeyj-container,
+body.grand-nav-revealed .framer-gaygr9,
+body.grand-nav-revealed [data-framer-name="Navbar Menu"] .framer-gaygr9,
+body.grand-nav-revealed .framer-10dp641,
+body.grand-nav-revealed [data-framer-name="Navbar Menu"] .framer-10dp641,
 body.grand-nav-revealed .framer-p57yy4-container,
 body.grand-nav-revealed header [data-framer-name="Mobile Menu"],
 body.grand-nav-revealed .framer-1s5ig4a,
@@ -134,6 +154,10 @@ body.grand-user-scrolled .framer-1kcv8in,
 body.grand-user-scrolled [data-framer-name="Navbar Menu"] .framer-1kcv8in,
 body.grand-user-scrolled .framer-1t6aeyj-container,
 body.grand-user-scrolled [data-framer-name="Navbar Menu"] .framer-1t6aeyj-container,
+body.grand-user-scrolled .framer-gaygr9,
+body.grand-user-scrolled [data-framer-name="Navbar Menu"] .framer-gaygr9,
+body.grand-user-scrolled .framer-10dp641,
+body.grand-user-scrolled [data-framer-name="Navbar Menu"] .framer-10dp641,
 body.grand-user-scrolled .framer-p57yy4-container,
 body.grand-user-scrolled header [data-framer-name="Mobile Menu"],
 body.grand-user-scrolled .framer-1s5ig4a,
@@ -142,9 +166,86 @@ body.grand-user-scrolled header [data-framer-name="Menu Button"] {{
   transform: translateY(0) !important;
 }}
 
+/* --- 2.5 Desktop Navbar & Sticky Logo Parity (Full-width fixed header, sticky corner logo, parallel corner nav) --- */
+@media (min-width: 810px) {{
+  header.framer-1i47qog,
+  header.framer-bg7hsc,
+  header[data-framer-name="Navbar Wrapper"] {{
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 110px !important;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    z-index: 1001 !important;
+    transform: none !important;
+    pointer-events: none !important;
+  }}
+
+  .framer-14ux6li-container,
+  .framer-1q3kxxd-container {{
+    position: relative !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    flex: 1 0 0px !important;
+    width: auto !important;
+    height: 100% !important;
+    padding: 0 0 0 48px !important;
+    box-sizing: border-box !important;
+    pointer-events: auto !important;
+  }}
+
+  .framer-14ux6li-container .framer-QnCu0,
+  .framer-1q3kxxd-container .framer-QnCu0,
+  header [data-framer-name="Logo"] {{
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: flex !important;
+    pointer-events: auto !important;
+    transform: none !important;
+    padding: 0 !important;
+  }}
+
+  .framer-14ux6li-container .framer-QnCu0 *,
+  .framer-1q3kxxd-container .framer-QnCu0 * {{
+    opacity: 1 !important;
+    visibility: visible !important;
+  }}
+
+  .framer-gaeku5-container,
+  .framer-1nw9de0-container {{
+    position: relative !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    flex: 1 0 0px !important;
+    width: auto !important;
+    height: 100% !important;
+    padding: 0 48px 0 0 !important;
+    box-sizing: border-box !important;
+    pointer-events: auto !important;
+  }}
+
+  .framer-gaeku5-container nav,
+  .framer-1nw9de0-container nav {{
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    gap: 12px !important;
+    width: auto !important;
+  }}
+}}
+
 /* --- 3. Mobile Navbar & Menu Button Parity (Fixed 12px bounds, 61.4x30 button) --- */
 @media (max-width: 809.98px) {{
   .framer-bg7hsc,
+  .framer-1i47qog,
   header[data-framer-name="Navbar Wrapper"] {{
     position: fixed !important;
     top: 0 !important;

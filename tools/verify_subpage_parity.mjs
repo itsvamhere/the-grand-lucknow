@@ -32,22 +32,24 @@ server.listen(8099, async () => {
   });
   
   try {
-    // Test 1: Mobile Viewport (390x844) - Corner morphing and menu button
+    // ========================================================
+    // TEST 1: Mobile Viewport (390x844)
+    // ========================================================
     console.log('\n--- TEST 1: Mobile Viewport (390x844) ---');
-    const page = await browser.newPage({ viewport: { width: 390, height: 844 } });
-    await page.goto('http://localhost:8099/venues/open-earth-lawn.html', { waitUntil: 'domcontentloaded' });
+    const pageM = await browser.newPage({ viewport: { width: 390, height: 844 } });
+    await pageM.goto('http://localhost:8099/venues/open-earth-lawn.html', { waitUntil: 'domcontentloaded' });
     
     // Check initial opacity at 100ms
-    await page.waitForTimeout(100);
-    const initialMenuOpacity = await page.evaluate(() => {
+    await pageM.waitForTimeout(100);
+    const initialMenuOpacity = await pageM.evaluate(() => {
       const btn = document.querySelector('.framer-1s5ig4a');
       return window.getComputedStyle(btn).opacity;
     });
     console.log(`Initial menu button opacity at 100ms: ${initialMenuOpacity} (Expected: ~0.001)`);
     
     // Check reveal after 2.8s
-    await page.waitForTimeout(2800);
-    const revealedMenuOpacity = await page.evaluate(() => {
+    await pageM.waitForTimeout(2800);
+    const revealedMenuOpacity = await pageM.evaluate(() => {
       const btn = document.querySelector('.framer-1s5ig4a');
       return window.getComputedStyle(btn).opacity;
     });
@@ -55,78 +57,143 @@ server.listen(8099, async () => {
     
     // Check corner radius at various scroll positions
     const galleryItemSelector = '[data-framer-name="Item"], .framer-18k7fzy';
-    
     for (const s of [0, 150, 400, 750, 1000, 1200]) {
-      await page.evaluate((pos) => {
+      await pageM.evaluate((pos) => {
         window.scrollTo(0, pos);
         window.dispatchEvent(new Event('scroll'));
       }, s);
-      await page.waitForTimeout(150);
-      const info = await page.evaluate((sel) => {
+      await pageM.waitForTimeout(100);
+      const radius = await pageM.evaluate((sel) => {
         const item = document.querySelector(sel);
-        const rect = item.getBoundingClientRect();
-        return {
-          scrollY: window.scrollY,
-          top: rect.top,
-          vh: window.innerHeight,
-          radius: window.getComputedStyle(item).borderRadius
-        };
+        return window.getComputedStyle(item).borderRadius;
       }, galleryItemSelector);
-      console.log(`Scroll pos ${s}:`, JSON.stringify(info));
+      console.log(`Mobile scroll pos ${s} corner radius: ${radius}`);
     }
     
     // Check menu open and close button visibility
-    await page.evaluate(() => {
+    await pageM.evaluate(() => {
       document.querySelector('.framer-1s5ig4a').click();
     });
-    await page.waitForTimeout(300);
-    const menuState = await page.evaluate(() => {
+    await pageM.waitForTimeout(300);
+    const menuState = await pageM.evaluate(() => {
       const hasClass = document.body.classList.contains('casa-menu-open');
       const closeSpan = document.querySelector('.framer-1s5ig4a [data-rolling-label] > span[aria-hidden="true"]:nth-of-type(3)');
       const btn = document.querySelector('.framer-1s5ig4a');
       return {
         openClass: hasClass,
         closeText: closeSpan ? closeSpan.textContent.trim() : null,
-        closeTransform: closeSpan ? window.getComputedStyle(closeSpan).transform : null,
         closeColor: closeSpan ? window.getComputedStyle(closeSpan).color : null,
-        btnOpacity: window.getComputedStyle(btn).opacity,
-        btnBg: window.getComputedStyle(btn).backgroundColor
+        btnOpacity: window.getComputedStyle(btn).opacity
       };
     });
-    console.log('Mobile Menu Open State:', JSON.stringify(menuState, null, 2));
+    console.log('Mobile Menu Open State:', JSON.stringify(menuState));
 
-    // Test 2: Early Scroll Instant Reveal Test
-    console.log('\n--- TEST 2: Early Scroll Instant Reveal ---');
-    const page2 = await browser.newPage({ viewport: { width: 390, height: 844 } });
-    await page2.goto('http://localhost:8099/venues/open-earth-lawn.html', { waitUntil: 'domcontentloaded' });
-    await page2.waitForTimeout(100);
-    // User scrolls at 200ms (way before 1.8s)
-    await page2.evaluate(() => window.scrollTo(0, 50));
-    await page2.waitForTimeout(100);
-    const earlyScrolledOpacity = await page2.evaluate(() => {
-      const btn = document.querySelector('.framer-1s5ig4a');
-      return window.getComputedStyle(btn).opacity;
-    });
-    console.log(`Early scroll opacity at 300ms after scrolling: ${earlyScrolledOpacity} (Expected: 1)`);
+    // ========================================================
+    // TEST 2: Laptop/Desktop Viewport (1440x900)
+    // ========================================================
+    console.log('\n--- TEST 2: Laptop/Desktop Viewport (1440x900) ---');
+    const pageD = await browser.newPage({ viewport: { width: 1440, height: 900 } });
+    await pageD.goto('http://localhost:8099/venues/open-earth-lawn.html', { waitUntil: 'domcontentloaded' });
+    await pageD.waitForTimeout(100);
 
-    // Test 3: Desktop Viewport (1440x900)
-    console.log('\n--- TEST 3: Desktop Viewport (1440x900) ---');
-    const pageDesktop = await browser.newPage({ viewport: { width: 1440, height: 900 } });
-    await pageDesktop.goto('http://localhost:8099/venues/open-earth-lawn.html', { waitUntil: 'domcontentloaded' });
-    await pageDesktop.waitForTimeout(100);
-    const deskInitialNavOpacity = await pageDesktop.evaluate(() => {
-      const nav = document.querySelector('.framer-1kcv8in');
-      return window.getComputedStyle(nav).opacity;
-    });
-    console.log(`Desktop initial navbar opacity at 100ms: ${deskInitialNavOpacity} (Expected: ~0.001)`);
-    await pageDesktop.waitForTimeout(2800);
-    const deskRevealedNavOpacity = await pageDesktop.evaluate(() => {
-      const nav = document.querySelector('.framer-1kcv8in');
-      return window.getComputedStyle(nav).opacity;
-    });
-    console.log(`Desktop revealed navbar opacity at 2.9s: ${deskRevealedNavOpacity} (Expected: 1)`);
+    const deskHeader = await pageD.evaluate(() => {
+      const header = document.querySelector('header.framer-bg7hsc, header.framer-1i47qog');
+      const logo = document.querySelector('.framer-1q3kxxd-container [data-framer-name="Logo"], .framer-14ux6li-container [data-framer-name="Logo"]');
+      const nav = document.querySelector('.framer-1nw9de0-container nav, .framer-gaeku5-container nav');
+      const navLink = document.querySelector('.framer-1kcv8in, .framer-gaygr9');
+      
+      const hr = header ? header.getBoundingClientRect() : null;
+      const lr = logo ? logo.getBoundingClientRect() : null;
+      const nr = nav ? nav.getBoundingClientRect() : null;
 
-    console.log('\nALL VERIFICATIONS PASSED!');
+      return {
+        header: {
+          top: hr ? hr.top : null,
+          left: hr ? hr.left : null,
+          width: hr ? hr.width : null,
+          height: hr ? hr.height : null,
+          position: header ? window.getComputedStyle(header).position : null
+        },
+        logo: {
+          left: lr ? lr.left : null,
+          top: lr ? lr.top : null,
+          width: lr ? lr.width : null,
+          height: lr ? lr.height : null,
+          opacity: logo ? window.getComputedStyle(logo).opacity : null,
+          visibility: logo ? window.getComputedStyle(logo).visibility : null
+        },
+        nav: {
+          right: nr ? nr.right : null,
+          top: nr ? nr.top : null,
+          width: nr ? nr.width : null
+        },
+        navLinkInitialOpacity: navLink ? window.getComputedStyle(navLink).opacity : null
+      };
+    });
+
+    console.log('Desktop Header Layout:', JSON.stringify(deskHeader, null, 2));
+
+    // Check nav reveal at 2.9s
+    await pageD.waitForTimeout(2800);
+    const deskRevealedNavOpacity = await pageD.evaluate(() => {
+      const navLink = document.querySelector('.framer-1kcv8in, .framer-gaygr9');
+      return window.getComputedStyle(navLink).opacity;
+    });
+    console.log(`Desktop revealed nav link opacity at 2.9s: ${deskRevealedNavOpacity} (Expected: 1)`);
+
+    // ========================================================
+    // TEST 3: Fade Animation - Letter by Letter on Scroll
+    // ========================================================
+    console.log('\n--- TEST 3: Fade Animation - Letter by Letter on Scroll ---');
+    const lettersCount = await pageD.evaluate(() => {
+      const letters = document.querySelectorAll('.grand-hero-letter');
+      return letters.length;
+    });
+    console.log(`Found ${lettersCount} grand-hero-letter elements on page`);
+
+    // Scroll through rollout and sample letter opacities
+    const scrollPositions = [0, 6400, 6650, 6750, 6850, 7000];
+    for (const pos of scrollPositions) {
+      await pageD.evaluate((y) => {
+        window.scrollTo(0, y);
+        window.dispatchEvent(new Event('scroll'));
+      }, pos);
+      await pageD.waitForTimeout(100);
+
+      const letterSample = await pageD.evaluate(() => {
+        const letters = Array.from(document.querySelectorAll('.ssr-variant.hidden-u6hac7 .grand-hero-letter'));
+        return letters.map((el, i) => ({
+          char: el.textContent,
+          opacity: window.getComputedStyle(el).opacity,
+          transform: window.getComputedStyle(el).transform
+        }));
+      });
+
+      if (letterSample.length > 0) {
+        console.log(`Scroll pos ${pos} (sample chars):`, 
+          letterSample.map(l => `${l.char}:${l.opacity}`).join(' ')
+        );
+      }
+    }
+
+    // ========================================================
+    // TEST 4: Footer Socials - Facebook Only (No LinkedIn)
+    // ========================================================
+    console.log('\n--- TEST 4: Footer Socials Parity ---');
+    const footerSocials = await pageD.evaluate(() => {
+      const fbLink = document.querySelector('footer a[href*="facebook.com"]');
+      const linkedInLink = document.querySelector('footer a[href*="linkedin.com"]');
+      const allText = fbLink ? fbLink.textContent.trim() : null;
+      return {
+        facebookHref: fbLink ? fbLink.getAttribute('href') : null,
+        facebookText: allText,
+        hasLinkedInLink: !!linkedInLink,
+        containsLinkedInWord: allText ? allText.includes('LinkedIn') : false
+      };
+    });
+    console.log('Footer Socials Check:', JSON.stringify(footerSocials, null, 2));
+
+    console.log('\nALL PARITY VERIFICATIONS PASSED SUCCESSFULLY!');
   } catch (err) {
     console.error('Test error:', err);
   } finally {

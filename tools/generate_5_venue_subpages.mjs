@@ -135,10 +135,16 @@ function buildSubpage(venueIndex) {
   before = before.replace(/<link rel="canonical" href="[^"]*"/i, `<link rel="canonical" href="https://the-grand-lucknow.vercel.app/venues/${v.slug}"`);
   before = before.replace(/<meta property="og:url" content="[^"]*"/i, `<meta property="og:url" content="https://the-grand-lucknow.vercel.app/venues/${v.slug}"`);
 
-  // H1 Words
-  const h1Spans = v.words.map(w => 
-    `<span style="display:inline-flex;overflow:hidden;padding-top:0;margin-top:0;padding-left:0.06em;padding-right:0.06em;margin-left:-0.06em;margin-right:-0.06em;padding-bottom:4px;margin-bottom:-4px"><span class="grand-hero-word" style="display:inline-block;transform-origin:50% 100%;will-change:transform,opacity;">${w}</span></span>`
-  ).join(' <!-- --> ');
+  // H1 Words & Letters (Letter-by-Letter Entrance & Rollout Parity)
+  let charGlobalIdx = 0;
+  const h1Spans = v.words.map(w => {
+    const letterSpans = w.split('').map(ch => {
+      const delay = (charGlobalIdx * 0.035).toFixed(3);
+      charGlobalIdx++;
+      return `<span class="grand-hero-letter" style="display:inline-block;transform-origin:50% 100%;will-change:transform,opacity;animation:grandHeroTitleEntrance 1.1s cubic-bezier(0.16, 1, 0.3, 1) ${delay}s forwards !important;">${ch}</span>`;
+    }).join('');
+    return `<span style="display:inline-flex;overflow:hidden;padding-top:0;margin-top:0;padding-left:0.06em;padding-right:0.06em;margin-left:-0.06em;margin-right:-0.06em;padding-bottom:4px;margin-bottom:-4px">${letterSpans}</span>`;
+  }).join(' <!-- --> ');
 
   before = before.replace(
     /(<div class="framer-13ijl2f-container"[\s\S]*?<div class="ssr-variant hidden-u6hac7"><!--\$--><h1[^>]*>)[\s\S]*?(<span style="position:absolute;width:1px;height:1px;margin:-1px[\s\S]*?<\/h1>)/,
