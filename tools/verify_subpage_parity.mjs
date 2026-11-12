@@ -101,6 +101,8 @@ server.listen(8099, async () => {
       const logo = document.querySelector('.framer-1q3kxxd-container [data-framer-name="Logo"], .framer-14ux6li-container [data-framer-name="Logo"]');
       const nav = document.querySelector('.framer-1nw9de0-container nav, .framer-gaeku5-container nav');
       const navLink = document.querySelector('.framer-1kcv8in, .framer-gaygr9');
+      const headerH1 = document.querySelector('.framer-13ijl2f-container');
+      const checkBtn = document.querySelector('[data-framer-name="Sticky Button"], .framer-1n8t7q3');
       
       const hr = header ? header.getBoundingClientRect() : null;
       const lr = logo ? logo.getBoundingClientRect() : null;
@@ -127,19 +129,32 @@ server.listen(8099, async () => {
           top: nr ? nr.top : null,
           width: nr ? nr.width : null
         },
-        navLinkInitialOpacity: navLink ? window.getComputedStyle(navLink).opacity : null
+        initialStatesAt100ms: {
+          logoOpacity: logo ? window.getComputedStyle(logo).opacity : null,
+          navLinkOpacity: navLink ? window.getComputedStyle(navLink).opacity : null,
+          headerH1Opacity: headerH1 ? window.getComputedStyle(headerH1).opacity : null,
+          checkAvailabilityOpacity: checkBtn ? window.getComputedStyle(checkBtn).opacity : null
+        }
       };
     });
 
-    console.log('Desktop Header Layout:', JSON.stringify(deskHeader, null, 2));
+    console.log('Desktop Header & Layout at 100ms:', JSON.stringify(deskHeader, null, 2));
 
-    // Check nav reveal at 2.9s
+    // Check reveal at 2.9s
     await pageD.waitForTimeout(2800);
-    const deskRevealedNavOpacity = await pageD.evaluate(() => {
+    const revealedStates = await pageD.evaluate(() => {
+      const logo = document.querySelector('.framer-1q3kxxd-container [data-framer-name="Logo"], .framer-14ux6li-container [data-framer-name="Logo"]');
       const navLink = document.querySelector('.framer-1kcv8in, .framer-gaygr9');
-      return window.getComputedStyle(navLink).opacity;
+      const headerH1 = document.querySelector('.framer-13ijl2f-container');
+      const checkBtn = document.querySelector('[data-framer-name="Sticky Button"], .framer-1n8t7q3');
+      return {
+        logoOpacity: logo ? window.getComputedStyle(logo).opacity : null,
+        navLinkOpacity: navLink ? window.getComputedStyle(navLink).opacity : null,
+        headerH1Opacity: headerH1 ? window.getComputedStyle(headerH1).opacity : null,
+        checkAvailabilityOpacity: checkBtn ? window.getComputedStyle(checkBtn).opacity : null
+      };
     });
-    console.log(`Desktop revealed nav link opacity at 2.9s: ${deskRevealedNavOpacity} (Expected: 1)`);
+    console.log('Desktop Revealed States at 2.9s:', JSON.stringify(revealedStates, null, 2));
 
     // ========================================================
     // TEST 3: Fade Animation - Letter by Letter on Scroll

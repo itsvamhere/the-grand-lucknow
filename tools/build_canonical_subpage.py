@@ -118,7 +118,7 @@ locked_css = f'''<style id="grand-locked-header-and-gallery-css">
 /* --- 1. Extracted Base Header CSS from index.html --- */
 {extracted_header_css}
 
-/* --- 2. Gradual Navbar Reveal on Subpages (1.8s Delay, 0.8s Float-Up matching Casa Momo Loft Trace) --- */
+/* --- 2. Gradual Reveal: Only Sticky Logo is present on load; Nav Bar, Header, and Check Availability box reveal like menu bar --- */
 .framer-1kcv8in,
 [data-framer-name="Navbar Menu"] .framer-1kcv8in,
 .framer-1t6aeyj-container,
@@ -128,14 +128,24 @@ locked_css = f'''<style id="grand-locked-header-and-gallery-css">
 .framer-10dp641,
 [data-framer-name="Navbar Menu"] .framer-10dp641,
 .framer-p57yy4-container,
+header [data-framer-name="Navbar Menu"],
+.framer-1nw9de0-container nav,
+.framer-gaeku5-container nav,
 header [data-framer-name="Mobile Menu"],
 .framer-1s5ig4a,
-header [data-framer-name="Menu Button"] {{
+header [data-framer-name="Menu Button"],
+.framer-13ijl2f-container,
+[data-framer-name="Sticky Header Text"] h1,
+.framer-151qtkn h1,
+[data-framer-name="Sticky Header Text"] .framer-ajtkp9,
+.framer-1s87mre .framer-ajtkp9,
+[data-framer-name="Sticky Button"],
+.framer-1n8t7q3 {{
   opacity: 0.001 !important;
-  transform: translateY(10px) !important;
+  transform: translateY(14px) !important;
   transition: opacity 0.8s cubic-bezier(0.12, 0.23, 0.5, 1), transform 0.8s cubic-bezier(0.12, 0.23, 0.5, 1) !important;
   will-change: transform, opacity !important;
-  pointer-events: auto !important;
+  pointer-events: none !important;
 }}
 
 body.grand-nav-revealed .framer-1kcv8in,
@@ -147,9 +157,19 @@ body.grand-nav-revealed [data-framer-name="Navbar Menu"] .framer-gaygr9,
 body.grand-nav-revealed .framer-10dp641,
 body.grand-nav-revealed [data-framer-name="Navbar Menu"] .framer-10dp641,
 body.grand-nav-revealed .framer-p57yy4-container,
+body.grand-nav-revealed header [data-framer-name="Navbar Menu"],
+body.grand-nav-revealed .framer-1nw9de0-container nav,
+body.grand-nav-revealed .framer-gaeku5-container nav,
 body.grand-nav-revealed header [data-framer-name="Mobile Menu"],
 body.grand-nav-revealed .framer-1s5ig4a,
 body.grand-nav-revealed header [data-framer-name="Menu Button"],
+body.grand-nav-revealed .framer-13ijl2f-container,
+body.grand-nav-revealed [data-framer-name="Sticky Header Text"] h1,
+body.grand-nav-revealed .framer-151qtkn h1,
+body.grand-nav-revealed [data-framer-name="Sticky Header Text"] .framer-ajtkp9,
+body.grand-nav-revealed .framer-1s87mre .framer-ajtkp9,
+body.grand-nav-revealed [data-framer-name="Sticky Button"],
+body.grand-nav-revealed .framer-1n8t7q3,
 body.grand-user-scrolled .framer-1kcv8in,
 body.grand-user-scrolled [data-framer-name="Navbar Menu"] .framer-1kcv8in,
 body.grand-user-scrolled .framer-1t6aeyj-container,
@@ -159,11 +179,29 @@ body.grand-user-scrolled [data-framer-name="Navbar Menu"] .framer-gaygr9,
 body.grand-user-scrolled .framer-10dp641,
 body.grand-user-scrolled [data-framer-name="Navbar Menu"] .framer-10dp641,
 body.grand-user-scrolled .framer-p57yy4-container,
+body.grand-user-scrolled header [data-framer-name="Navbar Menu"],
+body.grand-user-scrolled .framer-1nw9de0-container nav,
+body.grand-user-scrolled .framer-gaeku5-container nav,
 body.grand-user-scrolled header [data-framer-name="Mobile Menu"],
 body.grand-user-scrolled .framer-1s5ig4a,
-body.grand-user-scrolled header [data-framer-name="Menu Button"] {{
+body.grand-user-scrolled header [data-framer-name="Menu Button"],
+body.grand-user-scrolled .framer-13ijl2f-container,
+body.grand-user-scrolled [data-framer-name="Sticky Header Text"] h1,
+body.grand-user-scrolled .framer-151qtkn h1,
+body.grand-user-scrolled [data-framer-name="Sticky Header Text"] .framer-ajtkp9,
+body.grand-user-scrolled .framer-1s87mre .framer-ajtkp9,
+body.grand-user-scrolled [data-framer-name="Sticky Button"],
+body.grand-user-scrolled .framer-1n8t7q3 {{
   opacity: 1 !important;
   transform: translateY(0) !important;
+  pointer-events: auto !important;
+}}
+
+body.grand-footer-visible [data-framer-name="Sticky Button"],
+body.grand-footer-visible .framer-1n8t7q3 {{
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transform: translateY(14px) !important;
 }}
 
 /* --- 2.5 Desktop Navbar & Sticky Logo Parity (Full-width fixed header, sticky corner logo, parallel corner nav) --- */
@@ -630,9 +668,27 @@ locked_scripts = '''<script id="grand-nav-and-gallery-controller">
     onScroll();
   }
 
+  // 4. Footer Observer to toggle grand-footer-visible on body when footer is visible
+  function initFooterObserver() {
+    var footer = document.querySelector('footer.framer-18na9ah, footer');
+    if (footer && window.IntersectionObserver) {
+      var obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            document.body.classList.add('grand-footer-visible');
+          } else {
+            document.body.classList.remove('grand-footer-visible');
+          }
+        });
+      }, { threshold: 0.05 });
+      obs.observe(footer);
+    }
+  }
+
   function initAll() {
     initMobileMenu();
     initGalleryParallax();
+    initFooterObserver();
   }
 
   if (document.readyState === 'loading') {

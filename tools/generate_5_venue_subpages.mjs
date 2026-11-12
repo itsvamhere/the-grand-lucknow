@@ -141,7 +141,7 @@ function buildSubpage(venueIndex) {
     const letterSpans = w.split('').map(ch => {
       const delay = (charGlobalIdx * 0.035).toFixed(3);
       charGlobalIdx++;
-      return `<span class="grand-hero-letter" style="display:inline-block;transform-origin:50% 100%;will-change:transform,opacity;animation:grandHeroTitleEntrance 1.1s cubic-bezier(0.16, 1, 0.3, 1) ${delay}s forwards !important;">${ch}</span>`;
+      return `<span class="grand-hero-letter" style="display:inline-block;transform-origin:50% 100%;will-change:transform,opacity;">${ch}</span>`;
     }).join('');
     return `<span style="display:inline-flex;overflow:hidden;padding-top:0;margin-top:0;padding-left:0.06em;padding-right:0.06em;margin-left:-0.06em;margin-right:-0.06em;padding-bottom:4px;margin-bottom:-4px">${letterSpans}</span>`;
   }).join(' <!-- --> ');
