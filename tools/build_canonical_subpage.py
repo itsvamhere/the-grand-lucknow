@@ -1147,6 +1147,82 @@ locked_map_css = '''<style id="grand-map-cursor-style">
     display: none !important;
   }
 }
+
+/* --- Sticky Button & Floating Layers Pointer-Events Fix --- */
+.framer-1s87mre {
+  pointer-events: none !important;
+}
+.framer-1s87mre a,
+.framer-1s87mre button {
+  pointer-events: auto !important;
+}
+
+[data-framer-name="Sticky Button"],
+.framer-1n8t7q3 {
+  z-index: 9999 !important;
+  pointer-events: auto !important;
+}
+[data-framer-name="Sticky Button"] a,
+.framer-1n8t7q3 a {
+  pointer-events: auto !important;
+}
+
+/* --- Casa Momo Letter-by-Letter Rolling Label Animation --- */
+[data-rolling-label] {
+  display: inline-block !important;
+  position: relative !important;
+  overflow: hidden !important;
+  vertical-align: middle !important;
+  line-height: 1.2em !important;
+  height: 1.2em !important;
+}
+
+[data-rolling-label] span[aria-hidden="true"] {
+  display: inline-block !important;
+  position: relative !important;
+  white-space: pre !important;
+}
+
+[data-rolling-label] span[aria-hidden="true"] > span:nth-child(2),
+[data-rolling-label] span[aria-hidden="true"] > span:nth-child(3) {
+  transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  will-change: transform !important;
+}
+
+a:hover [data-rolling-label] span[aria-hidden="true"] > span:nth-child(2),
+button:hover [data-rolling-label] span[aria-hidden="true"] > span:nth-child(2),
+[data-framer-name="Sticky Button"]:hover [data-rolling-label] span[aria-hidden="true"] > span:nth-child(2),
+.framer-1n8t7q3:hover [data-rolling-label] span[aria-hidden="true"] > span:nth-child(2) {
+  transform: translateY(-100%) !important;
+}
+
+a:hover [data-rolling-label] span[aria-hidden="true"] > span:nth-child(3),
+button:hover [data-rolling-label] span[aria-hidden="true"] > span:nth-child(3),
+[data-framer-name="Sticky Button"]:hover [data-rolling-label] span[aria-hidden="true"] > span:nth-child(3),
+.framer-1n8t7q3:hover [data-rolling-label] span[aria-hidden="true"] > span:nth-child(3) {
+  transform: translateY(0%) !important;
+}
+
+[data-rolling-label] > span[aria-hidden="true"]:nth-of-type(1) > span { transition-delay: 0.000s !important; }
+[data-rolling-label] > span[aria-hidden="true"]:nth-of-type(2) > span { transition-delay: 0.015s !important; }
+[data-rolling-label] > span[aria-hidden="true"]:nth-of-type(3) > span { transition-delay: 0.030s !important; }
+[data-rolling-label] > span[aria-hidden="true"]:nth-of-type(4) > span { transition-delay: 0.045s !important; }
+[data-rolling-label] > span[aria-hidden="true"]:nth-of-type(5) > span { transition-delay: 0.060s !important; }
+[data-rolling-label] > span[aria-hidden="true"]:nth-of-type(6) > span { transition-delay: 0.075s !important; }
+[data-rolling-label] > span[aria-hidden="true"]:nth-of-type(7) > span { transition-delay: 0.090s !important; }
+[data-rolling-label] > span[aria-hidden="true"]:nth-of-type(8) > span { transition-delay: 0.105s !important; }
+[data-rolling-label] > span[aria-hidden="true"]:nth-of-type(9) > span { transition-delay: 0.120s !important; }
+[data-rolling-label] > span[aria-hidden="true"]:nth-of-type(10) > span { transition-delay: 0.135s !important; }
+[data-rolling-label] > span[aria-hidden="true"]:nth-of-type(11) > span { transition-delay: 0.150s !important; }
+[data-rolling-label] > span[aria-hidden="true"]:nth-of-type(12) > span { transition-delay: 0.165s !important; }
+[data-rolling-label] > span[aria-hidden="true"]:nth-of-type(13) > span { transition-delay: 0.180s !important; }
+[data-rolling-label] > span[aria-hidden="true"]:nth-of-type(14) > span { transition-delay: 0.195s !important; }
+[data-rolling-label] > span[aria-hidden="true"]:nth-of-type(15) > span { transition-delay: 0.210s !important; }
+[data-rolling-label] > span[aria-hidden="true"]:nth-of-type(16) > span { transition-delay: 0.225s !important; }
+[data-rolling-label] > span[aria-hidden="true"]:nth-of-type(17) > span { transition-delay: 0.240s !important; }
+[data-rolling-label] > span[aria-hidden="true"]:nth-of-type(18) > span { transition-delay: 0.255s !important; }
+[data-rolling-label] > span[aria-hidden="true"]:nth-of-type(19) > span { transition-delay: 0.270s !important; }
+[data-rolling-label] > span[aria-hidden="true"]:nth-of-type(20) > span { transition-delay: 0.285s !important; }
 </style>'''
 
 # 6. Apply Canonical Header & Footer System across all site pages
