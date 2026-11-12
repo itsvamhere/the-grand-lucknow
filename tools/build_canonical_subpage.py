@@ -65,6 +65,18 @@ def clean_fb_spans(m):
 
 canonical_footer = re.sub(pattern_fb, clean_fb_spans, canonical_footer)
 
+# Clean Edifice rolling spans: keep only the first 7 spans (E, d, i, f, i, c, e), remove Nexene spans
+pattern_edifice = r"(<span[^>]*data-rolling-label[^>]*><span[^>]*>Edifice</span>)([\s\S]*?)(</span><!--/\$-->)"
+def clean_edifice_spans(m):
+    prefix = m.group(1)
+    body = m.group(2)
+    suffix = m.group(3)
+    spans = re.findall(r"<span aria-hidden=\"true\"[\s\S]*?</span></span>", body)
+    clean_body = "".join(spans[:7])
+    return prefix + clean_body + suffix
+
+canonical_footer = re.sub(pattern_edifice, clean_edifice_spans, canonical_footer)
+
 # 3. Extract CSS rules from index.html for header
 css_m = re.search(r'<style data-framer-css-ssr-minified[^>]*>([\s\S]*?)<\/style>', h_home)
 css = css_m.group(1)
@@ -768,11 +780,60 @@ locked_scripts = '''<script id="grand-nav-and-gallery-controller">
     onLocScroll();
   }
 
+  function initMapCursor() {
+    var mapLink = document.querySelector('a.grand-map-link');
+    var cursor = document.getElementById('grand-map-cursor');
+    if (!mapLink || !cursor) return;
+
+    var isHovered = false;
+    var targetX = 0, targetY = 0;
+    var currentX = 0, currentY = 0;
+    var rafId = null;
+
+    function update() {
+      if (!isHovered && Math.abs(currentX - targetX) < 0.1 && Math.abs(currentY - targetY) < 0.1) {
+        rafId = null;
+        return;
+      }
+      currentX += (targetX - currentX) * 0.35;
+      currentY += (targetY - currentY) * 0.35;
+      cursor.style.left = currentX.toFixed(2) + 'px';
+      cursor.style.top = currentY.toFixed(2) + 'px';
+      rafId = requestAnimationFrame(update);
+    }
+
+    mapLink.addEventListener('mouseenter', function(e) {
+      if (window.matchMedia('(max-width: 809.98px), (pointer: coarse), (hover: none)').matches) return;
+      isHovered = true;
+      targetX = e.clientX;
+      targetY = e.clientY;
+      currentX = e.clientX;
+      currentY = e.clientY;
+      cursor.style.left = currentX + 'px';
+      cursor.style.top = currentY + 'px';
+      cursor.classList.add('is-active');
+      if (!rafId) rafId = requestAnimationFrame(update);
+    });
+
+    mapLink.addEventListener('mousemove', function(e) {
+      if (window.matchMedia('(max-width: 809.98px), (pointer: coarse), (hover: none)').matches) return;
+      targetX = e.clientX;
+      targetY = e.clientY;
+      if (!rafId) rafId = requestAnimationFrame(update);
+    });
+
+    mapLink.addEventListener('mouseleave', function() {
+      isHovered = false;
+      cursor.classList.remove('is-active');
+    });
+  }
+
   function initAll() {
     initMobileMenu();
     initGalleryParallax();
     initFooterObserver();
     initLocationOverlap();
+    initMapCursor();
   }
 
   if (document.readyState === 'loading') {
@@ -999,6 +1060,95 @@ locked_contrast_script = '''<script id="grand-contrast-switcher-script">
 })();
 </script>'''
 
+locked_map_css = '''<style id="grand-map-cursor-style">
+/* --- Casa Momo Map Chips & Custom Map Cursor --- */
+@keyframes casa-map-pulse {
+  0% { transform: scale(0.45); opacity: 1; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+.casa-map-pulse {
+  animation: casa-map-pulse 2.55s cubic-bezier(0.66, 0, 0, 1) infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .casa-map-pulse { animation: none; }
+}
+
+.casa-map-chip {
+  font-family: "Lay Grotesk Regular", "Lay Grotesk Regular Placeholder", sans-serif !important;
+  font-size: max(14px, calc(var(--casa-page-w, 100vw) * 0.00875)) !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  letter-spacing: 0px !important;
+  line-height: 1.2em !important;
+  white-space: nowrap !important;
+  position: absolute !important;
+  padding: 0.36em 0.58em 0.4em !important;
+  border-radius: 2px !important;
+  pointer-events: none !important;
+  background: rgba(189, 131, 70, 0.1) !important;
+  color: var(--token-a0f3f7f0-2bee-4607-a7b2-647fda358cb3, rgb(14, 18, 1)) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  z-index: 2 !important;
+  transition: opacity 0.7s cubic-bezier(0.44, 0, 0.56, 1) !important;
+}
+
+.casa-map-chip.active-venue-chip {
+  background: var(--token-86299043-b8f8-4618-9585-4835ac76e9b7, #BC6F45) !important;
+  color: var(--token-8ecd7124-9686-4bd8-bf72-4f81314652d2, #FFF0CA) !important;
+  transform: translate(14px, -14px) !important;
+  font-weight: 400 !important;
+  box-shadow: 0 2px 8px rgba(188, 111, 69, 0.25) !important;
+}
+
+@media (max-width: 809.98px) {
+  .casa-map-chip {
+    font-size: 11px !important;
+    padding: 0.22em 0.48em 0.26em !important;
+  }
+}
+
+.grand-map-cursor {
+  position: fixed !important;
+  pointer-events: none !important;
+  z-index: 9999999 !important;
+  background: var(--token-a0f3f7f0-2bee-4607-a7b2-647fda358cb3, rgb(14, 18, 1)) !important;
+  color: var(--token-8ecd7124-9686-4bd8-bf72-4f81314652d2, #FFF0CA) !important;
+  padding: 6px 12px 7px 12px !important;
+  border-radius: 2px !important;
+  font-family: "Lay Grotesk Regular", "Lay Grotesk Regular Placeholder", sans-serif !important;
+  font-size: 15px !important;
+  line-height: 1.2em !important;
+  letter-spacing: -0.01em !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  opacity: 0 !important;
+  transform: translate(-50%, -50%) scale(0.85) !important;
+  transition: opacity 0.22s cubic-bezier(0.52, 0, 0, 1), transform 0.22s cubic-bezier(0.52, 0, 0, 1) !important;
+  will-change: transform, opacity !important;
+  box-shadow: 0 4px 16px rgba(14, 18, 1, 0.2) !important;
+}
+
+.grand-map-cursor.is-active {
+  opacity: 1 !important;
+  transform: translate(-50%, -50%) scale(1) !important;
+}
+
+@media (pointer: fine) and (min-width: 810px) {
+  a.grand-map-link,
+  a.grand-map-link * {
+    cursor: none !important;
+  }
+}
+
+@media (max-width: 809.98px), (pointer: coarse), (hover: none) {
+  .grand-map-cursor {
+    display: none !important;
+  }
+}
+</style>'''
+
 # 6. Apply Canonical Header & Footer System across all site pages
 def apply_canonical_system(filepath):
     print(f'Applying canonical system to {filepath}...')
@@ -1035,6 +1185,7 @@ def apply_canonical_system(filepath):
     html = re.sub(r'<style id="casamomo-menu-button-fix">[\s\S]*?<\/style>', '', html)
     html = re.sub(r'<script id="grand-mobile-menu-controller">[\s\S]*?<\/script>', '', html)
     html = re.sub(r'<style id="grand-locked-header-and-gallery-css">[\s\S]*?<\/style>', '', html)
+    html = re.sub(r'<style id="grand-map-cursor-style">[\s\S]*?<\/style>', '', html)
     html = re.sub(r'<script id="grand-nav-and-gallery-controller">[\s\S]*?<\/script>', '', html)
 
     # Ensure SVG path has var(--grand-logo-color, ...)
@@ -1044,8 +1195,13 @@ def apply_canonical_system(filepath):
         html
     )
 
-    head_inject = locked_contrast_css + '\n' + locked_contrast_script + '\n' + locked_css + '\n' + locked_scripts + '\n'
+    head_inject = locked_contrast_css + '\n' + locked_contrast_script + '\n' + locked_css + '\n' + locked_map_css + '\n' + locked_scripts + '\n'
     html = html.replace('</head>', head_inject + '</head>')
+
+    # Inject cursor DOM element if page has map link and cursor is not already present
+    map_cursor_html = '<div id="grand-map-cursor" class="grand-map-cursor" aria-hidden="true"><span>Show on Maps</span><svg width="10" height="10" viewBox="0 0 10 10" fill="none" style="display:inline-block;flex-shrink:0;"><path d="M 3 0 L 10 0 L 10 7 M 10 0 L 1 9" stroke="#FFF0CA" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>'
+    if 'grand-map-link' in html and 'id="grand-map-cursor"' not in html:
+        html = html.replace('</body>', map_cursor_html + '\n</body>')
 
     with open(filepath, 'w', encoding='utf-8') as f:
         f.write(html)
