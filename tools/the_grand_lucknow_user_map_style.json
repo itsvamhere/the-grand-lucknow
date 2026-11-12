@@ -1994,7 +1994,7 @@
       "type": "symbol",
       "source": "openmaptiles",
       "source-layer": "transportation_name",
-      "minzoom": 15.5,
+      "minzoom": 10,
       "filter": [
         "==",
         [
@@ -2047,10 +2047,12 @@
           [
             "zoom"
           ],
+          10,
+          11,
           13,
-          12,
-          14,
-          13
+          13,
+          15,
+          15
         ]
       },
       "paint": {
@@ -2064,7 +2066,7 @@
       "type": "symbol",
       "source": "openmaptiles",
       "source-layer": "transportation_name",
-      "minzoom": 15,
+      "minzoom": 10,
       "filter": [
         "all",
         [
@@ -2138,10 +2140,12 @@
           [
             "zoom"
           ],
+          10,
+          11,
           13,
-          12,
-          14,
-          13
+          13,
+          15,
+          15
         ]
       },
       "paint": {
@@ -2156,7 +2160,7 @@
       "type": "symbol",
       "source": "openmaptiles",
       "source-layer": "transportation_name",
-      "minzoom": 12.2,
+      "minzoom": 10,
       "filter": [
         "match",
         [
@@ -2216,10 +2220,12 @@
           [
             "zoom"
           ],
+          10,
+          11,
           13,
-          12,
-          14,
-          13
+          13,
+          15,
+          15
         ]
       },
       "paint": {
