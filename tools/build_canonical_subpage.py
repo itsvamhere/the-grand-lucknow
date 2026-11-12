@@ -118,7 +118,89 @@ locked_css = f'''<style id="grand-locked-header-and-gallery-css">
 /* --- 1. Extracted Base Header CSS from index.html --- */
 {extracted_header_css}
 
-/* --- 2. Gradual Reveal: Only Sticky Logo is present on load; Nav Bar, Header, and Check Availability box reveal like menu bar --- */
+/* --- 2. Casamomo Slot-Machine Elevation & Interaction System --- */
+@keyframes grandWordElevate {{
+  0% {{
+    transform: translateY(400px) rotate(8deg);
+  }}
+  100% {{
+    transform: translateY(0px) rotate(0deg);
+  }}
+}}
+
+.grand-hero-word {{
+  display: inline-block !important;
+  transform-origin: 50% 100% !important;
+  will-change: transform !important;
+  opacity: 1 !important;
+  transform: translateY(400px) rotate(8deg);
+  animation: grandWordElevate 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+}}
+
+.grand-hero-word[data-word-idx="0"] {{
+  animation-delay: 1.35s !important;
+}}
+.grand-hero-word[data-word-idx="1"] {{
+  animation-delay: 1.45s !important;
+}}
+.grand-hero-word[data-word-idx="2"] {{
+  animation-delay: 1.55s !important;
+}}
+.grand-hero-word[data-word-idx="3"] {{
+  animation-delay: 1.65s !important;
+}}
+.grand-hero-word[data-word-idx="4"] {{
+  animation-delay: 1.75s !important;
+}}
+
+body.grand-user-scrolled .grand-hero-word {{
+  animation: none !important;
+  transform: none !important;
+}}
+
+/* 2.1 Sticky Button (Check Availability): Transitions opacity 0 -> 1 at 1.2s matching Casamomo */
+[data-framer-name="Sticky Button"],
+.framer-1n8t7q3 {{
+  opacity: 0.001 !important;
+  pointer-events: none !important;
+  transition: opacity 0.4s cubic-bezier(0.44, 0, 0.56, 1) 1.2s !important;
+  will-change: opacity !important;
+}}
+
+body.grand-nav-revealed [data-framer-name="Sticky Button"],
+body.grand-nav-revealed .framer-1n8t7q3,
+body.grand-user-scrolled [data-framer-name="Sticky Button"],
+body.grand-user-scrolled .framer-1n8t7q3 {{
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  transition: opacity 0.4s cubic-bezier(0.44, 0, 0.56, 1) !important;
+}}
+
+body.grand-footer-visible [data-framer-name="Sticky Button"],
+body.grand-footer-visible .framer-1n8t7q3 {{
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transform: translateY(14px) !important;
+}}
+
+/* 2.2 Scroll Pill / Menu Title Reveal */
+[data-framer-name="Sticky Header Text"] .framer-ajtkp9,
+.framer-1s87mre .framer-ajtkp9 {{
+  opacity: 0.001 !important;
+  transform: translateY(10px) !important;
+  transition: opacity 0.8s cubic-bezier(0.12, 0.23, 0.5, 1) 1.25s, transform 0.8s cubic-bezier(0.12, 0.23, 0.5, 1) 1.25s !important;
+  will-change: transform, opacity !important;
+}}
+
+body.grand-nav-revealed [data-framer-name="Sticky Header Text"] .framer-ajtkp9,
+body.grand-nav-revealed .framer-1s87mre .framer-ajtkp9,
+body.grand-user-scrolled [data-framer-name="Sticky Header Text"] .framer-ajtkp9,
+body.grand-user-scrolled .framer-1s87mre .framer-ajtkp9 {{
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}}
+
+/* 2.3 Navbar Reveal: Floats in at 1.6s */
 .framer-1kcv8in,
 [data-framer-name="Navbar Menu"] .framer-1kcv8in,
 .framer-1t6aeyj-container,
@@ -133,17 +215,10 @@ header [data-framer-name="Navbar Menu"],
 .framer-gaeku5-container nav,
 header [data-framer-name="Mobile Menu"],
 .framer-1s5ig4a,
-header [data-framer-name="Menu Button"],
-.framer-13ijl2f-container,
-[data-framer-name="Sticky Header Text"] h1,
-.framer-151qtkn h1,
-[data-framer-name="Sticky Header Text"] .framer-ajtkp9,
-.framer-1s87mre .framer-ajtkp9,
-[data-framer-name="Sticky Button"],
-.framer-1n8t7q3 {{
+header [data-framer-name="Menu Button"] {{
   opacity: 0.001 !important;
-  transform: translateY(14px) !important;
-  transition: opacity 0.8s cubic-bezier(0.12, 0.23, 0.5, 1), transform 0.8s cubic-bezier(0.12, 0.23, 0.5, 1) !important;
+  transform: translateY(10px) !important;
+  transition: opacity 0.8s cubic-bezier(0.12, 0.23, 0.5, 1) 1.6s, transform 0.8s cubic-bezier(0.12, 0.23, 0.5, 1) 1.6s !important;
   will-change: transform, opacity !important;
   pointer-events: none !important;
 }}
@@ -163,13 +238,6 @@ body.grand-nav-revealed .framer-gaeku5-container nav,
 body.grand-nav-revealed header [data-framer-name="Mobile Menu"],
 body.grand-nav-revealed .framer-1s5ig4a,
 body.grand-nav-revealed header [data-framer-name="Menu Button"],
-body.grand-nav-revealed .framer-13ijl2f-container,
-body.grand-nav-revealed [data-framer-name="Sticky Header Text"] h1,
-body.grand-nav-revealed .framer-151qtkn h1,
-body.grand-nav-revealed [data-framer-name="Sticky Header Text"] .framer-ajtkp9,
-body.grand-nav-revealed .framer-1s87mre .framer-ajtkp9,
-body.grand-nav-revealed [data-framer-name="Sticky Button"],
-body.grand-nav-revealed .framer-1n8t7q3,
 body.grand-user-scrolled .framer-1kcv8in,
 body.grand-user-scrolled [data-framer-name="Navbar Menu"] .framer-1kcv8in,
 body.grand-user-scrolled .framer-1t6aeyj-container,
@@ -184,24 +252,11 @@ body.grand-user-scrolled .framer-1nw9de0-container nav,
 body.grand-user-scrolled .framer-gaeku5-container nav,
 body.grand-user-scrolled header [data-framer-name="Mobile Menu"],
 body.grand-user-scrolled .framer-1s5ig4a,
-body.grand-user-scrolled header [data-framer-name="Menu Button"],
-body.grand-user-scrolled .framer-13ijl2f-container,
-body.grand-user-scrolled [data-framer-name="Sticky Header Text"] h1,
-body.grand-user-scrolled .framer-151qtkn h1,
-body.grand-user-scrolled [data-framer-name="Sticky Header Text"] .framer-ajtkp9,
-body.grand-user-scrolled .framer-1s87mre .framer-ajtkp9,
-body.grand-user-scrolled [data-framer-name="Sticky Button"],
-body.grand-user-scrolled .framer-1n8t7q3 {{
+body.grand-user-scrolled header [data-framer-name="Menu Button"] {{
   opacity: 1 !important;
   transform: translateY(0) !important;
   pointer-events: auto !important;
-}}
-
-body.grand-footer-visible [data-framer-name="Sticky Button"],
-body.grand-footer-visible .framer-1n8t7q3 {{
-  opacity: 0 !important;
-  pointer-events: none !important;
-  transform: translateY(14px) !important;
+  transition: opacity 0.8s cubic-bezier(0.12, 0.23, 0.5, 1), transform 0.8s cubic-bezier(0.12, 0.23, 0.5, 1) !important;
 }}
 
 /* --- 2.5 Desktop Navbar & Sticky Logo Parity (Full-width fixed header, sticky corner logo, parallel corner nav) --- */
@@ -701,36 +756,49 @@ locked_scripts = '''<script id="grand-nav-and-gallery-controller">
 })();
 </script>'''
 
-# 6. Apply exact replacement to venues/open-earth-lawn.html
-# Find exact subpage headers slice
-idx_desk_sub = h_sub.find('<div class="ssr-variant hidden-u6hac7"><header class="framer-1i47qog"')
-if idx_desk_sub == -1:
-    idx_desk_sub = h_sub.find('<div class="ssr-variant hidden-o5o8qi hidden-u6hac7"><header class="framer-bg7hsc"')
+# 6. Apply Canonical Header & Footer System across all site pages
+def apply_canonical_system(filepath):
+    print(f'Applying canonical system to {filepath}...')
+    with open(filepath, 'r', encoding='utf-8') as f:
+        html = f.read()
 
-idx_mob_sub = h_sub.find('<div class="ssr-variant hidden-1azqig2 hidden-1l94oxb"><header class="framer-1i47qog"', idx_desk_sub)
-if idx_mob_sub == -1:
-    idx_mob_sub = h_sub.find('<div class="ssr-variant hidden-72rtr7 hidden-p8zd8m hidden-1azqig2 hidden-1l94oxb"><header class="framer-bg7hsc"', idx_desk_sub)
+    # Find headers slice
+    idx_desk = html.find('<div class="ssr-variant hidden-u6hac7"><header class="framer-1i47qog"')
+    if idx_desk == -1:
+        idx_desk = html.find('<div class="ssr-variant hidden-o5o8qi hidden-u6hac7"><header class="framer-bg7hsc"')
+    if idx_desk == -1:
+        idx_desk = html.find('<div class="ssr-variant hidden-o5o8qi"><header class="framer-bg7hsc"')
 
-idx_end_sub = h_sub.find('</header></div>', idx_mob_sub) + len('</header></div>')
+    idx_mob = html.find('<div class="ssr-variant hidden-1azqig2 hidden-1l94oxb"><header class="framer-1i47qog"', idx_desk)
+    if idx_mob == -1:
+        idx_mob = html.find('<div class="ssr-variant hidden-72rtr7 hidden-p8zd8m hidden-1azqig2 hidden-1l94oxb"><header class="framer-bg7hsc"', idx_desk)
+    if idx_mob == -1:
+        idx_mob = html.find('<div class="ssr-variant hidden-72rtr7 hidden-p8zd8m"><header class="framer-bg7hsc"', idx_desk)
 
-print(f'Replacing subpage headers slice from {idx_desk_sub} to {idx_end_sub} ({idx_end_sub - idx_desk_sub} bytes)...')
-h_sub_headers_replaced = h_sub[:idx_desk_sub] + header_desk + '\n' + header_mob + h_sub[idx_end_sub:]
+    idx_end = html.find('</header></div>', idx_mob) + len('</header></div>')
 
-# Find exact subpage footer slice
-idx_footer_start = h_sub_headers_replaced.find('<footer class="framer-18na9ah"')
-idx_footer_end = h_sub_headers_replaced.find('</footer>', idx_footer_start) + len('</footer>')
-print(f'Replacing subpage footer slice from {idx_footer_start} to {idx_footer_end} ({idx_footer_end - idx_footer_start} bytes)...')
-h_sub_footer_replaced = h_sub_headers_replaced[:idx_footer_start] + canonical_footer + h_sub_headers_replaced[idx_footer_end:]
+    if idx_desk != -1 and idx_mob != -1 and idx_end != -1:
+        html = html[:idx_desk] + header_desk + '\n' + header_mob + html[idx_end:]
 
-# Clean old styles/scripts and inject locked CSS + scripts
-clean_html = re.sub(r'<style id="casamomo-menu-button-fix">[\s\S]*?<\/style>', '', h_sub_footer_replaced)
-clean_html = re.sub(r'<script id="grand-mobile-menu-controller">[\s\S]*?<\/script>', '', clean_html)
-clean_html = re.sub(r'<style id="grand-locked-header-and-gallery-css">[\s\S]*?<\/style>', '', clean_html)
-clean_html = re.sub(r'<script id="grand-nav-and-gallery-controller">[\s\S]*?<\/script>', '', clean_html)
+    # Find footer slice
+    idx_footer_start = html.find('<footer class="framer-18na9ah"')
+    idx_footer_end = html.find('</footer>', idx_footer_start) + len('</footer>')
+    if idx_footer_start != -1 and idx_footer_end != -1:
+        html = html[:idx_footer_start] + canonical_footer + html[idx_footer_end:]
 
-clean_html = clean_html.replace('</head>', locked_css + '\n' + locked_scripts + '\n</head>')
+    # Clean old styles/scripts and inject locked CSS + scripts
+    html = re.sub(r'<style id="casamomo-menu-button-fix">[\s\S]*?<\/style>', '', html)
+    html = re.sub(r'<script id="grand-mobile-menu-controller">[\s\S]*?<\/script>', '', html)
+    html = re.sub(r'<style id="grand-locked-header-and-gallery-css">[\s\S]*?<\/style>', '', html)
+    html = re.sub(r'<script id="grand-nav-and-gallery-controller">[\s\S]*?<\/script>', '', html)
 
-with open('venues/open-earth-lawn.html', 'w', encoding='utf-8') as f:
-    f.write(clean_html)
+    html = html.replace('</head>', locked_css + '\n' + locked_scripts + '\n</head>')
 
-print('Successfully created master template venues/open-earth-lawn.html!')
+    with open(filepath, 'w', encoding='utf-8') as f:
+        f.write(html)
+    print(f'  Successfully updated {filepath}')
+
+apply_canonical_system('venues/open-earth-lawn.html')
+apply_canonical_system('about.html')
+apply_canonical_system('contact.html')
+apply_canonical_system('venues.html')

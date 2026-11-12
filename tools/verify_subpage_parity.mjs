@@ -132,8 +132,11 @@ server.listen(8099, async () => {
         initialStatesAt100ms: {
           logoOpacity: logo ? window.getComputedStyle(logo).opacity : null,
           navLinkOpacity: navLink ? window.getComputedStyle(navLink).opacity : null,
-          headerH1Opacity: headerH1 ? window.getComputedStyle(headerH1).opacity : null,
-          checkAvailabilityOpacity: checkBtn ? window.getComputedStyle(checkBtn).opacity : null
+          checkAvailabilityOpacity: checkBtn ? window.getComputedStyle(checkBtn).opacity : null,
+          wordsInitialTransform: Array.from(document.querySelectorAll('.grand-hero-word')).map(w => ({
+            text: w.textContent,
+            transform: window.getComputedStyle(w).transform
+          }))
         }
       };
     });
@@ -145,13 +148,16 @@ server.listen(8099, async () => {
     const revealedStates = await pageD.evaluate(() => {
       const logo = document.querySelector('.framer-1q3kxxd-container [data-framer-name="Logo"], .framer-14ux6li-container [data-framer-name="Logo"]');
       const navLink = document.querySelector('.framer-1kcv8in, .framer-gaygr9');
-      const headerH1 = document.querySelector('.framer-13ijl2f-container');
       const checkBtn = document.querySelector('[data-framer-name="Sticky Button"], .framer-1n8t7q3');
+      const words = Array.from(document.querySelectorAll('.grand-hero-word')).map(w => ({
+        text: w.textContent,
+        transform: window.getComputedStyle(w).transform
+      }));
       return {
         logoOpacity: logo ? window.getComputedStyle(logo).opacity : null,
         navLinkOpacity: navLink ? window.getComputedStyle(navLink).opacity : null,
-        headerH1Opacity: headerH1 ? window.getComputedStyle(headerH1).opacity : null,
-        checkAvailabilityOpacity: checkBtn ? window.getComputedStyle(checkBtn).opacity : null
+        checkAvailabilityOpacity: checkBtn ? window.getComputedStyle(checkBtn).opacity : null,
+        wordsRevealedTransform: words
       };
     });
     console.log('Desktop Revealed States at 2.9s:', JSON.stringify(revealedStates, null, 2));
