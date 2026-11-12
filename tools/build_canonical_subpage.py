@@ -740,10 +740,39 @@ locked_scripts = '''<script id="grand-nav-and-gallery-controller">
     }
   }
 
+  // 5. Accurate Location & Open in Maps overlap fade: ONLY dims when physically overlapping the floating navbar
+  function initLocationOverlap() {
+    function onLocScroll() {
+      var navWrapper = document.querySelector('header[data-framer-name="Navbar Wrapper"], header');
+      var navHeight = (navWrapper && navWrapper.offsetHeight > 0) ? navWrapper.offsetHeight : 110;
+      var locH = Array.from(document.querySelectorAll('h2')).find(function(h) {
+        return h.textContent.trim() === 'Location' && h.offsetParent !== null;
+      });
+      var btnWrap = document.querySelector('a.dark-btn, [data-framer-name="Dark"]');
+      
+      if (locH) {
+        var rH = locH.getBoundingClientRect();
+        var hOverlaps = (rH.top < navHeight && rH.bottom > 15);
+        locH.style.opacity = hOverlaps ? '0.5' : '1';
+      }
+      
+      if (btnWrap) {
+        var rB = btnWrap.getBoundingClientRect();
+        var bOverlaps = (rB.top < navHeight && rB.bottom > 15);
+        btnWrap.style.opacity = bOverlaps ? '0.5' : '1';
+      }
+    }
+    window.addEventListener('scroll', onLocScroll, { passive: true });
+    window.addEventListener('resize', onLocScroll, { passive: true });
+    setInterval(onLocScroll, 100);
+    onLocScroll();
+  }
+
   function initAll() {
     initMobileMenu();
     initGalleryParallax();
     initFooterObserver();
+    initLocationOverlap();
   }
 
   if (document.readyState === 'loading') {
@@ -753,6 +782,220 @@ locked_scripts = '''<script id="grand-nav-and-gallery-controller">
   }
   setTimeout(initAll, 250);
   setTimeout(initAll, 1000);
+})();
+</script>'''
+
+# 5.5 Bulletproof Logo & Navbar Dynamic Contrast Switcher (Light text on Dark bg, Dark text on Light bg)
+locked_contrast_css = '''<style id="grand-contrast-switcher-style">
+:root {
+  --grand-logo-color: #FFF0CA;
+}
+
+/* Dark Theme (over Light/Beige/Cream background: Pearl Beige #F3E8CE / #FFF0CA) */
+html.logo-dark-text,
+html[data-logo-theme="dark"],
+body.is-light-theme,
+body[data-theme="light"],
+[data-theme="light"] {
+  --grand-logo-color: #1A241E;
+}
+
+html.logo-dark-text [data-framer-name="Logo"] path,
+html.logo-dark-text #svg-1334768056_3843 path,
+html[data-logo-theme="dark"] [data-framer-name="Logo"] path,
+html[data-logo-theme="dark"] #svg-1334768056_3843 path,
+html[data-logo-theme="dark"] header svg path,
+body.is-light-theme header [data-framer-name="Logo"] path,
+body.is-light-theme #svg-1334768056_3843 path,
+[data-framer-name="Logo"].logo-dark-text path {
+  fill: #1A241E !important;
+  transition: fill 0.25s ease-in-out !important;
+}
+
+/* Light Theme (over Dark background: Dark Green #0E1201 / #1A241E) */
+html.logo-light-text [data-framer-name="Logo"] path,
+html.logo-light-text #svg-1334768056_3843 path,
+html:not([data-logo-theme="dark"]) [data-framer-name="Logo"] path,
+html:not([data-logo-theme="dark"]) #svg-1334768056_3843 path,
+[data-framer-name="Logo"].logo-light-text path {
+  fill: #FFF0CA !important;
+  transition: fill 0.25s ease-in-out !important;
+}
+
+/* Navbar Links & Buttons Adaptation on Light Background */
+html.logo-dark-text header nav [data-rolling-label],
+html[data-logo-theme="dark"] header nav [data-rolling-label],
+body.is-light-theme header nav [data-rolling-label] {
+  color: #1A241E !important;
+  transition: color 0.25s ease-in-out !important;
+}
+
+html.logo-dark-text header nav .framer-1kcv8in,
+html[data-logo-theme="dark"] header nav .framer-1kcv8in,
+body.is-light-theme header nav .framer-1kcv8in {
+  background-color: rgba(26, 36, 30, 0.08) !important;
+  transition: background-color 0.25s ease-in-out !important;
+}
+
+html.logo-dark-text header .framer-1t6aeyj-container a,
+html[data-logo-theme="dark"] header .framer-1t6aeyj-container a,
+body.is-light-theme header .framer-1t6aeyj-container a {
+  background-color: #1A241E !important;
+  color: #FFF0CA !important;
+  transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out !important;
+}
+
+html.logo-dark-text header .framer-1t6aeyj-container a *,
+html[data-logo-theme="dark"] header .framer-1t6aeyj-container a *,
+body.is-light-theme header .framer-1t6aeyj-container a * {
+  color: #FFF0CA !important;
+  fill: #FFF0CA !important;
+}
+
+/* Mobile Menu Button on Light Background */
+html.logo-dark-text .framer-1s5ig4a,
+html[data-logo-theme="dark"] .framer-1s5ig4a,
+body.is-light-theme .framer-1s5ig4a {
+  background-color: rgba(26, 36, 30, 0.08) !important;
+}
+
+html.logo-dark-text .framer-1s5ig4a [data-rolling-label],
+html[data-logo-theme="dark"] .framer-1s5ig4a [data-rolling-label],
+body.is-light-theme .framer-1s5ig4a [data-rolling-label] {
+  color: #1A241E !important;
+}
+</style>'''
+
+locked_contrast_script = '''<script id="grand-contrast-switcher-script">
+(function(){
+  var lastIsLight = null;
+  function updateLogoColorClass(){
+    var isMobile = window.innerWidth <= 810;
+    var x = isMobile ? 50 : 110;
+    var y = isMobile ? 24 : 50;
+    var isLight = false;
+
+    // Signal 1: Framer Body theme class
+    if (document.body.classList.contains('is-light-theme') || 
+        document.body.getAttribute('data-theme') === 'light' ||
+        document.documentElement.getAttribute('data-theme') === 'light') {
+      isLight = true;
+    }
+
+    // Signal 2: Check full-screen Color Change background layer
+    if (!isLight) {
+      var colorChangeV1 = document.querySelector('[data-framer-name="Color Change"] [data-framer-name="Variant 1"], [name="Color Change"] > div');
+      if (colorChangeV1) {
+        var v1Bg = window.getComputedStyle(colorChangeV1).backgroundColor;
+        var pV1 = v1Bg ? v1Bg.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/) : null;
+        if (pV1) {
+          var v1Lum = 0.299 * (+pV1[1]) + 0.587 * (+pV1[2]) + 0.114 * (+pV1[3]);
+          if (v1Lum > 140) isLight = true;
+        }
+      }
+    }
+
+    // Signal 3: Check elements directly under the logo point
+    if (!isLight) {
+      var els = document.elementsFromPoint(x, y) || [];
+      for (var i = 0; i < els.length; i++) {
+        var el = els[i];
+        if (el.closest && el.closest('header, [data-framer-name="Navbar Wrapper"], [data-framer-name="Mobile Navbar"], [data-framer-name="Logo"]')) continue;
+        if (el.matches && el.matches('[data-theme="light"], .light-section, [data-bg="light"]') || 
+           (el.closest && el.closest('[data-theme="light"], .light-section, [data-bg="light"]'))) {
+          isLight = true;
+          break;
+        }
+        var bg = window.getComputedStyle(el).backgroundColor;
+        if (bg && bg !== 'rgba(0, 0, 0, 0)' && bg !== 'transparent') {
+          var p = bg.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?/);
+          if (p) {
+            if (p[4] !== undefined && parseFloat(p[4]) < 0.2) continue;
+            var lum = 0.299 * (+p[1]) + 0.587 * (+p[2]) + 0.114 * (+p[3]);
+            if (lum > 140) {
+              isLight = true;
+              break;
+            } else if (lum < 110) {
+              isLight = false;
+              break;
+            }
+          }
+        }
+      }
+    }
+
+    // Signal 4: Fallback to body / html background
+    if (!isLight) {
+      var bBg = window.getComputedStyle(document.body).backgroundColor;
+      var hBg = window.getComputedStyle(document.documentElement).backgroundColor;
+      var effBg = (bBg && bBg !== 'rgba(0, 0, 0, 0)' && bBg !== 'transparent') ? bBg : hBg;
+      if (effBg) {
+        var pb = effBg.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+        if (pb) {
+          var bLum = 0.299 * (+pb[1]) + 0.587 * (+pb[2]) + 0.114 * (+pb[3]);
+          if (bLum > 140) isLight = true;
+        }
+      }
+    }
+
+    // Signal 5: Fallback to intersecting light sections (Paragraph / Location)
+    if (!isLight) {
+      var lightSecs = document.querySelectorAll('section.framer-179pke1, section.framer-t0nwrn, #bigtext-1, [data-framer-name="Location"]');
+      for (var s = 0; s < lightSecs.length; s++) {
+        var r = lightSecs[s].getBoundingClientRect();
+        if (r.top <= y + 20 && r.bottom >= y - 20) {
+          isLight = true;
+          break;
+        }
+      }
+    }
+
+    if (isLight !== lastIsLight) {
+      lastIsLight = isLight;
+      var root = document.documentElement;
+      var logoEls = document.querySelectorAll('[data-framer-name="Logo"], #svg-1334768056_3843');
+      if (isLight) {
+        root.setAttribute('data-logo-theme', 'dark');
+        root.classList.add('logo-dark-text');
+        root.classList.remove('logo-light-text');
+        root.style.setProperty('--grand-logo-color', '#1A241E');
+        logoEls.forEach(function(l){
+          l.classList.add('logo-dark-text');
+          l.classList.remove('logo-light-text');
+          var p = l.querySelector('path');
+          if (p) p.style.fill = '#1A241E';
+        });
+      } else {
+        root.removeAttribute('data-logo-theme');
+        root.classList.add('logo-light-text');
+        root.classList.remove('logo-dark-text');
+        root.style.setProperty('--grand-logo-color', '#FFF0CA');
+        logoEls.forEach(function(l){
+          l.classList.add('logo-light-text');
+          l.classList.remove('logo-dark-text');
+          var p = l.querySelector('path');
+          if (p) p.style.fill = '#FFF0CA';
+        });
+      }
+    }
+  }
+
+  window.addEventListener('scroll', updateLogoColorClass, { passive: true });
+  window.addEventListener('resize', updateLogoColorClass, { passive: true });
+  setInterval(updateLogoColorClass, 100);
+
+  if (window.__lenis) {
+    try { window.__lenis.on('scroll', updateLogoColorClass); } catch(e){}
+  }
+
+  var obs = new MutationObserver(updateLogoColorClass);
+  obs.observe(document.body, { attributes: true, attributeFilter: ['class', 'style'] });
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', updateLogoColorClass);
+  } else {
+    updateLogoColorClass();
+  }
 })();
 </script>'''
 
@@ -786,13 +1029,23 @@ def apply_canonical_system(filepath):
     if idx_footer_start != -1 and idx_footer_end != -1:
         html = html[:idx_footer_start] + canonical_footer + html[idx_footer_end:]
 
-    # Clean old styles/scripts and inject locked CSS + scripts
+    # Clean old styles/scripts and inject locked CSS + scripts + contrast switcher
+    html = re.sub(r'<style id="grand-contrast-switcher-style">[\s\S]*?<\/style>', '', html)
+    html = re.sub(r'<script id="grand-contrast-switcher-script">[\s\S]*?<\/script>', '', html)
     html = re.sub(r'<style id="casamomo-menu-button-fix">[\s\S]*?<\/style>', '', html)
     html = re.sub(r'<script id="grand-mobile-menu-controller">[\s\S]*?<\/script>', '', html)
     html = re.sub(r'<style id="grand-locked-header-and-gallery-css">[\s\S]*?<\/style>', '', html)
     html = re.sub(r'<script id="grand-nav-and-gallery-controller">[\s\S]*?<\/script>', '', html)
 
-    html = html.replace('</head>', locked_css + '\n' + locked_scripts + '\n</head>')
+    # Ensure SVG path has var(--grand-logo-color, ...)
+    html = re.sub(
+        r'(<svg[^>]*id="svg-1334768056_3843"[^>]*><path[^>]*fill=")[^"]*(")',
+        r'\g<1>var(--grand-logo-color, var(--token-8ecd7124-9686-4bd8-bf72-4f81314652d2, rgb(255, 240, 202)))\g<2>',
+        html
+    )
+
+    head_inject = locked_contrast_css + '\n' + locked_contrast_script + '\n' + locked_css + '\n' + locked_scripts + '\n'
+    html = html.replace('</head>', head_inject + '</head>')
 
     with open(filepath, 'w', encoding='utf-8') as f:
         f.write(html)
@@ -802,3 +1055,4 @@ apply_canonical_system('venues/open-earth-lawn.html')
 apply_canonical_system('about.html')
 apply_canonical_system('contact.html')
 apply_canonical_system('venues.html')
+

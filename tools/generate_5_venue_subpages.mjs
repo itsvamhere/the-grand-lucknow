@@ -6,26 +6,36 @@ let masterHtml = fs.readFileSync('venues/open-earth-lawn.html', 'utf8');
 
 // Ensure Location contrast CSS in masterHtml uses dark olive color
 const targetLocCss = `<style id="grand-location-contrast-css">
-#bigtext-1 h2 {
+#bigtext-1 h2,
+[data-framer-name="Paragraph"] h2 {
   color: var(--token-a0f3f7f0-2bee-4607-a7b2-647fda358cb3, rgb(14, 18, 1)) !important;
   text-transform: capitalize !important;
-  transition: opacity 0.2s ease-out !important;
+  transition: opacity 0.25s ease-out !important;
+  opacity: 1;
 }
-#bigtext-1 h2 span {
+#bigtext-1 h2 span,
+[data-framer-name="Paragraph"] h2 span {
   color: var(--token-a0f3f7f0-2bee-4607-a7b2-647fda358cb3, rgb(14, 18, 1)) !important;
   text-transform: capitalize !important;
 }
-#bigtext-1 [data-framer-name="Button Wrapper"] {
-  transition: opacity 0.2s ease-out !important;
+#bigtext-1 [data-framer-name="Button Wrapper"],
+[data-framer-name="Paragraph"] [data-framer-name="Button Wrapper"] {
+  transition: opacity 0.25s ease-out !important;
+  opacity: 1;
 }
 #bigtext-1 [data-framer-name="Button Wrapper"] a.framer-vO7O2,
-#bigtext-1 a.dark-btn {
-  background-color: #616452 !important;
+#bigtext-1 a.dark-btn,
+[data-framer-name="Paragraph"] a.dark-btn,
+a.dark-btn {
+  background-color: var(--token-a0f3f7f0-2bee-4607-a7b2-647fda358cb3, rgb(14, 18, 1)) !important;
   color: #FFF0CA !important;
-  border-color: #616452 !important;
+  border-color: var(--token-a0f3f7f0-2bee-4607-a7b2-647fda358cb3, rgb(14, 18, 1)) !important;
+  opacity: 1 !important;
 }
 #bigtext-1 [data-framer-name="Button Wrapper"] a.framer-vO7O2 *,
-#bigtext-1 a.dark-btn * {
+#bigtext-1 a.dark-btn *,
+[data-framer-name="Paragraph"] a.dark-btn *,
+a.dark-btn * {
   color: #FFF0CA !important;
   fill: #FFF0CA !important;
 }

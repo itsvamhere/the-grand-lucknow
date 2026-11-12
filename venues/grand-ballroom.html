@@ -173,106 +173,8 @@ a[data-framer-name="Logo"]::after{content:"";position:absolute;inset:-12px -8px}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
-<style id="grand-contrast-switcher-style">
-:root {
-  --grand-logo-color: #FFF0CA;
-}
-.logo-dark-text [data-framer-name="Logo"] path,
-.logo-dark-text #svg-1334768056_3843 path,
-[data-framer-name="Logo"].logo-dark-text path,
-[data-logo-theme="dark"] [data-framer-name="Logo"] path,
-[data-logo-theme="dark"] #svg-1334768056_3843 path,
-[data-framer-name="Dark"] [data-framer-name="Logo"] path,
-[data-framer-name="Phone Dark"] [data-framer-name="Logo"] path,
-.framer-v-1yl90lf [data-framer-name="Logo"] path,
-.framer-v-385mce [data-framer-name="Logo"] path,
-.framer-v-1qojn0s [data-framer-name="Logo"] path {
-  fill: #1A241E !important;
-  transition: fill 0.2s ease-in-out;
-}
 
-.logo-light-text [data-framer-name="Logo"] path,
-.logo-light-text #svg-1334768056_3843 path,
-[data-framer-name="Logo"].logo-light-text path {
-  fill: #FFF0CA !important;
-  transition: fill 0.2s ease-in-out;
-}
-</style>
-<script id="grand-contrast-switcher-script">
-(function(){
-  var lastIsLight = null;
-  function updateLogoColorClass(){
-    var isMobile = window.innerWidth <= 810;
-    var x = isMobile ? 50 : 110;
-    var y = isMobile ? 24 : 50;
-    var isLight = false;
 
-    var navWrapper = document.querySelector('header, [data-framer-name="Navbar Wrapper"], [data-framer-name="Mobile Navbar"]');
-    if (navWrapper) {
-      var navBg = window.getComputedStyle(navWrapper).backgroundColor;
-      var pNav = navBg ? navBg.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/) : null;
-      if (pNav) {
-        var navLum = 0.299 * (+pNav[1]) + 0.587 * (+pNav[2]) + 0.114 * (+pNav[3]);
-        if (navLum > 140) isLight = true;
-      }
-    }
-
-    if (!isLight) {
-      var els = document.elementsFromPoint(x, y) || [];
-      for(var i = 0; i < els.length; i++){
-        var el = els[i];
-        if(el.closest && el.closest('header, [data-framer-name="Navbar Wrapper"], [data-framer-name="Mobile Navbar"]')) continue;
-        if(el.matches && el.matches('[data-theme="light"], .light-section, [data-bg="light"]') || (el.closest && el.closest('[data-theme="light"], .light-section, [data-bg="light"]'))){
-          isLight = true;
-          break;
-        }
-        var bg = window.getComputedStyle(el).backgroundColor;
-        if(bg && bg !== 'rgba(0, 0, 0, 0)' && bg !== 'transparent'){
-          var p = bg.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?/);
-          if(p){
-            if(p[4] !== undefined && parseFloat(p[4]) < 0.2) continue;
-            var lum = 0.299 * (+p[1]) + 0.587 * (+p[2]) + 0.114 * (+p[3]);
-            if(lum > 140){
-              isLight = true;
-              break;
-            } else if(lum < 110){
-              isLight = false;
-              break;
-            }
-          }
-        }
-      }
-    }
-
-    if(isLight !== lastIsLight){
-      lastIsLight = isLight;
-      var root = document.documentElement;
-      var logoEls = document.querySelectorAll('[data-framer-name="Logo"]');
-      if(isLight){
-        root.setAttribute('data-logo-theme', 'dark');
-        root.classList.add('logo-dark-text');
-        root.classList.remove('logo-light-text');
-        root.style.setProperty('--grand-logo-color', '#1A241E');
-        logoEls.forEach(function(l){ l.classList.add('logo-dark-text'); l.classList.remove('logo-light-text'); });
-      } else {
-        root.removeAttribute('data-logo-theme');
-        root.classList.add('logo-light-text');
-        root.classList.remove('logo-dark-text');
-        root.style.setProperty('--grand-logo-color', '#FFF0CA');
-        logoEls.forEach(function(l){ l.classList.add('logo-light-text'); l.classList.remove('logo-dark-text'); });
-      }
-    }
-  }
-
-  window.addEventListener('scroll', updateLogoColorClass, { passive: true });
-  window.addEventListener('resize', updateLogoColorClass, { passive: true });
-  if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', updateLogoColorClass);
-  } else {
-    updateLogoColorClass();
-  }
-})();
-</script>
 
   
   
@@ -1112,26 +1014,36 @@ a[data-framer-name="Logo"]::after{content:"";position:absolute;inset:-12px -8px}
 </style>
 <style id="grand-gallery-custom-css">.framer-6rg8a, .framer-6iEzR .framer-6rg8a { justify-content: flex-end !important; }</style>
 <style id="grand-location-contrast-css">
-#bigtext-1 h2 {
+#bigtext-1 h2,
+[data-framer-name="Paragraph"] h2 {
   color: var(--token-a0f3f7f0-2bee-4607-a7b2-647fda358cb3, rgb(14, 18, 1)) !important;
   text-transform: capitalize !important;
-  transition: opacity 0.2s ease-out !important;
+  transition: opacity 0.25s ease-out !important;
+  opacity: 1;
 }
-#bigtext-1 h2 span {
+#bigtext-1 h2 span,
+[data-framer-name="Paragraph"] h2 span {
   color: var(--token-a0f3f7f0-2bee-4607-a7b2-647fda358cb3, rgb(14, 18, 1)) !important;
   text-transform: capitalize !important;
 }
-#bigtext-1 [data-framer-name="Button Wrapper"] {
-  transition: opacity 0.2s ease-out !important;
+#bigtext-1 [data-framer-name="Button Wrapper"],
+[data-framer-name="Paragraph"] [data-framer-name="Button Wrapper"] {
+  transition: opacity 0.25s ease-out !important;
+  opacity: 1;
 }
 #bigtext-1 [data-framer-name="Button Wrapper"] a.framer-vO7O2,
-#bigtext-1 a.dark-btn {
-  background-color: #616452 !important;
+#bigtext-1 a.dark-btn,
+[data-framer-name="Paragraph"] a.dark-btn,
+a.dark-btn {
+  background-color: var(--token-a0f3f7f0-2bee-4607-a7b2-647fda358cb3, rgb(14, 18, 1)) !important;
   color: #FFF0CA !important;
-  border-color: #616452 !important;
+  border-color: var(--token-a0f3f7f0-2bee-4607-a7b2-647fda358cb3, rgb(14, 18, 1)) !important;
+  opacity: 1 !important;
 }
 #bigtext-1 [data-framer-name="Button Wrapper"] a.framer-vO7O2 *,
-#bigtext-1 a.dark-btn * {
+#bigtext-1 a.dark-btn *,
+[data-framer-name="Paragraph"] a.dark-btn *,
+a.dark-btn * {
   color: #FFF0CA !important;
   fill: #FFF0CA !important;
 }
@@ -1168,6 +1080,223 @@ a[data-framer-name="Logo"]::after{content:"";position:absolute;inset:-12px -8px}
 
 
 
+
+
+
+
+
+
+<style id="grand-contrast-switcher-style">
+:root {
+  --grand-logo-color: #FFF0CA;
+}
+
+/* Dark Theme (over Light/Beige/Cream background: Pearl Beige #F3E8CE / #FFF0CA) */
+html.logo-dark-text,
+html[data-logo-theme="dark"],
+body.is-light-theme,
+body[data-theme="light"],
+[data-theme="light"] {
+  --grand-logo-color: #1A241E;
+}
+
+html.logo-dark-text [data-framer-name="Logo"] path,
+html.logo-dark-text #svg-1334768056_3843 path,
+html[data-logo-theme="dark"] [data-framer-name="Logo"] path,
+html[data-logo-theme="dark"] #svg-1334768056_3843 path,
+html[data-logo-theme="dark"] header svg path,
+body.is-light-theme header [data-framer-name="Logo"] path,
+body.is-light-theme #svg-1334768056_3843 path,
+[data-framer-name="Logo"].logo-dark-text path {
+  fill: #1A241E !important;
+  transition: fill 0.25s ease-in-out !important;
+}
+
+/* Light Theme (over Dark background: Dark Green #0E1201 / #1A241E) */
+html.logo-light-text [data-framer-name="Logo"] path,
+html.logo-light-text #svg-1334768056_3843 path,
+html:not([data-logo-theme="dark"]) [data-framer-name="Logo"] path,
+html:not([data-logo-theme="dark"]) #svg-1334768056_3843 path,
+[data-framer-name="Logo"].logo-light-text path {
+  fill: #FFF0CA !important;
+  transition: fill 0.25s ease-in-out !important;
+}
+
+/* Navbar Links & Buttons Adaptation on Light Background */
+html.logo-dark-text header nav [data-rolling-label],
+html[data-logo-theme="dark"] header nav [data-rolling-label],
+body.is-light-theme header nav [data-rolling-label] {
+  color: #1A241E !important;
+  transition: color 0.25s ease-in-out !important;
+}
+
+html.logo-dark-text header nav .framer-1kcv8in,
+html[data-logo-theme="dark"] header nav .framer-1kcv8in,
+body.is-light-theme header nav .framer-1kcv8in {
+  background-color: rgba(26, 36, 30, 0.08) !important;
+  transition: background-color 0.25s ease-in-out !important;
+}
+
+html.logo-dark-text header .framer-1t6aeyj-container a,
+html[data-logo-theme="dark"] header .framer-1t6aeyj-container a,
+body.is-light-theme header .framer-1t6aeyj-container a {
+  background-color: #1A241E !important;
+  color: #FFF0CA !important;
+  transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out !important;
+}
+
+html.logo-dark-text header .framer-1t6aeyj-container a *,
+html[data-logo-theme="dark"] header .framer-1t6aeyj-container a *,
+body.is-light-theme header .framer-1t6aeyj-container a * {
+  color: #FFF0CA !important;
+  fill: #FFF0CA !important;
+}
+
+/* Mobile Menu Button on Light Background */
+html.logo-dark-text .framer-1s5ig4a,
+html[data-logo-theme="dark"] .framer-1s5ig4a,
+body.is-light-theme .framer-1s5ig4a {
+  background-color: rgba(26, 36, 30, 0.08) !important;
+}
+
+html.logo-dark-text .framer-1s5ig4a [data-rolling-label],
+html[data-logo-theme="dark"] .framer-1s5ig4a [data-rolling-label],
+body.is-light-theme .framer-1s5ig4a [data-rolling-label] {
+  color: #1A241E !important;
+}
+</style>
+<script id="grand-contrast-switcher-script">
+(function(){
+  var lastIsLight = null;
+  function updateLogoColorClass(){
+    var isMobile = window.innerWidth <= 810;
+    var x = isMobile ? 50 : 110;
+    var y = isMobile ? 24 : 50;
+    var isLight = false;
+
+    // Signal 1: Framer Body theme class
+    if (document.body.classList.contains('is-light-theme') || 
+        document.body.getAttribute('data-theme') === 'light' ||
+        document.documentElement.getAttribute('data-theme') === 'light') {
+      isLight = true;
+    }
+
+    // Signal 2: Check full-screen Color Change background layer
+    if (!isLight) {
+      var colorChangeV1 = document.querySelector('[data-framer-name="Color Change"] [data-framer-name="Variant 1"], [name="Color Change"] > div');
+      if (colorChangeV1) {
+        var v1Bg = window.getComputedStyle(colorChangeV1).backgroundColor;
+        var pV1 = v1Bg ? v1Bg.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/) : null;
+        if (pV1) {
+          var v1Lum = 0.299 * (+pV1[1]) + 0.587 * (+pV1[2]) + 0.114 * (+pV1[3]);
+          if (v1Lum > 140) isLight = true;
+        }
+      }
+    }
+
+    // Signal 3: Check elements directly under the logo point
+    if (!isLight) {
+      var els = document.elementsFromPoint(x, y) || [];
+      for (var i = 0; i < els.length; i++) {
+        var el = els[i];
+        if (el.closest && el.closest('header, [data-framer-name="Navbar Wrapper"], [data-framer-name="Mobile Navbar"], [data-framer-name="Logo"]')) continue;
+        if (el.matches && el.matches('[data-theme="light"], .light-section, [data-bg="light"]') || 
+           (el.closest && el.closest('[data-theme="light"], .light-section, [data-bg="light"]'))) {
+          isLight = true;
+          break;
+        }
+        var bg = window.getComputedStyle(el).backgroundColor;
+        if (bg && bg !== 'rgba(0, 0, 0, 0)' && bg !== 'transparent') {
+          var p = bg.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?/);
+          if (p) {
+            if (p[4] !== undefined && parseFloat(p[4]) < 0.2) continue;
+            var lum = 0.299 * (+p[1]) + 0.587 * (+p[2]) + 0.114 * (+p[3]);
+            if (lum > 140) {
+              isLight = true;
+              break;
+            } else if (lum < 110) {
+              isLight = false;
+              break;
+            }
+          }
+        }
+      }
+    }
+
+    // Signal 4: Fallback to body / html background
+    if (!isLight) {
+      var bBg = window.getComputedStyle(document.body).backgroundColor;
+      var hBg = window.getComputedStyle(document.documentElement).backgroundColor;
+      var effBg = (bBg && bBg !== 'rgba(0, 0, 0, 0)' && bBg !== 'transparent') ? bBg : hBg;
+      if (effBg) {
+        var pb = effBg.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+        if (pb) {
+          var bLum = 0.299 * (+pb[1]) + 0.587 * (+pb[2]) + 0.114 * (+pb[3]);
+          if (bLum > 140) isLight = true;
+        }
+      }
+    }
+
+    // Signal 5: Fallback to intersecting light sections (Paragraph / Location)
+    if (!isLight) {
+      var lightSecs = document.querySelectorAll('section.framer-179pke1, section.framer-t0nwrn, #bigtext-1, [data-framer-name="Location"]');
+      for (var s = 0; s < lightSecs.length; s++) {
+        var r = lightSecs[s].getBoundingClientRect();
+        if (r.top <= y + 20 && r.bottom >= y - 20) {
+          isLight = true;
+          break;
+        }
+      }
+    }
+
+    if (isLight !== lastIsLight) {
+      lastIsLight = isLight;
+      var root = document.documentElement;
+      var logoEls = document.querySelectorAll('[data-framer-name="Logo"], #svg-1334768056_3843');
+      if (isLight) {
+        root.setAttribute('data-logo-theme', 'dark');
+        root.classList.add('logo-dark-text');
+        root.classList.remove('logo-light-text');
+        root.style.setProperty('--grand-logo-color', '#1A241E');
+        logoEls.forEach(function(l){
+          l.classList.add('logo-dark-text');
+          l.classList.remove('logo-light-text');
+          var p = l.querySelector('path');
+          if (p) p.style.fill = '#1A241E';
+        });
+      } else {
+        root.removeAttribute('data-logo-theme');
+        root.classList.add('logo-light-text');
+        root.classList.remove('logo-dark-text');
+        root.style.setProperty('--grand-logo-color', '#FFF0CA');
+        logoEls.forEach(function(l){
+          l.classList.add('logo-light-text');
+          l.classList.remove('logo-dark-text');
+          var p = l.querySelector('path');
+          if (p) p.style.fill = '#FFF0CA';
+        });
+      }
+    }
+  }
+
+  window.addEventListener('scroll', updateLogoColorClass, { passive: true });
+  window.addEventListener('resize', updateLogoColorClass, { passive: true });
+  setInterval(updateLogoColorClass, 100);
+
+  if (window.__lenis) {
+    try { window.__lenis.on('scroll', updateLogoColorClass); } catch(e){}
+  }
+
+  var obs = new MutationObserver(updateLogoColorClass);
+  obs.observe(document.body, { attributes: true, attributeFilter: ['class', 'style'] });
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', updateLogoColorClass);
+  } else {
+    updateLogoColorClass();
+  }
+})();
+</script>
 <style id="grand-locked-header-and-gallery-css">
 /* --- 1. Extracted Base Header CSS from index.html --- */
 .framer-zrroz .framer-bg7hsc{height:110px;overflow:var(--overflow-clip-fallback,clip);z-index:10;flex-flow:row;flex:none;place-content:center;align-items:center;gap:12px;width:100%;padding:0;display:flex;position:fixed;top:0;left:0%}
@@ -1845,10 +1974,39 @@ body.grand-user-scrolled header [data-framer-name="Menu Button"] {
     }
   }
 
+  // 5. Accurate Location & Open in Maps overlap fade: ONLY dims when physically overlapping the floating navbar
+  function initLocationOverlap() {
+    function onLocScroll() {
+      var navWrapper = document.querySelector('header[data-framer-name="Navbar Wrapper"], header');
+      var navHeight = (navWrapper && navWrapper.offsetHeight > 0) ? navWrapper.offsetHeight : 110;
+      var locH = Array.from(document.querySelectorAll('h2')).find(function(h) {
+        return h.textContent.trim() === 'Location' && h.offsetParent !== null;
+      });
+      var btnWrap = document.querySelector('a.dark-btn, [data-framer-name="Dark"]');
+      
+      if (locH) {
+        var rH = locH.getBoundingClientRect();
+        var hOverlaps = (rH.top < navHeight && rH.bottom > 15);
+        locH.style.opacity = hOverlaps ? '0.5' : '1';
+      }
+      
+      if (btnWrap) {
+        var rB = btnWrap.getBoundingClientRect();
+        var bOverlaps = (rB.top < navHeight && rB.bottom > 15);
+        btnWrap.style.opacity = bOverlaps ? '0.5' : '1';
+      }
+    }
+    window.addEventListener('scroll', onLocScroll, { passive: true });
+    window.addEventListener('resize', onLocScroll, { passive: true });
+    setInterval(onLocScroll, 100);
+    onLocScroll();
+  }
+
   function initAll() {
     initMobileMenu();
     initGalleryParallax();
     initFooterObserver();
+    initLocationOverlap();
   }
 
   if (document.readyState === 'loading') {
@@ -1891,7 +2049,7 @@ body.grand-user-scrolled header [data-framer-name="Menu Button"] {
   <div class="framer-fg60rc" data-framer-name="Button Wrapper">
     <div class="ssr-variant">
       <div class="framer-x8prs8-container">
-        <a class="framer-vO7O2 framer-9t14z3 framer-v-1lavhxb framer-1swxj4p dark-btn" data-framer-name="Dark" href="https://maps.app.goo.gl/94Dr1K1iPbZ3kR117" target="_blank" rel="noopener" style="backdrop-filter:none;background-color:#616452 !important;color:#FFF0CA !important;opacity:1 !important;corner-shape:superellipse(1);-webkit-backdrop-filter:none;border-radius:2px;display:inline-flex;align-items:center;text-decoration:none;">
+        <a class="framer-vO7O2 framer-9t14z3 framer-v-1lavhxb framer-1swxj4p dark-btn" data-framer-name="Dark" href="https://maps.app.goo.gl/94Dr1K1iPbZ3kR117" target="_blank" rel="noopener" style="backdrop-filter:none;background-color:var(--token-a0f3f7f0-2bee-4607-a7b2-647fda358cb3, rgb(14, 18, 1)) !important;color:#FFF0CA !important;opacity:1 !important;corner-shape:superellipse(1);-webkit-backdrop-filter:none;border-radius:2px;display:inline-flex;align-items:center;text-decoration:none;">
           <div class="framer-10dp641" data-framer-name="Nav Link">
             <div class="framer-nbr5p7-container" data-code-component-plugin-id="api">
               <span data-rolling-label style="font-family:&quot;Lay Grotesk Regular&quot;, &quot;Lay Grotesk Regular Placeholder&quot;, sans-serif;font-size:calc(17px * (1 - var(--casa-phone, 0)) + 15px * var(--casa-phone, 0));font-style:normal;font-weight:400;letter-spacing:0px;line-height:1.2em;color:var(--token-8ecd7124-9686-4bd8-bf72-4f81314652d2, #FFF0CA);position:relative;display:inline-block;overflow:hidden;white-space:nowrap;width:max-content;margin:0;user-select:none;vertical-align:top">
@@ -2203,7 +2361,7 @@ footer.framer-18na9ah a:hover {
                 <script type="framer/appear" id="__framer__breakpoints">[{"hash":"1azqig2","mediaQuery":"(min-width: 1600px)"},{"hash":"1l94oxb","mediaQuery":"(min-width: 810px) and (max-width: 1599.98px)"},{"hash":"u6hac7","mediaQuery":"(max-width: 809.98px)"}]</script><script data-framer-appear-animation="no-preference">(()=>{function c(i,o,s){if(window.__framer_disable_appear_effects_optimization__||typeof animator>"u")return;let e={detail:{bg:document.hidden}};requestAnimationFrame(()=>{let a="framer-appear-start";performance.mark(a,e),animator.animateAppearEffects(JSON.parse(window.__framer__appearAnimationsContent.text),(m,p,d)=>{let t=document.querySelector(m);if(t)for(let[r,f]of Object.entries(p))animator.startOptimizedAppearAnimation(t,r,f,d[r])},i,o,s&&window.matchMedia("(prefers-reduced-motion:reduce)").matches===!0,animator.getActiveVariantHash(JSON.parse(window.__framer__breakpoints.text)));let n="framer-appear-end";performance.mark(n,e),performance.measure("framer-appear",{start:a,end:n,detail:e.detail})})}return c})()("data-framer-appear-id","__Appear_Animation_Transform__",false)</script>
 	<script>typeof document<"u"&&(window.process={...window.process,env:{...window.process?.env,NODE_ENV:"production"}});</script>
 	<link rel="modulepreload" fetchpriority="low" href="https://framerusercontent.com/sites/1bk9uGIcxVnDnwzQnwlcko/rolldown-runtime.Dh6celcD.mjs"><link rel="modulepreload" fetchpriority="low" href="https://framerusercontent.com/sites/1bk9uGIcxVnDnwzQnwlcko/react.B9w3jIah.mjs"><link rel="modulepreload" fetchpriority="low" href="https://framerusercontent.com/sites/1bk9uGIcxVnDnwzQnwlcko/framer.CBvaWI-C.mjs"><link rel="modulepreload" fetchpriority="low" href="https://framerusercontent.com/sites/1bk9uGIcxVnDnwzQnwlcko/motion.BrA9hX4t.mjs"><link rel="modulepreload" fetchpriority="low" href="https://framerusercontent.com/sites/1bk9uGIcxVnDnwzQnwlcko/Qfj1byi71tPdQnoYA4y--irm47mWrbgiSgyLgjHFTIo.CD9Cffnd.mjs"><link rel="modulepreload" fetchpriority="low" href="https://framerusercontent.com/sites/1bk9uGIcxVnDnwzQnwlcko/shared-lib.DganPNQZ.mjs"><link rel="modulepreload" fetchpriority="low" href="https://framerusercontent.com/sites/1bk9uGIcxVnDnwzQnwlcko/ParallaxImage.B0avVUfL.mjs"><link rel="modulepreload" fetchpriority="low" href="https://framerusercontent.com/sites/1bk9uGIcxVnDnwzQnwlcko/T5PVEAy5F.D5-RUb5a.mjs"><link rel="modulepreload" fetchpriority="low" href="https://framerusercontent.com/sites/1bk9uGIcxVnDnwzQnwlcko/ScrollRadius.DdPK9K17.mjs"><link rel="modulepreload" fetchpriority="low" href="https://framerusercontent.com/sites/1bk9uGIcxVnDnwzQnwlcko/AOQA9ZjYa.CwSXFmg7.mjs"><link rel="modulepreload" fetchpriority="low" href="https://framerusercontent.com/sites/1bk9uGIcxVnDnwzQnwlcko/jbOk_xVr2.BBsl6pQP.mjs"><link rel="modulepreload" fetchpriority="low" href="https://framerusercontent.com/sites/1bk9uGIcxVnDnwzQnwlcko/Booking.DRu38j-Y.mjs"><link rel="modulepreload" fetchpriority="low" href="https://framerusercontent.com/sites/1bk9uGIcxVnDnwzQnwlcko/jtbCAvK2c.BhSg5Qxb.mjs"><link rel="modulepreload" fetchpriority="low" href="https://framerusercontent.com/sites/1bk9uGIcxVnDnwzQnwlcko/dbsvx804WNdcoyICHiKnAT0LKTh0MjYeCDXHPRahIqA.w9X-iUdY.mjs"><div id="svg-templates" style="position: absolute; overflow: hidden; bottom: 0; left: 0; width: 0; height: 0; z-index: 0; contain: strict" aria-hidden="true">
-<svg viewBox="0 0 216.285 27" overflow="visible" id="svg-1334768056_3843"><path d="M 10.098 3.136 L 10.422 3.136 L 10.422 22.494 L 9.088 26.567 L 16.262 26.567 L 14.928 22.494 L 14.928 3.136 L 15.252 3.136 C 18.713 3.136 21.309 3.965 23.796 5.371 L 24.625 0.432 L 0.725 0.432 L 1.590 5.371 C 4.042 3.965 6.673 3.136 10.098 3.136 M 29.127 4.470 L 29.127 22.494 L 27.794 26.567 L 34.967 26.567 L 33.633 22.494 L 33.633 12.797 L 36.085 12.797 C 39.509 12.797 42.069 13.626 44.520 14.996 L 44.520 22.494 L 43.186 26.567 L 50.360 26.567 L 49.026 22.494 L 49.026 4.470 L 50.360 0.432 L 43.186 0.432 L 44.520 4.470 L 44.520 10.454 L 33.633 10.454 L 33.633 4.470 L 34.967 0.432 L 27.794 0.432 M 55.006 4.470 L 55.006 22.494 L 53.673 26.567 L 71.805 26.567 L 70.940 21.592 C 68.488 23.034 65.857 23.863 62.432 23.863 L 59.512 23.863 L 59.512 13.229 C 62.108 13.482 64.235 14.239 66.289 15.428 L 67.118 10.454 L 59.512 10.454 L 59.512 3.136 L 61.819 3.136 C 65.280 3.136 67.876 3.965 70.327 5.371 L 71.192 0.432 L 53.673 0.432 M 108.836 21.989 L 111.359 26.567 L 112.405 26.567 L 112.405 11.138 L 98.526 11.138 L 99.391 16.077 C 101.843 14.671 104.438 13.842 107.899 13.842 L 107.899 15.608 C 107.899 20.114 105.916 24.188 102.023 24.188 C 98.130 24.188 94.669 20.871 93.299 15.644 C 92.903 14.130 92.686 12.725 92.686 11.427 C 92.686 7.426 94.561 4.470 97.949 3.316 C 98.923 2.956 99.932 2.811 100.905 2.811 C 104.186 2.811 107.394 4.578 109.809 7.570 L 109.773 1.874 C 107.646 0.829 104.726 -0.000 101.951 -0.000 L 101.302 -0.000 C 93.984 0.324 88.505 5.551 88.505 13.482 C 88.505 21.448 94.164 27.000 99.968 27.000 C 104.582 27.000 107.358 24.693 108.836 21.989 M 117.376 4.470 L 117.376 22.494 L 116.042 26.567 L 123.215 26.567 L 121.882 22.494 L 121.882 16.546 L 124.802 16.546 L 131.038 26.567 L 136.986 26.567 L 132.840 22.205 L 128.803 15.681 C 132.624 14.996 135.940 12.905 135.940 8.183 C 135.940 3.604 131.723 0.432 126.604 0.432 L 116.042 0.432 M 121.882 13.842 L 121.882 3.136 L 125.739 3.136 C 129.884 3.136 131.434 5.948 131.434 8.651 C 131.434 11.319 129.812 13.842 125.631 13.842 M 142.606 21.917 L 139.830 26.567 L 146.932 26.567 C 146.427 25.197 146.175 23.827 146.175 22.385 C 146.175 21.052 146.391 19.646 146.823 18.132 L 147.400 18.132 C 150.789 18.132 153.384 18.925 155.835 20.331 C 155.944 21.016 156.016 21.701 156.016 22.349 C 156.016 23.827 155.727 25.197 155.223 26.567 L 164.595 26.567 L 161.531 21.917 L 153.528 0.432 L 148.734 0.432 L 149.491 2.415 M 147.652 15.789 L 150.969 6.380 L 154.466 15.789 M 168.809 4.470 L 168.809 22.494 L 167.475 26.567 L 172.847 26.567 L 171.513 22.494 L 171.513 6.596 L 184.562 26.567 L 189.933 26.567 L 188.599 22.494 L 188.599 4.470 L 189.933 0.432 L 184.562 0.432 L 185.896 4.470 L 185.896 20.403 L 172.847 0.432 L 167.475 0.432 M 194.580 4.470 L 194.580 22.494 L 193.246 26.567 L 204.205 26.567 C 210.008 26.567 215.560 20.727 215.560 13.662 C 215.560 5.803 210.657 0.504 204.313 0.432 L 193.246 0.432 M 199.086 3.136 L 203.195 3.136 C 207.413 3.136 211.054 7.209 211.054 13.554 C 211.054 19.898 207.449 23.863 203.304 23.863 L 199.086 23.863" fill="var(--token-8ecd7124-9686-4bd8-bf72-4f81314652d2, rgb(255, 240, 202)) /* {&quot;name&quot;:&quot;Pearl Beige&quot;} */"/></svg>
+<svg viewBox="0 0 216.285 27" overflow="visible" id="svg-1334768056_3843"><path d="M 10.098 3.136 L 10.422 3.136 L 10.422 22.494 L 9.088 26.567 L 16.262 26.567 L 14.928 22.494 L 14.928 3.136 L 15.252 3.136 C 18.713 3.136 21.309 3.965 23.796 5.371 L 24.625 0.432 L 0.725 0.432 L 1.590 5.371 C 4.042 3.965 6.673 3.136 10.098 3.136 M 29.127 4.470 L 29.127 22.494 L 27.794 26.567 L 34.967 26.567 L 33.633 22.494 L 33.633 12.797 L 36.085 12.797 C 39.509 12.797 42.069 13.626 44.520 14.996 L 44.520 22.494 L 43.186 26.567 L 50.360 26.567 L 49.026 22.494 L 49.026 4.470 L 50.360 0.432 L 43.186 0.432 L 44.520 4.470 L 44.520 10.454 L 33.633 10.454 L 33.633 4.470 L 34.967 0.432 L 27.794 0.432 M 55.006 4.470 L 55.006 22.494 L 53.673 26.567 L 71.805 26.567 L 70.940 21.592 C 68.488 23.034 65.857 23.863 62.432 23.863 L 59.512 23.863 L 59.512 13.229 C 62.108 13.482 64.235 14.239 66.289 15.428 L 67.118 10.454 L 59.512 10.454 L 59.512 3.136 L 61.819 3.136 C 65.280 3.136 67.876 3.965 70.327 5.371 L 71.192 0.432 L 53.673 0.432 M 108.836 21.989 L 111.359 26.567 L 112.405 26.567 L 112.405 11.138 L 98.526 11.138 L 99.391 16.077 C 101.843 14.671 104.438 13.842 107.899 13.842 L 107.899 15.608 C 107.899 20.114 105.916 24.188 102.023 24.188 C 98.130 24.188 94.669 20.871 93.299 15.644 C 92.903 14.130 92.686 12.725 92.686 11.427 C 92.686 7.426 94.561 4.470 97.949 3.316 C 98.923 2.956 99.932 2.811 100.905 2.811 C 104.186 2.811 107.394 4.578 109.809 7.570 L 109.773 1.874 C 107.646 0.829 104.726 -0.000 101.951 -0.000 L 101.302 -0.000 C 93.984 0.324 88.505 5.551 88.505 13.482 C 88.505 21.448 94.164 27.000 99.968 27.000 C 104.582 27.000 107.358 24.693 108.836 21.989 M 117.376 4.470 L 117.376 22.494 L 116.042 26.567 L 123.215 26.567 L 121.882 22.494 L 121.882 16.546 L 124.802 16.546 L 131.038 26.567 L 136.986 26.567 L 132.840 22.205 L 128.803 15.681 C 132.624 14.996 135.940 12.905 135.940 8.183 C 135.940 3.604 131.723 0.432 126.604 0.432 L 116.042 0.432 M 121.882 13.842 L 121.882 3.136 L 125.739 3.136 C 129.884 3.136 131.434 5.948 131.434 8.651 C 131.434 11.319 129.812 13.842 125.631 13.842 M 142.606 21.917 L 139.830 26.567 L 146.932 26.567 C 146.427 25.197 146.175 23.827 146.175 22.385 C 146.175 21.052 146.391 19.646 146.823 18.132 L 147.400 18.132 C 150.789 18.132 153.384 18.925 155.835 20.331 C 155.944 21.016 156.016 21.701 156.016 22.349 C 156.016 23.827 155.727 25.197 155.223 26.567 L 164.595 26.567 L 161.531 21.917 L 153.528 0.432 L 148.734 0.432 L 149.491 2.415 M 147.652 15.789 L 150.969 6.380 L 154.466 15.789 M 168.809 4.470 L 168.809 22.494 L 167.475 26.567 L 172.847 26.567 L 171.513 22.494 L 171.513 6.596 L 184.562 26.567 L 189.933 26.567 L 188.599 22.494 L 188.599 4.470 L 189.933 0.432 L 184.562 0.432 L 185.896 4.470 L 185.896 20.403 L 172.847 0.432 L 167.475 0.432 M 194.580 4.470 L 194.580 22.494 L 193.246 26.567 L 204.205 26.567 C 210.008 26.567 215.560 20.727 215.560 13.662 C 215.560 5.803 210.657 0.504 204.313 0.432 L 193.246 0.432 M 199.086 3.136 L 203.195 3.136 C 207.413 3.136 211.054 7.209 211.054 13.554 C 211.054 19.898 207.449 23.863 203.304 23.863 L 199.086 23.863" fill="var(--grand-logo-color, var(--token-8ecd7124-9686-4bd8-bf72-4f81314652d2, rgb(255, 240, 202)))"/></svg>
 <svg viewBox="0 0 10 10" overflow="visible" id="svg-1267704399_390"><path d="M 3 0 L 3 1 L 5.98 1 C 6.83 1 7.26 2.03 6.66 2.63 L 0 9.29 L 0.71 10 L 7.37 3.34 C 7.97 2.74 9 3.16 9 4.02 L 9 7 L 10 7 L 10 0 Z" fill="var(--token-a0f3f7f0-2bee-4607-a7b2-647fda358cb3, rgb(14, 18, 1)) /* {&quot;name&quot;:&quot;Olive&quot;} */"/></svg>
 <svg viewBox="0 0 10 10" overflow="visible" id="svg-219476891_400"><path d="M 3 0 L 3 1 L 5.98 1 C 6.83 1 7.26 2.03 6.66 2.63 L 0 9.29 L 0.71 10 L 7.37 3.34 C 7.97 2.74 9 3.16 9 4.02 L 9 7 L 10 7 L 10 0 Z" fill="var(--token-8ecd7124-9686-4bd8-bf72-4f81314652d2, rgb(255, 240, 202)) /* {&quot;name&quot;:&quot;Pearl Beige&quot;} */"/></svg>
 <svg viewBox="0 0 14 14" overflow="visible" id="svg1411687625_526"><path d="M 14 2 L 14 5 L 13 5 L 13 1 L 9 1 L 9 0 L 12 0 C 13.1 0 14 0.9 14 2 Z M 1 13 L 1 9 L 0 9 L 0 12 C 0 13.1 0.9 14 2 14 L 5 14 L 5 13 Z M 13 13 L 9 13 L 9 14 L 12 14 C 13.1 14 14 13.1 14 12 L 14 9 L 13 9 Z M 0 2 L 0 5 L 1 5 L 1 1 L 5 1 L 5 0 L 2 0 C 0.9 0 0 0.9 0 2 Z" fill="var(--token-a0f3f7f0-2bee-4607-a7b2-647fda358cb3, rgb(14, 18, 1)) /* {&quot;name&quot;:&quot;Olive&quot;} */"/></svg>
@@ -2932,7 +3090,6 @@ footer.framer-18na9ah a:hover {
       window.addEventListener('scroll', onLocScroll, { passive: true });
       window.addEventListener('resize', onLocScroll, { passive: true });
       onLocScroll();
-    }
     }
 
   if (document.readyState === 'loading') {
