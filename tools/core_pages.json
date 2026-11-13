@@ -1,0 +1,105 @@
+[
+  {
+    "src": "archive/upstream_html/cm_about.html",
+    "out": "about.html",
+    "path": "/about",
+    "title": "About The Grand • Premier Event Venues in Lucknow",
+    "desc": "The Grand is a premier event estate in Gomti Nagar, Lucknow: five distinct venues, manicured gardens and 64 guest rooms for weddings and celebrations.",
+    "images": {
+      "Urg4dkPDgTjDQTcsFiBUcAUnQY": "/images/venues/the_grand_courtyard_official.webp",
+      "TFev0KcDs0RM4c4vesBPXCQMpo": "/images/venues/garden_galaxy_official.webp",
+      "yARciMvkc19ipMBRHX0dYXb08": "/images/venues/open_earth_lawn_official.webp",
+      "AEFPssLOe6HfesxbgQodF60IhIg": "/images/hero_bg.webp",
+      "1i2kLqAOiU4EMx2iRruplpXhvgs": "/images/hero_bg.webp",
+      "NVhSQp5HYf1e4Zkg5QjllUhdYXM": "/images/hero_bg.webp",
+      "SaAMBRSDzmk41xPyN78AdKzfnM": "/images/hero_bg.webp"
+    },
+    "plain": [["Loft N°3", "Garden Galaxy"], ["Living Room", "Open-air garden"]],
+    "runs": {
+      "About": "About",
+      "My Philosophy": "Our Philosophy",
+      "I believe a temporary home deserves as much care as your own. That's why every Casa Momo apartment is thoughtfully designed: calm colors, natural materials, clean lines. Aesthetics that don't shout, but stay with you. Nothing more, nothing less. Just what matters.": "We believe a celebration deserves as much care as your own home. That's why every space at The Grand is shaped by nature: open skies, manicured greens, warm light. Elegance that doesn't shout, but stays with you. Nothing more, nothing less. Just what matters.",
+      "Somewhere between quiet minimalism and warm coziness, you'll find a place to arrive, breathe and let go. Not just somewhere to stay, but a small, personal home away from home.": "Somewhere between timeless elegance and the serenity of nature, you'll find a place to gather, celebrate and let go. Not just a venue, but the backdrop for life's most important moments.",
+      "Hi, I'm Moritz": "Welcome to The Grand",
+      "I studied tourism and spent many years working in restaurants, hotels and catering, so I know hospitality from hands-on experience, not just in theory.": "The Grand Lucknow stands in the heart of Lucknow, surrounded by lush greenery and pristine landscapes. Our five distinct venues suit an intimate gathering or a grand celebration, from weddings to corporate events.",
+      "In 2021, I combined it with my second great passion, interior design and Casa Momo was born. I look after my guests personally and I'm happy to help with anything before, during and after your stay. What matters most to me: warmth, comfort and a design you won't find anywhere else.": "Each space blends timeless elegance with modern amenities, complemented by manicured gardens and open-air settings. With 64 guest rooms, 56 double occupancy and 8 family suites, your guests stay right where the celebration happens. What matters most to us: warmth, care and a welcome you won't find anywhere else.",
+      "I look forward to welcoming you to Casa Momo.": "We look forward to welcoming you to The Grand.",
+      "Locations": "Location",
+      "Casa Momo apartments all sit in Graz's historic old town, steps from the sights and the city's two favourite farmers' markets. Old-building charm, boutique comfort, and Graz at its best right outside your window.": "The Grand sits in Gomti Nagar, Lucknow, among manicured lawns and mature palms. Five venues on one estate: open-sky lawns, a courtyard and an indoor banquet hall, all within a short walk of each other."
+    }
+  },
+  {
+    "src": "archive/upstream_html/cm_contact.html",
+    "out": "contact.html",
+    "path": "/contact",
+    "title": "Contact • The Grand Lucknow",
+    "desc": "Questions about our venues, the location or your event? Email or call The Grand Lucknow and we will help you personally.",
+    "images": {
+      "K2SI0qg2wUTh96nxv8SxprMIZGA": "/images/venues/royal_legacy_banquet_official.webp",
+      "AEFPssLOe6HfesxbgQodF60IhIg": "/images/hero_bg.webp",
+      "1i2kLqAOiU4EMx2iRruplpXhvgs": "/images/hero_bg.webp",
+      "NVhSQp5HYf1e4Zkg5QjllUhdYXM": "/images/hero_bg.webp",
+      "SaAMBRSDzmk41xPyN78AdKzfnM": "/images/hero_bg.webp"
+    },
+    "plain": [["Loft N°2", "The Royal Legacy Banquet"], ["Sklum Chair", "Indoor banquet hall"]],
+    "runs": {
+      "Do you have a question about the apartments, the location, or your stay?": "Do you have a question about our venues, the location, or your event?",
+      "Feel free to send me an": "Feel free to send us an",
+      "email": "email",
+      "or give me a call at": "or give us a call at",
+      "+43 664 1999605": "+91 91291 27091",
+      ".": ".",
+      "I'd be happy to help you personally ☺": "We'd be happy to help you personally ☺"
+    }
+  },
+  {
+    "src": "archive/upstream_html/cm_apartments.html",
+    "out": "venues.html",
+    "path": "/venues",
+    "title": "Venues • The Grand Lucknow",
+    "desc": "Explore five distinct celebration venues at The Grand Lucknow: Open Earth Lawn, Grassland Gala, Garden Galaxy, The Grand Courtyard, and The Royal Legacy Banquet.",
+    "isVenues": true,
+    "images": {
+      "FFMB70aKEXAkAkxXAKKQTB8epk": "/images/venues/open_earth_lawn_official.webp",
+      "qwHsbwPqfdWdQUSwIKbIkRdc": "/images/venues/grassland_gala_official.webp",
+      "UayMv2I16UbQQBQkbI90HsJMv5o": "/images/venues/garden_galaxy_official.webp",
+      "yBIxh7LgO2No9HDQ30impB370Y": "/images/venues/the_grand_courtyard_official.webp",
+      "2xHCTBMpXtVodlF5OQINb1IbM": "/images/venues/royal_legacy_banquet_official.webp",
+      "AXYlw7CIyykoBcVsZ7oZjhKyLo": "/images/avatar_1.webp",
+      "fXHMJMUtj5ZLIisCkeThADmEu4": "/images/avatar_2.webp",
+      "dGzaqmqe0buiA6KJq1NmnbiY4": "/images/avatar_3.webp",
+      "S6yAIpkbGOEgEHW0k7BxB4as9Q": "/images/avatar_4.webp",
+      "YtDDSnNTrnTsjZhdcUHaWTN84is": "/images/avatar_5.webp",
+      "yARciMvkc19ipMBRHX0dYXb08": "/images/venues/open_earth_lawn_official.webp",
+      "AEFPssLOe6HfesxbgQodF60IhIg": "/images/hero_bg.webp",
+      "1i2kLqAOiU4EMx2iRruplpXhvgs": "/images/hero_bg.webp",
+      "NVhSQp5HYf1e4Zkg5QjllUhdYXM": "/images/hero_bg.webp",
+      "SaAMBRSDzmk41xPyN78AdKzfnM": "/images/hero_bg.webp"
+    },
+    "plain": [
+      [">Jiyeon</p>", ">Amit Jaiswal</p>"],
+      [">Gary</p>", ">Quausain Raza</p>"],
+      [">Abishek</p>", ">Aditya &amp; Shweta Srivastava</p>"],
+      [">Monika</p>", ">Dr. Utkarsh Verma</p>"],
+      [">Heike</p>", ">Priyanka &amp; Kshitij Mehrotra</p>"],
+      ["Free Parking", "Valet Parking"]
+    ],
+    "runs": {
+      "Apartments": "Venues",
+      "with Soul": "with Soul",
+      "Boutique N°1": "Open Earth Lawn",
+      "Boutique N°2": "Grassland Gala",
+      "Boutique N°3": "Garden Galaxy",
+      "Boutique N°4": "The Grand Courtyard",
+      "Loft N°1": "The Royal Legacy Banquet",
+      "Recent Reviews": "Recent Reviews",
+      "“Moritz is such a gentle and wonderful host! The apartment is absolutely beautiful, cozy, and stylish. It was so lovely that I almost preferred staying in rather than exploring the city. The kitchenware, fridge, and other amenities were well-equipped. If I return to Graz, I will definitely choose this place again!”": "“Our coordinator Abhishek Jaiswal was a true professional throughout our wedding. The spacious ballroom, well-manicured lawns, and attentive management made everything run seamlessly. The best wedding venue in Lucknow.”",
+      "“A family of three adults and one infant stayed at Moritz's Graz apartment for 2 weeks. We were very happy with the amount of space this apartment provided. The location was within walking distance to grocery stores, restaurants and the old town area. Moritz made our stay a pleasure with his thoughtfulness and helpfulness. He was very attentive to any questions we had and provided great recommendations. We have already recommended this Graz property to others.”": "“Best behaviour by The Grand team and the finest venue on Raebareli Road. We booked for our family function and were amazed by their royal hospitality. The owner and planning team welcomed our guests graciously.”",
+      "“I had a truly wonderful experience staying at this flat. The space was clean, well-maintained, and had everything I needed during my time in Graz. The host was responsive and helpful throughout my stay. It's a great location, and I felt very comfortable here. I'd definitely recommend this place to anyone visiting Graz. Thank you for a pleasant and welcoming experience!”": "“We hosted our wedding reception at The Grand Lucknow across the Grassland Gala lawn and banquet. The royal decor, attentive staff, and authentic Awadhi catering left all 800+ guests thoroughly enchanted.”",
+      "“A beautifully renovated, spacious, and airy apartment with phenomenal views; great location close to the old town, train station, and multiple grocery stores (and a number of Christmas markets!). Highly walkable. Moritz was extremely helpful, responsive, and flexible with regards to check-out. The apartment has great amenities and is suitable not only for vacation, but also for remote working, with a couple of desks set up in different locations. I want to come back to Graz just to stay in this apartment again!”": "“Hosted our daughter’s destination wedding here. The Royal Legacy banquet hall combined with the open courtyard gave us complete privacy and seamless transitions between the Sangeet and Pheras. Exceptional hospitality.”",
+      "“Moritz's apartment is fantastic! The location couldn't be better; you can leave your car in the parking space for the entire stay since everything is perfectly within walking distance. Communication with Moritz was seamless, and his recommendations were outstanding. We really enjoyed our time there. Many thanks, Moritz—we'll be back!”": "“Our 3-day wedding celebration at The Grand was nothing short of magical. From the illuminated open lawns to the luxurious bridal suite, every single detail was executed to perfection. Conveniently situated off Shaheed Path.”",
+      "Locations": "Location",
+      "Casa Momo apartments all sit in Graz's historic old town, steps from the sights and the city's two favourite farmers' markets. Old-building charm, boutique comfort, and Graz at its best right outside your window.": "The Grand sits in Gomti Nagar, Lucknow, among manicured lawns and mature palms. Five venues on one estate: open-sky lawns, a courtyard and an indoor banquet hall, all within a short walk of each other."
+    }
+  }
+]

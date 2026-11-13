@@ -1,7 +1,7 @@
 # Context Handover: The Grand Lucknow (Canonical Repository Handover)
 
-**Version:** 3.0 (Multi-Device Institutional Memory Edition)  
-**Date:** 08-Nov-2026  
+**Version:** 4.0 (Full Core-Route Parity & Luxury-Wedding Palette Edition)  
+**Date:** 13-Nov-2026  
 **Repository:** `https://github.com/itsvamhere/the-grand-lucknow` (`main` branch)  
 **Live Production URL:** `https://the-grand-lucknow.vercel.app`  
 **Base Reference Architecture:** 1:1 Strict Clone of Casa Momo (`https://www.casamomo.at`)
@@ -11,13 +11,16 @@
 ## 1. Non-Negotiable Directives & Anti-Improvisation Laws
 
 1. **Strict 1:1 Casa Momo Parity (Zero Improvisation):**
-   - The user has explicitly mandated: **"replicate the home page and subpages as it is without improvising repeatedly, 1:1 copying Casa Momo"**.
-   - Do NOT redesign, do NOT change the palette, typography, layout rhythm, or animations.
-   - We are strictly adapting Casa Momo's authentic high-craft Austrian architectural framework to **The Grand Lucknow** by swapping:
-     - Branding (`THE GRAND` serif SVG logo, uppercase and lowercase replacements).
-     - Color Palette: Dark Olive `#0E1201`, Deep Forest `#161A13`, Warm Beige `#FFF0CA`, Terracotta `#BC6F45` / `#964317`.
-     - Contact & Socials: `office@thegrandlucknow.in`, `+91 91291 27091`, Facebook (`https://www.facebook.com/thegrandlucknow/`), NO LinkedIn.
-     - Attribution: "Built by Edifice" (`https://elvar.in/edifice`).
+   - Replicate the home page, core routes (`/venues`, `/about`, `/contact`), venue subpages (`/venues/<slug>`), and booking route (`/book/venue`) 1:1 from Casa Momo's authentic layout, typography, spacing, and motion physics while keeping 100% of our own Lucknow context and assets.
+   - **Luxury-Wedding Palette (Derived from `thegrandlucknow.in`):**
+     - Ground Ink: `#121110` (`rgb(18, 17, 16)`) — replaces Casa Momo `#0E1201` / `#10231D`
+     - Raised Surface: `#1C1A17` (`rgb(28, 26, 23)`) — replaces `#1A241E` / `#161A13` / `#1A1F0B`
+     - Pearl Ivory: `#F6EEDC` (`rgb(246, 238, 220)`) — replaces `#FFF0CA` / `#F3ECDD` (16.4:1 contrast on `#121110`)
+     - Antique Bronze (Footer Face & Accents): `#8A6212` (`rgb(138, 98, 18)`) — replaces `#BC6F45` / `#C2653A` (4.7:1 AA contrast with `#F6EEDC`)
+     - Deep Bronze (Footer Outer Band): `#6B4A0C` (`rgb(107, 74, 12)`) — replaces `#964317`
+     - Antique Gold (Focus & Selection): `#D9A520`
+   - **Contact & Socials:** `Thegrandbanquet07@gmail.com`, `+91 91291 27091`, Instagram (`https://www.instagram.com/thegrand.lucknow/`), Facebook (`https://www.facebook.com/thegrandlucknow/`), NO LinkedIn.
+   - **Attribution:** "Built by Edifice" (`https://elvar.in/edifice`).
 
 2. **The 5 Verified Venues (Strict Authority):**
    The Grand Lucknow has exactly **5 verified venues**. Do NOT invent or keep any other venue:
@@ -47,32 +50,10 @@
      - URL: `/venues/the-royal-legacy-banquet`
      - Context: Regal pillarless indoor banquet hall with soaring ceilings, crystal chandeliers, and advanced acoustics.
 
-3. **Subpage UI/UX Rules:**
-   - **Location Heading Fade:** The "Location" heading on cream background is `#0E1201` (opacity `1`) and dims to `0.45` **ONLY** during physical intersection/overlap with the floating sticky navbar logo.
-   - **Sticky Button Stacking:** The sticky "Check Availability" button floats with `z-index: 40 !important` and sits cleanly above the map pin marker (`z-index: 2`).
-   - **Sticky Button Link:** On every subpage, the sticky button links to `/book/venue?venue=<slug>`:
-     - `open-earth-lawn.html` -> `/book/venue?venue=open-earth-lawn`
-     - `grassland-gala.html` -> `/book/venue?venue=grassland-gala`
-     - `garden-galaxy.html` -> `/book/venue?venue=garden-galaxy`
-     - `the-grand-courtyard.html` -> `/book/venue?venue=the-grand-courtyard`
-     - `the-royal-legacy-banquet.html` -> `/book/venue?venue=the-royal-legacy-banquet`
-   - **Footer:** 108 KB Casa Momo terracotta footer with `#964317` background and 270px rolling serif ticker (`THE GRAND`).
-
-4. **Check Availability Dedicated Page (`/book/venue`):**
-   - Base template: Casa Momo's authentic booking experience (`tools/casamomo_book_page.html`).
-   - H1: `Check Availability` in Lay Grotesk Regular.
-   - Search Bar: `ARRIVAL` (Add date), `DEPARTURE` (Add date), `GUESTS` (Capacity/Guests), `Search ↗` button.
-   - Interactive 2-month Calendar Dropdown (`November 2026` & `December 2026`):
-     - Anchored directly under `Arrival` / `Departure` with `z-index: 10000 !important`.
-     - Struck-through past dates, active future dates.
-     - Terracotta range highlight `#BC6F45`.
-     - Toggles on `Arrival` or `Departure` click.
-   - Selected Venue Card:
-     - Preloads based on `?venue=<slug>` (e.g. `/book/venue?venue=grassland-gala`).
-     - Shows verified photo, title, size badge, capacity badge, and authentic description.
-     - Status: "Choose your dates to see the price" -> "Available for [Dates]".
-     - CTA: `Check dates ↗` / `Inquire for Dates ↗` (opens WhatsApp `+91 91291 27091` or direct call).
-   - Other Venues List: Allows visitors to browse and switch between the other 4 venues directly on the page.
+3. **Subpage & Core Route UI/UX Rules:**
+   - **Gallery Corners & Mobile Grid:** Gallery images maintain `0px` border-radius (`maxRadius = 0`) matching Casa Momo, and use a 4-column CSS grid on mobile (`<= 809.98px`) with a `12px` gutter (`grid-column: 1 / span 3` odd, `2 / span 3` even).
+   - **Full-Bleed Footer Ticker:** `footer.framer-18na9ah .framer-n49p1z { width: 100vw !important; max-width: none !important; }` so `THE GRAND` bleeds edge-to-edge on all viewports.
+   - **Sticky Button Link:** On every subpage, the sticky button links directly to `/book/venue?venue=<slug>` (no fake payment modal).
 
 ---
 
@@ -80,19 +61,25 @@
 
 | File / Path | Purpose |
 | :--- | :--- |
-| `index.html` | Canonical home page with verified 5-venue cards, estate map, and 108 KB terracotta footer. |
-| `venues.html` | Venues gallery and overview page. |
+| `index.html` | Canonical home page with verified 5-venue cards, estate map, and antique bronze footer. |
+| `venues.html` | 1:1 Casa Momo `/apartments` layout adapted for our 5 venues (`Venues with Soul`), GMB reviews, and Location section. |
+| `about.html` | 1:1 Casa Momo `/about` layout with our philosophy, 64-room estate overview, scale-up photography, and Location section. |
+| `contact.html` | 1:1 Casa Momo `/contact` layout with our direct phone, email, and Gomti Nagar / Raibareli Rd address. |
 | `venues/<slug>.html` | Dedicated subpages for all 5 verified venues. |
-| `book/venue.html` | Authentic Casa Momo check availability booking page. |
-| `book/apartment.html` | Parity alias for `/book/venue.html`. |
-| `vercel.json` | Clean URLs, trailing slashes, and rewrites for all venues and booking paths. |
-| `server.mjs` | Local development server on port 3003 with dynamic text swaps. |
-| `tools/generate_5_venue_subpages.mjs` | Master script to generate all 5 verified subpages and their aliases. |
-| `tools/build_booking_page.mjs` | Master script to assemble `book/venue.html` from `casamomo_book_page.html`. |
+| `book/venue.html` | Authentic check availability booking page wrapped in our canonical navbar + footer shell. |
+| `tools/build_core_pages.mjs` | Builds `about.html`, `contact.html`, and `venues.html` from `tools/core_pages.json` + `tools/motion_engine.js`. |
+| `tools/apply_edge_fix.mjs` | Injects `<style id="grand-edge-fix">` (100vw footer ticker, 4-col mobile gallery gutter, mobile footer email fit). |
+| `tools/apply_palette.mjs` | Idempotent token mapper applying `#121110` / `#1C1A17` / `#F6EEDC` / `#8A6212` / `#6B4A0C` / `#D9A520` across all HTML/MJS/CSS. |
+| `tools/clean_all.mjs` | Cleans venue subpages, `index.html`, `scripts/*.mjs`, and rebuilds `book/venue.html` in the canonical shell. |
 
 ---
 
 ## 3. Operational CLI Commands (For Any New Device)
+
+### Rebuild & Apply Palette:
+```bash
+node tools/clean_all.mjs && node tools/build_core_pages.mjs && node tools/apply_edge_fix.mjs && node tools/apply_palette.mjs
+```
 
 ### Start Dev Server:
 ```bash

@@ -135,8 +135,10 @@ const server = http.createServer(async (req, res) => {
   if (cleanUrl.includes('&scale-down-to=')) {
     cleanUrl = cleanUrl.split('&scale-down-to=')[0];
   }
-  let reqPath = decodeURI(cleanUrl);
-  if (reqPath === '/' || reqPath === '') reqPath = '/index.html';
+  let reqPath = decodeURI(cleanUrl).replace(/\/+$/, '');
+  if (reqPath === '') reqPath = '/index.html';
+  if (reqPath === '/apartments') reqPath = '/venues.html';
+  if (reqPath === '/book') reqPath = '/book/venue.html';
 
   const filePath = path.join(__dirname, reqPath.replace(/^\//, ''));
 

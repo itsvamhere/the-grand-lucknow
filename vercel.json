@@ -3,6 +3,26 @@
   "trailingSlash": false,
   "rewrites": [
     {
+      "source": "/about",
+      "destination": "/about.html"
+    },
+    {
+      "source": "/contact",
+      "destination": "/contact.html"
+    },
+    {
+      "source": "/venues",
+      "destination": "/venues.html"
+    },
+    {
+      "source": "/apartments",
+      "destination": "/venues.html"
+    },
+    {
+      "source": "/book",
+      "destination": "/book/venue.html"
+    },
+    {
       "source": "/book/venue",
       "destination": "/book/venue.html"
     },
