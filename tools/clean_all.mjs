@@ -19,6 +19,7 @@ const STRUCTURED_DATA = `<script type="application/ld+json" id="grand-structured
 const CANONICAL_SHELL = rd('venues/open-earth-lawn.html');
 const contrastScriptMatch = CANONICAL_SHELL.match(/<script id="grand-contrast-switcher-script">[\s\S]*?<\/script>/);
 const lockedCssMatch = CANONICAL_SHELL.match(/<style id="grand-locked-header-and-gallery-css">[\s\S]*?<\/style>/);
+const universalFooterMatch = CANONICAL_SHELL.match(/<style id="universal-grand-footer-styles">[\s\S]*?<\/style>/);
 const mapCursorCssMatch = CANONICAL_SHELL.match(/<style id="grand-map-cursor-style">[\s\S]*?<\/style>/);
 const navControllerMatch = CANONICAL_SHELL.match(/<script id="grand-nav-and-gallery-controller">[\s\S]*?<\/script>/);
 
@@ -29,6 +30,9 @@ for (const v of CANONICAL_VENUES) {
   }
   if (lockedCssMatch) {
     h = h.replace(/<style id="grand-locked-header-and-gallery-css">[\s\S]*?<\/style>/, () => lockedCssMatch[0]);
+  }
+  if (universalFooterMatch) {
+    h = h.replace(/<style id="universal-grand-footer-styles">[\s\S]*?<\/style>/, () => universalFooterMatch[0]);
   }
   if (mapCursorCssMatch) {
     h = h.replace(/<style id="grand-map-cursor-style">[\s\S]*?<\/style>/, () => mapCursorCssMatch[0]);

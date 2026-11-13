@@ -185,6 +185,7 @@ function build(cfg) {
     order: 99 !important;
   }
   [data-framer-name="Reviews"] .framer-rntb33::-webkit-scrollbar { display: none; }
+  [data-framer-name="Reviews"] p.framer-text { line-height: 1.45em !important; overflow: visible !important; }
   .framer-KzfvT .framer-84xumc { display: none !important; }
 </style>`;
 

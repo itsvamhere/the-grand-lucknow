@@ -439,6 +439,12 @@ a[data-framer-name="Logo"]::after{content:"";position:absolute;inset:-12px -8px}
 
 
 
+
+
+
+
+
+
 <style id="grand-edge-fix">
 /* Footer ticker: bleed to both screen edges (escape the footer's side padding / 1600px cap) */
 footer.framer-18na9ah .framer-n49p1z { width: 100vw !important; max-width: none !important; flex: none !important; }
@@ -461,10 +467,10 @@ footer.framer-18na9ah, [data-framer-name="Footer"] { order: 99 !important; }
   /* Mobile home hero: ensure full-bleed cover image & push title clear of fixed header */
   section.framer-1xtxml1, section.framer-1xtxml1 .framer-1rl0m2f-container, section.framer-1xtxml1 .framer-153bgu-container { min-height: 100svh !important; }
   section.framer-1xtxml1 img { object-fit: cover !important; object-position: center center !important; width: 100% !important; height: 100% !important; }
-  section.framer-1xtxml1 .framer-1ao0xob, section.framer-1xtxml1 h1 { padding-top: 76px !important; }
+  section.framer-1xtxml1 .framer-1ao0xob, section.framer-1xtxml1 h1, section.framer-1xtxml1 .framer-jt1ryb { padding-top: 68px !important; }
 }
 </style>
-<style id="grand-palette">:root{--grand-ink:#121110;--grand-ivory:#F6EEDC;--grand-gold:#D9A520;--token-86299043-b8f8-4618-9585-4835ac76e9b7:#1C1A17!important}::selection{background:#D9A520;color:#121110}:focus-visible{outline:2px solid #D9A520!important;box-shadow:0 0 0 4px #121110!important}footer.framer-18na9ah{background-color:#121110!important;color:#F6EEDC!important}footer.framer-18na9ah .framer-zHQwT{background-color:#1C1A17!important;border-top:1px solid rgba(217,165,32,0.22)!important}footer.framer-18na9ah p,footer.framer-18na9ah span,footer.framer-18na9ah a{color:#F6EEDC!important}footer.framer-18na9ah a:hover{color:#D9A520!important}</style>
+<style id="grand-palette">:root{--grand-ink:#121110;--grand-ivory:#F6EEDC;--grand-gold:#D9A520;--token-86299043-b8f8-4618-9585-4835ac76e9b7:#BC6F45!important}::selection{background:#D9A520;color:#121110}:focus-visible{outline:2px solid #D9A520!important;box-shadow:0 0 0 4px #121110!important}footer.framer-18na9ah{background-color:#964317!important;color:#F6EEDC!important}footer.framer-18na9ah .framer-zHQwT{background-color:#BC6F45!important;border-top:none!important}footer.framer-18na9ah p,footer.framer-18na9ah span,footer.framer-18na9ah a{color:#F6EEDC!important}footer.framer-18na9ah a:hover{opacity:0.8!important}</style>
 </head>
 <body>
 	<script async src="https://events.framer.com/script?v=2" data-fid="aacc1bcd51c21d4e5f0f9eea55ea52c774ac22da802921e664781a6fafe691ab" data-no-nt></script>
@@ -1007,12 +1013,36 @@ footer.framer-18na9ah, [data-framer-name="Footer"] { order: 99 !important; }
 
 
 
+
+
+
+
+
+
 <style id="grand-home-menu-fix">
+body:not(.grand-home-ready):not(.casa-menu-open) header {
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+header {
+  transition: opacity 0.4s ease;
+}
+body.grand-home-ready:not(.grand-home-scrolled):not(.casa-menu-open) header .framer-4iomze,
+body.grand-home-ready:not(.grand-home-scrolled):not(.casa-menu-open) header [data-framer-name="Logo"] {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: opacity 0.3s ease;
+}
 @media (max-width: 809.98px) {
-  header .framer-4iomze,
-  header [data-framer-name="Mobile Navbar"] [data-framer-name="Logo"] {
+  body.grand-home-ready.grand-home-scrolled header .framer-4iomze,
+  body.casa-menu-open header .framer-4iomze,
+  body.grand-home-ready header .framer-1s5ig4a,
+  body.casa-menu-open header .framer-1s5ig4a,
+  body.grand-home-ready.grand-home-scrolled header [data-framer-name="Mobile Navbar"] [data-framer-name="Logo"],
+  body.casa-menu-open header [data-framer-name="Mobile Navbar"] [data-framer-name="Logo"] {
     opacity: 1 !important;
     visibility: visible !important;
+    pointer-events: auto !important;
     z-index: 10002 !important;
   }
   body.casa-menu-open header .framer-4iomze,
@@ -1064,6 +1094,33 @@ footer.framer-18na9ah, [data-framer-name="Footer"] { order: 99 !important; }
 <script id="grand-venue-names-sync">
 (function() {
   'use strict';
+  function markHomeReady() { document.body && document.body.classList.add('grand-home-ready'); }
+  var readyPoll = setInterval(function() {
+    var heroPs = document.querySelectorAll('section.framer-1xtxml1 p.framer-text');
+    for (var i = 0; i < heroPs.length; i++) {
+      if (heroPs[i].textContent.trim() === 'THE') {
+        var r = heroPs[i].getBoundingClientRect();
+        if (r.width > 0 && r.top >= 0 && r.top < 120) {
+          markHomeReady();
+          clearInterval(readyPoll);
+          return;
+        }
+      }
+    }
+  }, 150);
+  setTimeout(function() { markHomeReady(); clearInterval(readyPoll); }, 5500);
+  function syncHomeScroll() {
+    if (!document.body) return;
+    if (window.scrollY > 40) {
+      document.body.classList.add('grand-home-scrolled');
+      markHomeReady();
+      clearInterval(readyPoll);
+    } else {
+      document.body.classList.remove('grand-home-scrolled');
+    }
+  }
+  window.addEventListener('scroll', syncHomeScroll, { passive: true });
+  syncHomeScroll();
 
   // 1. Native bypass of Framer SPA router for all local routes so navbar, mobile menu, footer, and cards navigate cleanly
   document.addEventListener('click', function(e) {

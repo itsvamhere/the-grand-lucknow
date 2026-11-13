@@ -25,7 +25,7 @@ footer.framer-18na9ah, [data-framer-name="Footer"] { order: 99 !important; }
   /* Mobile home hero: ensure full-bleed cover image & push title clear of fixed header */
   section.framer-1xtxml1, section.framer-1xtxml1 .framer-1rl0m2f-container, section.framer-1xtxml1 .framer-153bgu-container { min-height: 100svh !important; }
   section.framer-1xtxml1 img { object-fit: cover !important; object-position: center center !important; width: 100% !important; height: 100% !important; }
-  section.framer-1xtxml1 .framer-1ao0xob, section.framer-1xtxml1 h1 { padding-top: 76px !important; }
+  section.framer-1xtxml1 .framer-1ao0xob, section.framer-1xtxml1 h1, section.framer-1xtxml1 .framer-jt1ryb { padding-top: 68px !important; }
 }
 </style>`;
 
