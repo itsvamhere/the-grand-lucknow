@@ -292,7 +292,7 @@ function build(cfg) {
   if (cfg.isVenues && !h.includes('id="svg1083848285_386"')) {
     h = h.replace(
       /(<div id="svg-templates"[^>]*>)/,
-      `$1<svg viewBox="0 0 13 12" overflow="visible" id="svg1083848285_386"><path d="M 2.482 12 L 3.562 7.566 L 0 4.584 L 4.66 4.184 L 6.5 0 L 8.34 4.206 L 13 4.584 L 9.437 7.566 L 10.518 12 L 6.5 9.647 Z" fill="#121110"/></svg>`
+      `$1<svg viewBox="0 0 13 12" overflow="visible" id="svg1083848285_386"><path d="M 2.482 12 L 3.562 7.566 L 0 4.584 L 4.66 4.184 L 6.5 0 L 8.34 4.206 L 13 4.584 L 9.437 7.566 L 10.518 12 L 6.5 9.647 Z" fill="#C2653A"/></svg>`
     );
   }
 
@@ -370,7 +370,7 @@ function build(cfg) {
   .framer-c0inle .framer-1rijfwf-container ul { display: flex !important; flex-direction: row !important; gap: 48px !important; width: max-content !important; align-items: center !important; }
   .framer-c0inle .framer-cglexk { display: flex !important; flex-flow: row !important; align-items: flex-start !important; gap: 16px !important; width: max-content !important; }
   .framer-c0inle .framer-ummqnj { display: flex !important; flex-flow: row !important; align-items: center !important; padding: 12px 0 0 !important; }
-  .framer-c0inle .framer-1di46j5 { display: flex !important; align-items: center !important; justify-content: center !important; width: 29px !important; height: 29px !important; background-color: rgba(189, 131, 70, 0.1) !important; border-radius: 2px !important; }
+  .framer-c0inle .framer-1di46j5 { display: flex !important; align-items: center !important; justify-content: center !important; width: 29px !important; height: 29px !important; background-color: rgba(194, 101, 58, 0.14) !important; border-radius: 2px !important; color: #C2653A !important; }
   .framer-c0inle .framer-1kifrs3,
   .framer-c0inle .framer-nBufg,
   .framer-c0inle .framer-kplnyi-container,
