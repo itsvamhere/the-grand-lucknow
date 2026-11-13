@@ -89,6 +89,123 @@ function customizeVenuesMain(main) {
   return main.slice(0, secS) + grid + main.slice(secE);
 }
 
+const HOME = rd('index.html');
+
+function extractBalanced(html, marker, tagName) {
+  const start = html.indexOf(marker);
+  if (start === -1) return null;
+  let depth = 0;
+  const re = new RegExp(`<\\/?${tagName}\\b[^>]*>`, 'gi');
+  re.lastIndex = start;
+  let m;
+  while ((m = re.exec(html))) {
+    if (m[0].startsWith('</')) depth--;
+    else if (!m[0].endsWith('/>')) depth++;
+    if (depth === 0) return html.slice(start, re.lastIndex);
+  }
+  return null;
+}
+
+function extractHomeCssForBlock(blockHtml) {
+  const clsSet = new Set([...blockHtml.matchAll(/\bframer-[A-Za-z0-9_-]+\b/g)].map(m => m[0]));
+  const styleMatch = HOME.match(/<style data-framer-css-ssr-minified[^>]*>([\s\S]*?)<\/style>/);
+  if (!styleMatch) return '';
+  const css = styleMatch[1];
+  function filterCss(str) {
+    const out = [];
+    let i = 0;
+    while (i < str.length) {
+      while (i < str.length && /\s/.test(str[i])) i++;
+      if (i >= str.length) break;
+      const brace = str.indexOf('{', i);
+      if (brace === -1) break;
+      const head = str.slice(i, brace).trim();
+      let d = 1, j = brace + 1;
+      while (j < str.length && d > 0) {
+        if (str[j] === '{') d++;
+        else if (str[j] === '}') d--;
+        j++;
+      }
+      const body = str.slice(brace + 1, j - 1);
+      if (head.startsWith('@media') || head.startsWith('@supports') || head.startsWith('@layer')) {
+        const inner = filterCss(body);
+        if (inner) out.push(`${head}{${inner}}`);
+      } else if (!head.startsWith('@')) {
+        const classes = head.match(/\bframer-[A-Za-z0-9_-]+\b/g) || [];
+        if (classes.some(c => clsSet.has(c))) out.push(`${head}{${body}}`);
+      }
+      i = j;
+    }
+    return out.join('\n');
+  }
+  return filterCss(css).replace(/\.framer-zrroz\b/g, '.framer-eIM4l');
+}
+
+const GMB_REVIEWS = [
+  {
+    author: 'Amit Jaiswal',
+    avatar: '/images/avatar_1.webp',
+    text: '“Our coordinator Abhishek Jaiswal was a true professional throughout our wedding. The spacious ballroom, well-manicured lawns, and attentive management made everything run seamlessly. The best wedding venue in Lucknow.”',
+  },
+  {
+    author: 'Quausain Raza',
+    avatar: '/images/avatar_2.webp',
+    text: '“Best behaviour by The Grand team and the finest venue on Raebareli Road. We booked for our family function and were amazed by their royal hospitality. The owner and planning team welcomed our guests graciously.”',
+  },
+  {
+    author: 'Aditya & Shweta Srivastava',
+    avatar: '/images/avatar_3.webp',
+    text: '“We hosted our wedding reception at The Grand Lucknow across the Grassland Gala lawn and banquet. The royal decor, attentive staff, and authentic Awadhi catering left all 800+ guests thoroughly enchanted.”',
+  },
+  {
+    author: 'Dr. Utkarsh Verma',
+    avatar: '/images/avatar_4.webp',
+    text: '“Hosted our daughter’s destination wedding here. The Royal Legacy banquet hall combined with the open courtyard gave us complete privacy and seamless transitions between the Sangeet and Pheras. Exceptional hospitality.”',
+  },
+  {
+    author: 'Priyanka & Kshitij Mehrotra',
+    avatar: '/images/avatar_5.webp',
+    text: '“Our 3-day wedding celebration at The Grand was nothing short of magical. From the illuminated open lawns to the luxurious bridal suite, every single detail was executed to perfection. Conveniently situated off Shaheed Path.”',
+  },
+];
+
+function syncReviewsHtml(revHtml) {
+  if (!revHtml) return revHtml;
+  const cards = [...revHtml.matchAll(/<div class="framer-[^"]+-container" data-framer-name="Review Card"[^>]*>/g)];
+  if (!cards.length) return revHtml;
+  let out = '';
+  let last = 0;
+  cards.forEach((m, i) => {
+    const start = m.index;
+    const end = i + 1 < cards.length ? cards[i + 1].index : revHtml.length;
+    out += revHtml.slice(last, start);
+    let card = revHtml.slice(start, end);
+    const rev = GMB_REVIEWS[i % GMB_REVIEWS.length];
+    card = card.replace(
+      /(<div class="framer-kplnyi-container"[^>]*>[\s\S]*?<p[^>]*>)[\s\S]*?(<\/p>)/,
+      `$1<span style="display:inline;font-family:inherit;font-size:inherit;line-height:inherit;color:inherit;">${esc(rev.text)}</span>$2`
+    );
+    card = card.replace(
+      /(<div class="framer-p9tssz"[^>]*>[\s\S]*?<p[^>]*>)[\s\S]*?(<\/p>)/,
+      `$1${esc(rev.author)}$2`
+    );
+    card = card.replace(
+      /(<div class="framer-15rwswu"[\s\S]*?<img[^>]*src=")[^"]*("[^>]*alt=")[^"]*(")/,
+      `$1${rev.avatar}$2${esc(rev.author)}$3`
+    );
+    out += card;
+    last = end;
+  });
+  return out + revHtml.slice(last);
+}
+
+const HOME_REVIEWS = syncReviewsHtml(extractBalanced(HOME, '<div class="framer-c0inle" data-framer-name="Reviews">', 'div'));
+const SHELL_LOC_HDR = extractBalanced(SHELL, '<section class="framer-179pke1" data-framer-name="Paragraph" id="bigtext-1">', 'section');
+const SHELL_LOC_MAP = extractBalanced(SHELL, '<div data-cursor="Show on Maps" style="display:contents">', 'div');
+const SHELL_LOCATION = (SHELL_LOC_HDR && SHELL_LOC_MAP) ? `${SHELL_LOC_HDR}\n${SHELL_LOC_MAP}` : null;
+const HOME_MAP_STYLES = (HOME.match(/<style id="grand-map-styles">[\s\S]*?<\/style>/) || [''])[0];
+const HOME_PULSE_STYLES = (HOME.match(/<style id="grand-pulse">[\s\S]*?<\/style>/) || [''])[0];
+
 function build(cfg) {
   const log = [];
   const raw = rd(cfg.src);
@@ -110,6 +227,27 @@ function build(cfg) {
     return k ? t.replace(/ alt="[^"]*"/, ` alt="${ALT[k]}"`).replace(/ alt(?=\s|>)/, ` alt="${ALT[k]}"`) : t;
   });
   for (const [a, b] of cfg.plain) src = src.split(a).join(b);
+
+  let homeSectionCss = '';
+  if ((cfg.out === 'venues.html' || cfg.out === 'about.html') && HOME_REVIEWS) {
+    const revMarker = src.match(/<div class="framer-[^"]+" data-framer-name="Reviews">/);
+    if (revMarker) {
+      const oldRev = extractBalanced(src, revMarker[0], 'div');
+      if (oldRev) {
+        src = src.replace(oldRev, HOME_REVIEWS);
+        homeSectionCss += extractHomeCssForBlock(HOME_REVIEWS);
+      }
+    }
+  }
+  if (cfg.out === 'venues.html' && SHELL_LOCATION) {
+    const locMarker = src.match(/<section class="framer-[^"]+" data-framer-name="Locations"[^>]*>/);
+    if (locMarker) {
+      const oldLoc = extractBalanced(src, locMarker[0], 'section');
+      if (oldLoc) {
+        src = src.replace(oldLoc, SHELL_LOCATION);
+      }
+    }
+  }
 
   // Replace slot-machine rolling label "Book Your Stay" -> "Plan Your Event"
   src = src.replace(
@@ -184,8 +322,32 @@ function build(cfg) {
   footer.framer-18na9ah, [data-framer-name="Footer"] {
     order: 99 !important;
   }
-  [data-framer-name="Reviews"] .framer-rntb33::-webkit-scrollbar { display: none; }
-  [data-framer-name="Reviews"] p.framer-text { line-height: 1.45em !important; overflow: visible !important; }
+  [data-framer-name="Reviews"] div, [data-framer-name="Reviews"] ul, [data-framer-name="Reviews"] section { opacity: 1 !important; }
+  [data-framer-name="Reviews"] .framer-rntb33::-webkit-scrollbar,
+  [data-framer-name="Reviews"] .framer-srbp5x::-webkit-scrollbar { display: none; }
+  .framer-c0inle { padding: 120px 48px !important; gap: 48px !important; }
+  .framer-c0inle > div:first-child { margin-bottom: 24px !important; }
+  .framer-179pke1 { padding: 96px 48px 36px !important; display: flex !important; flex-direction: column !important; gap: 24px !important; width: 100% !important; box-sizing: border-box !important; }
+  .framer-s6uv36-container { width: 100% !important; height: 100% !important; position: relative !important; }
+  .framer-c0inle .framer-1kifrs3,
+  .framer-c0inle .framer-nBufg,
+  .framer-c0inle .framer-kplnyi-container,
+  .framer-c0inle [data-framer-name="Review Card"] p { height: auto !important; max-height: none !important; overflow: visible !important; line-height: 1.45em !important; }
+  .framer-c0inle .framer-srbp5x, .framer-c0inle .framer-rntb33 { overflow-x: auto !important; scrollbar-width: none !important; }
+  .framer-c0inle .framer-srbp5x > ul, .framer-c0inle .framer-rntb33 > ul { display: flex !important; flex-direction: row !important; gap: 12px !important; width: max-content !important; }
+  .framer-c0inle .framer-amv6x5-container,
+  .framer-c0inle .framer-12ujrw1-container,
+  .framer-c0inle .framer-267b4q-container,
+  .framer-c0inle .framer-wgrd7x-container,
+  .framer-c0inle .framer-18i3o5j-container { width: 532px !important; flex: 0 0 532px !important; }
+  @media (max-width: 809.98px) {
+    .framer-c0inle { padding: 48px 12px !important; }
+    .framer-c0inle .framer-amv6x5-container,
+    .framer-c0inle .framer-12ujrw1-container,
+    .framer-c0inle .framer-267b4q-container,
+    .framer-c0inle .framer-wgrd7x-container,
+    .framer-c0inle .framer-18i3o5j-container { width: 300px !important; flex: 0 0 300px !important; }
+  }
   .framer-KzfvT .framer-84xumc { display: none !important; }
 </style>`;
 
@@ -199,7 +361,7 @@ function build(cfg) {
     .replace(/(<link rel="canonical" href=")[^"]*/, `$1${U}`)
     .replace(/(<meta name="twitter:title" content=")[^"]*/, `$1${cfg.title}`)
     .replace(/(<meta name="twitter:description" content=")[^"]*/, `$1${cfg.desc}`)
-    .replace('</head>', () => `${extraCss}\n</head>`);
+    .replace('</head>', () => `${homeSectionCss ? `<style id="grand-home-sections-css">${homeSectionCss}</style>\n${HOME_MAP_STYLES}\n${HOME_PULSE_STYLES}\n` : ''}${extraCss}\n</head>`);
 
   h = h.replace('</body>', () => `<script type="application/json" id="grand-shell-breakpoints">${shellBpJson}</script>\n<script id="grand-motion-engine">\n${MOTION}</script>\n</body>`);
   // Enforce strictly 1 <h1> per page (convert secondary responsive variant <h1> to <p role="heading" aria-level="1">)
