@@ -1917,6 +1917,32 @@ body.grand-user-scrolled header [data-framer-name="Menu Button"] {
   opacity: 1;
 }
 
+.mc-ch-wrap {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  line-height: 1.2em;
+}
+.mc-ch {
+  display: inline-block;
+  white-space: pre;
+  transform: translateY(115%);
+  transition: transform 0.42s cubic-bezier(0.22, 1, 0.36, 1) calc(var(--i, 0) * 0.015s);
+}
+.grand-map-cursor.is-active .mc-ch,
+[data-morph-cursor].is-text-active .mc-ch {
+  transform: translateY(0%);
+}
+[data-morph-cursor] svg {
+  transform: translate(-4px, 4px);
+  opacity: 0;
+  transition: transform 0.34s cubic-bezier(0.22, 1, 0.36, 1) 0.05s, opacity 0.24s ease 0.05s;
+}
+[data-morph-cursor].is-text-active svg {
+  transform: translate(0, 0);
+  opacity: 1;
+}
+
 @media (pointer: fine) and (min-width: 810px) {
   a.grand-map-link,
   a.grand-map-link * {
@@ -2285,6 +2311,23 @@ button:hover [data-rolling-label] span[aria-hidden="true"] > span:nth-child(3),
           t.style.transition = 'opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1)';
           t.style.opacity = '1';
           t.style.transform = 'none';
+          var lbl = t.querySelector('[data-rolling-label]');
+          if (lbl) {
+            lbl.querySelectorAll('span[aria-hidden="true"]').forEach(function(cs, idx) {
+              var sub = cs.querySelectorAll(':scope > span');
+              if (sub.length >= 3) {
+                var d = (0.12 + idx * 0.018).toFixed(3) + 's';
+                sub[1].style.transition = 'transform 0.45s cubic-bezier(0.22, 1, 0.36, 1) ' + d;
+                sub[2].style.transition = 'transform 0.45s cubic-bezier(0.22, 1, 0.36, 1) ' + d;
+                sub[1].style.transform = 'translateY(-100%)';
+                sub[2].style.transform = 'translateY(0%)';
+                setTimeout(function() {
+                  sub[1].style.transform = 'translateY(0%)';
+                  sub[2].style.transform = 'translateY(100%)';
+                }, 700 + idx * 18);
+              }
+            });
+          }
         }
       });
     }
@@ -2324,6 +2367,14 @@ button:hover [data-rolling-label] span[aria-hidden="true"] > span:nth-child(3),
     var mapLink = document.querySelector('a.grand-map-link');
     var cursor = document.getElementById('grand-map-cursor');
     if (!mapLink || !cursor) return;
+    var mapTxtSpan = cursor.querySelector('span');
+    if (mapTxtSpan && !mapTxtSpan.dataset.split) {
+      mapTxtSpan.dataset.split = '1';
+      var raw = mapTxtSpan.textContent || 'Show on Maps';
+      mapTxtSpan.innerHTML = Array.from(raw).map(function(ch, i) {
+        return '<span class="mc-ch-wrap"><span class="mc-ch" style="--i:' + i + '">' + (ch === ' ' ? '&nbsp;' : ch) + '</span></span>';
+      }).join('');
+    }
 
     var isHovered = false;
     var targetX = 0, targetY = 0;
@@ -2483,7 +2534,16 @@ button:hover [data-rolling-label] span[aria-hidden="true"] > span:nth-child(3),
       var customEl = target.closest('[data-cursor], [data-cursor-text]');
       var customTxt = customEl ? (customEl.getAttribute('data-cursor') || customEl.getAttribute('data-cursor-text') || '').trim() : '';
       if (customTxt) {
-        if (txtEl) txtEl.textContent = customTxt;
+        if (txtEl && txtEl.dataset.lastTxt !== customTxt) {
+          txtEl.dataset.lastTxt = customTxt;
+          el.classList.remove('is-text-active');
+          txtEl.innerHTML = Array.from(customTxt).map(function(ch, i) {
+            return '<span class="mc-ch-wrap"><span class="mc-ch" style="--i:' + i + '">' + (ch === ' ' ? '&nbsp;' : ch) + '</span></span>';
+          }).join('');
+          requestAnimationFrame(function() { requestAnimationFrame(function() { el.classList.add('is-text-active'); }); });
+        } else if (!el.classList.contains('is-text-active')) {
+          el.classList.add('is-text-active');
+        }
         if (inner) inner.style.opacity = '1';
         el.style.width = 'auto';
         el.style.height = '32px';
@@ -2493,6 +2553,8 @@ button:hover [data-rolling-label] span[aria-hidden="true"] > span:nth-child(3),
         el.style.backgroundColor = '#121110';
         el.style.color = '#FFF0CA';
       } else if (target.closest('a, button, [role="button"], input, select, textarea, [data-highlight="true"]')) {
+        el.classList.remove('is-text-active');
+        if (txtEl) txtEl.dataset.lastTxt = '';
         if (inner) inner.style.opacity = '0';
         el.style.width = '44px';
         el.style.height = '44px';
@@ -2501,6 +2563,8 @@ button:hover [data-rolling-label] span[aria-hidden="true"] > span:nth-child(3),
         el.style.mixBlendMode = 'normal';
         el.style.backgroundColor = 'rgba(255,240,202, 0.22)';
       } else {
+        el.classList.remove('is-text-active');
+        if (txtEl) txtEl.dataset.lastTxt = '';
         if (inner) inner.style.opacity = '0';
         el.style.width = '10px';
         el.style.height = '10px';
@@ -2531,6 +2595,8 @@ button:hover [data-rolling-label] span[aria-hidden="true"] > span:nth-child(3),
   setTimeout(initAll, 1000);
 })();
 </script>
+
+
 
 
 
