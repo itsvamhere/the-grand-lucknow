@@ -47,7 +47,7 @@ let files = 0, subs = 0;
     for (const [re, to] of MAP) h = h.replace(re, (...a) => (n++, typeof to === 'function' ? to(a) : to));
     if (f.endsWith('.html')) {
       h = h.replace(/<style id="grand-palette">[\s\S]*?<\/style>/, '');
-      h = h.replace('</head>', `<style id="grand-palette">:root{--grand-ink:${P.ink};--grand-ivory:${P.ivory};--grand-gold:${P.gold};--token-86299043-b8f8-4618-9585-4835ac76e9b7:${P.inkRaised}!important}::selection{background:${P.gold};color:${P.ink}}:focus-visible{outline:2px solid ${P.gold}!important;box-shadow:0 0 0 4px ${P.ink}!important}footer.framer-18na9ah{background-color:${P.ink}!important;color:${P.ivory}!important}footer.framer-18na9ah .framer-zHQwT{background-color:${P.inkRaised}!important;border-top:1px solid rgba(217,165,32,0.22)!important}footer.framer-18na9ah a:hover{color:${P.gold}!important}</style>\n</head>`);
+      h = h.replace('</head>', `<style id="grand-palette">:root{--grand-ink:${P.ink};--grand-ivory:${P.ivory};--grand-gold:${P.gold};--token-86299043-b8f8-4618-9585-4835ac76e9b7:${P.inkRaised}!important}::selection{background:${P.gold};color:${P.ink}}:focus-visible{outline:2px solid ${P.gold}!important;box-shadow:0 0 0 4px ${P.ink}!important}footer.framer-18na9ah{background-color:${P.ink}!important;color:${P.ivory}!important}footer.framer-18na9ah .framer-zHQwT{background-color:${P.inkRaised}!important;border-top:1px solid rgba(217,165,32,0.22)!important}footer.framer-18na9ah p,footer.framer-18na9ah span,footer.framer-18na9ah a{color:${P.ivory}!important}footer.framer-18na9ah a:hover{color:${P.gold}!important}</style>\n</head>`);
     }
     writeFileSync(p, h); files++; subs += n;
   }

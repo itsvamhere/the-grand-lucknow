@@ -66,6 +66,9 @@ for (const v of CANONICAL_VENUES) {
        .replace(/>Places<\/span><\/span>(\s*<!-- -->\s*<span[^>]*><span[^>]*>)to(<\/span><\/span>\s*<!-- -->\s*<span[^>]*><span[^>]*>)Stay<\/span><\/span>/g, '>Grand</span></span>$1Event$2Venues</span></span>')
        .replace(/<span style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect\(0 0 0 0\);white-space:nowrap;border:0">All Apartments<\/span>(?:<span aria-hidden="true"[\s\S]*?<\/span><\/span>){14}/g, () => makeRollingText('All Venues'));
 
+  let h1Count = 0;
+  h = h.replace(/<h1(\b[^>]*)>([\s\S]*?)<\/h1>/gi, (m, attrs, inner) => (++h1Count === 1 ? m : `<p role="heading" aria-level="1"${attrs}>${inner}</p>`));
+
   wr(v.file, h);
   for (const alias of v.aliases) {
     wr(alias, h);
@@ -229,6 +232,7 @@ for (const v of CANONICAL_VENUES) {
     const orig = s;
     s = s.replaceAll('https://casa-momo-booking.casamomo.workers.dev', '/api/booking')
          .replaceAll('office@casamomo.at', 'Thegrandbanquet07@gmail.com')
+         .replaceAll('office@thegrandlucknow.in', 'Thegrandbanquet07@gmail.com')
          .replaceAll('Casa Momo', 'The Grand')
          .replaceAll('casamomo.at', 'thegrandlucknow.in')
          .replaceAll('#casamomo', '#thegrandlucknow')
@@ -316,6 +320,8 @@ for (const v of CANONICAL_VENUES) {
        .replace('</head>', () => `${bookExtraCss}\n</head>`)
        .replace('</body>', () => `<script type="application/json" id="grand-shell-breakpoints">${shellBpJson}</script>\n<script id="grand-motion-engine">\n${MOTION}</script>\n${bookCtrl}\n</body>`);
 
+  let bookH1Count = 0;
+  h = h.replace(/<h1(\b[^>]*)>([\s\S]*?)<\/h1>/gi, (m, attrs, inner) => (++bookH1Count === 1 ? m : `<p role="heading" aria-level="1"${attrs}>${inner}</p>`));
   wr('book/venue.html', h);
   wr('book/apartment.html', h);
   console.log('rebuilt book/venue.html & book/apartment.html:', h.length, 'bytes');

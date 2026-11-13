@@ -201,6 +201,9 @@ function build(cfg) {
     .replace('</head>', () => `${extraCss}\n</head>`);
 
   h = h.replace('</body>', () => `<script type="application/json" id="grand-shell-breakpoints">${shellBpJson}</script>\n<script id="grand-motion-engine">\n${MOTION}</script>\n</body>`);
+  // Enforce strictly 1 <h1> per page (convert secondary responsive variant <h1> to <p role="heading" aria-level="1">)
+  let h1Seen = 0;
+  h = h.replace(/<h1(\b[^>]*)>([\s\S]*?)<\/h1>/gi, (m, attrs, inner) => (++h1Seen === 1 ? m : `<p role="heading" aria-level="1"${attrs}>${inner}</p>`));
   fs.writeFileSync(cfg.out, h);
   const left = [...h.matchAll(/casa ?momo|moritz|graz\b|nexene|sklum/gi)].map(m => m[0]);
   console.log(cfg.out, h.length, 'bytes; leftover:', left.length ? [...new Set(left)].join(',') : 'none', log.length ? '\n  ' + log.join('\n  ') : '');
