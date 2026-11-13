@@ -200,11 +200,13 @@ function syncReviewsHtml(revHtml) {
 }
 
 const HOME_REVIEWS = syncReviewsHtml(extractBalanced(HOME, '<div class="framer-c0inle" data-framer-name="Reviews">', 'div'));
-const SHELL_LOC_HDR = extractBalanced(SHELL, '<section class="framer-179pke1" data-framer-name="Paragraph" id="bigtext-1">', 'section');
-const SHELL_LOC_MAP = extractBalanced(SHELL, '<div data-cursor="Show on Maps" style="display:contents">', 'div');
-const SHELL_LOCATION = (SHELL_LOC_HDR && SHELL_LOC_MAP) ? `${SHELL_LOC_HDR}\n${SHELL_LOC_MAP}` : null;
+const HOME_LOCATIONS = extractBalanced(HOME, '<section class="framer-10bxu26" data-framer-name="Locations" id="locations-1">', 'section');
 const HOME_MAP_STYLES = (HOME.match(/<style id="grand-map-styles">[\s\S]*?<\/style>/) || [''])[0];
 const HOME_PULSE_STYLES = (HOME.match(/<style id="grand-pulse">[\s\S]*?<\/style>/) || [''])[0];
+const HOME_MAPLIBRE_HEAD = `<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" />\n${HOME_MAP_STYLES}`;
+const _mlStart = HOME.indexOf('<script src="https://unpkg.com/maplibre-gl');
+const _mlEnd = _mlStart !== -1 ? HOME.indexOf('</script>', HOME.indexOf('initMap()', _mlStart)) + 9 : -1;
+const HOME_MAPLIBRE_BODY = (_mlStart !== -1 && _mlEnd > _mlStart) ? HOME.slice(_mlStart, _mlEnd) : '';
 
 function build(cfg) {
   const log = [];
@@ -239,12 +241,13 @@ function build(cfg) {
       }
     }
   }
-  if (cfg.out === 'venues.html' && SHELL_LOCATION) {
+  if (cfg.out === 'venues.html' && HOME_LOCATIONS) {
     const locMarker = src.match(/<section class="framer-[^"]+" data-framer-name="Locations"[^>]*>/);
     if (locMarker) {
       const oldLoc = extractBalanced(src, locMarker[0], 'section');
       if (oldLoc) {
-        src = src.replace(oldLoc, SHELL_LOCATION);
+        src = src.replace(oldLoc, HOME_LOCATIONS);
+        homeSectionCss += '\n' + extractHomeCssForBlock(HOME_LOCATIONS);
       }
     }
   }
@@ -289,7 +292,7 @@ function build(cfg) {
   if (cfg.isVenues && !h.includes('id="svg1083848285_386"')) {
     h = h.replace(
       /(<div id="svg-templates"[^>]*>)/,
-      `$1<svg viewBox="0 0 13 12" overflow="visible" id="svg1083848285_386"><path d="M 2.482 12 L 3.562 7.566 L 0 4.584 L 4.66 4.184 L 6.5 0 L 8.34 4.206 L 13 4.584 L 9.437 7.566 L 10.518 12 L 6.5 9.647 Z" fill="#D9A520"/></svg>`
+      `$1<svg viewBox="0 0 13 12" overflow="visible" id="svg1083848285_386"><path d="M 2.482 12 L 3.562 7.566 L 0 4.584 L 4.66 4.184 L 6.5 0 L 8.34 4.206 L 13 4.584 L 9.437 7.566 L 10.518 12 L 6.5 9.647 Z" fill="#121110"/></svg>`
     );
   }
 
@@ -307,14 +310,51 @@ function build(cfg) {
        .replace(/(class="framer-1fslfdg framer-fx9txd" data-framer-name="Nav Link" href=")\/contact(")/g, '$1/book/venue$2')
        .replace(/(class="framer-vO7O2[^"]*"[^>]*data-framer-name="White"[^>]*href=")\/contact(")/g, '$1/book/venue$2');
 
-  // Route-specific CSS fixes (ensure Locations & Reviews sections sit on ivory #F6EEDC background, have dark headings, and Footer stays last in mobile flex layouts)
+  // Route-specific CSS fixes (ensure Locations & Reviews sections sit on ivory #FFF0CA background, have dark headings, and Footer stays last in mobile flex layouts)
   const extraCss = `<style id="grand-core-route-fixes">
   [data-framer-name="Reviews"],
   [data-framer-name="Locations"],
-  #locations {
-    background-color: var(--token-8ecd7124-9686-4bd8-bf72-4f81314652d2, #F6EEDC) !important;
+  #locations, #locations-1 {
+    background-color: #FFF0CA !important;
+  }
+  .framer-10bxu26 {
+    display: flex !important;
+    flex-flow: column !important;
+    align-items: flex-start !important;
+    gap: 32px !important;
+    width: 100% !important;
+    padding: 160px 48px 64px !important;
+    box-sizing: border-box !important;
+  }
+  .framer-10bxu26 .framer-esm2r {
+    display: flex !important;
+    flex-flow: row !important;
+    align-items: flex-end !important;
+    justify-content: space-between !important;
+    gap: 24px !important;
+    width: 100% !important;
+  }
+  .framer-10bxu26 .framer-1ma6wfx {
+    display: flex !important;
+    flex-flow: column !important;
+    flex: 1 0 0 !important;
+    gap: 24px !important;
+  }
+  .framer-10bxu26 .framer-1esgfsu {
+    aspect-ratio: 1 !important;
+    height: auto !important;
+    flex: 1 0 0 !important;
+    width: 1px !important;
+    min-height: 500px !important;
+    position: relative !important;
+  }
+  @media (max-width: 809.98px) {
+    .framer-10bxu26 { padding: 48px 12px 40px !important; gap: 24px !important; }
+    .framer-10bxu26 .framer-esm2r { flex-flow: column !important; align-items: stretch !important; }
+    .framer-10bxu26 .framer-1esgfsu { flex: none !important; width: 100% !important; order: 0 !important; min-height: 360px !important; }
   }
   #locations h2, #locations h2 span,
+  #locations-1 h2, #locations-1 h2 span,
   [data-framer-name="Locations"] h2, [data-framer-name="Locations"] h2 span,
   [data-framer-name="Reviews"] h2, [data-framer-name="Reviews"] h2 span {
     color: var(--token-a0f3f7f0-2bee-4607-a7b2-647fda358cb3, #121110) !important;
@@ -325,23 +365,25 @@ function build(cfg) {
   [data-framer-name="Reviews"] div, [data-framer-name="Reviews"] ul, [data-framer-name="Reviews"] section { opacity: 1 !important; }
   [data-framer-name="Reviews"] .framer-rntb33::-webkit-scrollbar,
   [data-framer-name="Reviews"] .framer-srbp5x::-webkit-scrollbar { display: none; }
-  .framer-c0inle { padding: 120px 48px !important; gap: 48px !important; }
-  .framer-c0inle > div:first-child { margin-bottom: 24px !important; }
-  .framer-179pke1 { padding: 96px 48px 36px !important; display: flex !important; flex-direction: column !important; gap: 24px !important; width: 100% !important; box-sizing: border-box !important; }
-  .framer-s6uv36-container { width: 100% !important; height: 100% !important; position: relative !important; }
+  .framer-c0inle { padding: 120px 0 !important; gap: 48px !important; overflow: hidden !important; }
+  .framer-c0inle .framer-1rijfwf-container { width: 100% !important; height: auto !important; overflow: hidden !important; }
+  .framer-c0inle .framer-1rijfwf-container ul { display: flex !important; flex-direction: row !important; gap: 48px !important; width: max-content !important; align-items: center !important; }
+  .framer-c0inle .framer-cglexk { display: flex !important; flex-flow: row !important; align-items: flex-start !important; gap: 16px !important; width: max-content !important; }
+  .framer-c0inle .framer-ummqnj { display: flex !important; flex-flow: row !important; align-items: center !important; padding: 12px 0 0 !important; }
+  .framer-c0inle .framer-1di46j5 { display: flex !important; align-items: center !important; justify-content: center !important; width: 29px !important; height: 29px !important; background-color: rgba(189, 131, 70, 0.1) !important; border-radius: 2px !important; }
   .framer-c0inle .framer-1kifrs3,
   .framer-c0inle .framer-nBufg,
   .framer-c0inle .framer-kplnyi-container,
   .framer-c0inle [data-framer-name="Review Card"] p { height: auto !important; max-height: none !important; overflow: visible !important; line-height: 1.45em !important; }
-  .framer-c0inle .framer-srbp5x, .framer-c0inle .framer-rntb33 { overflow-x: auto !important; scrollbar-width: none !important; }
-  .framer-c0inle .framer-srbp5x > ul, .framer-c0inle .framer-rntb33 > ul { display: flex !important; flex-direction: row !important; gap: 12px !important; width: max-content !important; }
+  .framer-c0inle .framer-srbp5x, .framer-c0inle .framer-rntb33 { width: 100% !important; overflow: hidden !important; scrollbar-width: none !important; }
+  .framer-c0inle .framer-srbp5x > ul, .framer-c0inle .framer-rntb33 > ul { display: flex !important; flex-direction: row !important; gap: 12px !important; width: max-content !important; will-change: transform !important; }
   .framer-c0inle .framer-amv6x5-container,
   .framer-c0inle .framer-12ujrw1-container,
   .framer-c0inle .framer-267b4q-container,
   .framer-c0inle .framer-wgrd7x-container,
   .framer-c0inle .framer-18i3o5j-container { width: 532px !important; flex: 0 0 532px !important; }
   @media (max-width: 809.98px) {
-    .framer-c0inle { padding: 48px 12px !important; }
+    .framer-c0inle { padding: 48px 0 !important; }
     .framer-c0inle .framer-amv6x5-container,
     .framer-c0inle .framer-12ujrw1-container,
     .framer-c0inle .framer-267b4q-container,
@@ -351,8 +393,47 @@ function build(cfg) {
   .framer-KzfvT .framer-84xumc { display: none !important; }
 </style>`;
 
+  const reviewsMarqueeScript = (cfg.out === 'venues.html' || cfg.out === 'about.html') ? `<script id="grand-reviews-marquee">
+(function(){
+  function runMarquee(ul, speed, gap, pauseOnHover) {
+    if (!ul || ul.dataset.marqueeInit === '1') return;
+    var orig = Array.from(ul.children);
+    if (!orig.length) return;
+    ul.dataset.marqueeInit = '1';
+    for (var r = 0; r < 3; r++) orig.forEach(function(li) { ul.appendChild(li.cloneNode(true)); });
+    var offset = 0, paused = false;
+    if (pauseOnHover) {
+      ul.addEventListener('mouseenter', function(){ paused = true; });
+      ul.addEventListener('mouseleave', function(){ paused = false; });
+    }
+    function step() {
+      if (!paused) {
+        offset -= speed;
+        var first = ul.firstElementChild;
+        var w = first ? (first.getBoundingClientRect().width + gap) : 544;
+        if (w > 0 && Math.abs(offset) >= w) {
+          offset += w;
+          ul.appendChild(first);
+        }
+        ul.style.transform = 'translateX(' + offset.toFixed(2) + 'px)';
+      }
+      requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  function init() {
+    document.querySelectorAll('.framer-c0inle .framer-1rijfwf-container ul').forEach(function(ul){ runMarquee(ul, 0.75, 48, false); });
+    document.querySelectorAll('.framer-c0inle .framer-srbp5x > ul, .framer-c0inle .framer-rntb33 > ul').forEach(function(ul){ runMarquee(ul, 0.55, 12, true); });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+</script>` : '';
+
   // Head meta
   const U = 'https://the-grand-lucknow.vercel.app' + cfg.path;
+  const mapHead = cfg.out === 'venues.html' ? `${HOME_MAPLIBRE_HEAD}\n` : `${HOME_MAP_STYLES}\n`;
+  const mapBody = cfg.out === 'venues.html' ? `${HOME_MAPLIBRE_BODY}\n` : '';
   h = h.replace(/<title>[\s\S]*?<\/title>/, `<title>${cfg.title}</title>`)
     .replace(/(<meta name="description" content=")[^"]*/, `$1${cfg.desc}`)
     .replace(/(<meta property="og:title" content=")[^"]*/, `$1${cfg.title}`)
@@ -361,9 +442,9 @@ function build(cfg) {
     .replace(/(<link rel="canonical" href=")[^"]*/, `$1${U}`)
     .replace(/(<meta name="twitter:title" content=")[^"]*/, `$1${cfg.title}`)
     .replace(/(<meta name="twitter:description" content=")[^"]*/, `$1${cfg.desc}`)
-    .replace('</head>', () => `${homeSectionCss ? `<style id="grand-home-sections-css">${homeSectionCss}</style>\n${HOME_MAP_STYLES}\n${HOME_PULSE_STYLES}\n` : ''}${extraCss}\n</head>`);
+    .replace('</head>', () => `${homeSectionCss ? `<style id="grand-home-sections-css">${homeSectionCss}</style>\n${mapHead}${HOME_PULSE_STYLES}\n` : ''}${extraCss}\n</head>`);
 
-  h = h.replace('</body>', () => `<script type="application/json" id="grand-shell-breakpoints">${shellBpJson}</script>\n<script id="grand-motion-engine">\n${MOTION}</script>\n</body>`);
+  h = h.replace('</body>', () => `<script type="application/json" id="grand-shell-breakpoints">${shellBpJson}</script>\n<script id="grand-motion-engine">\n${MOTION}</script>\n${reviewsMarqueeScript}\n${mapBody}</body>`);
   // Enforce strictly 1 <h1> per page (convert secondary responsive variant <h1> to <p role="heading" aria-level="1">)
   let h1Seen = 0;
   h = h.replace(/<h1(\b[^>]*)>([\s\S]*?)<\/h1>/gi, (m, attrs, inner) => (++h1Seen === 1 ? m : `<p role="heading" aria-level="1"${attrs}>${inner}</p>`));
