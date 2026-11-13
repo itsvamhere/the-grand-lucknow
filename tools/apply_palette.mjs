@@ -7,7 +7,7 @@ import { join } from 'node:path';
 export const P = {
   ink: '#121110',        // ground: warm charcoal (brand #141414, warmed so ivory/gold sit on it)
   inkRaised: '#1C1A17',  // chips, cards, raised surfaces
-  ivory: '#F6EEDC',      // text on ink, light sections, buttons
+  ivory: '#FFF0CA',      // text on ink, light sections, buttons (matches master map tone)
   terracotta: '#BC6F45', // footer face
   terracottaDeep: '#964317', // footer outer band
   gold: '#D9A520',       // brand accent: focus, selection, highlights
@@ -26,8 +26,8 @@ const MAP = [
   [hexRe('#1a1f0b'), P.inkRaised], [rgbRe(26, 31, 11), m => `${m[1]}(${R(P.inkRaised)}`],
   [hexRe('#131a14'), P.inkRaised],
   [hexRe('#161a13'), P.inkRaised],
-  // ivory family: Casa cream #FFF0CA, #F3ECDD
-  [hexRe('#fff0ca'), P.ivory], [rgbRe(255, 240, 202), m => `${m[1]}(${R(P.ivory)}`],
+  // ivory family: Casa cream #FFF0CA, #F3ECDD, #F6EEDC -> #FFF0CA
+  [hexRe('#f6eedc'), P.ivory], [rgbRe(246, 238, 220), m => `${m[1]}(${R(P.ivory)}`],
   [hexRe('#f3ecdd'), P.ivory], [rgbRe(243, 236, 221), m => `${m[1]}(${R(P.ivory)}`],
   // legacy bronze -> orangish terracotta footer (#964317 / #BC6F45)
   [hexRe('#6b4a0c'), P.terracottaDeep], [rgbRe(107, 74, 12), m => `${m[1]}(${R(P.terracottaDeep)}`],
@@ -49,7 +49,7 @@ let files = 0, subs = 0;
     for (const [re, to] of MAP) h = h.replace(re, (...a) => (n++, typeof to === 'function' ? to(a) : to));
     if (f.endsWith('.html')) {
       h = h.replace(/<style id="grand-palette">[\s\S]*?<\/style>/, '');
-      h = h.replace('</head>', `<style id="grand-palette">:root{--grand-ink:${P.ink};--grand-ivory:${P.ivory};--grand-gold:${P.gold};--token-86299043-b8f8-4618-9585-4835ac76e9b7:${P.terracotta}!important}::selection{background:${P.gold};color:${P.ink}}:focus-visible{outline:2px solid ${P.gold}!important;box-shadow:0 0 0 4px ${P.ink}!important}.framer-1nb205x .framer-1wtvhr3{background-color:${P.terracotta}!important}footer.framer-18na9ah{background-color:${P.terracottaDeep}!important;color:${P.ivory}!important}footer.framer-18na9ah .framer-zHQwT{background-color:${P.terracotta}!important;border-top:none!important}footer.framer-18na9ah p,footer.framer-18na9ah span,footer.framer-18na9ah a{color:${P.ivory}!important}footer.framer-18na9ah a:hover{opacity:0.8!important}</style>\n</head>`);
+      h = h.replace('</head>', `<style id="grand-palette">:root{--grand-ink:${P.ink};--grand-ivory:${P.ivory};--grand-gold:${P.gold};--token-86299043-b8f8-4618-9585-4835ac76e9b7:${P.terracotta}!important}::selection{background:${P.gold};color:${P.ink}}:focus-visible{outline:2px solid ${P.gold}!important;box-shadow:0 0 0 4px ${P.ink}!important}@media (hover: hover) and (pointer: fine) and (min-width: 810px){html.grand-custom-cursor,html.grand-custom-cursor body,html.grand-custom-cursor *{cursor:none!important}}.framer-1nb205x .framer-1wtvhr3{background-color:${P.terracotta}!important}footer.framer-18na9ah{background-color:${P.terracottaDeep}!important;color:${P.ivory}!important}footer.framer-18na9ah .framer-zHQwT{background-color:${P.terracotta}!important;border-top:none!important}footer.framer-18na9ah p,footer.framer-18na9ah span,footer.framer-18na9ah a{color:${P.ivory}!important}footer.framer-18na9ah a:hover{opacity:0.8!important}</style>\n</head>`);
     }
     writeFileSync(p, h); files++; subs += n;
   }
