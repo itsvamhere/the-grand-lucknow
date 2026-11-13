@@ -269,23 +269,8 @@ const server = http.createServer(async (req, res) => {
     }
   }
 
-  // 6. Fallback for client routes (/about, /venues, /contact, etc.)
-  const indexPath = path.join(__dirname, 'index.html');
-  if (fs.existsSync(indexPath)) {
-    let content = fs.readFileSync(indexPath, 'utf-8');
-    content = swapText(content);
-    res.writeHead(200, {
-      'Content-Type': 'text/html; charset=utf-8',
-      'Cache-Control': 'no-cache, no-store, must-revalidate, max-age=0',
-      'Pragma': 'no-cache',
-      'Expires': '0',
-      'Access-Control-Allow-Origin': '*'
-    });
-    res.end(content);
-    return;
-  }
-
-  res.writeHead(404, { 'Content-Type': 'text/plain' });
+  // 6. 404 for unknown routes
+  res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
   res.end('Not found: ' + reqPath);
 });
 

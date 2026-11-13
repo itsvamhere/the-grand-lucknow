@@ -32,6 +32,7 @@ const MAP = [
   // terracotta family -> antique bronze (footer, map accents, calendar range)
   [hexRe('#964317'), P.bronzeDeep],
   [hexRe('#bc6f45'), P.bronze], [hexRe('#c2653a'), P.bronze],
+  [hexRe('#957026'), '#755414'], [rgbRe(149, 112, 38), m => `${m[1]}(117,84,20`],
   [rgbRe(188, 111, 69), m => `${m[1]}(${R(P.bronze)}`], [rgbRe(189, 131, 70), m => `${m[1]}(${R(P.bronze)}`],
 ];
 const skip = new Set(['node_modules', 'archive', '.git', '.agents', 'raw_photos', 'images', 'fonts', 'tools']);

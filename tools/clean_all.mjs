@@ -16,22 +16,55 @@ const CANONICAL_VENUES = [
 
 const STRUCTURED_DATA = `<script type="application/ld+json" id="grand-structured-data">{"@context":"https://schema.org","@graph":[{"@type":"EventVenue","@id":"https://www.thegrandlucknow.in/#thegrandlucknow","name":"The Grand","description":"Premier luxury wedding, banquet, and celebration estate in Lucknow.","url":"https://www.thegrandlucknow.in/","telephone":"+91 91291 27091","email":"Thegrandbanquet07@gmail.com","address":{"@type":"PostalAddress","streetAddress":"22, Raibareli Rd, Bindaua","addressLocality":"Lucknow","addressRegion":"Uttar Pradesh","postalCode":"226301","addressCountry":"IN"},"sameAs":["https://www.instagram.com/thegrand.lucknow/","https://www.facebook.com/thegrandlucknow/"]}]}</script>`;
 
+const CANONICAL_SHELL = rd('venues/open-earth-lawn.html');
+const contrastScriptMatch = CANONICAL_SHELL.match(/<script id="grand-contrast-switcher-script">[\s\S]*?<\/script>/);
+const lockedCssMatch = CANONICAL_SHELL.match(/<style id="grand-locked-header-and-gallery-css">[\s\S]*?<\/style>/);
+const mapCursorCssMatch = CANONICAL_SHELL.match(/<style id="grand-map-cursor-style">[\s\S]*?<\/style>/);
+const navControllerMatch = CANONICAL_SHELL.match(/<script id="grand-nav-and-gallery-controller">[\s\S]*?<\/script>/);
+
 for (const v of CANONICAL_VENUES) {
   let h = rd(v.file);
-  // Set gallery corner morph maxRadius to 0 (matching Casa Momo 0px radius)
-  h = h.replace(/var maxRadius = isMobile \? 44 : 52;/g, 'var maxRadius = 0;');
+  if (contrastScriptMatch) {
+    h = h.replace(/<script id="grand-contrast-switcher-script">[\s\S]*?<\/script>/, () => contrastScriptMatch[0]);
+  }
+  if (lockedCssMatch) {
+    h = h.replace(/<style id="grand-locked-header-and-gallery-css">[\s\S]*?<\/style>/, () => lockedCssMatch[0]);
+  }
+  if (mapCursorCssMatch) {
+    h = h.replace(/<style id="grand-map-cursor-style">[\s\S]*?<\/style>/, () => mapCursorCssMatch[0]);
+  }
+  if (navControllerMatch) {
+    h = h.replace(/<script id="grand-nav-and-gallery-controller">[\s\S]*?<\/script>/, () => navControllerMatch[0]);
+  }
   // Remove fake booking modal script (grand-injected-script) so Book Now / Check Availability links navigate to /book/venue
   h = h.replace(/<!-- Interactive Booking Modal & Client Injection Script -->\s*<script id="grand-injected-script">[\s\S]*?<\/script>/g, '');
   h = h.replace(/<script id="grand-injected-script">[\s\S]*?<\/script>/g, '');
   // Replace structured data
   h = h.replace(/<script type="application\/ld\+json"[^>]*>[\s\S]*?<\/script>/g, STRUCTURED_DATA);
-  // Ensure mobile menu overlay's 4th link ("Book Now") points to /book/venue
-  h = h.replace(/(class="framer-WPG77 framer-B9619 framer-tv448v framer-v-tv448v framer-13c2ecc"[^>]*href=")\/contact(")/g, '$1/book/venue$2');
-  h = h.replace(/(class="framer-1fslfdg framer-fx9txd" data-framer-name="Nav Link" href=")\/contact(")/g, '$1/book/venue$2');
-  // Clean up any Casa Momo strings in comments/IDs
+  // Ensure desktop and mobile "Book Now" links point to /book/venue and footer legal links use root-relative paths
+  h = h.replace(/(class="framer-WPG77 framer-B9619 framer-tv448v framer-v-tv448v framer-13c2ecc"[^>]*href=")\/contact(")/g, '$1/book/venue$2')
+       .replace(/(class="framer-1fslfdg framer-fx9txd" data-framer-name="Nav Link" href=")\/contact(")/g, '$1/book/venue$2')
+       .replace(/(class="framer-vO7O2[^"]*"[^>]*data-framer-name="White"[^>]*href=")\/contact(")/g, '$1/book/venue$2')
+       .replace(/href="\.\/imprint"/g, 'href="/imprint"')
+       .replace(/href="\.\/terms"/g, 'href="/terms"')
+       .replace(/href="\.\/privacy"/g, 'href="/privacy"');
+  // Clean up any Casa Momo strings in comments/IDs and 'Other Places to Stay' / 'All Apartments'
+  const makeRollingText = (str) => {
+    const letters = [...str].map(ch =>
+      `<span aria-hidden="true" style="display:inline-block;position:relative;white-space:pre"><span style="visibility:hidden">${ch}</span><span style="position:absolute;left:0;top:0;white-space:pre;transform:none">${ch}</span><span style="position:absolute;left:0;top:0;white-space:pre;transform:translateY(100%)">${ch}</span></span>`
+    ).join('');
+    return `<span style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0">${str}</span>${letters}`;
+  };
   h = h.replace(/casamomo-menu-button-fix/gi, 'grand-menu-button-fix')
        .replace(/Casa\s*Momo/gi, 'The Grand')
-       .replace(/Styria/gi, 'Uttar Pradesh');
+       .replace(/Styria/gi, 'Uttar Pradesh')
+       .replaceAll('in Gomti Nagar, Lucknow', 'on Raibareli Road, Lucknow')
+       .replaceAll('Gomti Nagar', 'Raibareli Rd')
+       .replaceAll('Spanning 55,000 square feet', 'Spanning 25,000 square feet')
+       .replaceAll('office@thegrandlucknow.in', 'Thegrandbanquet07@gmail.com')
+       .replace(/href="\.\.\/apartments"/g, 'href="/venues"')
+       .replace(/>Places<\/span><\/span>(\s*<!-- -->\s*<span[^>]*><span[^>]*>)to(<\/span><\/span>\s*<!-- -->\s*<span[^>]*><span[^>]*>)Stay<\/span><\/span>/g, '>Grand</span></span>$1Event$2Venues</span></span>')
+       .replace(/<span style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect\(0 0 0 0\);white-space:nowrap;border:0">All Apartments<\/span>(?:<span aria-hidden="true"[\s\S]*?<\/span><\/span>){14}/g, () => makeRollingText('All Venues'));
 
   wr(v.file, h);
   for (const alias of v.aliases) {
@@ -41,20 +74,39 @@ for (const v of CANONICAL_VENUES) {
 }
 
 // 2. Clean up imprint.html, privacy.html, terms.html
-for (const f of ['imprint.html', 'privacy.html', 'terms.html']) {
-  if (!fs.existsSync(f)) continue;
-  let h = rd(f);
-  h = h.replace(/<script type="application\/ld\+json"[^>]*>[\s\S]*?<\/script>/g, STRUCTURED_DATA)
-       .replace(/casamomo-menu-button-fix/gi, 'grand-menu-button-fix')
-       .replace(/Casa\s*Momo/gi, 'The Grand')
-       .replace(/Styria/gi, 'Uttar Pradesh')
-       .replaceAll('aria-label="Feel at Home. Beautifully."', 'aria-label="Celebrate Life. Royally."')
-       .replace(
-         /(>Feel<\/span><\/span><span[^>]*><span[^>]*>)at(<\/span><\/span><span[^>]*><span[^>]*>)Home\.(<\/span><\/span><span[^>]*><span[^>]*>)Beautifully\.(<\/span><\/span>)/g,
-         (_, a, b, c, d) => `>Celebrate</span></span><span aria-hidden="true" style="display:inline-flex;overflow:hidden;padding-bottom:0.12em;margin-bottom:-0.12em"><span style="display:inline-block;white-space:pre;transform-origin:0% 100%;will-change:transform;transform:translateY(115%) rotate(8deg)">Life.${b}Royally.${d}`
-       );
-  wr(f, h);
-  console.log('cleaned legal page:', f);
+{
+  const idxHtml = rd('index.html');
+  const homeMenuFixMatch = idxHtml.match(/<style id="grand-home-menu-fix">[\s\S]*?<\/style>/);
+  const homeSyncMatch = idxHtml.match(/<script id="grand-venue-names-sync">[\s\S]*?<\/script>/);
+  for (const f of ['imprint.html', 'privacy.html', 'terms.html']) {
+    if (!fs.existsSync(f)) continue;
+    let h = rd(f);
+    h = h.replace(/<script type="application\/ld\+json"[^>]*>[\s\S]*?<\/script>/g, STRUCTURED_DATA)
+         .replace(/<style id="grand-home-menu-fix">[\s\S]*?<\/style>/g, '')
+         .replace(/<script id="grand-venue-names-sync">[\s\S]*?<\/script>/g, '')
+         .replace(/casamomo-menu-button-fix/gi, 'grand-menu-button-fix')
+         .replace(/Casa\s*Momo/gi, 'The Grand')
+         .replace(/Styria/gi, 'Uttar Pradesh')
+         .replaceAll('aria-label="Feel at Home. Beautifully."', 'aria-label="Celebrate Life. Royally."')
+         .replace(
+           /(>Feel<\/span><\/span><span[^>]*><span[^>]*>)at(<\/span><\/span><span[^>]*><span[^>]*>)Home\.(<\/span><\/span><span[^>]*><span[^>]*>)Beautifully\.(<\/span><\/span>)/g,
+           (_, a, b, c, d) => `>Celebrate</span></span><span aria-hidden="true" style="display:inline-flex;overflow:hidden;padding-bottom:0.12em;margin-bottom:-0.12em"><span style="display:inline-block;white-space:pre;transform-origin:0% 100%;will-change:transform;transform:translateY(115%) rotate(8deg)">Life.${b}Royally.${d}`
+         )
+         .replace(/href="\.\/venues"/g, 'href="/venues"')
+         .replace(/href="\.\/about"/g, 'href="/about"')
+         .replace(/href="\.\/contact"/g, 'href="/contact"')
+         .replace(/href="\.\/book"/g, 'href="/book/venue"')
+         .replace(/href="\.\/imprint"/g, 'href="/imprint"')
+         .replace(/href="\.\/terms"/g, 'href="/terms"')
+         .replace(/href="\.\/privacy"/g, 'href="/privacy"')
+         .replace(/href="\.\/"/g, 'href="/"')
+         .replace(/(class="framer-vO7O2[^"]*"[^>]*data-framer-name="White"[^>]*href=")\/contact(")/g, '$1/book/venue$2');
+    if (homeMenuFixMatch && homeSyncMatch) {
+      h = h.replace('</body>', () => `${homeMenuFixMatch[0]}\n${homeSyncMatch[0]}\n</body>`);
+    }
+    wr(f, h);
+    console.log('cleaned legal page:', f);
+  }
 }
 
 // 3. Clean up index.html
@@ -62,7 +114,25 @@ for (const f of ['imprint.html', 'privacy.html', 'terms.html']) {
   let idx = rd('index.html');
   idx = idx.replace(/<script type="application\/ld\+json"[^>]*>[\s\S]*?<\/script>/g, STRUCTURED_DATA)
            .replace(/casamomo-menu-button-fix/gi, 'grand-menu-button-fix')
-           .replace(/Casa\s*Momo/gi, 'The Grand');
+           .replace(/Casa\s*Momo/gi, 'The Grand')
+           .replaceAll('N°01 • bed with a navy headboard, tufted cushions and a green table lamp in front of a weathered wall', 'Open Earth Lawn • Grand outdoor celebration lawn at The Grand Lucknow')
+           .replaceAll('N°02 • living room with a rust-orange velvet sofa, a green lounge chair and a sailing ship painting', 'Grassland Gala • Illuminated outdoor wedding lawn at The Grand Lucknow')
+           .replaceAll('N°03 • dining table with wooden chairs and a mountain painting, seen through a doorway', 'Garden Galaxy • Lush outdoor reception lawn at The Grand Lucknow')
+           .replaceAll('N°04 • living room with a grey sofa, round side tables, a yellow rug and a large plant', 'The Grand Courtyard • Architectural outdoor courtyard at The Grand Lucknow')
+           .replaceAll('N°05 • bed with linen and green velvet cushions under a skylight and an olive-green wall', 'The Royal Legacy Banquet • Pillarless luxury banquet hall at The Grand Lucknow')
+           .replaceAll('N°06 • attic dining corner with a blue table, wire chairs and dried eucalyptus', 'The Grand Lucknow • Royal Awadhi dining and catering setup')
+           .replaceAll('N°07 • wooden bed with an olive-green throw, a mushroom lamp and an old timber beam', 'The Grand Lucknow • Luxury bridal suite and hospitality lounge')
+           .replaceAll('N°08 • round wooden dining table with woven chairs, a flower bouquet and a sofa', 'The Grand Lucknow • Intimate mandap and floral stage decor')
+           .replaceAll('N°09 • living area with a brown sofa, a white arc lamp and a small dining table', 'The Grand Lucknow • Grand arrival portico and valet court')
+           .replace(/href="\.\/venues"/g, 'href="/venues"')
+           .replace(/href="\.\/about"/g, 'href="/about"')
+           .replace(/href="\.\/contact"/g, 'href="/contact"')
+           .replace(/href="\.\/book"/g, 'href="/book/venue"')
+           .replace(/href="\.\/imprint"/g, 'href="/imprint"')
+           .replace(/href="\.\/terms"/g, 'href="/terms"')
+           .replace(/href="\.\/privacy"/g, 'href="/privacy"')
+           .replace(/href="\.\/"/g, 'href="/"')
+           .replace(/(class="framer-vO7O2[^"]*"[^>]*data-framer-name="White"[^>]*href=")\/contact(")/g, '$1/book/venue$2');
 
   // Replace "Feel at Home. Beautifully." -> "Celebrate Life. Royally." in TunnelText SSR markup
   idx = idx.replaceAll('aria-label="Feel at Home. Beautifully."', 'aria-label="Celebrate Life. Royally."');
@@ -126,6 +196,7 @@ for (const f of ['imprint.html', 'privacy.html', 'terms.html']) {
   dex = dex
     .replaceAll('Feel at Home. Beautifully.', 'Celebrate Life. Royally.')
     .replaceAll('quiet minimalism and warm coziness a space emerges where you can arrive, breathe and let go.', 'timeless elegance and natural serenity a space emerges where you can gather, celebrate and let go.')
+    .replaceAll("links:[{href:`/contact`,openInNewTab:!1},{href:`/contact`,openInNewTab:!1},{href:`/contact`,openInNewTab:!1}]", "links:[{href:`/book/venue`,openInNewTab:!1},{href:`/book/venue`,openInNewTab:!1},{href:`/book/venue`,openInNewTab:!1}]")
     .replaceAll("area: '55,000', cap: '1,500', slug: 'venue-n1'", "area: '25,000', cap: '2,500', slug: 'open-earth-lawn'")
     .replaceAll("area: '20,000', cap: '800', slug: 'venue-n2'", "area: '20,000', cap: '800', slug: 'grassland-gala'")
     .replaceAll(
@@ -220,7 +291,7 @@ for (const f of ['imprint.html', 'privacy.html', 'terms.html']) {
   const bookExtraCss = `<style id="grand-book-responsive-fix">
   .framer-AQMHC .framer-gsn7ju { display: flex; flex-flow: row; gap: 48px; width: 100%; align-items: flex-start; }
   .framer-AQMHC .framer-1snxl4n-container, .framer-AQMHC .framer-7g9wgs, .framer-AQMHC .framer-19x7sgr-container { flex: 1 0 0; width: 1px; }
-  footer.framer-18na9ah, [data-framer-name="Footer"] { order: 10 !important; }
+  footer.framer-18na9ah, [data-framer-name="Footer"] { order: 99 !important; }
   @media (max-width: 809.98px) {
     .framer-AQMHC .framer-gsn7ju { flex-direction: column !important; gap: 24px !important; }
     .framer-AQMHC .framer-1snxl4n-container, .framer-AQMHC .framer-7g9wgs, .framer-AQMHC .framer-19x7sgr-container { flex: none !important; width: 100% !important; }

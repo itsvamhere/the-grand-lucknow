@@ -107,9 +107,11 @@
     function onScroll() {
       var vh = window.innerHeight || 800;
 
-      // Scale images smoothly as they enter viewport
+      // Scale images smoothly and morph border-radius (rounded at bottom -> pointed 0px as scrolled up)
+      var isMobile = window.innerWidth < 810;
+      var maxRad = isMobile ? 44 : 56;
       scaleEls.forEach(function (item) {
-        if (reduce) { item.el.style.transform = 'scale(1)'; return; }
+        if (reduce) { item.el.style.transform = 'scale(1)'; item.el.style.borderRadius = '0px'; return; }
         var r = item.el.getBoundingClientRect();
         if (r.width === 0 && r.height === 0) return;
         // Progress 0 when top is at 95% vh, 1 when top reaches 30% vh
@@ -117,7 +119,12 @@
         p = Math.max(0, Math.min(1, p));
         var easeP = 1 - Math.pow(1 - p, 3);
         var s = item.from + (1 - item.from) * easeP;
+        var rad = Math.round((1 - easeP) * maxRad);
         item.el.style.transform = 'scale(' + s.toFixed(4) + ')';
+        item.el.style.overflow = 'hidden';
+        item.el.style.borderRadius = rad + 'px';
+        var innerClip = item.el.querySelector('div[style*="overflow:hidden"]');
+        if (innerClip) innerClip.style.borderRadius = rad + 'px';
       });
 
       // Curtain parallax inside image wrappers
@@ -135,8 +142,8 @@
       // Background color transition at ColorChangeTrigger (About & Venues pages)
       if (colorTrigger) {
         var tr = colorTrigger.getBoundingClientRect();
-        // Transition over 350px around the trigger crossing 65% of viewport height
-        var p = (vh * 0.65 - tr.top) / 350;
+        // Transition over 240px as the trigger enters the viewport bottom
+        var p = (vh * 0.98 - tr.top) / 240;
         p = Math.max(0, Math.min(1, p));
         var easeP = p * p * (3 - 2 * p);
         var rC = Math.round(18 + (246 - 18) * easeP);

@@ -52,7 +52,7 @@ function customizeVenuesMain(main) {
   let grid = main.slice(secS, secE);
 
   const items = [...grid.matchAll(/<div class="framer-1ajjl3s" data-framer-name="Apartment Item">/g)];
-  const listEnd = grid.lastIndexOf('</div></div></section>');
+  const listEnd = grid.lastIndexOf('</div><!--/$--></div></section>');
   const cards = items.map((m, i) => grid.slice(m.index, items[i + 1] ? items[i + 1].index : listEnd));
 
   const specs = [
@@ -164,8 +164,10 @@ function build(cfg) {
 
   // Clean up any "Casa Momo" mentions inside shell comments/CSS so zero Casa Momo strings exist in built HTML
   h = h.replace(/Casa\s*Momo/gi, 'The Grand');
-  // Ensure mobile menu overlay's 4th link ("Book Now") points to /book/venue
-  h = h.replace(/(class="framer-WPG77 framer-B9619 framer-tv448v framer-v-tv448v framer-13c2ecc"[^>]*href=")\/contact(")/, '$1/book/venue$2');
+  // Ensure desktop and mobile "Book Now" links point to /book/venue
+  h = h.replace(/(class="framer-WPG77 framer-B9619 framer-tv448v framer-v-tv448v framer-13c2ecc"[^>]*href=")\/contact(")/g, '$1/book/venue$2')
+       .replace(/(class="framer-1fslfdg framer-fx9txd" data-framer-name="Nav Link" href=")\/contact(")/g, '$1/book/venue$2')
+       .replace(/(class="framer-vO7O2[^"]*"[^>]*data-framer-name="White"[^>]*href=")\/contact(")/g, '$1/book/venue$2');
 
   // Route-specific CSS fixes (ensure Locations & Reviews sections sit on ivory #F6EEDC background, have dark headings, and Footer stays last in mobile flex layouts)
   const extraCss = `<style id="grand-core-route-fixes">
@@ -180,7 +182,7 @@ function build(cfg) {
     color: var(--token-a0f3f7f0-2bee-4607-a7b2-647fda358cb3, #121110) !important;
   }
   footer.framer-18na9ah, [data-framer-name="Footer"] {
-    order: 10 !important;
+    order: 99 !important;
   }
   [data-framer-name="Reviews"] .framer-rntb33::-webkit-scrollbar { display: none; }
   .framer-KzfvT .framer-84xumc { display: none !important; }
