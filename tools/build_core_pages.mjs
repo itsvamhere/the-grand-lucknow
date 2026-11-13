@@ -151,7 +151,7 @@ function build(cfg) {
   if (cfg.isVenues && !h.includes('id="svg1083848285_386"')) {
     h = h.replace(
       /(<div id="svg-templates"[^>]*>)/,
-      `$1<svg viewBox="0 0 13 12" overflow="visible" id="svg1083848285_386"><path d="M 2.482 12 L 3.562 7.566 L 0 4.584 L 4.66 4.184 L 6.5 0 L 8.34 4.206 L 13 4.584 L 9.437 7.566 L 10.518 12 L 6.5 9.647 Z" fill="var(--token-86299043-b8f8-4618-9585-4835ac76e9b7, rgb(138, 98, 18))"/></svg>`
+      `$1<svg viewBox="0 0 13 12" overflow="visible" id="svg1083848285_386"><path d="M 2.482 12 L 3.562 7.566 L 0 4.584 L 4.66 4.184 L 6.5 0 L 8.34 4.206 L 13 4.584 L 9.437 7.566 L 10.518 12 L 6.5 9.647 Z" fill="#D9A520"/></svg>`
     );
   }
 
