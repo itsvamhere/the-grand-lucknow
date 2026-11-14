@@ -2,7 +2,3 @@
 .env*
 node_modules/
 *.log
-.audit-screenshots/
-.next/
-*.tsbuildinfo
-
