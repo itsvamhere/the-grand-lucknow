@@ -1,0 +1,267 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "EL PACRE Regular";
+  src: url("/fonts/el_pacre_regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --bg-espresso: #14120E;
+  --bg-espresso-elevated: #1C1915;
+  --bg-sand: #F5EEDB;
+  --bg-sand-muted: #EAE0C8;
+  --bg-taupe-mid: #6E6853;
+  --bg-terracotta-footer: #C46335;
+  --bg-terracotta-card: #B85D3B;
+  --text-cream: #F5EEDB;
+  --text-cream-muted: #B5AEA0;
+  --text-charcoal: #14120E;
+  --text-charcoal-muted: #5C564B;
+  --status-unavailable: #E06D53;
+
+  --bg: var(--bg-espresso);
+  --fg: var(--text-cream);
+  --fg-muted: var(--text-cream-muted);
+}
+
+[data-surface="dark"] {
+  --bg: #14120E;
+  --fg: #F5EEDB;
+  --fg-muted: #B5AEA0;
+  background-color: var(--bg);
+  color: var(--fg);
+}
+
+[data-surface="light"] {
+  --bg: #F5EEDB;
+  --fg: #14120E;
+  --fg-muted: #5C564B;
+  background-color: var(--bg);
+  color: var(--fg);
+}
+
+[data-surface="sand-muted"] {
+  --bg: #EAE0C8;
+  --fg: #14120E;
+  --fg-muted: #5C564B;
+  background-color: var(--bg);
+  color: var(--fg);
+}
+
+[data-surface="taupe"] {
+  --bg: #6E6853;
+  --fg: #F5EEDB;
+  --fg-muted: #EAE0C8;
+  background-color: var(--bg);
+  color: var(--fg);
+}
+
+[data-surface="terracotta"] {
+  --bg: #C46335;
+  --fg: #F5EEDB;
+  --fg-muted: #EAE0C8;
+  background-color: var(--bg);
+  color: var(--fg);
+}
+
+[data-surface="terracotta-card"] {
+  --bg: #B85D3B;
+  --fg: #F5EEDB;
+  --fg-muted: #EAE0C8;
+  background-color: var(--bg);
+  color: var(--fg);
+}
+
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100vw;
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-espresso);
+  color: var(--text-cream);
+  font-family: var(--font-sans), "Lay Grotesk Regular", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer base {
+  [data-surface] h1,
+  [data-surface] h2,
+  [data-surface] h3,
+  [data-surface] h4,
+  [data-surface] h5,
+  [data-surface] h6,
+  [data-surface] p,
+  [data-surface] li,
+  [data-surface] dt,
+  [data-surface] dd {
+    color: var(--fg); /* // FALLBACK: inherits surface foreground token */
+    opacity: 1;
+  }
+
+  :where(a:any-link, button, summary, input, textarea, select):focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+  }
+}
+
+/* Screen-reader & keyboard skip-link utility */
+.visually-hidden:where(:not(:focus-within, :active)) {
+  position: absolute !important;
+  clip-path: inset(50%) !important;
+  overflow: hidden !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  white-space: nowrap !important;
+}
+
+.skip-link:focus-visible {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 90;
+  padding: 12px 18px;
+  border-radius: 9999px;
+  background-color: #14120E;
+  color: #F5EEDB;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+/* Header contrast protection scrim over dark imagery */
+header::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 96px;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(20, 18, 14, 0.92) 0%,
+    rgba(20, 18, 14, 0.84) 68%,
+    rgba(20, 18, 14, 0) 100%
+  );
+}
+
+html[data-header-theme="dark"] header::before {
+  opacity: 1;
+}
+
+html[data-header-theme="light"] header::before {
+  opacity: 0;
+}
+
+/* Header contrast theme driven by html[data-header-theme] */
+html[data-header-theme="dark"] .tgl-wordmark {
+  color: #F5EEDB;
+  background: transparent;
+}
+
+html[data-header-theme="light"] .tgl-wordmark {
+  color: #14120E;
+  background: rgba(245, 238, 219, 0.94);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+html[data-header-theme="dark"] .tgl-menu-pill,
+html[data-header-theme="dark"] .tgl-desktop-nav,
+html[data-header-theme="dark"] .tgl-book-pill {
+  background: rgba(245, 238, 219, 0.14);
+  color: #F5EEDB;
+  border: 1px solid rgba(245, 238, 219, 0.26);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+html[data-header-theme="dark"] .tgl-desktop-nav li,
+html[data-header-theme="dark"] .tgl-nav-link {
+  color: #F5EEDB;
+}
+
+html[data-header-theme="light"] .tgl-menu-pill,
+html[data-header-theme="light"] .tgl-desktop-nav,
+html[data-header-theme="light"] .tgl-book-pill {
+  background: #EAE0C8;
+  color: #14120E;
+  border: 1px solid rgba(20, 18, 14, 0.15);
+}
+
+html[data-header-theme="light"] .tgl-desktop-nav li,
+html[data-header-theme="light"] .tgl-nav-link {
+  color: #14120E;
+}
+
+@media (hover: hover) {
+  html[data-header-theme="dark"] .tgl-book-pill:hover {
+    background: #F5EEDB;
+    color: #14120E;
+  }
+
+  html[data-header-theme="light"] .tgl-book-pill:hover {
+    background: #14120E;
+    color: #F5EEDB;
+  }
+
+  html[data-header-theme="dark"] .tgl-nav-link:hover {
+    background-color: rgba(245, 238, 219, 0.12);
+    color: #F5EEDB;
+    text-decoration-line: underline;
+    text-underline-offset: 6px;
+    text-decoration-thickness: 1.5px;
+  }
+
+  html[data-header-theme="light"] .tgl-nav-link:hover {
+    background-color: rgba(20, 18, 14, 0.1);
+    color: #14120E;
+    text-decoration-line: underline;
+    text-underline-offset: 6px;
+    text-decoration-thickness: 1.5px;
+  }
+}
+
+/* Character-roll wrapper with vertical clearance so "Close" never clips */
+.tgl-roll-wrapper {
+  height: 1.25em;
+  line-height: 1.25;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+}
+
+.tgl-nav-link[aria-current="page"] {
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  text-decoration-thickness: 1.5px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  header::before {
+    transition: opacity 220ms ease;
+  }
+
+  .tgl-theme-transition {
+    transition:
+      background-color 220ms ease,
+      color 220ms ease,
+      border-color 220ms ease,
+      opacity 180ms ease;
+  }
+}
