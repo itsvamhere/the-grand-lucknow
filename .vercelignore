@@ -8,8 +8,6 @@ package.json
 package-lock.json
 *.log
 *.tmp
-.audit-screenshots
-.previews
 .git
 .env*
 *.json

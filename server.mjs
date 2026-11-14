@@ -122,21 +122,23 @@ function swapText(content) {
     .replaceAll('Augarten', 'Alambagh')
 
     // Brand and Paths
-    .replaceAll('Lucknow premier address', "Lucknow's premier address")
     .replaceAll('https://framerusercontent.com/sites/1bk9uGIcxVnDnwzQnwlcko/', '/scripts/')
     .replaceAll('https://www.casamomo.at', 'https://www.thegrandlucknow.in')
     .replaceAll('casamomo.at', 'thegrandlucknow.in')
-    .replaceAll('Casa Momo', 'The Grand');
+    .replaceAll('Casa Momo', 'The Grand')
+    .replaceAll('THE GRAND LUCKNOW', 'THE GRAND')
+    .replaceAll('The Grand Lucknow', 'The Grand');
 }
 
 const server = http.createServer(async (req, res) => {
-  let cleanUrl = req.url.split('?')[0].split('&')[0];
+  let cleanUrl = req.url.split('?')[0];
+  if (cleanUrl.includes('&scale-down-to=')) {
+    cleanUrl = cleanUrl.split('&scale-down-to=')[0];
+  }
   let reqPath = decodeURI(cleanUrl).replace(/\/+$/, '');
   if (reqPath === '') reqPath = '/index.html';
   if (reqPath === '/apartments') reqPath = '/venues.html';
   if (reqPath === '/book') reqPath = '/book/venue.html';
-  if (reqPath === '/book/apartment') reqPath = '/book/venue.html';
-  if (reqPath === '/public/favicon.svg') reqPath = '/favicon.svg';
 
   const filePath = path.join(__dirname, reqPath.replace(/^\//, ''));
 

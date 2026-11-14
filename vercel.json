@@ -27,36 +27,8 @@
       "destination": "/book/venue.html"
     },
     {
-      "source": "/book/rooms",
-      "destination": "/book/rooms.html"
-    },
-    {
       "source": "/book/apartment",
       "destination": "/book/venue.html"
-    },
-    {
-      "source": "/imprint",
-      "destination": "/imprint.html"
-    },
-    {
-      "source": "/terms",
-      "destination": "/terms.html"
-    },
-    {
-      "source": "/privacy",
-      "destination": "/privacy.html"
-    },
-    {
-      "source": "/refunds",
-      "destination": "/refunds.html"
-    },
-    {
-      "source": "/service-delivery",
-      "destination": "/service-delivery.html"
-    },
-    {
-      "source": "/public/favicon.svg",
-      "destination": "/favicon.svg"
     },
     {
       "source": "/images/:file([^&]+)&:rest*",

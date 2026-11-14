@@ -5,10 +5,7 @@
   "main": "server.mjs",
   "type": "module",
   "scripts": {
-    "start": "node server.mjs",
-    "build": "node tools/apply_run1_foundation.mjs",
-    "typecheck": "tsc --noEmit",
-    "audit:viewports": "node scripts/audit-viewports.mjs"
+    "start": "node server.mjs"
   },
   "dependencies": {
     "d3-contour": "^4.0.3",
@@ -18,8 +15,6 @@
     "wawoff2": "^2.0.1"
   },
   "devDependencies": {
-    "@types/node": "^26.6.6",
-    "playwright-core": "^1.50.0",
-    "typescript": "^7.0.2"
+    "playwright-core": "^1.50.0"
   }
 }
