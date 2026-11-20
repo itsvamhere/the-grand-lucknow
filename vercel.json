@@ -93,6 +93,11 @@
   ],
   "redirects": [
     {
+      "source": "/apartments/:path*",
+      "destination": "/venues",
+      "permanent": true
+    },
+    {
       "source": "/venues/boutique-n1",
       "destination": "/venues/open-earth-lawn",
       "permanent": true

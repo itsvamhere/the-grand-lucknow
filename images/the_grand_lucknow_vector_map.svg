@@ -22,7 +22,7 @@
       <stop offset="100%" stop-color="#FFF0CA" stop-opacity="0" />
     </linearGradient>
 
-    <!-- Refined label shadows matching Casa Momo -->
+    <!-- Refined label shadows -->
     <filter id="labelShadow" x="-10%" y="-15%" width="120%" height="135%">
       <feDropShadow dx="0" dy="1" stdDeviation="1.5" flood-color="#4A3B22" flood-opacity="0.08" />
     </filter>
@@ -168,7 +168,7 @@
     </g>
   </g>
 
-  <!-- 5. Cadastral Settlement Blocks / Historical Villages (Casa Momo urban fabric) -->
+  <!-- 5. Cadastral Settlement Blocks / Historical Villages -->
   <g id="settlement-blocks" fill="#EBDDBE" fill-opacity="0.65" stroke="none">
     <path d="M 480,180 C 530,165 590,175 620,210 C 650,245 635,285 590,310 C 540,330 480,315 450,270 C 430,230 445,195 480,180 Z" />
     <path d="M 640,395 C 670,385 710,395 725,420 C 740,445 720,470 690,480 C 655,490 625,475 615,445 C 610,420 625,405 640,395 Z" />

@@ -1,5 +1,5 @@
-// The Grand palette (derived from thegrandlucknow.in: charcoal + antique gold, Playfair/Poppins luxury-wedding register).
-// Maps the inherited Casa Momo colour tokens to ours across every page. Idempotent: targets never match sources.
+// The Grand palette (charcoal + antique gold + map-matched ivory + terracotta).
+// Maps inherited dark olive/cream/bronze colour tokens to The Grand palette across every page. Idempotent: targets never match sources.
 // Run from repo root: node tools/apply_palette.mjs
 import { readdirSync, readFileSync, writeFileSync, statSync } from 'node:fs';
 import { join } from 'node:path';
@@ -19,14 +19,14 @@ const sp = '\\s*';
 const rgbRe = (r, g, b) => new RegExp(`\\b(rgba?)\\(${sp}${r}${sp},${sp}${g}${sp},${sp}${b}${sp}`, 'gi');
 const hexRe = h => new RegExp(h + '\\b', 'gi');
 const MAP = [
-  // ink family: Casa olive #0E1201, green #10231D / #1A241E / #161A13
+  // ink family: dark olive #0E1201, green #10231D / #1A241E / #161A13
   [hexRe('#0e1201'), P.ink], [rgbRe(14, 18, 1), m => `${m[1]}(${R(P.ink)}`],
   [hexRe('#10231d'), P.ink], [rgbRe(16, 35, 29), m => `${m[1]}(${R(P.ink)}`],
   [hexRe('#1a241e'), P.inkRaised], [rgbRe(26, 36, 30), m => `${m[1]}(${R(P.inkRaised)}`],
   [hexRe('#1a1f0b'), P.inkRaised], [rgbRe(26, 31, 11), m => `${m[1]}(${R(P.inkRaised)}`],
   [hexRe('#131a14'), P.inkRaised],
   [hexRe('#161a13'), P.inkRaised],
-  // ivory family: Casa cream #FFF0CA, #F3ECDD, #F6EEDC -> #FFF0CA
+  // ivory family: cream #F3ECDD, #F6EEDC -> #FFF0CA
   [hexRe('#f6eedc'), P.ivory], [rgbRe(246, 238, 220), m => `${m[1]}(${R(P.ivory)}`],
   [hexRe('#f3ecdd'), P.ivory], [rgbRe(243, 236, 221), m => `${m[1]}(${R(P.ivory)}`],
   // legacy bronze -> vibrant terracotta orange (#C2653A)

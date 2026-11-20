@@ -13,5 +13,3 @@ package-lock.json
 *.json
 !vercel.json
 !grand_detailed_style.json
-!casamomo_lucknow_style.json
-!grand_subpage_style.json

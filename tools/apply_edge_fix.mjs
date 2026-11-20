@@ -7,8 +7,13 @@ const CSS = `<style id="grand-edge-fix">
 /* Footer ticker: bleed to both screen edges (escape the footer's side padding / 1600px cap) */
 footer.framer-18na9ah .framer-n49p1z { width: 100vw !important; max-width: none !important; flex: none !important; }
 footer.framer-18na9ah, [data-framer-name="Footer"] { order: 99 !important; }
+.framer-1ao0xob, .framer-1kqde9i { overflow-x: clip !important; }
 /* Gallery: Framer runtime normally swaps to a 4-col grid on phones; replicate it so images keep the 12px page gutter */
 @media (max-width: 809.98px) {
+  .framer-1n0rp2d { width: 100% !important; max-width: 100% !important; }
+  .framer-1n0rp2d .framer-11l2zrg-container, .framer-1n0rp2d h2 { max-width: 100% !important; white-space: normal !important; overflow-wrap: break-word !important; }
+  .framer-1fhld7n-container, .framer-1fhld7n-container > div { max-width: 100% !important; }
+  h2[data-fit-width], .framer-1fhld7n-container h2 { width: auto !important; max-width: 100% !important; flex-wrap: wrap !important; font-size: clamp(28px, 10.5vw, 56px) !important; }
   .framer-6iEzR.framer-15w097k { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; width: 100% !important; row-gap: 0 !important; column-gap: 12px !important; }
   .framer-6iEzR.framer-15w097k > .framer-18k7fzy { grid-column: 1 / span 3 !important; }
   .framer-6iEzR.framer-15w097k > .framer-srwmag + .framer-18k7fzy { grid-column: 2 / span 3 !important; }
