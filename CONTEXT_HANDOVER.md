@@ -16,7 +16,7 @@
    - **Terracotta Accent:** `#bc6f45`
    - **Desktop Footer:** `#964317`
    - **Peach Tint:** `#ffe3d4`
-   - **Self-Hosted Fonts (`/fonts/self-hosted-fonts.css`):** Self-hosted `.woff2` families aliased identically (`Lay Grotesk Regular`, `EL PACRE Regular`, `Inter`, `Playfair Display`), zero external CDN or Google Fonts requests.
+   - **Self-Hosted Fonts (`/fonts/self-hosted-fonts.css`):** `'EL PACRE Regular'` points directly to `/fonts/el-pacre/el-pacre-regular.woff2` (`23,112` bytes, matching the sticky navbar and footer wordmark rather than the previous `DM Serif Display` alias), alongside self-hosted `Lay Grotesk Regular`, `Inter`, and `Playfair Display`, with zero external CDN or Google Fonts requests.
 2. **Pure Native Framer Motion + Lenis Runtime (`/scripts/script_main.mjs`):**
    - All 13 routes boot via native `<script type="module" src="/scripts/script_main.mjs">` with React `createRoot` on `#main`.
    - Legacy override band-aids (`tools/apply_palette.mjs`, `tools/apply_edge_fix.mjs`, `tools/motion_engine.js`, `grand_detailed_style.json`, `<style id="grand-palette">`, `<style id="universal-grand-footer-styles">`) have been permanently removed.
@@ -52,6 +52,7 @@ Exact 5 verified venues served through the local CMS adapter (`scripts/AOQA9ZjYa
   - `framer-vO7O2` sets explicit color tokens on light/dark button variants so `#svg-1267704399_390` (`fill="currentColor"`) renders `#0e1201` on cream CTA pills instead of default `rgb(0, 0, 238)`.
   - `Cn()` memoizes CSSOM stylesheet rule extraction per sheet via `WeakMap` and restricts `MutationObserver` on `<head>` to `<style>`/`<link rel="stylesheet">` nodes, eliminating `2,952ms` scroll-time stylesheet recalculations (`1x` synthetic `INP: 17ms`).
 - **Event Booking Flow (`scripts/Booking.DRu38j-Y.mjs`):** Event guest tiers (`×100` up to 2,500), family suites, day-based spans, INR quote mode, and live WhatsApp inquiry dispatch (`https://wa.me/919129127091`).
+- **Restored Warm Cream Lucknow Vector Map (`scripts/AOQA9ZjYa.CwSXFmg7.mjs` & `scripts/Qfj1byi71tPdQnoYA4y--irm47mWrbgiSgyLgjHFTIo.CD9Cffnd.mjs`):** Uses `/images/the_grand_lucknow_master_map.webp` (`1920×1200`) across all 5 venue pages with calibrated `Location Map` center (`ln=0.496, un=0.495, scale=10`, `[26.6355667, 80.9992764]`), pulsing `#bc6f45` terracotta **The Grand** pin, 7 surrounding landmark chips (`Mohanlalganj`, `Kisan Path`, `Ahmadpur Khalsa`, `Gaura`, `Sardar Patel Institute`, `Sisendi`, `Kankaha`), direct Google Maps link (`https://maps.app.goo.gl/94Dr1K1iPbZ3kR117`), and `"Other Venues"` / `"All Venues"` subpage section copy.
 - **SEO & AEO Surface:** Valid `sitemap.xml`, `robots.txt`, `llms.txt` (2,249 chars), `llms-full.txt` (3,949 chars), JSON-LD Schema.org blocks, clean HTML structure across all 13 pages (removed stray `<rect>` head fragments and duplicate `#main` closing `</div>` tags in `venues.html`).
 
 ---
