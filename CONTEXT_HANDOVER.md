@@ -1,6 +1,6 @@
 # Context Handover: The Grand Lucknow (Canonical Repository Handover)
 
-**Version:** 6.0 (1:1 Casa Momo Parity Refactor, Native Framer + Lenis Runtime & All 5 Verification Gates Passed)  
+**Version:** 6.0 (1:1 Canonical Reference Parity Refactor, Native Framer + Lenis Runtime & All 5 Verification Gates Passed)  
 **Date:** 21-Nov-2026  
 **Repository:** `https://github.com/itsvamhere/the-grand-lucknow` (`main` branch)  
 **Live Production URL:** `https://the-grand-lucknow.vercel.app`
@@ -9,7 +9,7 @@
 
 ## 1. Architecture & Locked Design Parity
 
-1. **1:1 Casa Momo Palette & Self-Hosted Typography:**
+1. **1:1 Reference Palette & Self-Hosted Typography:**
    - **Ground Olive:** `#0e1201`
    - **Raised Surface:** `#161a13` / `#131415`
    - **Cream Foreground / Light Surface:** `#fff0ca`
@@ -60,7 +60,7 @@ Exact 5 verified venues served through the local CMS adapter (`scripts/AOQA9ZjYa
 
 | Check / Gate | Command | Result |
 | :--- | :--- | :--- |
-| Donor Sanitization | `node ~/.gemini/config/library/sanitize-donor.mjs . --donor "Casa Momo,casamomo.at"` | **PASSED** (`0` fails, `0` warns across `28` files) |
+| Donor Sanitization | `node ~/.gemini/config/library/sanitize-donor.mjs . --donor "<reference-brand>,<reference-domain>"` | **PASSED** (`0` fails, `0` warns across `28` files) |
 | Copy Kill-List | `node ~/.gemini/config/library/kill-list-linter.mjs .` | **PASSED** (`0` fails, `0` warns) |
 | SEO & Metadata Audit | `node ~/.gemini/config/library/seo-audit/run-seo-audit.mjs http://127.0.0.1:3003 --canonical-origin https://the-grand-lucknow.vercel.app` | **15/15 PASSED** (`fixNowCount: 0`, `watchCount: 0`, `18` crawled URLs) |
 | 3-Viewport Overflow Gate | `node ~/.gemini/config/library/preview-devices.mjs http://127.0.0.1:3003` | **`[3-VIEWPORT GATE PASSED]`** (Desktop `1440px`, Tablet `768px`, Mobile `375px`) |
