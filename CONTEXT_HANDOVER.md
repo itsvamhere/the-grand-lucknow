@@ -1,94 +1,69 @@
 # Context Handover: The Grand Lucknow (Canonical Repository Handover)
 
-**Version:** 5.1 (Self-Hosted Open-Source Fonts & MapLibre, Zero Trackers/CDN Hotlinks, Clean Legal Pages & v2.1.5 Hygiene)  
-**Date:** 20-Nov-2026  
+**Version:** 6.0 (1:1 Casa Momo Parity Refactor, Native Framer + Lenis Runtime & All 5 Verification Gates Passed)  
+**Date:** 21-Nov-2026  
 **Repository:** `https://github.com/itsvamhere/the-grand-lucknow` (`main` branch)  
 **Live Production URL:** `https://the-grand-lucknow.vercel.app`
 
 ---
 
-## 1. Non-Negotiable Directives & Locked Design System
+## 1. Architecture & Locked Design Parity
 
-1. **Preserved Visual & Motion Architecture:**
-   - Home (`/`), core routes (`/venues`, `/about`, `/contact`), 5 venue detail routes (`/venues/<slug>`), booking (`/book/venue`), and legal pages (`/imprint`, `/privacy`, `/terms`) preserve the locked layout, typography, spacing, and micro-motion across 100% Lucknow venue content and assets.
-2. **Locked Palette (`tools/apply_palette.mjs`):**
-   - **Ground Ink:** `#121110` (`rgb(18, 17, 16)`)
-   - **Raised Surface / Dark Nav Text:** `#1C1A17` (`rgb(28, 26, 23)`)
-   - **Map-Matched Cream (Light Backgrounds, Text on Ink, Hero/Nav Cream):** `#FFF0CA` (`rgb(255, 240, 202)`) — matches the vector map background shade across all pages (`html, body { background-color: #FFF0CA !important; }`).
-   - **Vibrant Terracotta Orange (Footer, `Recent Reviews` Stars & `6` Badge):** `#C2653A` (`rgb(194, 101, 58)`) — never use duller `#964317` / `#BC6F45` / `#8A6212`.
-   - **Antique Gold (Focus & Selection):** `#D9A520`
-3. **100% Self-Hosted Assets & Fonts (Invariant 08):**
-   - Open-source `.woff2` fonts served locally via `/fonts/self-hosted-fonts.css`: `Inter` (`/fonts/inter/`), `Manrope` aliased as `"Lay Grotesk Regular"` (`/fonts/manrope/`), `DM Serif Display` aliased as `"EL PACRE Regular"` (`/fonts/dm-serif-display/`), and `Playfair Display` (`/fonts/playfair-display/`).
-   - MapLibre GL v4.7.1 CSS & JS self-hosted at `/scripts/vendor/maplibre-gl.css` and `/scripts/vendor/maplibre-gl.js`.
-   - Zero analytics trackers, zero remote font APIs, and zero remote CDN `.mjs` / `.woff2` / image hotlinks.
-4. **Contact & Socials:** `Thegrandbanquet07@gmail.com`, `+91 91291 27091`, Instagram (`https://www.instagram.com/thegrand.lucknow/`), Facebook (`https://www.facebook.com/thegrandlucknow/`), NO LinkedIn.
-5. **Attribution:** `"Built by Edifice"` (`https://elvar.in/edifice`).
-
----
-
-## 2. The 5 Verified Venues (Strict Authority)
-
-The Grand Lucknow has exactly **5 verified venues**. Do NOT invent or keep any other venue:
-1. **Open Earth Lawn** (`/venues/open-earth-lawn`) — `25,000 Sqft` · `2,500` (`1,000 - 2,500 Guests`) · `/images/venues/open_earth_lawn_official.webp`
-2. **Grassland Gala** (`/venues/grassland-gala`) — `20,000 Sqft` · `800` (`500 - 800 Guests`) · `/images/venues/grassland_gala_official.webp`
-3. **Garden Galaxy** (`/venues/garden-galaxy`) — `15,000 Sqft` · `300` (`250 - 300 Guests`) · `/images/venues/garden_galaxy_official.webp`
-4. **The Grand Courtyard** (`/venues/the-grand-courtyard`) — `15,000 Sqft` · `250` (`200 - 250 Guests`) · `/images/venues/the_grand_courtyard_official.webp`
-5. **The Royal Legacy Banquet** (`/venues/the-royal-legacy-banquet`) — `10,000 Sqft` · `600` (`400 - 600 Guests`) · `/images/venues/royal_legacy_banquet_official.webp`
+1. **1:1 Casa Momo Palette & Self-Hosted Typography:**
+   - **Ground Olive:** `#0e1201`
+   - **Raised Surface:** `#161a13` / `#131415`
+   - **Cream Foreground / Light Surface:** `#fff0ca`
+   - **Terracotta Accent:** `#bc6f45`
+   - **Desktop Footer:** `#964317`
+   - **Peach Tint:** `#ffe3d4`
+   - **Self-Hosted Fonts (`/fonts/self-hosted-fonts.css`):** Self-hosted `.woff2` families aliased identically (`Lay Grotesk Regular`, `EL PACRE Regular`, `Inter`, `Playfair Display`), zero external CDN or Google Fonts requests.
+2. **Pure Native Framer Motion + Lenis Runtime (`/scripts/script_main.mjs`):**
+   - All 13 routes boot via native `<script type="module" src="/scripts/script_main.mjs">` with React `createRoot` on `#main`.
+   - Legacy override band-aids (`tools/apply_palette.mjs`, `tools/apply_edge_fix.mjs`, `tools/motion_engine.js`, `grand_detailed_style.json`, `<style id="grand-palette">`, `<style id="universal-grand-footer-styles">`) have been permanently removed.
+   - Zero `!important` style hacks and zero external CDN links (`framerusercontent`, `fonts.gstatic`, `smoobu`, `stripe`, `openfreemap` fully purged).
+3. **Contact & Socials:**
+   - Phone: `+91 91291 27091` (`tel:+919129127091`, WhatsApp `https://wa.me/919129127091`)
+   - Email: `Thegrandbanquet07@gmail.com`
+   - Location: `22, Raibareli Rd, Bindaua, Lucknow, Uttar Pradesh 226301, India` (`[26.6355667, 80.9992764]`)
 
 ---
 
-## 3. Critical Architecture & Regression-Prevention Notes
+## 2. Canonical 5 Verified Venues & Media Pipeline
 
-### A. Unified Nav Bar Blur & Light/Dark Theme Sync (`#grand-header-sync` + `#grand-palette`)
-- **Navbar Container Blur:** `header div.framer-1kcv8in`, `nav > div[data-framer-name="Nav Link"]`, `.framer-1s5ig4a`, and `div[data-framer-name="Menu Button"]` use `backdrop-filter: blur(8px)` (`rgba(255,240,202,0.07)` on dark, `rgba(28,26,23,0.08)` on light).
-- **Theme Sync:**
-  - `updateLogoColorClass()` / `#grand-header-sync` detects dark vs light section contrast under the header so a detected dark layer (`lum < 110`) is not overwritten by `document.body` (`#FFF0CA`).
-  - Both `html.logo-dark-text` (`data-logo-theme="dark"`) AND `document.body.classList.toggle('is-light-theme', isLight)` always stay synced.
-  - `<style id="grand-palette">` is injected right before `</body>` so Logo, Nav Links, and `Book Now ↗` CTA stay contrast-synced.
+Exact 5 verified venues served through the local CMS adapter (`scripts/AOQA9ZjYa.CwSXFmg7.mjs`, implementing `q.collectionByLocaleId.default`, `scanItems()`, `resolveItems()`, `resolveRichText()`, 5×6 photos + captions, 12 event-venue amenities, and `rr` alias resolver):
+1. **Open Earth Lawn** (`/venues/open-earth-lawn`) — `25,000` sq ft · `2,500` guests · `images/venues/open-earth-lawn_1..6.webp`
+2. **Grassland Gala** (`/venues/grassland-gala`) — `20,000` sq ft · `800` guests · `images/venues/grassland-gala_1..6.webp`
+3. **Garden Galaxy** (`/venues/garden-galaxy`) — `15,000` sq ft · `300` guests · `images/venues/garden-galaxy_1..6.webp`
+4. **The Grand Courtyard** (`/venues/the-grand-courtyard`) — `15,000` sq ft · `250` guests · `images/venues/the-grand-courtyard_1..6.webp`
+5. **The Royal Legacy Banquet** (`/venues/the-royal-legacy-banquet`) — `10,000` sq ft · `600` guests · `images/venues/the-royal-legacy-banquet_1..6.webp`
 
-### B. Morph Cursor Pill (`Details ↗` / `Show on Maps ↗`) & Universal Button Motion
-- **Cursor Selector Guard:** `initMorphCursor()` queries `div[data-morph-cursor="true"]` (never `[data-morph-cursor]`) and hides `div[data-morph-cursor=""]`.
-- **Arrow & Letter Motion:** `div[data-morph-cursor="true"]` and `.grand-map-cursor` render rolling staggered `.mc-ch` characters paired with a `10×10` `↗` `<svg>`.
-- **All `.framer-vO7O2` Buttons (`Book Now`, `All Venues`, `Plan Your Event`, `Open in Maps`, `Check Availability`):** Share nav-bar `[data-rolling-label]` character roll + `.framer-1ko9uiy` dual-arrow diagonal slide.
-
-### C. Section Layout (`/venues`, `/about`, `/venues/*`) & Footer Wordmark
-- **`/venues` Location & Reviews:** Uses the Home `Locations` section (`MapLibre GL` `#grand-vector-map` using local `/scripts/vendor/maplibre-gl.*` + `/grand_detailed_style.json`) and Home `Recent Reviews [6]` with continuous horizontal marquee (`grand-reviews-marquee`, pauses on hover) and 5 Lucknow wedding cards.
-- **Footer `"THE GRAND"` Wordmark:** `html body footer .framer-xj8hz2` is sized `880px × 110px` desktop (`512px × 64px` mobile).
+**Hero Video & Galleries:**
+- **Video Hero (`IStDm3kWi` `Video Grow`):** 9.0s H.264 `+faststart` desktop (`media/grand-teaser-desktop.mp4`, 1920×1080) & mobile (`media/grand-teaser-mobile.mp4`, 1080×1920) loops paired with `images/hero_poster_desktop.webp`, `images/hero_poster_mobile.webp`, and scrimmed `images/hero_bg.webp`.
+- **`server.mjs`:** Serves clean local routes, `vercel.json` aliases, `.mp4`/`.webm`/`.xml` MIME types, and HTTP `206 Partial Content` / `416` byte-range streaming.
 
 ---
 
-## 4. File & Build Pipeline Inventory
+## 3. Critical Engine & Layout Fixes Preserved
 
-| File / Path | Purpose |
-| :--- | :--- |
-| `index.html` | Home page with preloader, hero, 5 venue cards (`Details ↗` cursor), MapLibre location, Lucknow reviews marquee, and `#C2653A` footer. |
-| `venues.html`, `about.html`, `contact.html` | Core site routes with self-hosted fonts, local MapLibre (`/venues`), and reviews marquee. |
-| `venues/<slug>.html` | Dedicated subpages for all 5 verified venues (`Check Availability`, `Open in Maps`, `Show on Maps ↗`, `All Venues ↗`). |
-| `book/venue.html` | Booking route wrapped in canonical navbar + footer shell. |
-| `imprint.html`, `privacy.html`, `terms.html` | Branded legal/estate information pages for The Grand Lucknow. |
-| `fonts/self-hosted-fonts.css` | Self-hosted `@font-face` declarations for `Inter`, `Manrope` (`Lay Grotesk Regular`), `DM Serif Display` (`EL PACRE Regular`), and `Playfair Display`. |
-| `scripts/vendor/maplibre-gl.*` | Locally vendored MapLibre GL v4.7.1 CSS & JS. |
-| `robots.txt` | Root crawl directives (`Allow: /`). |
-| `vercel.json` | Clean URL rewrites and permanent redirects for legacy routes (`/apartments/:path*`, `/venues/boutique-n*`). |
-| `server.mjs` | Local static development server (`http://localhost:3003`) mirroring `vercel.json` rewrites/redirects. |
-| `tools/apply_edge_fix.mjs` | Injects `<style id="grand-edge-fix">` (100vw footer ticker, 4-col mobile gallery gutter, mobile layout polish). |
-| `tools/apply_palette.mjs` | Idempotent palette mapper + injects `<style id="grand-palette">` and `<script id="grand-header-sync">` before `</body>`. |
-| `tools/motion_engine.js` | Shared subpage motion engine (mobile menu, parallax, footer observer, map cursor, rolling labels, morph cursor). |
+- **Carousel Arrow Portal & Overflow (`scripts/ParallaxImage.B0avVUfL.mjs`):** Skips `display: contents` wrappers when resolving portal bounding containers so right-column slide arrows remain within container bounds.
+- **Ticker & Big-Text Clipping (`scripts/IStDm3kWi...mjs`, `scripts/fr7SG9...mjs`, `index.html`):** Review ticker sets `tickerEffectOverflow: "hidden"` and `.framer-1ao0xob` / `.framer-1kqde9i` apply `overflow-x: clip; overflow-y: visible;`.
+- **Descender Clearance, Button Contrast & CSSOM Caching (`scripts/shared-lib.DganPNQZ.mjs`):**
+  - `AnimatedText` uses `max(${D}px, 0.22em)` bottom word-mask padding with matching negative margin to preserve exact line cadence without slicing `g, y, p, q, ?` descenders.
+  - `framer-vO7O2` sets explicit color tokens on light/dark button variants so `#svg-1267704399_390` (`fill="currentColor"`) renders `#0e1201` on cream CTA pills instead of default `rgb(0, 0, 238)`.
+  - `Cn()` memoizes CSSOM stylesheet rule extraction per sheet via `WeakMap` and restricts `MutationObserver` on `<head>` to `<style>`/`<link rel="stylesheet">` nodes, eliminating `2,952ms` scroll-time stylesheet recalculations (`1x` synthetic `INP: 17ms`).
+- **Event Booking Flow (`scripts/Booking.DRu38j-Y.mjs`):** Event guest tiers (`×100` up to 2,500), family suites, day-based spans, INR quote mode, and live WhatsApp inquiry dispatch (`https://wa.me/919129127091`).
+- **SEO & AEO Surface:** Valid `sitemap.xml`, `robots.txt`, `llms.txt` (2,249 chars), `llms-full.txt` (3,949 chars), JSON-LD Schema.org blocks, clean HTML structure across all 13 pages (removed stray `<rect>` head fragments and duplicate `#main` closing `</div>` tags in `venues.html`).
 
 ---
 
-## 5. Operational CLI Commands
+## 4. Verified Gate Evidence (21-Nov-2026)
 
-```bash
-# Re-apply edge fix + palette/motion overrides:
-node tools/apply_edge_fix.mjs && node tools/apply_palette.mjs
-
-# Start local static server (serves at http://localhost:3003):
-node server.mjs
-
-# Zero-leak & self-hosting audit:
-node ~/.gemini/config/library/sanitize-donor.mjs . --donor "<reference-brand>,<reference-domain>"
-
-# 3-Viewport overflow gate:
-node ~/.gemini/config/library/preview-devices.mjs http://localhost:3003
-```
+| Check / Gate | Command | Result |
+| :--- | :--- | :--- |
+| Donor Sanitization | `node ~/.gemini/config/library/sanitize-donor.mjs . --donor "Casa Momo,casamomo.at"` | **PASSED** (`0` fails, `0` warns across `28` files) |
+| Copy Kill-List | `node ~/.gemini/config/library/kill-list-linter.mjs .` | **PASSED** (`0` fails, `0` warns) |
+| SEO & Metadata Audit | `node ~/.gemini/config/library/seo-audit/run-seo-audit.mjs http://127.0.0.1:3003 --canonical-origin https://the-grand-lucknow.vercel.app` | **15/15 PASSED** (`fixNowCount: 0`, `watchCount: 0`, `18` crawled URLs) |
+| 3-Viewport Overflow Gate | `node ~/.gemini/config/library/preview-devices.mjs http://127.0.0.1:3003` | **`[3-VIEWPORT GATE PASSED]`** (Desktop `1440px`, Tablet `768px`, Mobile `375px`) |
+| Swap Manifest Verify | `node ~/.gemini/config/library/swap-manifest.mjs verify . --ignore-pending` | **PASSED** (`0` leaks, `100%` slots swapped) |
+| Full Playwright Matrix | `qa_13routes.mjs` across `13 routes × 3 viewports` | **39/39 PASSED** (`Failing rows: 0`, `0` console/page/external errors) |
+| Responsiveness & Booking | Playwright `1x`/`4x` CPU trace + `/book/venue` click test | `1x` synthetic `INP: 17ms`; `Tn()` CSSOM LoAF eliminated (`0ms`); WhatsApp dispatch verified |

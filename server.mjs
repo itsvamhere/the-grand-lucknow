@@ -20,6 +20,9 @@ const MIME = {
   '.jpeg': 'image/jpeg',
   '.json': 'application/json',
   '.txt': 'text/plain; charset=utf-8',
+  '.xml': 'application/xml; charset=utf-8',
+  '.mp4': 'video/mp4',
+  '.webm': 'video/webm',
   '.ico': 'image/x-icon',
 };
 
@@ -112,7 +115,38 @@ const server = http.createServer((req, res) => {
         else if (buf[0] === 0xFF && buf[1] === 0xD8 && buf[2] === 0xFF) mimeType = 'image/jpeg';
       } catch {}
     }
-    res.writeHead(200, noCacheHeaders(mimeType));
+    const stat = fs.statSync(filePath);
+    const total = stat.size;
+    const rangeHeader = req.headers.range;
+    if (rangeHeader) {
+      const m = /^bytes=(\d*)-(\d*)$/.exec(rangeHeader.trim());
+      if (!m) {
+        res.writeHead(416, { 'Content-Range': `bytes */${total}` });
+        res.end();
+        return;
+      }
+      const start = m[1] === '' ? Math.max(0, total - Number(m[2])) : Number(m[1]);
+      const end = m[2] === '' || m[1] === '' ? total - 1 : Math.min(total - 1, Number(m[2]));
+      if (Number.isNaN(start) || Number.isNaN(end) || start > end || start >= total) {
+        res.writeHead(416, { 'Content-Range': `bytes */${total}` });
+        res.end();
+        return;
+      }
+      const headers = {
+        ...noCacheHeaders(mimeType),
+        'Accept-Ranges': 'bytes',
+        'Content-Range': `bytes ${start}-${end}/${total}`,
+        'Content-Length': String(end - start + 1),
+      };
+      res.writeHead(206, headers);
+      fs.createReadStream(filePath, { start, end }).pipe(res);
+      return;
+    }
+    res.writeHead(200, {
+      ...noCacheHeaders(mimeType),
+      'Accept-Ranges': 'bytes',
+      'Content-Length': String(total),
+    });
     fs.createReadStream(filePath).pipe(res);
     return;
   }

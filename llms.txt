@@ -1,0 +1,35 @@
+# The Grand — Royal Banquet & Lawns
+
+> Wedding and event venue in Lucknow, Uttar Pradesh, featuring five event spaces across lawn and indoor banquet settings.
+
+The Grand — Royal Banquet & Lawns is an event venue located on Raibareli Road in Bindaua, Lucknow. The property hosts weddings, receptions, corporate gatherings, and private celebrations across five outdoor lawns and indoor banquet spaces.
+
+## Contact & Location
+
+- Address: 22, Raibareli Rd, Bindaua, Lucknow, Uttar Pradesh 226301, India
+- Coordinates: 26.6355667, 80.9992764
+- Phone: +91 91291 27091
+- Email: Thegrandbanquet07@gmail.com
+- Google Maps: https://maps.app.goo.gl/94Dr1K1iPbZ3kR117
+- Instagram: https://www.instagram.com/thegrand.lucknow/
+- Facebook: https://www.facebook.com/thegrandlucknow/
+
+## Event Venues
+
+- [Open Earth Lawn](https://the-grand-lucknow.vercel.app/venues/open-earth-lawn): 25,000 sq ft outdoor lawn, capacity up to 2,500 guests.
+- [Grassland Gala](https://the-grand-lucknow.vercel.app/venues/grassland-gala): 20,000 sq ft outdoor lawn, capacity up to 800 guests.
+- [Garden Galaxy](https://the-grand-lucknow.vercel.app/venues/garden-galaxy): 15,000 sq ft outdoor lawn, capacity up to 300 guests.
+- [The Grand Courtyard](https://the-grand-lucknow.vercel.app/venues/the-grand-courtyard): 15,000 sq ft courtyard venue, capacity up to 250 guests.
+- [The Royal Legacy Banquet](https://the-grand-lucknow.vercel.app/venues/the-royal-legacy-banquet): 10,000 sq ft indoor banquet hall, capacity up to 600 guests.
+
+## Primary Pages
+
+- [Home](https://the-grand-lucknow.vercel.app/): Overview of the venue and estate grounds.
+- [Venues Directory](https://the-grand-lucknow.vercel.app/venues): Complete list and comparison of the five event spaces.
+- [Book Venue](https://the-grand-lucknow.vercel.app/book/venue): Direct venue booking inquiry and date selection.
+- [About](https://the-grand-lucknow.vercel.app/about): Background, estate information, and hospitality team.
+- [Contact](https://the-grand-lucknow.vercel.app/contact): Direct contact details, phone numbers, and location map.
+
+## Full Context
+
+- [Full Documentation](https://the-grand-lucknow.vercel.app/llms-full.txt): Complete venue specifications, dimensions, and operational details for language models.

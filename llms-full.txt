@@ -1,0 +1,79 @@
+# The Grand — Royal Banquet & Lawns: Full Context & Specifications
+
+## Organization Information
+
+- Brand Name: The Grand — Royal Banquet & Lawns
+- Operating Category: Wedding Venue, Banquet Hall, Event Lawns
+- Physical Address: 22, Raibareli Rd, Bindaua, Lucknow, Uttar Pradesh 226301, India
+- Geographic Coordinates: 26.6355667, 80.9992764
+- Primary Telephone: +91 91291 27091
+- Contact Email: Thegrandbanquet07@gmail.com
+- Google Maps Location: https://maps.app.goo.gl/94Dr1K1iPbZ3kR117
+- Official Website: https://the-grand-lucknow.vercel.app
+- Social Media Profiles:
+  - Instagram: https://www.instagram.com/thegrand.lucknow/
+  - Facebook: https://www.facebook.com/thegrandlucknow/
+
+## Property Overview
+
+The Grand — Royal Banquet & Lawns provides event venues along Raibareli Road in Bindaua, Lucknow, Uttar Pradesh. The grounds include four open-air lawns and courtyards plus an indoor air-conditioned banquet hall. The facilities accommodate private events, wedding ceremonies, receptions, cultural functions, and corporate meetings ranging from 250 to 2,500 guests.
+
+## Detailed Venue Specifications
+
+### 1. Open Earth Lawn
+- Canonical URL: https://the-grand-lucknow.vercel.app/venues/open-earth-lawn
+- Venue Type: Open-air event lawn
+- Total Area: 25,000 sq ft
+- Maximum Guest Capacity: Up to 2,500 guests
+- Typical Use: Large-scale wedding ceremonies, receptions, public and cultural gatherings
+
+### 2. Grassland Gala
+- Canonical URL: https://the-grand-lucknow.vercel.app/venues/grassland-gala
+- Venue Type: Landscaped event lawn
+- Total Area: 20,000 sq ft
+- Maximum Guest Capacity: Up to 800 guests
+- Typical Use: Weddings, sangeet functions, dinner receptions
+
+### 3. Garden Galaxy
+- Canonical URL: https://the-grand-lucknow.vercel.app/venues/garden-galaxy
+- Venue Type: Garden lawn
+- Total Area: 15,000 sq ft
+- Maximum Guest Capacity: Up to 300 guests
+- Typical Use: Mehendi ceremonies, engagement celebrations, intimate gatherings
+
+### 4. The Grand Courtyard
+- Canonical URL: https://the-grand-lucknow.vercel.app/venues/the-grand-courtyard
+- Venue Type: Open courtyard
+- Total Area: 15,000 sq ft
+- Maximum Guest Capacity: Up to 250 guests
+- Typical Use: Pre-wedding rituals, haldi functions, private family dinners
+
+### 5. The Royal Legacy Banquet
+- Canonical URL: https://the-grand-lucknow.vercel.app/venues/the-royal-legacy-banquet
+- Venue Type: Indoor banquet hall
+- Total Area: 10,000 sq ft
+- Maximum Guest Capacity: Up to 600 guests
+- Typical Use: Indoor receptions, dining banquets, corporate conferences, all-weather celebrations
+
+## Canonical Website Structure
+
+- https://the-grand-lucknow.vercel.app/ — Main landing page
+- https://the-grand-lucknow.vercel.app/venues — Venue directory
+- https://the-grand-lucknow.vercel.app/book/venue — Reservation and booking inquiry page
+- https://the-grand-lucknow.vercel.app/venues/open-earth-lawn — Open Earth Lawn details
+- https://the-grand-lucknow.vercel.app/venues/grassland-gala — Grassland Gala details
+- https://the-grand-lucknow.vercel.app/venues/garden-galaxy — Garden Galaxy details
+- https://the-grand-lucknow.vercel.app/venues/the-grand-courtyard — The Grand Courtyard details
+- https://the-grand-lucknow.vercel.app/venues/the-royal-legacy-banquet — The Royal Legacy Banquet details
+- https://the-grand-lucknow.vercel.app/about — About the property and management
+- https://the-grand-lucknow.vercel.app/contact — Direct telephone, email, and location directions
+- https://the-grand-lucknow.vercel.app/imprint — Legal notice and property disclosures
+- https://the-grand-lucknow.vercel.app/privacy — Privacy policy
+- https://the-grand-lucknow.vercel.app/terms — Terms and conditions
+
+## Machine-Readable Directives & Verification
+
+- Sitemap: https://the-grand-lucknow.vercel.app/sitemap.xml
+- Robots: https://the-grand-lucknow.vercel.app/robots.txt
+- LLM Index: https://the-grand-lucknow.vercel.app/llms.txt
+- LLM Full Index: https://the-grand-lucknow.vercel.app/llms-full.txt

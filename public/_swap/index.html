@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Antigravity Swap Board — ReferenceBrand</title>
+  <style>
+    :root {
+      --bg: #0a0a0c;
+      --panel: #121216;
+      --border: #24242c;
+      --text: #f3f3f7;
+      --muted: #8b8b99;
+      --accent: #e2b857;
+      --danger: #ef4444;
+      --ok: #10b981;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      background: var(--bg);
+      color: var(--text);
+      padding: 2rem;
+      line-height: 1.5;
+    }
+    header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.25rem;
+      margin-bottom: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    h1 { font-size: 1.25rem; letter-spacing: 0.06em; text-transform: uppercase; }
+    .meta { color: var(--muted); font-size: 0.85rem; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 1.25rem; }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.25rem;
+    }
+    .card h2 {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin-bottom: 0.85rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.5rem;
+    }
+    .slot {
+      padding: 0.65rem 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: 0.8rem;
+    }
+    .slot:last-child { border-bottom: none; }
+    .badge {
+      display: inline-block;
+      padding: 0.1rem 0.45rem;
+      border-radius: 3px;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+    }
+    .badge.pending { background: rgba(239, 68, 68, 0.18); color: var(--danger); }
+    .badge.swapped { background: rgba(16, 185, 129, 0.18); color: var(--ok); }
+    .key { color: var(--muted); word-break: break-all; }
+    .val { margin-top: 0.25rem; color: var(--text); word-break: break-word; }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>Antigravity Swap Board (Track C)</h1>
+      <div class="meta">Ref Domain: reference-domain.com | Ref Brand: ReferenceBrand</div>
+    </div>
+    <div class="meta">Generated: 2026-11-21T15:52:32.644Z</div>
+  </header>
+  <div class="grid" id="board"></div>
+  <script>
+    const MANIFEST = {
+  "meta": {
+    "version": "2.1.5",
+    "generatedAt": "2026-11-21T15:52:32.644Z",
+    "projectDir": "C:\\Users\\Administrator\\.gemini\\antigravity\\scratch\\the-grand-lucknow",
+    "referenceDomain": "reference-domain.com",
+    "referenceBrand": "ReferenceBrand",
+    "forbiddenTerms": [
+      "ReferenceBrand",
+      "reference-domain.com",
+      "googletagmanager.com",
+      "google-analytics.com",
+      "hotjar.com",
+      "fbevents.js",
+      "clarity.ms",
+      "sentry.io",
+      "fonts.googleapis.com",
+      "fonts.gstatic.com",
+      "use.typekit.net",
+      "fast.fonts.net",
+      "framerusercontent.com"
+    ]
+  },
+  "buckets": {
+    "copy": [],
+    "logos": [
+      {
+        "path": "images/logo-dark.svg",
+        "role": "brand-logo-or-icon",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/logo-light.svg",
+        "role": "brand-logo-or-icon",
+        "replacementPath": "",
+        "status": "pending"
+      }
+    ],
+    "images": [
+      {
+        "path": ".previews/desktop-1440x900.png",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": ".previews/mobile-375x812.png",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": ".previews/tablet-768x1024.png",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/avatar_1.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/avatar_2.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/avatar_3.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/avatar_4.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/avatar_5.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/avatar_6.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/card_1_open_earth.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/card_2_grassland_gala.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/card_3_ballroom.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/card_4_courtyard.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/card_5_garden_pavilion.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/card_6_mandap_lawn.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/card_7_dining_expanse.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/card_8_courtyard_day.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/card_9_vip_suite.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/craft_feature_1.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/craft_feature_2.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/google_maps_lucknow.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/hero_bg.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/hero_poster_desktop.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/hero_poster_mobile.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/host_portrait.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/map_cutout.png",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/map_cutout.svg",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/map_cutout.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/prefooter_1.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/prefooter_2.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/the_grand_lucknow_carto_base.png",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/the_grand_lucknow_master_map.png",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/the_grand_lucknow_master_map.svg",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/the_grand_lucknow_master_map.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/the_grand_lucknow_master_map_1920.png",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/the_grand_lucknow_vector_map.svg",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/the_grand_lucknow_vector_map.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/the_grand_lucknow_vector_map@1x.png",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/the_grand_lucknow_vector_map@2x.png",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/the_grand_lucknow_vector_map@3x.png",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/thumb_1.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/thumb_2.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/thumb_3.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/thumb_4.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/thumb_5.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/thumb_6.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/UayMv2I16UbQQBQkbI90HsJMv5o.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/venues/garden-galaxy-official.jpeg",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/venues/garden-galaxy_1.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/venues/garden-galaxy_2.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/venues/garden-galaxy_3.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/venues/garden-galaxy_4.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/venues/garden-galaxy_5.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/venues/garden-galaxy_6.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/venues/garden_galaxy_official.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/venues/grassland-gala-official.jpg",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/venues/grassland-gala_1.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/venues/grassland-gala_2.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/venues/grassland-gala_3.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/venues/grassland-gala_4.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/venues/grassland-gala_5.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/venues/grassland-gala_6.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/venues/grassland_gala_official.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/venues/open-earth-lawn-official.png",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/venues/open-earth-lawn_1.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/venues/open-earth-lawn_2.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/venues/open-earth-lawn_3.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/venues/open-earth-lawn_4.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/venues/open-earth-lawn_5.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/venues/open-earth-lawn_6.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/venues/open_earth_lawn_1.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/venues/open_earth_lawn_2.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/venues/open_earth_lawn_3.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/venues/open_earth_lawn_4.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/venues/open_earth_lawn_5.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/venues/open_earth_lawn_6.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/venues/open_earth_lawn_official.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/venues/royal-legacy-banquet-official.jpeg",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/venues/royal_legacy_banquet_official.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/venues/the-grand-courtyard-official.jpg",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/venues/the-grand-courtyard_1.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/venues/the-grand-courtyard_2.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/venues/the-grand-courtyard_3.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/venues/the-grand-courtyard_4.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/venues/the-grand-courtyard_5.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/venues/the-grand-courtyard_6.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/venues/the-royal-legacy-banquet_1.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/venues/the-royal-legacy-banquet_2.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/venues/the-royal-legacy-banquet_3.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/venues/the-royal-legacy-banquet_4.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/venues/the-royal-legacy-banquet_5.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/venues/the-royal-legacy-banquet_6.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/venues/the_grand_courtyard_official.webp",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/venues/the_grand_open_earth_lawn_hero.jpg",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "images/wordmark.svg",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "raw_photos/BanquetHall-DW5fa5BN.jpeg",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "raw_photos/courtyard1-CZYhzkmY.jpeg",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "raw_photos/eleganteventspace-CzAQOqQ1.jpg",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "raw_photos/frame-01.jpg",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "raw_photos/frame-02.jpg",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "raw_photos/frame-04.jpg",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "raw_photos/frame-05.jpg",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "raw_photos/frame-06.jpg",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "raw_photos/frame-08.jpg",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "raw_photos/frame-09.jpg",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "raw_photos/gardengalaxy1-WiWr7-QZ.jpeg",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "raw_photos/gardengalxy2-DN0rsEuN.jpeg",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "raw_photos/grasslandGala-CfKbaOcr.jpg",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "raw_photos/IMG_7699-CDjE9rIn.jpg",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "raw_photos/IMG_7704-Bp9UUjVk.jpg",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "raw_photos/IMG_7705-taP6SS-1.jpg",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "raw_photos/IMG_8758-DTraJLvx.jpg",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "raw_photos/IMG_8759-BtbqGV07.jpg",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "raw_photos/IMG_8900-JV6nzzM7.jpeg",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "raw_photos/IMG_8901-COrxYXtd.jpeg",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "raw_photos/IMG_8990-C5f3zkAx.jpg",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "raw_photos/IMG_9002-BJweJ-4g.jpg",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "raw_photos/openEarthLawn-T84778UT.png",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "raw_photos/spaciousOutdoorLawns-DxoBeCfD.jpg",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "raw_photos/venue-ClaDiqWh.jpeg",
+        "aspectRatioLock": "preserve-intrinsic-box",
+        "replacementPath": "",
+        "status": "pending"
+      }
+    ],
+    "videos": [
+      {
+        "path": "media/grand-teaser-desktop.mp4",
+        "replacementPath": "",
+        "status": "pending"
+      },
+      {
+        "path": "media/grand-teaser-mobile.mp4",
+        "replacementPath": "",
+        "status": "pending"
+      }
+    ],
+    "tokens": [],
+    "seo": [
+      {
+        "id": "about.html#title",
+        "original": "About The Grand • Premier Event Venues in Lucknow",
+        "replacement": "",
+        "status": "pending"
+      },
+      {
+        "id": "about.html#canonical",
+        "original": "\u003clink rel=\"canonical\" href=\"https://the-grand-lucknow.vercel.app/about\"\u003e",
+        "replacement": "",
+        "status": "pending"
+      },
+      {
+        "id": "book/venue.html#title",
+        "original": "Check Availability & Inquire • The Grand Lucknow",
+        "replacement": "",
+        "status": "pending"
+      },
+      {
+        "id": "book/venue.html#canonical",
+        "original": "\u003clink rel=\"canonical\" href=\"https://the-grand-lucknow.vercel.app/book/venue\"\u003e",
+        "replacement": "",
+        "status": "pending"
+      },
+      {
+        "id": "contact.html#title",
+        "original": "Contact • The Grand Lucknow",
+        "replacement": "",
+        "status": "pending"
+      },
+      {
+        "id": "contact.html#canonical",
+        "original": "\u003clink rel=\"canonical\" href=\"https://the-grand-lucknow.vercel.app/contact\"\u003e",
+        "replacement": "",
+        "status": "pending"
+      },
+      {
+        "id": "imprint.html#title",
+        "original": "Imprint • The Grand Lucknow",
+        "replacement": "",
+        "status": "pending"
+      },
+      {
+        "id": "imprint.html#canonical",
+        "original": "\u003clink rel=\"canonical\" href=\"https://the-grand-lucknow.vercel.app/imprint\"\u003e",
+        "replacement": "",
+        "status": "pending"
+      },
+      {
+        "id": "index.html#title",
+        "original": "The Grand • Premium Event Venues",
+        "replacement": "",
+        "status": "pending"
+      },
+      {
+        "id": "index.html#canonical",
+        "original": "\u003clink rel=\"canonical\" href=\"https://the-grand-lucknow.vercel.app/\"\u003e",
+        "replacement": "",
+        "status": "pending"
+      },
+      {
+        "id": "privacy.html#title",
+        "original": "Privacy Policy • The Grand Lucknow",
+        "replacement": "",
+        "status": "pending"
+      },
+      {
+        "id": "privacy.html#canonical",
+        "original": "\u003clink rel=\"canonical\" href=\"https://the-grand-lucknow.vercel.app/privacy\"\u003e",
+        "replacement": "",
+        "status": "pending"
+      },
+      {
+        "id": "terms.html#title",
+        "original": "Terms & Conditions • The Grand Lucknow",
+        "replacement": "",
+        "status": "pending"
+      },
+      {
+        "id": "terms.html#canonical",
+        "original": "\u003clink rel=\"canonical\" href=\"https://the-grand-lucknow.vercel.app/terms\"\u003e",
+        "replacement": "",
+        "status": "pending"
+      },
+      {
+        "id": "venues/garden-galaxy.html#title",
+        "original": "Garden Galaxy • The Grand Lucknow",
+        "replacement": "",
+        "status": "pending"
+      },
+      {
+        "id": "venues/garden-galaxy.html#canonical",
+        "original": "\u003clink rel=\"canonical\" href=\"https://the-grand-lucknow.vercel.app/venues/garden-galaxy\"\u003e",
+        "replacement": "",
+        "status": "pending"
+      },
+      {
+        "id": "venues/grassland-gala.html#title",
+        "original": "Grassland Gala • The Grand Lucknow",
+        "replacement": "",
+        "status": "pending"
+      },
+      {
+        "id": "venues/grassland-gala.html#canonical",
+        "original": "\u003clink rel=\"canonical\" href=\"https://the-grand-lucknow.vercel.app/venues/grassland-gala\"\u003e",
+        "replacement": "",
+        "status": "pending"
+      },
+      {
+        "id": "venues/open-earth-lawn.html#title",
+        "original": "Open Earth Lawn • The Grand Lucknow",
+        "replacement": "",
+        "status": "pending"
+      },
+      {
+        "id": "venues/open-earth-lawn.html#canonical",
+        "original": "\u003clink rel=\"canonical\" href=\"https://the-grand-lucknow.vercel.app/venues/open-earth-lawn\"\u003e",
+        "replacement": "",
+        "status": "pending"
+      },
+      {
+        "id": "venues/the-grand-courtyard.html#title",
+        "original": "The Grand Courtyard • The Grand Lucknow",
+        "replacement": "",
+        "status": "pending"
+      },
+      {
+        "id": "venues/the-grand-courtyard.html#canonical",
+        "original": "\u003clink rel=\"canonical\" href=\"https://the-grand-lucknow.vercel.app/venues/the-grand-courtyard\"\u003e",
+        "replacement": "",
+        "status": "pending"
+      },
+      {
+        "id": "venues/the-royal-legacy-banquet.html#title",
+        "original": "The Royal Legacy Banquet • The Grand Lucknow",
+        "replacement": "",
+        "status": "pending"
+      },
+      {
+        "id": "venues/the-royal-legacy-banquet.html#canonical",
+        "original": "\u003clink rel=\"canonical\" href=\"https://the-grand-lucknow.vercel.app/venues/the-royal-legacy-banquet\"\u003e",
+        "replacement": "",
+        "status": "pending"
+      },
+      {
+        "id": "venues.html#title",
+        "original": "Venues • The Grand Lucknow",
+        "replacement": "",
+        "status": "pending"
+      },
+      {
+        "id": "venues.html#canonical",
+        "original": "\u003clink rel=\"canonical\" href=\"https://the-grand-lucknow.vercel.app/venues\"\u003e",
+        "replacement": "",
+        "status": "pending"
+      }
+    ]
+  }
+};
+    const board = document.getElementById('board');
+    function esc(s) {
+      return String(s ?? '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+    const sections = [
+      ['Copy & Headings (±20% Lock)', MANIFEST.buckets.copy],
+      ['Logos & Sticky Nav Assets', MANIFEST.buckets.logos],
+      ['Images & Aspect Locks', MANIFEST.buckets.images],
+      ['Videos & Canvas Frames', MANIFEST.buckets.videos],
+      ['Typography & Color Tokens', MANIFEST.buckets.tokens],
+      ['SEO, Canonical & JSON-LD', MANIFEST.buckets.seo]
+    ];
+    for (const [title, items] of sections) {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = '<h2>' + esc(title) + ' (' + items.length + ')</h2>' +
+        (items.length === 0 ? '<div class="slot"><span class="key">No items detected</span></div>' :
+          items.map(item =>
+            '<div class="slot">' +
+              '<span class="badge ' + esc(item.status) + '">' + esc(item.status) + '</span> ' +
+              '<span class="key">' + esc(item.id || item.path || item.token) + '</span>' +
+              '<div class="val">' + esc(item.replacement || item.replacementPath || item.replacementValue || item.original || item.value || '') + '</div>' +
+            '</div>'
+          ).join(''));
+      board.appendChild(card);
+    }
+  </script>
+</body>
+</html>
